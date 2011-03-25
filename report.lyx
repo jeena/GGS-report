@@ -331,8 +331,19 @@ Purpose
 \end_layout
 
 \begin_layout Standard
-The purpose of the GGS project is to create a scalable and fault tolerant
- server, while still allowing the server to be as generic as possible.
+The purpose of the GGS project is to create a 
+\emph on
+scalable
+\emph default
+ and 
+\emph on
+fault tolerant
+\emph default
+ server, while still allowing the server to be as 
+\emph on
+generic
+\emph default
+ as possible.
  These three italicised terms need some explanation.
 \end_layout
 
@@ -376,6 +387,14 @@ ng as intended at a given point in time.
  This means that a fault tolerant, dependable system, will have a very high
  probability of functioning at a given point in time, and is exactly what
  is desired.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Gartner:1999:FFD:311531.311532"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
