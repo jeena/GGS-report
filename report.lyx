@@ -1,4 +1,4 @@
-#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -355,6 +355,42 @@ key "Bondi:2000:CSI:350391.350432"
  adding nodes to a system, without requiring modification of the system.
  Load scalability means using the available resources in a way which allows
  handling increasing load, e.g more users, gracefully.
+\end_layout
+
+\begin_layout Subsection
+Generic
+\end_layout
+
+\begin_layout Subsubsection*
+App-Server
+\end_layout
+
+\begin_layout Enumerate
+Google App Engine
+\end_layout
+
+\begin_layout Enumerate
+Glassfish
+\end_layout
+
+\begin_layout Enumerate
+Robot-App-Server
+\end_layout
+
+\begin_layout Enumerate
+DB-Server
+\end_layout
+
+\begin_layout Subsubsection
+Different Games on same server
+\end_layout
+
+\begin_layout Enumerate
+real time
+\end_layout
+
+\begin_layout Enumerate
+turn based
 \end_layout
 
 \begin_layout Section
