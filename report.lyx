@@ -174,7 +174,7 @@ begin{textblock*}{297mm}(73mm,10mm)
 \backslash
 includegraphics[width=
 \backslash
-paperwidth/3]{LO_CHGU_cen2rCMYK.eps} 
+paperwidth/3]{graphics/LO_CHGU_cen2rCMYK.eps} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -810,7 +810,7 @@ In GGS, we have separated the system in to two large supervised parts.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Note Note
@@ -843,7 +843,7 @@ begin{centering}
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename supervisors.png
+	filename graphics/Supervisor_tree_GGS.eps
 	scale 40
 
 \end_inset
@@ -1050,19 +1050,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Convert this graphics to EPS
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -1080,8 +1067,8 @@ begin{centering}
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename system_structure.png
-	scale 40
+	filename graphics/Chess_no_text.eps
+	width 100text%
 
 \end_inset
 
