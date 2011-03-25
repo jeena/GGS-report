@@ -361,28 +361,76 @@ key "Bondi:2000:CSI:350391.350432"
 Generic
 \end_layout
 
-\begin_layout Subsubsection*
-App-Server
+\begin_layout Subsubsection
+Application-Server targeted on games
 \end_layout
 
-\begin_layout Enumerate
-Google App Engine
+\begin_layout Standard
+What do we mean with the word 
+\begin_inset Quotes eld
+\end_inset
+
+generic
+\begin_inset Quotes erd
+\end_inset
+
+? We want to be able to run different games and the games shall be able
+ to be of different type.
+ The server is something like a application server designed to help to run
+ games.
+ A application server is different from a file or print server, which only
+ serves resources to the clients, it serves processing ability and time.
 \end_layout
 
-\begin_layout Enumerate
-Glassfish
+\begin_layout Standard
+The most common type of application servers are webservers where you run
+ a web-application within the server.
+ The application-server handles all the network-/inter process-stuff and
+ offers hooks and helpers for your application to use the resources, some
+ examples for such web-application-servers are the Glassfish-Server which
+ allows you to run applications written in Java, or the Google App Engine
+ where you can run applications written in Python or some language which
+ runs in the Java Virtual Machine.
 \end_layout
 
-\begin_layout Enumerate
-Robot-App-Server
+\begin_layout Standard
+But you can find specialized application servers within the industry where
+ one central server serves processing power for different independent robotic-cl
+ients.
+ Or in Academia where one mainframe is used as a cerver for different clients
+ to run different applications which are doing havy calculations and return
+ the result to the clients.
 \end_layout
 
-\begin_layout Enumerate
-DB-Server
+\begin_layout Standard
+You could too think of a database server as a application server.
+ You send it different 
+\begin_inset Quotes eld
+\end_inset
+
+scripts
+\begin_inset Quotes erd
+\end_inset
+
+, e.g.
+ bis SQL queries or JavaScript, the server runs them and returns the evaluated
+ data to the clients.
+ It is perhaps not the best example but just so you see how different applicatio
+n servers can be.
+\end_layout
+
+\begin_layout Standard
+One of the purposes of this thesis is to investigate how we can make a game
+ server as generic, that is so that you are not limited to just one game,
+ as possible.
+ Some important helpers which are needed in network games and therefore
+ should be offered by a generic game server are for example the abstraction
+ of the network layer, a data store, and others, which will be discussed
+ more in detail later in the thesis.
 \end_layout
 
 \begin_layout Subsubsection
-Different Games on same server
+Different game types on same server
 \end_layout
 
 \begin_layout Enumerate
