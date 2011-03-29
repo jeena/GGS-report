@@ -194,10 +194,6 @@ Generic Game Server
 \end_layout
 
 \begin_layout Author
-Jonatan Pålsson
-\begin_inset Newline newline
-\end_inset
-
 Niklas Landin
 \begin_inset Newline newline
 \end_inset
@@ -207,6 +203,10 @@ Richard Pannek
 \end_inset
 
 Matias Petterson
+\begin_inset Newline newline
+\end_inset
+
+Jonatan Pålsson
 \end_layout
 
 \begin_layout Abstract
@@ -413,7 +413,7 @@ real time games
 \end_layout
 
 \begin_layout Subsubsection
-Application-Server targeted on games of different types
+Application server targeted on games
 \end_layout
 
 \begin_layout Standard
@@ -547,7 +547,7 @@ Basis
 \end_layout
 
 \begin_layout Section
-Delimitations 
+Delimitations
 \end_layout
 
 \begin_layout Subsection
