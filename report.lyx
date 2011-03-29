@@ -401,10 +401,6 @@ key "Gartner:1999:FFD:311531.311532"
 Generic
 \end_layout
 
-\begin_layout Subsubsection
-Application-Server targeted on games of different types
-\end_layout
-
 \begin_layout Standard
 A generic game server has to be able to run different client-server network
  games regardless of the platform the clients are running on.
@@ -414,6 +410,10 @@ A generic game server has to be able to run different client-server network
 real time games
 \emph default
  and turn based games.
+\end_layout
+
+\begin_layout Subsubsection
+Application-Server targeted on games of different types
 \end_layout
 
 \begin_layout Standard
@@ -519,6 +519,12 @@ Wheel of Fortune
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Both game types have varying difficulties and needs when it comes to implementin
+g them, a Generic Game Server should address all of them and help the developer
+ to acomplish his goal.
 \end_layout
 
 \begin_layout Section
