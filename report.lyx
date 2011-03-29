@@ -1,4 +1,4 @@
-#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -402,21 +402,22 @@ Generic
 \end_layout
 
 \begin_layout Subsubsection
-Application-Server targeted on games
+Application-Server targeted on games of different types
 \end_layout
 
 \begin_layout Standard
-What do we mean with the word 
-\begin_inset Quotes eld
-\end_inset
+A generic game server has to be able to run different client-server network
+ games regardless of the platform the clients are running on.
+ It should be able to run network games of different type, a very rough
+ separation would be in 
+\emph on
+real time games
+\emph default
+ and turn based games.
+\end_layout
 
-generic
-\begin_inset Quotes erd
-\end_inset
-
-? We want to be able to run different games and the games shall be able
- to be of different type.
- The server is something like a application server designed to help to run
+\begin_layout Standard
+The server is something like a application server designed to help to run
  games.
  A application server is different from a file or print server, which only
  serves resources to the clients, it serves processing ability and time.
@@ -470,15 +471,54 @@ One of the purposes of this thesis is to investigate how we can make a game
 \end_layout
 
 \begin_layout Subsubsection
-Different game types on same server
+Different types of games
 \end_layout
 
-\begin_layout Enumerate
-real time
+\begin_layout Standard
+In real time games all players are playing at the same time simultanously
+ together.
+ Latency is a big problem here, a typical round trip time for such games
+ is one of 50 to 150 ms and everything above 200 ms is reported to be intolerabl
+e
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Farber:2002:NGT:566500.566508"
+
+\end_inset
+
+.
+ Examples for such games are most of the first person shoters with multiplayer
+ ability like Counter Strike, Call Of Duty and 
+\emph on
+MMOjRPG's 
+\emph default
+(Massively multiplayer online role-playing game) like World Of Warcraft,
+ Starcraft, Ultima Online, etc.
 \end_layout
 
-\begin_layout Enumerate
-turn based
+\begin_layout Standard
+In turn based games each player has to wait for her turn.
+ Latency is not a problem because even if a round trip takes a bigger amount
+ of time, the gameplay does not require fast interactions between the players
+ and it will not be noticed.
+ Examples are board and card games like chess, poker or Carcassonne played
+ online, as well as multiplayer games like 
+\begin_inset Quotes erd
+\end_inset
+
+Hattrick - The online football manager game
+\begin_inset Quotes erd
+\end_inset
+
+ or the 
+\begin_inset Quotes eld
+\end_inset
+
+Wheel of Fortune
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
