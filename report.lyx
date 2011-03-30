@@ -1,4 +1,4 @@
-#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -857,7 +857,33 @@ Encryption
 \end_layout
 
 \begin_layout Chapter
-Overview 
+Practice
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Perhaps call this 
+\begin_inset Quotes eld
+\end_inset
+
+realization
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+implementation
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Section
