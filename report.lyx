@@ -649,7 +649,7 @@ For reliable transfers, TCP is often used on the Internet.
 \end_layout
 
 \begin_layout Section
-Encryption
+Fault Tolerant
 \end_layout
 
 \begin_layout Subsubsection
@@ -689,12 +689,58 @@ Scalability
 \end_layout
 
 \begin_layout Standard
+Each instance of GGS contains several tables.
+ Each table is an isolated instance of a game, for example a chess game
+ or a poker game.
+ The way that GGS scales is to distribute these tables on different servers.
+ In many games it is not necessary for a player to move between tables during
+ games.
+ This is for example not a common occurrence in chess, where it would be
+ represented as a player standing up from her current table and sitting
+ down at a new table, all within the same game session.
+ With this in mind, the main focus of GGS is not to move players between
+ tables, but to keep a player in a table, and to start new tables instead.
+ When a server has reached a certain amount of players the performance will
+ start to decrease.
+ To avoid this GGS will start new tables on another server, using this technique
+ the players will be close to evenly distributed between the servers.
+ It is important to investigate and find out how many players that are optimal
+ for each server.
+ This approach makes it possible to utilize all resources with moderate
+ load, instead of having some resources with heavy load and some with almost
+ no load.
+\end_layout
+
+\begin_layout Standard
+As mentioned in the purpose section there are two different types of scalability
+, structural scalability and load scalability.
+ To make GGS scalable both types of scalability are needed.
+ Structural scalability means in our case that it should be possible to
+ add more servers to an existing cluster of servers.
+ By adding more servers the limits of how many users a system can have is
+ increased.
+ Load scalability in contrast to structural scalability is not about how
+ to increase the actual limits of the system.
+ Instead it means how good the system handles increased load.
+ GGS should be able to scale well in both categories.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Because P2P game architectures are a constant goal for cheaters and because
  “Cheating is a major concern in network games as it degrades the experience
  of the majority of players who are honest” and preventing cheating in P2P
  game architectures is very difficult game developers try to use Client
  - Server architectures which have a natural problem to scale.
  In this paper we want to show some strategies to achieve scalability.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -717,6 +763,10 @@ We only support languages running in a sandboxed environment.
  relational database.
  A game is not allowed to venture outside this namespace, and can because
  of this not modify the persistent data of other games.
+\end_layout
+
+\begin_layout Subsection
+Encryption
 \end_layout
 
 \begin_layout Chapter
