@@ -192,7 +192,7 @@ pagenumbering{roman}
 
 
 \backslash
-setcounter{page}{5} 
+setcounter{page}{3}
 \end_layout
 
 \begin_layout Plain Layout
@@ -361,134 +361,62 @@ key "Gartner:1999:FFD:311531.311532"
 
 \end_layout
 
-\begin_layout Subsection
-Generic
-\end_layout
-
 \begin_layout Standard
 A generic game server has to be able to run different client-server network
  games regardless of the platform the clients are running on.
- It should be able to run network games of different type, a very rough
- separation would be in 
+ It runs network games of different type.
+ A very rough separation of games is real time games and turn based games.
+\end_layout
+
+\begin_layout Standard
+The server behaves in a way similar to an application server, but is designed
+ to help running games.
+ An application server provides processing ability and time, therefore it
+ is different from a file- or print-server, which only serves resources
+ to the clients.
+\end_layout
+
+\begin_layout Standard
+The most common type of application servers are web servers, where you run
+ a web application within the server.
+ The application server provides an environment and interfaces to the outer
+ world, in which applications run.
+ Hooks and helpers are provided to use the resources of the server.
+ Some examples for web application servers are the 
 \emph on
-real time games
+Glassfish
 \emph default
- and turn based games.
-\end_layout
-
-\begin_layout Subsubsection
-Application server targeted on games
-\end_layout
-
-\begin_layout Standard
-The server is something like a application server designed to help to run
- games.
- A application server is different from a file or print server, which only
- serves resources to the clients, it serves processing ability and time.
-\end_layout
-
-\begin_layout Standard
-The most common type of application servers are webservers where you run
- a web-application within the server.
- The application-server handles all the network-/inter process-stuff and
- offers hooks and helpers for your application to use the resources, some
- examples for such web-application-servers are the Glassfish-Server which
- allows you to run applications written in Java, or the Google App Engine
+ server which allows running applications written in Java or the 
+\emph on
+Google App Engine
+\emph default
  where you can run applications written in Python or some language which
- runs in the Java Virtual Machine.
+ runs in the 
+\emph on
+Java Virtual Machine
+\emph default
+.
+ An example of an application server not powering web applications, but
+ instead regular business logic, is Oracle’s 
+\emph on
+TUXEDO
+\emph default
+ application server, which can be used to run applications written in COBOL,
+ C++ and others.
 \end_layout
 
 \begin_layout Standard
-But you can find specialized application servers within the industry where
- one central server serves processing power for different independent robotic-cl
-ients.
- Or in Academia where one mainframe is used as a cerver for different clients
- to run different applications which are doing havy calculations and return
- the result to the clients.
-\end_layout
-
-\begin_layout Standard
-You could too think of a database server as a application server.
- You send it different 
-\begin_inset Quotes eld
-\end_inset
-
-scripts
-\begin_inset Quotes erd
-\end_inset
-
-, e.g.
- bis SQL queries or JavaScript, the server runs them and returns the evaluated
- data to the clients.
- It is perhaps not the best example but just so you see how different applicatio
-n servers can be.
+A database server can also be seen as an application server.
+ Scripts, for example SQL queries or JavaScript, are sent to the server,
+ which runs them and returns the evaluated data to the clients.
+ 
 \end_layout
 
 \begin_layout Standard
 One of the purposes of this thesis is to investigate how we can make a game
- server as generic, that is so that you are not limited to just one game,
- as possible.
- Some important helpers which are needed in network games and therefore
- should be offered by a generic game server are for example the abstraction
- of the network layer, a data store, and others, which will be discussed
- more in detail later in the thesis.
-\end_layout
-
-\begin_layout Subsubsection
-Different types of games
-\end_layout
-
-\begin_layout Standard
-In real time games all players are playing at the same time simultanously
- together.
- Latency is a big problem here, a typical round trip time for such games
- is one of 50 to 150 ms and everything above 200 ms is reported to be intolerabl
-e
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Farber:2002:NGT:566500.566508"
-
-\end_inset
-
-.
- Examples for such games are most of the first person shoters with multiplayer
- ability like Counter Strike, Call Of Duty and 
-\emph on
-MMORPG's 
-\emph default
-(Massively multiplayer online role-playing game) like World Of Warcraft,
- Starcraft, Ultima Online, etc.
-\end_layout
-
-\begin_layout Standard
-In turn based games each player has to wait for her turn.
- Latency is not a problem because even if a round trip takes a bigger amount
- of time, the gameplay does not require fast interactions between the players
- and it will not be noticed.
- Examples are board and card games like chess, poker or Carcassonne played
- online, as well as multiplayer games like 
-\begin_inset Quotes erd
-\end_inset
-
-Hattrick - The online football manager game
-\begin_inset Quotes erd
-\end_inset
-
- or the 
-\begin_inset Quotes eld
-\end_inset
-
-Wheel of Fortune
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Both game types have varying difficulties and needs when it comes to implementin
-g them, a Generic Game Server should address all of them and help the developer
- to acomplish his goal.
+ server as generic as possible.
+ Some important helpers are discussed, such as abstraction of the network
+ layer, data store and game specific features.
 \end_layout
 
 \begin_layout Section
@@ -529,6 +457,19 @@ How easy it is to send messages to the virtual machine of the GDL from GGS
 
 \begin_layout Itemize
 How easy it is to send messages from the GDL VM to GGS
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Add more like threads, events, etc.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -580,27 +521,60 @@ The UDP protocol will not be implemented, only TCP, the main reason behind
  not be supported by the GGS prototype.
  Another limitation necessary to set on the system is the possibility to
  have huge game worlds.
- Due to the limited capability of threading in many GDL VM:s, GGS will not
- support 
-\emph on
-massively multiplayer online role playing games
-\emph default
- (MMORPG) games such as 
-\emph on
-World of Warcraft
-\emph default
- or 
-\emph on
-EVE Online
-\emph default
- as it is not possible to implement and test something that complex within
- the projects timetable.
+ 
 \end_layout
 
 \begin_layout Standard
-The GGS is only a small prototype and tests will be performed on simple
- games like pong or chess, thus there are no need to implement more advanced
- features in the system.
+In real time games all players are playing together at the same time.
+ Latency is a huge problem in real time games, a typical round trip time
+ for such games is one of 50 to 150 ms and everything above 200 ms is reported
+ to be intolerable
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Farber:2002:NGT:566500.566508"
+
+\end_inset
+
+.
+ Latency sensitive games include most of the first person shooters with
+ multiplayer ability, for example 
+\emph on
+Counter Strike
+\emph default
+ or massively multiplayer online role playing games (MMORPG:s), for example
+ 
+\emph on
+World of Warcraft
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+In turn based games each player has to wait for her turn.
+ Latency is not a problem since the gameplay does not require fast interactions
+ between the players, long round trip times will not be noticed.
+ Examples of turn based games include board and card games, as well as multiplay
+er games like 
+\emph on
+Jeopardy
+\emph default
+.
+ Both game types have varying difficulties and needs when it comes to implementi
+ng them, a Generic Game Server should address all of them and help the developer
+ to accomplish his goal.
+ 
+\end_layout
+
+\begin_layout Standard
+Due to the limited capability of threading in many GDL VM:s, the GGS prototype
+ will not support MMORPG:s as it is not possible to implement and test something
+ that complex within the projects timetable.
+\end_layout
+
+\begin_layout Standard
+The implementation of the GGS described in this thesis is only a small prototype
+ and tests will be performed on simple games like pong or chess, thus there
+ are no need to implement more advanced features in the system.
  It is important to note that these limitations only apply for the prototype
  of the project, and that further developments to GGS could be to implement
  these features.
