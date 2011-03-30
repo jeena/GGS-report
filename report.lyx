@@ -561,27 +561,49 @@ reliable
  accessible and consistent among all of GGS, this is also investigated.
 \end_layout
 
-\begin_layout Subsection
-Basis 
-\end_layout
-
 \begin_layout Section
 Delimitations
 \end_layout
 
-\begin_layout Subsection
-Types of games 
+\begin_layout Standard
+The implementation of the GGS protocol, together with storage possibilities,
+ server capacity, and game language support imposes some limitations on
+ the project.
+ To get a functional prototype some limits must be set on the types games
+ that can be played on the prototype.
 \end_layout
 
 \begin_layout Standard
-In theory no limitations, but in reality it will be limitations.
- Many factors are involved here.
- Implementation of protocol, storage possibilities, server capacity, language
- support.
- In real time games a low latency is very important not a high bandwidth
- because the games already send very little data, ~ 80 bytes.
- Lag of below 250 ms is good, lag up to 500 ms payable and beyond that the
- lag is noticeable.
+The UDP protocol will not be implemented, only TCP, the main reason behind
+ this is a strict timetable.
+ This decision means that games that requires a high speed protocol will
+ not be supported by the GGS prototype.
+ Another limitation necessary to set on the system is the possibility to
+ have huge game worlds.
+ Due to the limited capability of threading in many GDL VM:s, GGS will not
+ support 
+\emph on
+massively multiplayer online role playing games
+\emph default
+ (MMORPG) games such as 
+\emph on
+World of Warcraft
+\emph default
+ or 
+\emph on
+EVE Online
+\emph default
+ as it is not possible to implement and test something that complex within
+ the projects timetable.
+\end_layout
+
+\begin_layout Standard
+The GGS is only a small prototype and tests will be performed on simple
+ games like pong or chess, thus there are no need to implement more advanced
+ features in the system.
+ It is important to note that these limitations only apply for the prototype
+ of the project, and that further developments to GGS could be to implement
+ these features.
 \end_layout
 
 \begin_layout Section
