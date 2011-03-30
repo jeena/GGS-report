@@ -104,10 +104,6 @@
 \begin_body
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -115,7 +111,16 @@ status open
 
 
 \backslash
-begin{textblock*}{297mm}(0mm,10mm)    
+begin{textblock*}{
+\backslash
+paperwidth}(0mm,40mm)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}  
 \end_layout
 
 \begin_layout Plain Layout
@@ -124,57 +129,14 @@ begin{textblock*}{297mm}(0mm,10mm)
 \backslash
 includegraphics[width=
 \backslash
-paperwidth-10mm]{ChaGUblasvarteng.eps} 
+paperwidth/2]{graphics/logo} 
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-end{textblock*}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{textblock*}{297mm}(73mm,10mm)    
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[width=
-\backslash
-paperwidth/3]{graphics/LO_CHGU_cen2rCMYK.eps} 
+end{center}
 \end_layout
 
 \begin_layout Plain Layout
