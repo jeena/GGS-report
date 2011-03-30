@@ -58,7 +58,7 @@
 \pagestyle{fancy}
 \lhead{\thechapter}
 
-\usepackage[hmargin=3cm,vmargin=3.5cm]{geometry}
+\usepackage[hmargin=3cm,vmargin=3.5cm]{geometry} 
 \end_preamble
 \use_default_options true
 \language english
