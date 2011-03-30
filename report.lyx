@@ -1,4 +1,4 @@
-#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -494,14 +494,69 @@ Challenges
 \end_layout
 
 \begin_layout Standard
-The main challenge is to provide a reliable, high-performing and scalable
- server without making it too difficult for game developers do write their
- game.
- It should for example be possible for them to use the language they are
- familiar with.
- In our GGS prototype we added a module for a virtual machine which is highly
- exchangable.
- For now we have a JavaScript VM (Spidermonkey) and a ActionScript VM.
+The word 
+\emph on
+generic
+\emph default
+ in GGS implies that the system is able to run a very broad range of different
+ code, for instance code written in different programming languages, in
+ addition to a broad range of different game types.
+ In order to support this, a virtual machine (VM) for each 
+\emph on
+game development language
+\emph default
+ (hereafter GDL for brevity) is used.
+ 
+\end_layout
+
+\begin_layout Standard
+No hard limit has been set on which languages can be used for game development
+ on GGS, but there are several factors which decide the feasibility of a
+ language; 
+\end_layout
+
+\begin_layout Itemize
+How well it integrates with Erlang, which is used in the core GGS system
+ 
+\end_layout
+
+\begin_layout Itemize
+How easy it is to send messages to the virtual machine of the GDL from GGS
+ 
+\end_layout
+
+\begin_layout Itemize
+How easy it is to send messages from the GDL VM to GGS
+\end_layout
+
+\begin_layout Standard
+Internally, the GDL VM needs to interface with GGS to make use of the helpers
+ and tools that GGS provides.
+ Thus an internal API has to be designed for use in interacting with GGS.
+ This API is ideally completely independent of the GDL, and reusable for
+ any GDL.
+\end_layout
+
+\begin_layout Standard
+The communication with gaming clients has to take place over a protocol.
+ Ideally a standard protocol should be used, in order to shorten the learning
+ curve for developers, and also make the system as a whole less obscure.
+ A large challenge during this project is to decide whether an existing
+ protocol can be used, and if not, how a new protocol can be designed which
+ performs technically as desired, while still being familiar enough to existing
+ developers.
+\end_layout
+
+\begin_layout Standard
+A great deal of work is devoted to make GGS 
+\emph on
+reliable
+\emph default
+.
+ This includes ensuring that the system scales well, and to make sure it
+ is fault tolerant.
+ In order to facilitate scalability, we need a storage platform which is
+ accessible and consistent among all of GGS, this is also investigated.
 \end_layout
 
 \begin_layout Subsection
