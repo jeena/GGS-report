@@ -457,9 +457,6 @@ How easy it is to send messages to the virtual machine of the GDL from GGS
 
 \begin_layout Itemize
 How easy it is to send messages from the GDL VM to GGS
-\end_layout
-
-\begin_layout Itemize
 \begin_inset Note Note
 status open
 
@@ -959,8 +956,26 @@ When the linking of processes in order to monitor exit behaviour is coupled
 
 \begin_layout Standard
 In GGS, we have separated the system in to two large supervised parts.
- We try to restart a crashing child separately, if this fails too many times,
- we restart the nearest supervisor of this child.
+ We try to restart a crashing child separately, if this fails too many
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Exactly how many 
+\begin_inset Quotes eld
+\end_inset
+
+too many
+\begin_inset Quotes erd
+\end_inset
+
+ is depends on a setting in the supervisor, ten crashes per second is a
+ reasonable upper limit.
+\end_layout
+
+\end_inset
+
+ times, we restart the nearest supervisor of this child.
  This ensures separation of the subsystems so that a crash is as isolated
  as possible.
 \begin_inset Float figure
@@ -1068,6 +1083,10 @@ To prevent any data loss, the good state of the worker processes is stored
  If on the other hand no state is available, a special message is delivered
  instead, making the worker create a new state, this is what happens when
  the workers are first created.
+\end_layout
+
+\begin_layout Subsection
+Distribution
 \end_layout
 
 \begin_layout Subsection
