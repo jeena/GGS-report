@@ -59,6 +59,7 @@
 \lhead{\thechapter}
 
 \usepackage[hmargin=3cm,vmargin=3.5cm]{geometry} 
+\usepackage{algorithmic}
 \end_preamble
 \use_default_options true
 \language english
@@ -802,7 +803,366 @@ Because P2P game architectures are a constant goal for cheaters and because
 \end_layout
 
 \begin_layout Subsubsection
-UUID 
+UUID
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+INDSTATE}[1][1]{
+\backslash
+STATE
+\backslash
+hspace{#1
+\backslash
+algorithmicindent}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE 
+\end_layout
+
+\end_inset
+
+global variable 
+\begin_inset Formula $state:=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE 
+\end_layout
+
+\end_inset
+
+
+\series bold
+function 
+\series default
+unique
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $state:=state+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE 
+\end_layout
+
+\end_inset
+
+
+\series bold
+return 
+\begin_inset Formula $state$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:A-simple-generator"
+
+\end_inset
+
+A simple (insufficient) generator for identifiers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inside the GGS, everything has a unique identifier.
+ There are identifiers for players, tables and other resources.
+ When players communicate amongst each other, or communicate with tables,
+ they need to be able to uniquely identify all of these resources.
+ Within one machine, this is mostly not a problem.
+ A simple system with a counter can be imagined, where each request for
+ a new ID increments the previous identifier and returns the new identifier
+ based off the old one, see algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:A-simple-generator"
+
+\end_inset
+
+.
+ This solution poses problems when dealine with concurrent systems, and
+ systems of a distributed nature.
+ In both concurrent systems, the simple solution in algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:A-simple-generator"
+
+\end_inset
+
+ may yield non-unique identifiers due to the lack of mutual exclution.
+ 
+\end_layout
+
+\begin_layout Standard
+The obvious solution to this problem is to ensure mutual exclusion by using
+ some sort of lock, which may work well in many concurrent systems.
+ In a distributed system, this lock, along withe the state, would have to
+ be distributed.
+ If the lock is not distributed, no guarantee can be made that two nodes
+ in the distributed system do not generate the same number.
+ A different approach is to give each node the ability to generate Universally
+ Unique Identifiers (UUID), where the state of one machine does not interfere
+ with the state of another.
+\end_layout
+
+\begin_layout Standard
+According to 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Leach98uuidsand"
+
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+A UUID is 128 bits long, and if generated according to the one of the mechanisms
+ in this document, is either guaranteed to be different from all other UUIDs/GUI
+Ds generated until 3400 A.D.
+ or extremely likely to be different
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This is accomplished by gathering several different sources of information,
+ such as: time, MAC addresses of network cards, and operating system data,
+ such as percentage of memory in use, mouse cursor position and process
+ ID:s.
+ The gathered data is then 
+\emph on
+hashed
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+using an algorithm such as SHA-1.
+\end_layout
+
+\begin_layout Standard
+When using system wide unique identifiers, such as algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:A-simple-generator"
+
+\end_inset
+
+ with mutual exclusion, it is not possible to have splits between GGS clusters.
+ Consider figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:network-split"
+
+\end_inset
+
+, where 
+\emph on
+Site A
+\emph default
+ is separated from 
+\emph on
+Site B
+\emph default
+ by a faulty network (illustrated by the cloud and lightening bolt).
+ When 
+\emph on
+Site A
+\emph default
+ and 
+\emph on
+Site B
+\emph default
+ later re-establish communications, they may have generated the same ID:s
+ if using algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:A-simple-generator"
+
+\end_inset
+
+, even when mutual system-wide exclusion is implemented.
+ This is exactly the problem UUID:s solve.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename graphics/NetworkSPlit.eps
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:network-split"
+
+\end_inset
+
+An example of a network split
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -981,7 +1341,7 @@ too many
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Note Note
@@ -1106,7 +1466,7 @@ Problems
 \end_layout
 
 \begin_layout Section
-Erlang JS 
+erlang_js 
 \end_layout
 
 \begin_layout Standard
@@ -1144,7 +1504,7 @@ Erlang identifies processes uniquely throughout the entire Erlang network
  using process IDs (PID).
  When we wish to refer to erlang processes from outside our erlang system,
  for example in a virtual machine for a different language, possibly on
- a different machine, these PIDs are no longer useful.
+ a different machine, these PID:s are no longer useful.
  
 \end_layout
 
@@ -1152,9 +1512,9 @@ Erlang identifies processes uniquely throughout the entire Erlang network
 This problem is not new, and a common solution is to use a Universally Unique
  Identifier, a UUID.
  These identifiers are generated both using randomization and using time.
- A reasonably large number of UUIDs can be generated before a collision
+ A reasonably large number of UUID:s can be generated before a collision
  should occur.
- There are standard tools in many UNIX systems to generate UUIDs, we chose
+ There are standard tools in many UNIX systems to generate UUID:s, we chose
  to use the uuidgen command, which employs an equidistributed combined Tausworth
 e generator.
 \end_layout
