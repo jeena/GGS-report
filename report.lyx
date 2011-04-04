@@ -746,27 +746,37 @@ Availability
 \end_layout
 
 \begin_layout Standard
-One important factor of a server is the availability, a server that you
- can not connect to is a bad server.
- Erlang has several features to increase the availability, for example hot
- code replacement.
- It is also critical to have a good design, we want to separate each part
- of the server and thus avoiding that the whole server will crash.
- 
+One important factor of any server is the availability.
+ A server to which you are unable to connect to is a useless server.
+ Other then within telecomunication, their uptime is of about 99,99%, the
+ game developer community hasn't approched this problem very genuinely yet
+ so there is much room for improvement.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Players are unsatisfied with the service of WoW Telecoms have the same problem
- of having to migrate users from one node to another, this is called handover.
-\end_layout
-
-\end_inset
-
-
+There are several good papers on how to migrate whole virtual machines between
+ nodes to replicate them but for the GGS a different approche has been chosen.
+ Instead of just duplicating a virtual machine, the programming language
+ Erlang has been used which offers several features to increase the availability.
+ Some of them are 
+\emph on
+hot code replacement
+\emph default
+, where code can be updated while the application is running and without
+ the need to restart it, the 
+\emph on
+supervisor structure
+\emph default
+ provided by 
+\emph on
+OTP
+\emph default
+ and the inter node and process communication via 
+\emph on
+messages
+\emph default
+ instead of shared memory.
+ We will discuss each of them later on.
 \end_layout
 
 \begin_layout Section
