@@ -1,4 +1,4 @@
-#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -691,6 +691,18 @@ Many online games use UDP as the carrier for their application layer protocol.
  In GGS reliability of transfer was chosen before the speed of the transfer,
  ruling out UDP as the transport later protocol.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Perhaps we should only say that we chose TCP just for our GGS prototype
+ and why.
+ If we leave it like that it seems that we think it is not suitable.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -705,6 +717,20 @@ For reliable transfers, TCP is often used on the Internet.
  than if UDP had been used.
  In GGS, data consistency is more important than transfer speeds, and thus
  TCP is a better alternative than UDP.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Same here it is simply not true for a generic server to chose one or the
+ other.
+ We should rephrase it so it is clear that we only state it about the GGS
+ prototype.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
