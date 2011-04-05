@@ -292,7 +292,8 @@ The introduction aims to give the reader a good base to stand on when taking
  on the rest of this thesis.
  A background and motivation of why this topic is interesting is given,
  and some basic terminoligy is defined and explained.
- 
+ To understand many of the core issued in the GGS, some prior knowledge
+ of other topics is needed, the introduction aims to give this prior knowledge.
 \end_layout
 
 \begin_layout Standard
@@ -642,6 +643,17 @@ Can we use quickcheck?
 
 \begin_layout Chapter
 Theory 
+\end_layout
+
+\begin_layout Standard
+In this chapter, the theory behind the techniques used in the GGS are discussed
+ here.
+ Performance issues and the measuring of performance is discussed.
+ Benchmarking techniques are discusses.
+ The options when choosing network protocols are given, along with pros
+ and cons for each of our alternatives.
+ Finally, a bird's eye-view of scalability, fault tolerance and availability
+ is presented.
 \end_layout
 
 \begin_layout Section
