@@ -287,6 +287,38 @@ setcounter{page}{1}
 Introduction
 \end_layout
 
+\begin_layout Standard
+The introduction aims to give the reader a good base to stand on when taking
+ on the rest of this thesis.
+ A background and motivation of why this topic is interesting is given,
+ and some basic terminoligy is defined and explained.
+ 
+\end_layout
+
+\begin_layout Standard
+We draw some parallels to existing solutions which solve similar problems
+ in different sectors.
+ The main challenges of the project are outlined, with the solutions thereof
+ following later on in the paper.
+ Some boundaries are placed on the project, since it is not possible to
+ cover everything at once.
+ By placing these boundaries, the purpose of the GGS is further refined.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Also cover the final topics; method (development process, etc).
+ As of this eriting, the contents of method are unknown.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Background 
 \end_layout
@@ -1488,11 +1520,11 @@ Distribution
 \end_layout
 
 \begin_layout Subsection
-Hot code replacement 
+Hot code replacement
 \end_layout
 
 \begin_layout Section
-Implementation 
+Implementation
 \end_layout
 
 \begin_layout Subsubsection
