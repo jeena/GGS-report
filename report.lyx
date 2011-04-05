@@ -679,6 +679,13 @@ Can we use quickcheck?
 
 \begin_layout Chapter
 Theory 
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:Theory"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1333,6 +1340,32 @@ implementation
 \end_inset
 
  
+\end_layout
+
+\begin_layout Standard
+This chapter contains the realization of much of the principles and techniques
+ described in chapter 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "cha:Theory"
+
+\end_inset
+
+.
+ Here the problems and their solutions are discussed in greater detail,
+ and at times the text becomes more specific to GGS.
+\end_layout
+
+\begin_layout Standard
+Much of what is discussed in this chapter has been implemented in the Erlang
+ GGS prototype.
+ Specific solutions such as 
+\emph on
+supervisor structures 
+\emph default
+and distribution of erlang nodes on physical nodes.
+ The different means of communications within the GGS and outside the GGS
+ with third parties are also discussed here.
 \end_layout
 
 \begin_layout Section
