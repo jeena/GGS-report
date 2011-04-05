@@ -1,4 +1,4 @@
-#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -729,12 +729,74 @@ How many players can we have on a server? Performance differences between
  have hundreds? Questions to be discussed here.
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Create a game with several thousand players, see how our server scales,
  how can we improve the performance? Sharding isn’t very nice..
  alternatives? Improve the speed of sharding?
+\end_layout
+
+\begin_layout Itemize
+See how the server scales
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When adding many clients
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Measure in 
+\begin_inset Formula $ms$
+\end_inset
+
+ (ping to clients)
+\end_layout
+
+\begin_layout Itemize
+measure in system load
+\end_layout
+
+\begin_layout Itemize
+Measure in loss of messages
+\end_layout
+
+\begin_layout Itemize
+Measure in # of timeouts? (if any??)
+\end_layout
+
+\begin_layout Itemize
+Measure in time-to-crash
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+When adding new machines to the pool
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+% increase of performance per machine
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Single-core CPU vs multi-core CPU
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It's very important to scale well on multi-core systems, since this is where
+ the industry is going.
+ Multicore is the future.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Plain Layout
+Find reference on how to benchmark distributed, multiprocess systems
 \end_layout
 
 \end_inset
@@ -1152,7 +1214,6 @@ reference "alg:A-simple-generator"
 \end_inset
 
  may yield non-unique identifiers due to the lack of mutual exclution.
- 
 \end_layout
 
 \begin_layout Standard
@@ -1290,6 +1351,20 @@ status open
 
 \backslash
 end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Add clients on each side, and replace the cloud with phole-landlines being
+ cut by a pair of scissors
 \end_layout
 
 \end_inset
@@ -1487,7 +1562,7 @@ Due lack of time we have decided to use just the Erlang <-> JavaScript bridge
 \begin_layout Chapter
 Practice
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Perhaps call this 
@@ -1548,7 +1623,7 @@ Techniques for ensuring reliability
 One of the main goals of the project is to achieve high reliability.
  A highly reliable application is one crashes very, very rarely 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 CITATION NEEDED
@@ -1641,7 +1716,7 @@ When the linking of processes in order to monitor exit behaviour is coupled
 In GGS, we have separated the system in to two large supervised parts.
  We try to restart a crashing child separately, if this fails too many
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Exactly how many 
@@ -1905,7 +1980,7 @@ With the information kept in the tables and the Coordinator combined, we
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
