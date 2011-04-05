@@ -338,6 +338,26 @@ s is large.
 \end_layout
 
 \begin_layout Standard
+A common figure often used in telecoms is that of 
+\emph on
+the nine nines
+\emph default
+, referring to 
+\begin_inset Formula $99.999999999\%$
+\end_inset
+
+ of availability, or rougly 
+\begin_inset Formula $15ms$
+\end_inset
+
+ in a year.
+ The level of instability and bad fault tolerance seen in the game server
+ industry would not have been accepted in the telecoms industry.
+ This level of instability should not be accepted in the game server industry
+ either.
+\end_layout
+
+\begin_layout Standard
 The main reason to develop reliable servers are monetary, it is important
  for game companies to expand its customer base.
  Reliable game servers are one improvement that will create a good image
