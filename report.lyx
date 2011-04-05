@@ -323,6 +323,42 @@ Also cover the final topics; method (development process, etc).
 Background 
 \end_layout
 
+\begin_layout Standard
+The game industry is a quickly growing industry where the need for new technique
+s is large.
+ One specific section where the development has stalled is the game server
+ section.
+ The existing game servers are functional but they lack good fault tolerance
+ and the ability to scale well.
+ Users will notice this in low uptime and many crashes.
+ This is a problem that has existed and been resolved in other industries.
+ One good example is the telecom industry which have managed to develop
+ a solution to similar problems.
+\end_layout
+
+\begin_layout Standard
+The main reason to develop reliable servers are monetary, it is important
+ for game companies to expand its customer base.
+ Reliable game servers are one improvement that will create a good image
+ of a company.
+ In general the downtime of game servers are much higher than the downtime
+ of telecom system.
+ The structure of the system is similar and it should be possible to reuse
+ solutions from the telecom system to improve game servers.
+\end_layout
+
+\begin_layout Standard
+In the current state game servers is coded for each game that needs it,
+ in many cases this seems like a bad solution.
+ Developers that want to make a network game need to understand network
+ programming.
+ A way to change this is a generic game server which give the game developers
+ a server which they implement their game towards.
+ This approach would not only make it easier to develop network games, it
+ would also allow games in different programming languages to be implemented
+ using the same server.
+\end_layout
+
 \begin_layout Section
 Purpose
 \end_layout
