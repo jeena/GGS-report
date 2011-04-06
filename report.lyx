@@ -903,7 +903,53 @@ Same here it is simply not true for a generic server to chose one or the
 \end_layout
 
 \begin_layout Section
-Fault Tolerant
+Fault Tolerance
+\end_layout
+
+\begin_layout Standard
+Fault tolerance is an important factor in all servers, a server that is
+ fault tolerant should be able to follow a given specification when parts
+ of the system failures.
+ This means that fault tolerance is different in each system depending on
+ what specification they have.
+ A system could be fault tolerant in different aspects, one is where the
+ system is guaranteed to be live but not safe and it could also be reversed,
+ that the system is safe but not guaranteed to be live.
+ Depending on the system one property may be more important(some example
+ here).
+ A system could also have non existent fault tolerance or it could be both
+ safe and guaranteed to be live.
+ It should be noted that it is not possible to achieve complete fault tolerance,
+ a system will always have a certain risk of failure.
+ With this in mind the goal is to make GGS as fault tolerant as possible.
+\end_layout
+
+\begin_layout Standard
+In order to make GGS fault tolerant the programming language Erlang will
+ be used.
+ Erlang will not guarantee a fault tolerant system but it has features that
+ support and encourage the development of fault tolerant systems.
+ In GGS it is important that the system overall is fault tolerant.
+ Crashes of the whole system should be avoided as this would make the system
+ unusable for a time.
+ By using supervisor structures it is possible to crash and restart small
+ parts of the system, this is convenient as fault can be handled within
+ small modules thus never forcing a crash of the system.
+\end_layout
+
+\begin_layout Standard
+Why is fault tolerance needed in game servers? This is an interesting question
+ because it is not so obvious as it is in many other cases.
+ In general all servers strive to be fault tolerant as fault tolerance means
+ more uptime and a safer system.
+ This is also the case when it comes to game servers, in short good fault
+ tolerance is a way of satisfying customers.
+ Game servers differ from many other fault tolerant systems in that high-availab
+ility is more important than the safety of the system.
+ For example a simple calculation error will not be critical for a game
+ server but it may be in a life-critical system and then it is better that
+ the system crashes.
+ 
 \end_layout
 
 \begin_layout Subsubsection
