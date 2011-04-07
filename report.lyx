@@ -1,4 +1,4 @@
-#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1603,6 +1603,37 @@ environment it is even possible to run nearly every available programming
 \begin_layout Standard
 Due lack of time we have decided to use just the Erlang <-> JavaScript bridge
  with our interface.
+\end_layout
+
+\begin_layout Section
+Testing
+\end_layout
+
+\begin_layout Standard
+NOTE: This is not a part of the final text.
+ There has been some work on the area of testing game servers, see 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Lidholt02designand"
+
+\end_inset
+
+, who describes a test bench using 
+\emph on
+bots
+\emph default
+ for testing his generic hazard-gaming server.
+ Lidholt describes how his server, capable of running several different
+ casino games is tested using artificial players, so called bots.
+ Performance is measured in 
+\begin_inset Quotes eld
+\end_inset
+
+number of clients
+\begin_inset Quotes erd
+\end_inset
+
+ able to connect to the server, and the system load.
 \end_layout
 
 \begin_layout Chapter
