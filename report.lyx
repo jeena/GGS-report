@@ -1,4 +1,4 @@
-#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2054,7 +2054,16 @@ Results and discussion
 \end_layout
 
 \begin_layout Section
-Software development methodology 
+Software development methodology
+\end_layout
+
+\begin_layout Standard
+The project has not followed any specific software development methodology.
+ All work have been based on a predefined schedule and the specifications
+ are made by team members rather than an outside customer or stakeholder.
+ The process can be described by a plan-driven development method going
+ from brainstorming to design, then implementation and finally testing.
+ Yet there have been cycles in the process such as redesign and code refactoring.
 \end_layout
 
 \begin_layout Section
