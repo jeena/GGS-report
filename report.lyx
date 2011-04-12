@@ -292,7 +292,7 @@ The introduction aims to give the reader a good base to stand on when taking
  on the rest of this thesis.
  A background and motivation of why this topic is interesting is given,
  and some basic terminoligy is defined and explained.
- To understand many of the core issued in the GGS, some prior knowledge
+ To understand many of the core issues in the GGS, some prior knowledge
  of other topics is needed, the introduction aims to give this prior knowledge.
 \end_layout
 
@@ -334,7 +334,7 @@ s is large.
  Users will notice this in low uptime and many crashes.
  This is a problem that has existed and been resolved in other industries.
  One good example is the telecom industry which have managed to develop
- a solution to similar problems.
+ solutions to similar problems.
 \end_layout
 
 \begin_layout Standard
@@ -350,7 +350,7 @@ the nine nines
 \begin_inset Formula $15ms$
 \end_inset
 
- in a year.
+ downtime in a year.
  The level of instability and bad fault tolerance seen in the game server
  industry would not have been accepted in the telecoms industry.
  This level of instability should not be accepted in the game server industry
@@ -492,7 +492,7 @@ Java Virtual Machine
 TUXEDO
 \emph default
  application server, which can be used to run applications written in COBOL,
- C++ and others.
+ C++ and other languages.
 \end_layout
 
 \begin_layout Standard
@@ -518,9 +518,9 @@ The word
 \emph on
 generic
 \emph default
- in GGS implies that the system is able to run a very broad range of different
- code, for instance code written in different programming languages, in
- addition to a broad range of different game types.
+ in the GGS implies that the system is able to run a very broad range of
+ different code, for instance code written in different programming languages,
+ in addition to a broad range of different game types.
  In order to support this, a virtual machine (VM) for each 
 \emph on
 game development language
@@ -531,22 +531,22 @@ game development language
 
 \begin_layout Standard
 No hard limit has been set on which languages can be used for game development
- on GGS, but there are several factors which decide the feasibility of a
- language; 
+ on the GGS, but there are several factors which decide the feasibility
+ of a language; 
 \end_layout
 
 \begin_layout Itemize
-How well it integrates with Erlang, which is used in the core GGS system
+How well it integrates with Erlang, which is used in the core the GGS system
  
 \end_layout
 
 \begin_layout Itemize
-How easy it is to send messages to the virtual machine of the GDL from GGS
- 
+How easy it is to send messages to the virtual machine of the GDL from the
+ GGS 
 \end_layout
 
 \begin_layout Itemize
-How easy it is to send messages from the GDL VM to GGS
+How easy it is to send messages from the GDL VM to the GGS
 \begin_inset Note Note
 status open
 
@@ -560,9 +560,10 @@ Add more like threads, events, etc.
 \end_layout
 
 \begin_layout Standard
-Internally, the GDL VM needs to interface with GGS to make use of the helpers
- and tools that GGS provides.
- Thus an internal API has to be designed for use in interacting with GGS.
+Internally, the GDL VM needs to interface with the GGS to make use of the
+ helpers and tools that the GGS provides.
+ Thus an internal API has to be designed for use in interacting with the
+ GGS.
  This API is ideally completely independent of the GDL, and reusable for
  any GDL.
 \end_layout
@@ -578,7 +579,7 @@ The communication with gaming clients has to take place over a protocol.
 \end_layout
 
 \begin_layout Standard
-A great deal of work is devoted to make GGS 
+A great deal of work is devoted to make the GGS 
 \emph on
 reliable
 \emph default
@@ -586,7 +587,7 @@ reliable
  This includes ensuring that the system scales well, and to make sure it
  is fault tolerant.
  In order to facilitate scalability, we need a storage platform which is
- accessible and consistent among all of GGS, this is also investigated.
+ accessible and consistent among all of the GGS, this is also investigated.
 \end_layout
 
 \begin_layout Section
@@ -637,7 +638,7 @@ World of Warcraft
 \end_layout
 
 \begin_layout Standard
-In turn based games each player has to wait for her turn.
+In turn based games each player has to wait for their turn.
  Latency is not a problem since the gameplay does not require fast interactions
  between the players, long round trip times will not be noticed.
  Examples of turn based games include board and card games, as well as multiplay
@@ -649,7 +650,6 @@ Jeopardy
  Both game types have varying difficulties and needs when it comes to implementi
 ng them, a Generic Game Server should address all of them and help the developer
  to accomplish his goal.
- 
 \end_layout
 
 \begin_layout Standard
@@ -663,7 +663,7 @@ The implementation of the GGS described in this thesis is only a small prototype
  and tests will be performed on simple games like pong or chess, thus there
  are no need to implement more advanced features in the system.
  It is important to note that these limitations only apply for the prototype
- of the project, and that further developments to GGS could be to implement
+ of the project, and that further developments to the GGS could be to implement
  these features.
 \end_layout
 
@@ -726,10 +726,23 @@ Performance
 \begin_layout Standard
 How many players can we have on a server? Performance differences between
  games? e.g can one game have thousands players on a server and another only
- have hundreds? Questions to be discussed here.
+ have hundreds? Questions
+\end_layout
+
+\begin_layout Standard
+In the current state game servers is coded for each game that needs it,
+ in many cases this seems like a bad solution.
+ Developers that want to make a network game need to understand network
+ programming.
+ A way to change this is a generic game server which give the game developers
+ a server which they implement their game towards.
+ This approach would not only make it easier to develop network games, it
+ would also allow games in different programming languages to be implemented
+ using the same server.
+ to be discussed here.
  
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Create a game with several thousand players, see how our server scales,
@@ -827,15 +840,15 @@ HTTP
 \begin_layout Standard
 Since HTTP is so widely used on the Internet today in web servers, it is
  available on most Internet connected devices.
- This means that if HTTP is used in GGS, firewalls will not pose problems,
+ This means that if HTTP is used in the GGS, firewalls will not pose problems,
  which is a great benefit.
  However, due to the intended usage of HTTP in web servers, the protocol
  was designed to be stateless and client-initiated.
  In order to maintain a state during a game session using HTTP, some sort
  of token would have to be passed between client and server at all times,
  much like how a web server works.
- These facts combined makes HTTP unsuitable for our purposes, since GGS
- requires a state to be maintained throughout a session, and also needs
+ These facts combined makes HTTP unsuitable for our purposes, since the
+ GGS requires a state to be maintained throughout a session, and also needs
  to push data from the server to clients without the clients requesting
  data.
  It should also be mentioned that HTTP uses the TCP protocol for transport,
@@ -857,7 +870,7 @@ Many online games use UDP as the carrier for their application layer protocol.
  UDP is a good choice for applications where it is more important that data
  arrives in a timely manner than that all data arrives undamaged, it is
  thus very suitable for media streaming, for example.
- In GGS reliability of transfer was chosen before the speed of the transfer,
+ In the GGS reliability of transfer was chosen before the speed of the transfer,
  ruling out UDP as the transport later protocol.
  
 \begin_inset Note Note
@@ -884,8 +897,8 @@ For reliable transfers, TCP is often used on the Internet.
  missing in UDP.
  This ensures the consistency of data, but also makes the transfer slower
  than if UDP had been used.
- In GGS, data consistency is more important than transfer speeds, and thus
- TCP is a better alternative than UDP.
+ In the GGS, data consistency is more important than transfer speeds, and
+ thus TCP is a better alternative than UDP.
  
 \begin_inset Note Note
 status open
@@ -913,23 +926,24 @@ Fault tolerance is an important factor in all servers, a server that is
  This means that fault tolerance is different in each system depending on
  what specification they have.
  A system could be fault tolerant in different aspects, one is where the
- system is guaranteed to be live but not safe and it could also be reversed,
- that the system is safe but not guaranteed to be live.
+ system is guaranteed to be available but not safe and it could also be
+ reversed, that the system is safe but not guaranteed to be available.
  Depending on the system one property may be more important(some example
  here).
  A system could also have non existent fault tolerance or it could be both
- safe and guaranteed to be live.
+ safe and guaranteed to be available.
  It should be noted that it is not possible to achieve complete fault tolerance,
  a system will always have a certain risk of failure.
- With this in mind the goal is to make GGS as fault tolerant as possible.
+ With this in mind the goal is to make the GGS prototype as fault tolerant
+ as possible.
 \end_layout
 
 \begin_layout Standard
-In order to make GGS fault tolerant the programming language Erlang will
- be used.
+In order to make the GGS prototype fault tolerant the programming language
+ Erlang has been used.
  Erlang will not guarantee a fault tolerant system but it has features that
  support and encourage the development of fault tolerant systems.
- In GGS it is important that the system overall is fault tolerant.
+ In the GGS it is important that the system overall is fault tolerant.
  Crashes of the whole system should be avoided as this would make the system
  unusable for a time.
  By using supervisor structures it is possible to crash and restart small
@@ -949,7 +963,6 @@ ility is more important than the safety of the system.
  For example a simple calculation error will not be critical for a game
  server but it may be in a life-critical system and then it is better that
  the system crashes.
- 
 \end_layout
 
 \begin_layout Subsubsection
@@ -963,9 +976,9 @@ Availability
 \begin_layout Standard
 One important factor of any server is the availability.
  A server to which you are unable to connect to is a useless server.
- Other then within telecomunication, their uptime is of about 99,99%, the
- game developer community hasn't approched this problem very genuinely yet
- so there is much room for improvement.
+ Other then within telecomunication, their uptime is of about 99,9999999%,
+ the game developer community hasn't approched this problem very genuinely
+ yet so there is much room for improvement.
 \end_layout
 
 \begin_layout Standard
@@ -980,7 +993,7 @@ Add more information about that
 
 \end_inset
 
- but for the GGS a different approche has been chosen.
+ but for the GGS a different approach has been chosen.
  Instead of just duplicating a virtual machine, the programming language
  Erlang has been used which offers several features to increase the availability.
  Some of them are 
@@ -1009,21 +1022,22 @@ Scalability
 \end_layout
 
 \begin_layout Standard
-Each instance of GGS contains several tables.
+Each instance of the GGS contains several tables.
  Each table is an isolated instance of a game, for example a chess game
  or a poker game.
- The way that GGS scales is to distribute these tables on different servers.
+ The way that the GGS scales is to distribute these tables on different
+ servers.
  In many games it is not necessary for a player to move between tables during
  games.
  This is for example not a common occurrence in chess, where it would be
  represented as a player standing up from her current table and sitting
  down at a new table, all within the same game session.
- With this in mind, the main focus of GGS is not to move players between
+ With this in mind, the main focus of the GGS is not to move players between
  tables, but to keep a player in a table, and to start new tables instead.
  When a server has reached a certain amount of players the performance will
  start to decrease.
- To avoid this GGS will start new tables on another server, using this technique
- the players will be close to evenly distributed between the servers.
+ To avoid this the GGS will start new tables on another server, using this
+ technique the players will be close to evenly distributed between the servers.
  It is important to investigate and find out how many players that are optimal
  for each server.
  This approach makes it possible to utilize all resources with moderate
@@ -1034,7 +1048,7 @@ Each instance of GGS contains several tables.
 \begin_layout Standard
 As mentioned in the purpose section there are two different types of scalability
 , structural scalability and load scalability.
- To make GGS scalable both types of scalability are needed.
+ To make the GGS scalable both types of scalability are needed.
  Structural scalability means in our case that it should be possible to
  add more servers to an existing cluster of servers.
  By adding more servers the limits of how many users a system can have is
@@ -1042,7 +1056,7 @@ As mentioned in the purpose section there are two different types of scalability
  Load scalability in contrast to structural scalability is not about how
  to increase the actual limits of the system.
  Instead it means how good the system handles increased load.
- GGS should be able to scale well in both categories.
+ The GGS should be able to scale well in both categories.
 \end_layout
 
 \begin_layout Standard
@@ -1259,7 +1273,7 @@ reference "alg:A-simple-generator"
 
 \end_inset
 
- may yield non-unique identifiers due to the lack of mutual exclution.
+ may yield non-unique identifiers due to the lack of mutual exclusion.
 \end_layout
 
 \begin_layout Standard
@@ -1319,7 +1333,7 @@ reference "alg:A-simple-generator"
 \end_inset
 
  with mutual exclusion, it is not possible to have identifier collisions
- when recovering from network splits between GGS clusters.
+ when recovering from network splits between the GGS clusters.
  Consider figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1698,7 +1712,7 @@ Techniques for ensuring reliability
 
 \begin_layout Standard
 One of the main goals of the project is to achieve high reliability.
- A highly reliable application is one crashes very, very rarely 
+ A highly reliable application is one that crashes very, very rarely 
 \begin_inset Note Note
 status collapsed
 
@@ -1790,7 +1804,7 @@ When the linking of processes in order to monitor exit behaviour is coupled
 \end_layout
 
 \begin_layout Standard
-In GGS, we have separated the system in to two large supervised parts.
+In the GGS, we have separated the system in to two large supervised parts.
  We try to restart a crashing child separately, if this fails too many
 \begin_inset Foot
 status collapsed
@@ -1948,7 +1962,7 @@ erlang_js
 To be able to run JavaScript on our server we needed to embed a JavaScript
  engine within the server.
  After a thorough investigation erlang_js became our choice.
- erlang_js provides direct communication with a JavaScript VM (Virtual Machine).
+ Erlang_js provides direct communication with a JavaScript VM (Virtual Machine).
  This was exactly what we wanted, but we also needed the possibility to
  communicate from erlang_js to Erlang.
  This functionality was not yet implemented in erlang_js, due to lack of
@@ -2018,20 +2032,38 @@ The clients pictured as green circles can be thought of as the physical
 
 \begin_layout Standard
 When a player wants to enter the our particular chess club, he must first
- be let in by the doorman, called the Dispatcher in GGS.
+ be let in by the doorman, called the 
+\emph on
+Dispatcher
+\emph default
+ in the GGS.
 \end_layout
 
 \begin_layout Standard
-He then gets a name badge, and thus becomes a Player process in the system.
- He is also guided in to the lobby by the Coordinator, which has the role
- of the host of the chess club.
+He then gets a name badge, and thus becomes a 
+\emph on
+Player
+\emph default
+ process in the system.
+ He is also guided in to the lobby by the 
+\emph on
+Coordinator
+\emph default
+, which has the role of the host of the chess club.
 \end_layout
 
 \begin_layout Standard
-When players wish to play against each other, they talk to the Coordinator
+When players wish to play against each other, they talk to the 
+\emph on
+Coordinator
+\emph default
  who pairs them up, and places them at a table.
  Once they have sat down at the table, they no longer need the assistance
- of the Coordinator, all further communication takes place via the table.
+ of the 
+\emph on
+Coordinator
+\emph default
+, all further communication takes place via the table.
  This can be thought of as the actual chess game commencing.
  
 \end_layout
@@ -2044,14 +2076,28 @@ All the moves made in the game are recorded by the table, such that the
 
 \begin_layout Standard
 Once a player wishes to leave a game, or the entire facility, he should
- contact the Coordinator, who revokes his name badge and the Dispatcher
+ contact the 
+\emph on
+Coordinator
+\emph default
+, who revokes his name badge and the 
+\emph on
+Dispatcher
+\emph default
  will let the player out.
 \end_layout
 
 \begin_layout Standard
-With the information kept in the tables and the Coordinator combined, we
- can rebuild the entire state of the server at a different location.
- This can be thought of the chess club catching fire, and the Coordinator
+With the information kept in the tables and the 
+\emph on
+Coordinator
+\emph default
+ combined, we can rebuild the entire state of the server at a different
+ location.
+ This can be thought of the chess club catching fire, and the 
+\emph on
+Coordinator
+\emph default
  rounding up all the tables, running to a new location and building the
  club up in the exact state it was prior to the fire.
 \begin_inset Float figure
@@ -2136,9 +2182,9 @@ Software development methodology
 
 \begin_layout Standard
 The project has not followed any specific software development methodology.
- All work have been based on a predefined schedule and the specifications
+ All work has been based on a predefined schedule and the specifications
  are made by team members rather than an outside customer or stakeholder.
- The process can be described by a plan-driven development method going
+ The process can be described as a plan-driven development method going
  from brainstorming to design, then implementation and finally testing.
  Yet there have been cycles in the process such as redesign and code refactoring.
 \end_layout
