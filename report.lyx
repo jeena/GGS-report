@@ -1059,6 +1059,63 @@ As mentioned in the purpose section there are two different types of scalability
  The GGS should be able to scale well in both categories.
 \end_layout
 
+\begin_layout Subsection
+Load balancing
+\end_layout
+
+\begin_layout Standard
+The need for load balancing varies between different kind of systems.
+ Small systems that only use one or a couple of servers can cope with a
+ simple implementation of it, while in large systems it is critical to have
+ extensive and well working load balancing.
+ The need also depends on what kind of server structure that the system
+ works on.
+ A static structure where the number of servers are predefined or a dynamic
+ structure where the number varies.
+\end_layout
+
+\begin_layout Standard
+Load balancing and scaling is difficult in different scenarios.
+ When running in a separate server park, there are a set number of servers
+ available, this means that an even distribution on all servers is preferable.
+ When running the GGS in a cloud, such as Amazon EC2, it is possible to
+ add an almost infinite number of servers as execution goes on.
+ In this cloud setting, it may be more important to evenly distribute load
+ on newly added servers.
+\end_layout
+
+\begin_layout Standard
+Two methods of balancing load (increasing structure):
+\end_layout
+
+\begin_layout Itemize
+Fill up the capacity of one server completely, and then move over to the
+ next server 
+\end_layout
+
+\begin_layout Itemize
+Evenly distribute all clients to all servers from the beginning, when load
+ becomes too high on all of them, then comes a new problem: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How do we distribute load on these new servers?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Load balancing is a key component to achieve scalability in network systems.
+ The GGS is a good example of a system that needs to be scalable, to attain
+ this load balancing is necessary.
+ Optimization of the load balancing for a system is an important task to
+ provide a stable and fast load balancer.
+ There are certain persistence problems that can occur with load balancing,
+ if a player moves from a server to another data loss may occur.
+ This is an important aspect to consider when the load balancer is designed
+ and implemented.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
