@@ -952,17 +952,19 @@ In order to make the GGS prototype fault tolerant the programming language
 \end_layout
 
 \begin_layout Standard
-Why is fault tolerance needed in game servers? This is an interesting question
- because it is not so obvious as it is in many other cases.
+The need for fault tolerance in game servers is not as obvious as it may
+ be for other typ of servers.
  In general all servers strive to be fault tolerant as fault tolerance means
  more uptime and a safer system.
- This is also the case when it comes to game servers, in short good fault
- tolerance is a way of satisfying customers.
- Game servers differ from many other fault tolerant systems in that high-availab
-ility is more important than the safety of the system.
+ This applies to game servers aswell, in brief good fault tolerance is a
+ way of satisfying customers.
+ In general, game servers differ from many other fault tolerant systems
+ in that high-availability is more important than the safety of the system.
  For example a simple calculation error will not be critical for a game
  server but it may be in a life-critical system and then it is better that
- the system crashes.
+ the system crashes than works with the faulty data.
+ There are cases where safety may be critical in game servers, one example
+ is in games where in-game money exist.
 \end_layout
 
 \begin_layout Subsubsection
