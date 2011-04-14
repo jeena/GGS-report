@@ -2302,6 +2302,16 @@ d as possible.
  them into the GGS prototype.
 \end_layout
 
+\begin_layout Subsection
+Setup
+\end_layout
+
+\begin_layout Standard
+The GGS prototype installation procedure requires different configuring
+ and building steps and thus it isn't in an acceptable release state.
+ An executable installation file for each supported platform would be optimal.
+\end_layout
+
 \begin_layout Chapter
 Conclusion
 \end_layout
