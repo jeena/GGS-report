@@ -2257,10 +2257,11 @@ Future improvements
 \end_layout
 
 \begin_layout Standard
-The specification of GGS is huge and like many other software projects relying
- on outside technologies, in time it would require a lot of maintanance.
- Therefore there are a lot of areas in which GGS can be better.
- Such as performance, compatibility, ease of setup and usage.
+The specification of the GGS prototype is huge and like many other software
+ projects relying on outside technologies, in time it would require a lot
+ of maintanance.
+ Therefore there are a lot of areas in which the GGS could be improved such
+ as performance, compatibility, ease of setup and usage.
 \end_layout
 
 \begin_layout Subsection
@@ -2269,23 +2270,30 @@ Performance
 
 \begin_layout Standard
 Because of TCP being a connection oriented protocol, it isn't suited for
- __game-data__ transfers.
- Each transmission will consume more network bandwith and cause uneccessary
- load on the processor compared to connectionless protocols like UDP.
+ all game data transfers.
+ Each transmission will consume more network bandwith than connectionless
+ protocols like UDP and cause uneccessary load on the processor.
  Therefore support for UDP would mean that more games could be run simultaneousl
-y on GGS.
- Another gain of UDP is latency.
+y on the GGS.
+ Another advantage of UDP is latency being reduced.
  Without having to setup a connection for each group packets of data being
  sent, they will be sent instantly and therefore arrive earlier.
- Latency is of highest importance for realtime based games as it improves
- realism and fairness in gameplay and many game developers requires the
- freedom to take care of safety issues as packet losses themselves.
+ Latency is of highest importance in realtime games as it improves realism
+ and fairness in gameplay and many game developers requires the freedom
+ to take care of safety issues as packet losses themselves.
  This concludes that UDP would be a benefit for GGS, game developers and
  game players alike.
 \end_layout
 
 \begin_layout Subsection
 Compatibility
+\end_layout
+
+\begin_layout Standard
+GGS relies on modern technologies.
+ This includes the virtual machines(vm) used for communication between Erlang
+ and the GDL:s.
+ 
 \end_layout
 
 \begin_layout Chapter
