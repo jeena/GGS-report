@@ -2257,7 +2257,8 @@ Future improvements
 \end_layout
 
 \begin_layout Standard
-The ideas behind GGS were __huge and many__.
+The specification of GGS is huge and like many other software projects relying
+ on outside technologies, in time it would require a lot of maintanance.
  Therefore there are a lot of areas in which GGS can be better.
  Such as performance, compatibility, ease of setup and usage.
 \end_layout
@@ -2277,8 +2278,14 @@ y on GGS.
  Without having to setup a connection for each group packets of data being
  sent, they will be sent instantly and therefore arrive earlier.
  Latency is of highest importance for realtime based games as it improves
- realism and fairness in gameplay.
- 
+ realism and fairness in gameplay and many game developers requires the
+ freedom to take care of safety issues as packet losses themselves.
+ This concludes that UDP would be a benefit for GGS, game developers and
+ game players alike.
+\end_layout
+
+\begin_layout Subsection
+Compatibility
 \end_layout
 
 \begin_layout Chapter
