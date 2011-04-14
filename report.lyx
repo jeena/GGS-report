@@ -2312,6 +2312,16 @@ The GGS prototype installation procedure requires different configuring
  An executable installation file for each supported platform would be optimal.
 \end_layout
 
+\begin_layout Subsection*
+5.3.4 Usage
+\end_layout
+
+\begin_layout Standard
+The GGS doesn't support many programming languages nor does it have a complete
+ documentation.
+ This needs to be taken care of in future versions.
+\end_layout
+
 \begin_layout Chapter
 Conclusion
 \end_layout
