@@ -1,4 +1,4 @@
-#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2250,6 +2250,35 @@ The project has not followed any specific software development methodology.
 
 \begin_layout Section
 Statistics
+\end_layout
+
+\begin_layout Section
+Future improvements
+\end_layout
+
+\begin_layout Standard
+The ideas behind GGS were __huge and many__.
+ Therefore there are a lot of areas in which GGS can be better.
+ Such as performance, compatibility, ease of setup and usage.
+\end_layout
+
+\begin_layout Subsection
+Performance
+\end_layout
+
+\begin_layout Standard
+Because of TCP being a connection oriented protocol, it isn't suited for
+ __game-data__ transfers.
+ Each transmission will consume more network bandwith and cause uneccessary
+ load on the processor compared to connectionless protocols like UDP.
+ Therefore support for UDP would mean that more games could be run simultaneousl
+y on GGS.
+ Another gain of UDP is latency.
+ Without having to setup a connection for each group packets of data being
+ sent, they will be sent instantly and therefore arrive earlier.
+ Latency is of highest importance for realtime based games as it improves
+ realism and fairness in gameplay.
+ 
 \end_layout
 
 \begin_layout Chapter
