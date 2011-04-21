@@ -327,18 +327,18 @@ Background
 \begin_layout Standard
 The game industry is a quickly growing industry where the need for new technique
 s is large.
- One specific section where the development has stalled is the game server
- section.
+ One specific section where development has stalled is the game server section.
  The existing game servers are functional but they lack good fault tolerance
  and the ability to scale well.
  Users will notice this in low uptime and many crashes.
  This is a problem that has existed and been resolved in other industries.
- One good example is the telecom industry which have managed to develop
- solutions to similar problems.
+ One good example is the telecom industry which managed to develop solutions
+ to similar problems.
 \end_layout
 
 \begin_layout Standard
-A common figure often used in telecoms is that of 
+A common figure often used to measure the availability in telecoms is that
+ of 
 \emph on
 the nine nines
 \emph default
@@ -358,8 +358,8 @@ the nine nines
 \end_layout
 
 \begin_layout Standard
-The main reason to develop reliable servers are monetary, it is important
- for game companies to expand its customer base.
+The main reason to develop reliable servers are monetary as it is important
+ for game companies to expand their customer base.
  Reliable game servers are one improvement that will create a good image
  of a company.
  In general the downtime of game servers are much higher than the downtime
@@ -369,8 +369,8 @@ The main reason to develop reliable servers are monetary, it is important
 \end_layout
 
 \begin_layout Standard
-In the current state game servers is coded for each game that needs it,
- in many cases this seems like a bad solution.
+In the current state game servers are coded for specific games, in many
+ cases this seems like a bad solution.
  Developers that want to make a network game need to understand network
  programming.
  A way to change this is a generic game server which give the game developers
@@ -421,7 +421,7 @@ key "Bondi:2000:CSI:350391.350432"
 .
  These two issues are addressed in this thesis.
  Structural scalability means expanding an architecture, e.g.
- adding nodes to a system, without requiring modification of the system.
+ adding nodes to a system without requiring modification of the system.
  Load scalability means using the available resources in a way which allows
  handling increasing load, e.g more users, gracefully.
 \end_layout
@@ -461,14 +461,14 @@ A generic game server has to be able to run different client-server network
 \begin_layout Standard
 The server behaves in a way similar to an application server, but is designed
  to help running games.
- An application server provides processing ability and time, therefore it
- is different from a file- or print-server, which only serves resources
+ An application server provides processing ability and time; therefore,
+ it is different from a file- or print-server, which only serves resources
  to the clients.
 \end_layout
 
 \begin_layout Standard
-The most common type of application servers are web servers, where you run
- a web application within the server.
+The most common type of application servers are web servers, where the user
+ run a web application within the server.
  The application server provides an environment and interfaces to the outer
  world, in which applications run.
  Hooks and helpers are provided to use the resources of the server.
@@ -532,7 +532,7 @@ game development language
 \begin_layout Standard
 No hard limit has been set on which languages can be used for game development
  on the GGS, but there are several factors which decide the feasibility
- of a language; 
+ of a language:
 \end_layout
 
 \begin_layout Itemize
@@ -653,8 +653,8 @@ ng them, a Generic Game Server should address all of them and help the developer
 \end_layout
 
 \begin_layout Standard
-Due to the limited capability of threading in many GDL VM:s, the GGS prototype
- will not support MMORPG:s as it is not possible to implement and test something
+Due to the limited capability of threading in many GDL VMs, the GGS prototype
+ will not support MMORPGs as it is not possible to implement and test something
  that complex within the projects timetable.
 \end_layout
 
@@ -709,14 +709,13 @@ name "cha:Theory"
 \end_layout
 
 \begin_layout Standard
-In this chapter, the theory behind the techniques used in the GGS are discussed
- here.
- Performance issues and the measuring of performance is discussed.
- Benchmarking techniques are discusses.
- The options when choosing network protocols are given, along with pros
- and cons for each of our alternatives.
- Finally, a bird's eye-view of scalability, fault tolerance and availability
- is presented.
+In this chapter, the theory behind the techniques used in the GGS are discussed.
+ Performance issues and the measuring of performance are discussed.
+ Benchmarking techniques are discussed.
+ The options when choosing network protocols are given, along with advantages
+ and disadvantages for each of the alternatives.
+ Finally, an overview of scalability, fault tolerance and availability is
+ presented.
 \end_layout
 
 \begin_layout Section
@@ -920,11 +919,11 @@ Fault Tolerance
 \end_layout
 
 \begin_layout Standard
-Fault tolerance is an important factor in all servers, a server that is
+Fault tolerance is an important factor in all servers; a server that is
  fault tolerant should be able to follow a given specification when parts
  of the system failures.
  This means that fault tolerance is different in each system depending on
- what specification they have.
+ what specification the system have.
  A system could be fault tolerant in different aspects, one is where the
  system is guaranteed to be available but not safe and it could also be
  reversed, that the system is safe but not guaranteed to be available.
@@ -953,11 +952,11 @@ In order to make the GGS prototype fault tolerant the programming language
 
 \begin_layout Standard
 The need for fault tolerance in game servers is not as obvious as it may
- be for other typ of servers.
+ be for other types of servers.
  In general all servers strive to be fault tolerant as fault tolerance means
  more uptime and a safer system.
- This applies to game servers aswell, in brief good fault tolerance is a
- way of satisfying customers.
+ This applies to game servers as well, in brief good fault tolerance is
+ a way of satisfying customers.
  In general, game servers differ from many other fault tolerant systems
  in that high-availability is more important than the safety of the system.
  For example a simple calculation error will not be critical for a game
@@ -978,8 +977,8 @@ Availability
 \begin_layout Standard
 One important factor of any server is the availability.
  A server to which you are unable to connect to is a useless server.
- Other then within telecomunication, their uptime is of about 99,9999999%,
- the game developer community hasn't approched this problem very genuinely
+ Other then within telecommunication, their uptime is of about 99,9999999%,
+ the game developer community hasn't approached this problem very genuinely
  yet so there is much room for improvement.
 \end_layout
 
@@ -1036,7 +1035,7 @@ Each instance of the GGS contains several tables.
  down at a new table, all within the same game session.
  With this in mind, the main focus of the GGS is not to move players between
  tables, but to keep a player in a table, and to start new tables instead.
- When a server has reached a certain amount of players the performance will
+ When a server has reached a certain number of players the performance will
  start to decrease.
  To avoid this the GGS will start new tables on another server, using this
  technique the players will be close to evenly distributed between the servers.
@@ -1482,7 +1481,7 @@ end{centering}
 status open
 
 \begin_layout Plain Layout
-Add clients on each side, and replace the cloud with phole-landlines being
+Add clients on each side, and replace the cloud with pole-landlines being
  cut by a pair of scissors
 \end_layout
 
@@ -1519,7 +1518,7 @@ Security
 \end_layout
 
 \begin_layout Standard
-We only support languages running in a sandboxed environment.
+The project only support languages running in a sandboxed environment.
  Each game session is started in its own sandbox.
  The sandboxing isolates the games in such a way that they can not interfere
  with each other.
@@ -1544,11 +1543,11 @@ Game Development Language in a Virtual Machine
 There is only a very limited number of game developers who would like to
  write their games in Erlang, therefore we had to come up with something
  to resolve this problem.
- The main idea was to offer a replacable module which would introduce a
+ The main idea was to offer a replaceable module which would introduce a
  interface to different virtual machines which would run the game code.
- This way a game developer can write the game in his favourite language
- while the server part still is written in Erlang and can benefit from all
- of its advantages.
+ This way a game developer can write the game in his favorite language while
+ the server part still is written in Erlang and can benefit from all of
+ its advantages.
 \end_layout
 
 \begin_layout Subsection
@@ -1710,7 +1709,7 @@ number of clients
 \end_layout
 
 \begin_layout Chapter
-Practice
+Implementation
 \begin_inset Note Note
 status collapsed
 
@@ -1740,10 +1739,10 @@ implementation
 \end_layout
 
 \begin_layout Standard
-This chapter contains the realization of much of the principles and techniques
+This chapter contains the realization of many of the principles and techniques
  described in chapter 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "cha:Theory"
 
 \end_inset
@@ -1854,7 +1853,7 @@ In Erlang, we have a simple version of supervisors.
 \end_layout
 
 \begin_layout Standard
-When the linking of processes in order to monitor exit behaviour is coupled
+When the linking of processes in order to monitor exit behavior is coupled
  with the transparent distribution of Erlang, a very powerful supervision
  system is created.
  For instance, we can restart a failing process on a different, new node,
@@ -1863,7 +1862,7 @@ When the linking of processes in order to monitor exit behaviour is coupled
 \end_layout
 
 \begin_layout Standard
-In the GGS, we have separated the system in to two large supervised parts.
+In the GGS, we have separated the system into two large supervised parts.
  We try to restart a crashing child separately, if this fails too many
 \begin_inset Foot
 status collapsed
@@ -2018,20 +2017,20 @@ erlang_js
 \end_layout
 
 \begin_layout Standard
-To be able to run JavaScript on our server we needed to embed a JavaScript
- engine within the server.
- After a thorough investigation erlang_js became our choice.
+To be able to run JavaScript on the server there was a need to embed a JavaScrip
+t engine within the server.
+ After a thorough investigation erlang_js became the choice.
  Erlang_js provides direct communication with a JavaScript VM (Virtual Machine).
- This was exactly what we wanted, but we also needed the possibility to
- communicate from erlang_js to Erlang.
+ This was exactly what was wanted, but there was also a need to communicate
+ from erlang_js to Erlang.
  This functionality was not yet implemented in erlang_js, due to lack of
  time.
 \end_layout
 
 \begin_layout Standard
 There were two possible solutions to the problem.
- We could rewrite some part of erlang_js, or we could switch erlang_js for
- some other JavaScript engine.
+ To rewrite some part of erlang_js, or to switch erlang_js for some other
+ JavaScript engine.
  Searching for other engines we found erlv8 and beam.js which provided the
  functionality that we wanted.
  As we tested beam.js it occurred random crashes of the whole Erlang environment.
