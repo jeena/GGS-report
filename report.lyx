@@ -1,4 +1,4 @@
-#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2249,6 +2249,76 @@ The project has not followed any specific software development methodology.
 
 \begin_layout Section
 Statistics
+\end_layout
+
+\begin_layout Section
+Future improvements
+\end_layout
+
+\begin_layout Standard
+The specification of the GGS prototype is huge and like many other software
+ projects relying on outside technologies, in time it would require a lot
+ of maintanance.
+ Therefore there are a lot of areas in which the GGS could be improved such
+ as performance, compatibility, ease of setup and usage.
+\end_layout
+
+\begin_layout Subsection
+Performance
+\end_layout
+
+\begin_layout Standard
+Because of TCP being a connection oriented protocol, it isn't suited for
+ all types of game data transfers.
+ Each transmission will consume more network bandwith than connectionless
+ protocols like UDP and cause uneccessary load on the processor.
+ Therefore support for UDP would mean that more games could be run simultaneousl
+y on the GGS.
+ Another advantage of UDP is latency being reduced.
+ Without having to setup a connection for each group packets of data being
+ sent, they will be sent instantly and therefore arrive earlier.
+ Latency is of highest importance in realtime games as it improves realism
+ and fairness in gameplay and many game developers requires the freedom
+ to take care of safety issues as packet losses themselves.
+ This concludes that UDP would be a benefit for GGS, game developers and
+ game players alike.
+\end_layout
+
+\begin_layout Subsection
+Compatibility
+\end_layout
+
+\begin_layout Standard
+GGS relies on modern technologies.
+ This includes the virtual machines(vm) that the GGS uses for communication
+ between Erlang and the GDL:s.
+ These specific vm:s are crucial for game developers to be able to write
+ games in other languages than Erlang.
+ Therefore it would be best for the GGS to have as many of these vm:s implemente
+d as possible.
+ The vm:s taken into consideration so far have been unstable or incomplete
+ and it is possible to search for more vm:s, testing them and intergrate
+ them into the GGS prototype.
+\end_layout
+
+\begin_layout Subsection
+Setup
+\end_layout
+
+\begin_layout Standard
+The GGS prototype installation procedure requires different configuring
+ and building steps and thus it isn't in an acceptable release state.
+ An executable installation file for each supported platform would be optimal.
+\end_layout
+
+\begin_layout Subsection*
+5.3.4 Usage
+\end_layout
+
+\begin_layout Standard
+The GGS doesn't support many programming languages nor does it have a complete
+ documentation.
+ This needs to be taken care of in future versions.
 \end_layout
 
 \begin_layout Chapter
