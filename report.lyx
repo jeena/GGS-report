@@ -938,7 +938,7 @@ Can we use quickcheck?
 \end_layout
 
 \begin_layout Chapter
-Theory behind GGS 
+Theory behind the GGS 
 \begin_inset CommandInset label
 LatexCommand label
 name "cha:Theory"
@@ -949,18 +949,259 @@ name "cha:Theory"
 \end_layout
 
 \begin_layout Standard
-In this chapter, the theory behind the techniques used in the GGS are discussed
- here.
+In this chapter, the theory behind the techniques used in the GGS are discussed.
  Performance issues and the measuring of performance is discussed.
- Benchmarking techniques are discusses.
- The options when choosing network protocols are given, along with pros
- and cons for each of our alternatives.
- Finally, a bird's eye-view of scalability, fault tolerance and availability
- is presented.
+ Benchmarking techniques are discussed.
+ The options when choosing network protocols are given, along with a discussion
+ of each alternative.
+ Finally, a overview of scalability, fault tolerance and availability is
+ presented.
 \end_layout
 
 \begin_layout Section
-Performance 
+Design of the GGS system
+\end_layout
+
+\begin_layout Standard
+The GGS is modelled after a real world system performing much of the same
+ duties as GGS.
+ This is common practice 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "armstrong2011"
+
+\end_inset
+
+ in the computer software world, in order to understand complex problems
+ more easily.
+ The real world system chosen for the GGS is a 
+\begin_inset Quotes eld
+\end_inset
+
+Chess club
+\begin_inset Quotes erd
+\end_inset
+
+ - a building where chess players can meet and play chess.
+ Since a real-world scenario is readily available, and to such a large extent
+ resembles the computer software required for the GGS, the next step in
+ developing the GGS system is to duplicate this real world scenario in a
+ software setting.
+\end_layout
+
+\begin_layout Standard
+In the text below, two examples will be presented.
+ On example is that of a real-world 
+\begin_inset Quotes eld
+\end_inset
+
+Chess club
+\begin_inset Quotes erd
+\end_inset
+
+, in which players meet to play chess against each other, the other example
+ is the GGS, and how it corresponds to this chess club.
+ In figure 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "fig:theory-layout"
+
+\end_inset
+
+ a graphical representation for the 
+\begin_inset Quotes eld
+\end_inset
+
+Chess club
+\begin_inset Quotes erd
+\end_inset
+
+ is presented.
+ The club is seen from above.
+ The outermost box represents the building.
+ In the GGS setting, the building would represent one instance of GGS.
+ Several buildings linked together would represent a cluster of GGS instances.
+ In order for a player (the P symbol in the graphic) to enter the theoretical
+ chess club, the player must pass by the entrance.
+ By having each player pass by the entrance, a tally
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Does this mean what I think it does? 
+\begin_inset Quotes eld
+\end_inset
+
+Räkning
+\begin_inset Quotes erd
+\end_inset
+
+ ?
+\end_layout
+
+\end_inset
+
+ can be kept, ensuring that there are not too many players within the building.
+ In the GGS setting, too many players entering would mean too many connections
+ have been accepted to the GGS system, and that the structure of the system
+ thus must be modified, adding additional servers.
+\end_layout
+
+\begin_layout Standard
+Once a player has been allowed in to the chess club the player is greeted
+ by the host of the chess club, in the GGS setting represented by the 
+\emph on
+Coordinator
+\emph default
+, and is seated by a table.
+ The coordinator keeps track of all the players in the building, and all
+ moved made by the players.
+ The information available to the coordinator means that cheating can be
+ monitored and book keeping can be performed by this entity.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename graphics/theory_layout.eps
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:theory-layout"
+
+\end_inset
+
+The layout of a physical 
+\begin_inset Quotes eld
+\end_inset
+
+Chess club
+\begin_inset Quotes erd
+\end_inset
+
+ with two players (P) sitting by each chess table (Table), a coordinator
+ keeps track of all moves and players in the building.
+ A player has to pass by the entrance to enter or exit the building.
+ The building is represented by the outermost box.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Performance
+\end_layout
+
+\begin_layout Standard
+There are many ways in which performance could be measured.
+ For the clients, time and response times are useful measurements in time
+ critical settings.
+ In non-time critical settings, the reliability of message delivery may
+ be an even more important factor than speed.
+\end_layout
+
+\begin_layout Standard
+In a first person shooter game, the speed of delivery of messages is essential.
+ Failiure to deliver messages in time results in choppy gameplay for the
+ players.
+ In strategy games, the reliability of delivery may be more important than
+ the speed, since the game is not percieved as choppy even if the messages
+ are delayed.
+\end_layout
+
+\begin_layout Standard
+For someone operating a GGS, it is perhaps more interesting to measure the
+ system load, memory consumption, energy consumption and network saturation.
+ These topics are discussed in theory in this section.
+ The practical results for the prototype are discussed in chapter 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "cha:Implementation-of-a"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Performance measurements
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tue apr 26, 9:15.
+ Continue from here on.
+ Discuss which results we may expect in a fully fledged GGS system.
+ What impedes the speeds, what raises the CPU load (and therefore the temperetur
+es & power consumption).
+ What factors are there in the network saturation problem?
+\end_layout
+
+\begin_layout Plain Layout
+Which games are affected by what, and what does this mean for the number
+ of players a GGS can handle?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1726,7 +1967,7 @@ reference "alg:A-simple-generator"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -2347,7 +2588,7 @@ Design choices
 
 \begin_layout Standard
 When designing concurrent applications, it is useful to picture them as
- real world scenarios, and to model each actor# as a real world process.
+ real world scenarios, and to model each actor as a real world process.
  A real world process is a process which performs some action in the real
  world, such as a mailbox receiving a letter, a door being opened, a person
  translating a text, a soccer player kicking the ball, just to name a few
