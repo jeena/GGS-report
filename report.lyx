@@ -596,6 +596,43 @@ One of the purposes of this thesis is to investigate how we can make a game
  server as generic as possible.
  Some important helpers are discussed, such as abstraction of the network
  layer, data store and game specific features.
+ 
+\end_layout
+
+\begin_layout Standard
+As an aid in discussing the theoretical parts of the GGS a prototype has
+ been developed.
+ The prototype does not feature all of the characteristics described in
+ this thesis.
+ A selection has been made among the features, and the most important ones
+ have been implemented either full or in part in the prototype.
+\end_layout
+
+\begin_layout Standard
+The choice of implementation language for the prototype of the GGS was made
+ with inspiration from the telecom industry.
+ The Erlang language was developed by Ericsson to develop highly available
+ and dependable telecom switches.
+ The same language is used to develop the prototype of the GGS.
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "cha:Implementation-of-a"
+
+\end_inset
+
+ provides a description of the prototype developed for this thesis.
+  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We could go on and on about erlang..
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -655,7 +692,7 @@ Returning to the game industry, emergency services will not be contacted
 \end_layout
 
 \begin_layout Section
-Challenges 
+Challenges in developing the prototype
 \end_layout
 
 \begin_layout Standard
@@ -663,9 +700,9 @@ The word
 \emph on
 generic
 \emph default
- in the GGS implies that the system is able to run a very broad range of
- different code, for instance code written in different programming languages,
- in addition to a broad range of different game types.
+ in the game of the GGS implies that the system is able to run a very broad
+ range of different code, for instance code written in different programming
+ languages, in addition to a broad range of different game types.
  In order to support this, a virtual machine (VM) for each 
 \emph on
 game development language
@@ -736,7 +773,7 @@ reliable
 \end_layout
 
 \begin_layout Section
-Delimitations
+Limitations of the prototype
 \end_layout
 
 \begin_layout Standard
@@ -748,20 +785,42 @@ The implementation of the GGS protocol, together with storage possibilities,
 \end_layout
 
 \begin_layout Standard
-The UDP protocol will not be implemented, only TCP, the main reason behind
- this is a strict timetable.
- This decision means that games that requires a high speed protocol will
- not be supported by the GGS prototype.
+The UDP protocol is not supported for communication between client and server.
+ The TCP protocol was chosen in favour of UDP, due to the fact that the
+ implementation process using TCP was faster than if UDP would have been
+ used.
+ UDP is generally considered to be faster than TCP for the transfer of game
+ (and other) related data, this is discussed in more depth in 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sec:Choice-of-network"
+
+\end_inset
+
+.
+ In short, the decision of using TCP means that games that requires a high
+ speed protocol will not be supported by the GGS prototype.
  Another limitation necessary to set on the system is the possibility to
- have huge game worlds.
- 
+ have huge game worlds due to the implementation of the scaling mechanism
+ in the prototype.
 \end_layout
 
 \begin_layout Standard
 In real time games all players are playing together at the same time.
  Latency is a huge problem in real time games, a typical round trip time
- for such games is one of 50 to 150 ms and everything above 200 ms is reported
- to be intolerable
+ for such games is one of 
+\begin_inset Formula $50$
+\end_inset
+
+ to 
+\begin_inset Formula $150ms$
+\end_inset
+
+ and everything above 
+\begin_inset Formula $200ms$
+\end_inset
+
+ is reported to be intolerable
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Farber:2002:NGT:566500.566508"
@@ -799,8 +858,7 @@ ng them, a Generic Game Server should address all of them and help the developer
 
 \begin_layout Standard
 Due to the limited capability of threading in many GDL VM:s, the GGS prototype
- will not support MMORPG:s as it is not possible to implement and test something
- that complex within the projects timetable.
+ will not support MMORPG:s.
 \end_layout
 
 \begin_layout Standard
@@ -813,7 +871,7 @@ The implementation of the GGS described in this thesis is only a small prototype
 \end_layout
 
 \begin_layout Section
-Method 
+Method
 \end_layout
 
 \begin_layout Subsection
@@ -821,17 +879,54 @@ Development process
 \end_layout
 
 \begin_layout Standard
-May be Extreme Programming(XP), need to check this out further.
- Maybe adapt so we can say that we use a standardized software development
- method.
+A prototype was developed early on in the project in order to carry out
+ experiments.
+ Using this prototype, the system was divided into modules.
+ A demand specification was created, using this specification, the modules
+ were easily identifiable.
 \end_layout
 
-\begin_layout Subsubsection
-Demand specification 
+\begin_layout Standard
+The first prototype of the GGS consisted of simple modules, however, due
+ to the separation of concerns between the modules, they were easily independant
+ly modified and improved.
+\end_layout
+
+\begin_layout Standard
+Once the basic structure of the GGS had been established, the first prototype
+ was removed, remaining was the structure of the modules and the internal
+ flow of the application.
+ This could be seen as an interative workflow, with the first prototype
+ being the first iteration.
+ The second iteration later became the final result of the GGS
 \end_layout
 
 \begin_layout Subsection
-Design 
+Design
+\end_layout
+
+\begin_layout Standard
+The layout of the GGS is both layered and modular.
+ The first layer handles the most primitive data and produces a higher level
+ representation of the data, passing it along to different modules of the
+ GGS.
+ The modular structure of the GGS plays an important role in making the
+ system fault tolerant.
+ The approach to fault tolerance is by replication, and restarting faulting
+ modules with the last known good data.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Perhaps a graphic of this modular layout..?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -843,7 +938,7 @@ Can we use quickcheck?
 \end_layout
 
 \begin_layout Chapter
-Theory 
+Theory behind GGS 
 \begin_inset CommandInset label
 LatexCommand label
 name "cha:Theory"
@@ -964,6 +1059,13 @@ Find reference on how to benchmark distributed, multiprocess systems
 
 \begin_layout Section
 Choice of network protocol
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Choice-of-network"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1901,33 +2003,14 @@ number of clients
 \end_layout
 
 \begin_layout Chapter
-Practice
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Perhaps call this 
-\begin_inset Quotes eld
-\end_inset
-
-realization
-\begin_inset Quotes erd
-\end_inset
-
- or 
-\begin_inset Quotes eld
-\end_inset
-
-implementation
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
+Implementation of a prototype
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:Implementation-of-a"
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -2201,7 +2284,7 @@ User interface
 \end_layout
 
 \begin_layout Chapter
-Problems 
+Problems of implementation 
 \end_layout
 
 \begin_layout Section
@@ -2445,6 +2528,18 @@ Statistics
 
 \begin_layout Chapter
 Conclusion
+\end_layout
+
+\begin_layout Chapter*
+Glossary
+\end_layout
+
+\begin_layout Standard
+Here we could add some important words and their definitions..
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
