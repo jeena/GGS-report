@@ -155,7 +155,7 @@ end{textblock*}
 \end_layout
 
 \begin_layout Title
-Generic Game Server
+Reliable Generic Game Server
 \end_layout
 
 \begin_layout Author
@@ -288,36 +288,86 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-The introduction aims to give the reader a good base to stand on when taking
- on the rest of this thesis.
- A background and motivation of why this topic is interesting is given,
- and some basic terminoligy is defined and explained.
- To understand many of the core issues in the GGS, some prior knowledge
- of other topics is needed, the introduction aims to give this prior knowledge.
+The reliable generic game server, hereafter known as GGS, is a computer
+ program designed to 
+\emph on
+host
+\emph default
+ network games on one or more server computers.
+ Hosting, in a network software setting, means allowing client software
+ connect to the server software, for the purpose of utilizing services provided
+ by the server.
+ The GGS software provides games as a service, and the clients connecting
+ to the GGS can play these games on the GGS.
 \end_layout
 
 \begin_layout Standard
-We draw some parallels to existing solutions which solve similar problems
- in different sectors.
- The main challenges of the project are outlined, with the solutions thereof
- following later on in the paper.
- Some boundaries are placed on the project, since it is not possible to
- cover everything at once.
- By placing these boundaries, the purpose of the GGS is further refined.
-\end_layout
-
-\begin_layout Standard
+The idea of game servers is not new, network games have been played for
+ decades.
+ Early, popular examples of network games include the 
+\emph on
+Quake
+\emph default
+ series, or the 
+\emph on
+Doom
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Also cover the final topics; method (development process, etc).
- As of this eriting, the contents of method are unknown.
+
+\emph on
+Come up w/ better game
 \end_layout
 
 \end_inset
 
 
+\emph default
+ games.
+ Newer examples of network games include 
+\emph on
+World of Warcraft
+\emph default
+, and 
+\emph on
+Counter-Strike
+\emph default
+.
+ The difference between the GGS and the servers for these games is that
+ the servers for Doom, Quake, and the others listed, were designed with
+ these specific games in mind.
+\end_layout
+
+\begin_layout Standard
+What GGS does is to provide a 
+\emph on
+generic
+\emph default
+ framework for developing network games.
+ The framework is generic in the sense that it is not bound to a specific
+ game.
+ There are many different types of games, some are inheritly more time sensitive
+ than others, strategy games are examples of games which are not very sensitive
+ to time delays, first-person shooters however, can be very sensitive.
+\end_layout
+
+\begin_layout Standard
+The generic nature of the GGS allows the creation of many different types
+ of games, the motivation behind this is to remove the neccessity of writing
+ new game servers when developing new games.
+\end_layout
+
+\begin_layout Standard
+The GGS is in addition to being generic, also 
+\emph on
+reliable
+\emph default
+ in the sense that the gaming service provided is consistant and available.
+ A consistant and available server is a server that handles hardware failiures
+ and software failiures gracefully.
+ In the event of a component breaking within the GGS, the error is handled
+ by fault recovery processes, thereby creating a more reliable system.
 \end_layout
 
 \begin_layout Section
@@ -382,6 +432,23 @@ In the current state game servers is coded for each game that needs it,
 
 \begin_layout Section
 Purpose
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The purpose of the GGS project.
+ What is the purpose of creating a fault tolerant server, why is it generic,
+ and what good does it do to have a scalable system? In the background,
+ we should give the motivations behind creating this software, but here
+ we should outline why the software is needed.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
