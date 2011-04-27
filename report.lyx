@@ -288,6 +288,99 @@ Introduction
 \end_layout
 
 \begin_layout Standard
+Online gaming, and computer gaming in general has become an important part
+ in many peoples day-to day lives.
+ A few years ago, computer games were not at all as popular as they are
+ today.
+ With the advances in computer graphics and computer hardware today's games
+ are much more sophisticated then they were in the days of 
+\emph on
+Hack
+\emph default
+, 
+\emph on
+Zork, 
+\emph default
+or 
+\emph on
+Pac Man.
+\emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Was it really called Zork?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The early computer games featured simple, or no graphics at all.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Drop a reference to Hack
+\end_layout
+
+\end_inset
+
+ The games often took place in a textual world, leaving the task of picturing
+ the world up to the player.
+ Multi-player games were not as common as they are today, whereas most games
+ today are expected to have a multi-player mode, most early games did not.
+\end_layout
+
+\begin_layout Standard
+Since these early games, the gaming industry have become much more influential
+ in many ways.
+ Many advanced in computer hardware are thought to come from pressure from
+ the computer game industry.
+ More powerful games require more powerful, and more easily available hardware
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Drop a reference to the gaming industry pressuring more advanced hardware
+\end_layout
+
+\end_inset
+
+.
+ Due to the high entertainment value of modern computer games, gaming has
+ become a huge industry, where large amounts of money are invested.
+ The gaming industry is today, in some places even larger than the motion
+ picture industry.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Drop a reference to that graphic we found, about the motion picture industry
+ VS.
+ gaming industry
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Due to the increasing importance of computer gaming, more focus should be
+ spent on improving the quality of the gaming service.
+ As more and more computer games are gaining multi-player capabilities,
+ the demands for multiplayer networking software rises.
+ This thesis is about techniques for improving the quality if this networking
+ software.
+\end_layout
+
+\begin_layout Standard
 The reliable generic game server, hereafter known as GGS, is a computer
  program designed to 
 \emph on
@@ -611,8 +704,19 @@ As an aid in discussing the theoretical parts of the GGS a prototype has
 \begin_layout Standard
 The choice of implementation language for the prototype of the GGS was made
  with inspiration from the telecom industry.
- The Erlang language was developed by Ericsson to develop highly available
- and dependable telecom switches.
+ The Erlang language was developed by the telecom company Ericsson to develop
+ highly available and dependable telecom switches.
+ One of the most reliable systems ever developed by Ericsson, the AXD301
+ was developed using Erlang.
+ The AXD301 is also possibly has the largest code base even written in a
+ functional language 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Armstrong03"
+
+\end_inset
+
+.
  The same language is used to develop the prototype of the GGS.
  Chapter 
 \begin_inset CommandInset ref
