@@ -924,7 +924,7 @@ In real time games all players are playing together at the same time.
 \begin_inset Formula $200ms$
 \end_inset
 
- is reported to be intolerable
+ is reported to be intolerable 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Farber:2002:NGT:566500.566508"
@@ -1078,7 +1078,16 @@ key "armstrong2011"
 
  in the computer software world, in order to understand complex problems
  more easily.
- The real world system chosen for the GGS is a 
+ While there may not always be a real world example of a system performing
+ th exact duties of the system being modelled in the computer, it is often
+ easier to create and analyze requirements for real world systems and processes
+ than systems existing soley in a computer.
+ The requirements and limitations imposed on the real-world system can,
+ using the proper tools, be transferred in to the software.
+\end_layout
+
+\begin_layout Standard
+The real world system chosen for the GGS is a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1094,17 +1103,16 @@ Chess club
 \end_layout
 
 \begin_layout Standard
+Some requirements, limitations and additions were made to the chess club
+ system, so that the system would more easily and efficiently be replicated
+ in a software setting.
+\end_layout
+
+\begin_layout Standard
 In the text below, two examples will be presented.
- On example is that of a real-world 
-\begin_inset Quotes eld
-\end_inset
-
-Chess club
-\begin_inset Quotes erd
-\end_inset
-
-, in which players meet to play chess against each other, the other example
- is the GGS, and how it corresponds to this chess club.
+ On example is that of a real-world chess club, in which players meet to
+ play chess against each other, the other example is the GGS, and how it
+ corresponds to this chess club.
  In figure 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -1112,15 +1120,7 @@ reference "fig:theory-layout"
 
 \end_inset
 
- a graphical representation for the 
-\begin_inset Quotes eld
-\end_inset
-
-Chess club
-\begin_inset Quotes erd
-\end_inset
-
- is presented.
+ a graphical representation for the chess club is presented.
  The club is seen from above.
  The outermost box represents the building.
  In the GGS setting, the building would represent one instance of GGS.
@@ -1162,6 +1162,471 @@ Coordinator
  moved made by the players.
  The information available to the coordinator means that cheating can be
  monitored and book keeping can be performed by this entity.
+\end_layout
+
+\begin_layout Standard
+Moves by players are made using the tables present in the chess club.
+ Every game is isolated to a table, just as expected.
+ This means that communication during a game only has to pass by the players
+ of that particular game, and the coordinator, making sure that no cheating
+ takes place.
+\end_layout
+
+\begin_layout Standard
+This isolation of the games plays an imporant part in many properties of
+ the GGS, the isolation means that games can for example be transferred
+ between different chess clubs, furthermore, if cheating takes place, corruption
+ can only occur in the particular table where it was found, and can not
+ spread.
+\end_layout
+
+\begin_layout Standard
+Moving chess players from one location to another is one of the alterations
+ made to the real world chess club system to make the system more appropriate
+ for a software setting.
+ Allowing games to be transferred is not a property usually desired in a
+ real world chess club, where transferring players would mean moving the
+ players from one building to another.
+ In the software setting, moving players means moving the game processes
+ from one system to another, perhaps to balance the system load.
+ This transfer of players can occur transparently, without notifying the
+ players.
+\end_layout
+
+\begin_layout Standard
+The simplified life cycle of a game in GGS can be viewed using algorithm
+ 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "alg:game-lifecycle"
+
+\end_inset
+
+.
+ In order to make this life cycle as efficient and useful as possible, the
+ scalability, fault tolerant and generic traits are added to the GGS.
+ These are not shown in the algorithm, as these traits are tools in making
+ the algorithm behave as efficient as possible, and are not the main focus
+ when studying the life cycle of a game.
+\end_layout
+
+\begin_layout Standard
+The limits imposed in 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "alg:game-lifecycle"
+
+\end_inset
+
+ are arbitrary for this example, there are no limits in the GGS on the number
+ of players connecting, for example.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+INDSTATE}[1][1]{
+\backslash
+STATE
+\backslash
+hspace{#1
+\backslash
+algorithmicindent}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE 
+\end_layout
+
+\end_inset
+
+
+\series bold
+while
+\series default
+ 
+\begin_inset Formula $players<2$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE 
+\end_layout
+
+\end_inset
+
+
+\series bold
+if
+\series default
+ a player connects, call 
+\emph on
+connected
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE 
+\end_layout
+
+\end_inset
+
+
+\series bold
+while 
+\series default
+the game commences:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE 
+\end_layout
+
+\end_inset
+
+call the function 
+\emph on
+game
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE 
+\end_layout
+
+\end_inset
+
+
+\series bold
+when
+\series default
+ the game has stopped
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE 
+\end_layout
+
+\end_inset
+
+call the function 
+\emph on
+endGame
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE 
+\end_layout
+
+\end_inset
+
+
+\series bold
+function 
+\series default
+connected:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE 
+\end_layout
+
+\end_inset
+
+assign the new player an id
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE 
+\end_layout
+
+\end_inset
+
+alert the coordinator of the new player
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE 
+\end_layout
+
+\end_inset
+
+
+\series bold
+if
+\series default
+ a free table does not exist:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE[2] 
+\end_layout
+
+\end_inset
+
+the coordinator creates a new table 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE 
+\end_layout
+
+\end_inset
+
+the coordinator places the player by the table, and begins watching the
+ player
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE 
+\end_layout
+
+\end_inset
+
+
+\series bold
+function
+\series default
+ game
+\series bold
+:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE 
+\end_layout
+
+\end_inset
+
+ perform game-specific functions.
+ In chess, the rules of chess are placed here
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE 
+\end_layout
+
+\end_inset
+
+
+\series bold
+function 
+\series default
+endGame:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE 
+\end_layout
+
+\end_inset
+
+alert the coordinator, de-registering the players
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+INDSTATE 
+\end_layout
+
+\end_inset
+
+disconnect the players from the system, freeing system resources
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:game-lifecycle"
+
+\end_inset
+
+A very simple example of the flow through the GGS system when a game played.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -1782,7 +2247,7 @@ UUID
 \begin_inset Float algorithm
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
