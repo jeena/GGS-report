@@ -1064,6 +1064,13 @@ In this chapter, the theory behind the techniques used in the GGS are discussed.
 
 \begin_layout Section
 Design of the GGS system
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Design-of-the"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1113,7 +1120,86 @@ In the text below, two examples will be presented.
  On example is that of a real-world chess club, in which players meet to
  play chess against each other, the other example is the GGS, and how it
  corresponds to this chess club.
- In figure 
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename graphics/theory_layout.eps
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:theory-layout"
+
+\end_inset
+
+The layout of a physical 
+\begin_inset Quotes eld
+\end_inset
+
+Chess club
+\begin_inset Quotes erd
+\end_inset
+
+ with two players (P) sitting by each chess table (Table), a coordinator
+ keeps track of all moves and players in the building.
+ A player has to pass by the entrance to enter or exit the building.
+ The building is represented by the outermost box.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+In figure 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "fig:theory-layout"
@@ -1626,88 +1712,6 @@ A very simple example of the flow through the GGS system when a game played.
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename graphics/theory_layout.eps
-	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:theory-layout"
-
-\end_inset
-
-The layout of a physical 
-\begin_inset Quotes eld
-\end_inset
-
-Chess club
-\begin_inset Quotes erd
-\end_inset
-
- with two players (P) sitting by each chess table (Table), a coordinator
- keeps track of all moves and players in the building.
- A player has to pass by the entrance to enter or exit the building.
- The building is represented by the outermost box.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -2850,6 +2854,254 @@ and distribution of erlang nodes on physical nodes.
 \end_layout
 
 \begin_layout Section
+Overview of the prototype
+\end_layout
+
+\begin_layout Standard
+The prototype of the GGS was developed using the Erlang language.
+ The functional and concurrent style of Erlang facilitates devlopment of
+ software based on a real-world model 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "armstrong2011"
+
+\end_inset
+
+.
+ In Erlang, most things are processes.
+ The software running the Erlang code is known as the Erlang machine, or
+ an Erlang node.
+ Each Erlang node is capable of running several 
+\emph on
+threads 
+\emph default
+(also known as 
+\emph on
+Light Weight Processes; LWP
+\emph default
+)
+\emph on
+, 
+\emph default
+much like the threads in an operating system.
+ Threads in a Linux system, for example, are treated much like operating
+ system processes in different systems.
+ Due to the size of datastructures related to each process, swapping one
+ process for another (known as 
+\emph on
+context switching
+\emph default
+) is an expensive task in many systems.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Citation needed, perhaps the book for the 
+\emph on
+Unix Internals
+\emph default
+ course?
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+The cost of swapping operating system processes becomes a problem when many
+ processes are involved.
+ If the GGS system had been developed using regular operating system processes,
+ it would have had to be designed in a way to minimize the number of processes.
+ Using Erlang, which is capable of running very many processes, several
+ times more than an operating system can, the mapping between the real world
+ system (described in 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sec:Design-of-the"
+
+\end_inset
+
+) becomes clearer.
+\end_layout
+
+\begin_layout Standard
+Erlang allows the GGS to create several process for each player connecting,
+ these processes can handle a multitude of different tasks, parsing data
+ for example.
+ Since each task is handled by a different process, the tasks are clearly
+ separated and the failiure of one is easily recovered without affecting
+ the others.
+\end_layout
+
+\begin_layout Standard
+In addition to creating (or 
+\emph on
+spawning
+\emph default
+) processes specifically to handle new players connecting, the GGS has more
+ permanent processes running at all times.
+ The constantly running processes in the GGS system are called 
+\emph on
+modules
+\emph default
+.
+ An example of a module in the GGS is the 
+\emph on
+dispatcher module
+\emph default
+, which handles the initial connection made by a client, passing the connection
+ along further in to the system.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename graphics/Chess_no_text.eps
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-layout-of"
+
+\end_inset
+
+The layout of the GGS.
+ The circles marked with 'C' topmost in the picture represent clients.
+ The cloud marked 'network' pictured directly below the clients can be any
+ network, for example the Internet.
+ The barell figure marked 'backup' is a process being fed backup data from
+ the coordinator.
+ The barell marked 'State' contains the state of a table, and this is fed
+ into the box marked 'Mnesia' which is database.
+ Finally the figure shaped as a shield marked 'GameVM' contains the actual
+ game process.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In figure
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "fig:The-layout-of"
+
+\end_inset
+
+ the entire GGS system is represented graphically.
+ The circles marked with 'C' topmost in the picture represent game clients.
+ These circles represent processes running on gamers' computers, and not
+ on the GGS machine.
+ If a game of chess is to be played on the server, the clients on the gamers'
+ machines will be chess game clients.
+ Clients connect through a network, pictured as a cloud, to the dispatcher
+ process in the GGS.
+ The dispatcher process and all other modules are discussed in
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sec:The-modular-structure"
+
+\end_inset
+
+.
+ For each connection, a new player process is spawned, which immediately
+ after spawning is integrated in to the GGS by the coordinator process.
+\end_layout
+
+\begin_layout Section
+The modular structure of the GGS prototype
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-modular-structure"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The dispatcher module
+\end_layout
+
+\begin_layout Subsection
+The player module
+\end_layout
+
+\begin_layout Subsection
+The protocol parser module
+\end_layout
+
+\begin_layout Subsection
+The coordinator module
+\end_layout
+
+\begin_layout Subsection
+The table module
+\end_layout
+
+\begin_layout Subsection
+The game virtual machine module
+\end_layout
+
+\begin_layout Subsection
+The database module
+\end_layout
+
+\begin_layout Section
 Techniques for ensuring reliability 
 \end_layout
 
@@ -2857,7 +3109,7 @@ Techniques for ensuring reliability
 One of the main goals of the project is to achieve high reliability.
  A highly reliable application is one that crashes very, very rarely 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 CITATION NEEDED
@@ -2903,6 +3155,16 @@ d reliability systems in Erlang.
 
 \begin_layout Subsection
 Supervisor structure 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This entire section is bad.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2973,7 +3235,7 @@ too many
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Note Note
@@ -3243,68 +3505,6 @@ Coordinator
 \emph default
  rounding up all the tables, running to a new location and building the
  club up in the exact state it was prior to the fire.
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename graphics/Chess_no_text.eps
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-The layout of GGS
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
