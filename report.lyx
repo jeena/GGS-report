@@ -3361,6 +3361,46 @@ name "sub:The-protocol-parser"
 
 \end_layout
 
+\begin_layout Standard
+The protocol parser is an easily interchangable module in the GGS, handling
+ the client-to-server, and server-to-client protocol parsing.
+ In the GGS prototype, there is only one protocol supported, namely the
+ 
+\emph on
+GGS Protocol
+\emph default
+.
+ The role of the protocol parser is to translate the meaning of packets
+ sent using the prototocol in use to internal messages of the GGS system.
+ The GGS protocol, discussed below is used as a sample protocol in order
+ to explain how protocol parsers can be built for the GGS.
+\end_layout
+
+\begin_layout Subsubsection
+The structure of the GGS Protocol
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:The-structure-of"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mention that the protocol is heavily influenced bye HTTP, is parsed using
+ a FSM, perhaps give a sample packet.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 The coordinator module
 \begin_inset CommandInset label
