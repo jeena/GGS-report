@@ -3063,6 +3063,24 @@ reference "sec:The-modular-structure"
 \end_layout
 
 \begin_layout Section
+The usage of Erlang in the GGS
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Here we can have a more in-depth look at why Erlang was used, and outline
+ the characteristics of EWrlang that we make use of in the GGS.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 The modular structure of the GGS prototype
 \begin_inset CommandInset label
 LatexCommand label
@@ -3073,20 +3091,285 @@ name "sec:The-modular-structure"
 
 \end_layout
 
+\begin_layout Standard
+The separation of concerns, and principle of single responsibility 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+More information on the SRP is available at: 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Insert adress!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ are widely respected as good practices in the world of software engineering
+ and development.
+ By dividing the GGS up into modules each part of the GGS can be modified
+ without damaging the rest of the system.
+\end_layout
+
+\begin_layout Standard
+The responsibility and concern of each module comes from the responsibility
+ and concern of the real-world entity the model represents.
+ The modelling of the GGS after a real world system was discussed in chapter
+ 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "cha:Theory"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the text below the word module refers to the actual code of the discussed
+ feature, while the word process is used when referring to a running instance
+ of the code.
+ Those familiar to object oriented programming may be helped by thinking
+ in the lines of classes and objects.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Am I right here?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 The dispatcher module
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The discussion of the modules is divided into the following parts:
+\end_layout
+
+\begin_layout Itemize
+What does the module do?
+\end_layout
+
+\begin_layout Itemize
+What happens when the module fails?
+\end_layout
+
+\begin_layout Itemize
+How does the module correspond to the real-world scenario of the chess club?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The dispatcher module is the first module to have contact with a player.
+ When a player connects to the GGS, it is first greeted by the dispatcher
+ module, which sets up an accepting socket for each player.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Is this the proper way to day the dispatcher greets connecting players?
+\end_layout
+
+\end_inset
+
+ The dispatcher is the module which handles the interfacing to the operating
+ system when working with sockets.
+ Operating system limits concering the number of open files, or number of
+ open sockets are handled here.
+ The operating system limits can impose problems on the GGS, this is discussed
+ more in detail in chapter 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "cha:Problems-of-implementation"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Should the dispatcher module fail to function, no new connections to the
+ GGS can be made.
+ In the event of a crash in the dispatcher module, a supervisor process
+ immediately restarts the dispatcher.
+ There exists a window of time between the crashing of the dispatcher and
+ the restarting of the dispatcher, this window is very short, and only during
+ this window is the GGS unable to process new connection requests.
+ Due to the modular structure of the GGS, the rest of the system is not
+ harmed by the dispatcher process not functioning.
+ The process does not contain a state, therefore a simple restart of the
+ process is sufficient in restoring the GGS to a pristine state after a
+ dispatcher crash
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Well..
+ In theory..
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Returning to scenario of the chess club, the dispatcher module is the doorman
+ of the club.
+ When a player enters the chess club, the player is greeted by the doorman,
+ letting the player in to the club.
+ The actual letting in to the club is in the GGS represented by the creation
+ of a player process discussed in 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:The-player-module"
+
+\end_inset
+
+.
+ The newly created player process is handed, and granted rights to, the
+ socket of the newly connected player.
+\end_layout
+
 \begin_layout Subsection
 The player module
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:The-player-module"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The player module is responsible for representing a player in the system.
+ Each connected player has its own player process.
+ The player process has access to the connection of the player it represents,
+ and can communicate with this player.
+ In order to communicate with a player, the data to and from the player
+ object must pass through a protocol parser module, discussed in 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:The-protocol-parser"
+
+\end_inset
+
+.
+ Raw communication, witout passing the data through a protocol parser is
+ in theory possible, but is not useful.
+\end_layout
+
+\begin_layout Standard
+In the creation of a player process, the coordinator process, discussed
+ in 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:The-coordinator-module"
+
+\end_inset
+
+, is notified by the newly connected process.
+\end_layout
+
+\begin_layout Standard
+In the event of a crash in a player process, several things happen.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The player process, which is the only process with a reference to the socket
+ leading to the remote client software, passes this reference of the socket
+ to the coordinator process temporarily.
+\end_layout
+
+\begin_layout Enumerate
+The player process exits.
+\end_layout
+
+\begin_layout Enumerate
+The coordinator spawns a new player process, with the same socket reference
+ as the old player process had.
+\end_layout
+
+\begin_layout Enumerate
+The player process resumes operation, immediately starting a new protocol
+ parser process, and begind receiving and sending network messaged again.
+\end_layout
+
+\begin_layout Standard
+The window of time between the crash of the player process and the starting
+ of a new player process is, as with the dispatcher, very short.
+ Since the connection changes owners for a short period of time, but is
+ never dropped, the implications of a crash are only noticed, at worst,
+ as choppy gameplay for the client.
+ Note however that this crash recovery scheme is not implemented in the
+ GGS prototype.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Can we do this..? Seems a bit sneaky.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moving back to the real world example, the player process represent an actual
+ person in the chess club.
+ When a person sits down at a table in the chess club, the person does so
+ by requesting a seat from some coordinating person, and is then seated
+ by the same coordinator.
+ Once seated, the player may make moves on the table he or she is seated
+ by, this corresponds clearly to how the GGS is structured, as can be seen
+ in the following sections.
 \end_layout
 
 \begin_layout Subsection
 The protocol parser module
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:The-protocol-parser"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 The coordinator module
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:The-coordinator-module"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3356,7 +3639,14 @@ User interface
 \end_layout
 
 \begin_layout Chapter
-Problems of implementation 
+Problems of implementation
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:Problems-of-implementation"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
