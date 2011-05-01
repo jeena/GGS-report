@@ -321,7 +321,7 @@ Zork,
 \emph default
 or 
 \emph on
-Pac Man.
+Pacman.
 \end_layout
 
 \begin_layout Standard
@@ -527,8 +527,18 @@ Moving back to the gaming industry.
  for game companies to expand its customer base.
  Reliable game servers are one improvement that will create a good image
  of a company.
- In general the downtime of game servers are much higher than the downtime
- of telecom system.
+ In general the downtime of game servers is much higher than the downtime
+ of telecom system 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Citation needed...
+\end_layout
+
+\end_inset
+
+.
  The structure of the system is similar in many ways and it should be possible
  to reuse solutions from the telecom system to improve game servers.
  
@@ -716,6 +726,14 @@ key "Armstrong03"
 
 .
  The same language is used to develop the prototype of the GGS.
+ Usage of Erlang in the GGS is discussed in further detail in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:The-usage-of-erlang"
+
+\end_inset
+
+.
  Chapter 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -2243,6 +2261,13 @@ Because P2P game architectures are a constant goal for cheaters and because
 
 \begin_layout Subsection
 UUID
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UUID"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2643,6 +2668,13 @@ Encryption
 
 \begin_layout Section
 Game Development Language in a Virtual Machine
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Game-Development-Language"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3062,6 +3094,137 @@ reference "sec:The-modular-structure"
 
 \begin_layout Section
 The usage of Erlang in the GGS
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-usage-of-erlang"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Erlang was designed by Ericsson, beginning in 1986, for the purpose of creating
+ concurrent applications and improving telecom software.
+ Features essential for the telecom instustry to achieve high availability
+ in telecom switches were added to the language.
+\end_layout
+
+\begin_layout Standard
+Erlang uses message passing in favour of shared memory, mutextes and locks,
+ something which at the time was controversial among fellow developers 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Armstrong:2010:ERL:1810891.1810910"
+
+\end_inset
+
+.
+ The reason for using message passing, according to Armstrong, was that
+ applications should operate correctly before optimizations are done, where
+ efficient internal communication within the Erlang machine was considered
+ a later optimization.
+\end_layout
+
+\begin_layout Standard
+In using message passing in favour of the methods commonly used at the time,
+ the issues commonly associated with shared memory and locking were avoided.
+ In Erlang, everything is a process, and everything operates in its own
+ memory space.
+ Memory can not be shared among processes, which prohibits a process from
+ corrupting the memory of a different process.
+\end_layout
+
+\begin_layout Standard
+Messages are sent between the processes in an asynchronous manner, and each
+ process has a mailbox in which these messages can be retrieved.
+\end_layout
+
+\begin_layout Standard
+Processes in Erlang are also called 
+\emph on
+Light Weight Processes.
+ 
+\emph default
+The Erlang processes are very cheaply created.
+ Processes exist within an Erlang machine, or Erlang node.
+ The Erlang machine has its own scheduler and does not rely on the operating
+ system's scheduler, this is a main reason of Erlang's capability of running
+ many concurrent processes 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Armstrong03"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The strong isolation of Erlang processes make them ideal for multicore and
+ distributed systems.
+ Distribution of software is included as a fundamental part in the Erlang
+ language.
+ The 'physical' location of a process, e.g.
+ which computer the process runs on, is not important when communicating
+ with the process.
+ Processes can communicate regardless of whether they run on the same system
+ of not, transparently.
+\end_layout
+
+\begin_layout Standard
+The distributed nature of Erlang is something the GGS makes use of when
+ scaling across several computers in order to achieve higher performance.
+\end_layout
+
+\begin_layout Standard
+A very important feature of Erlang, used in the GGS, is the ability to interface
+ with external hardware and software.
+ Erlang allows communication with external resources through 
+\emph on
+ports.
+
+\emph default
+ Through ports communication can take place much in the same way communication
+ is performed over sockets.
+\end_layout
+
+\begin_layout Standard
+The GGS uses Erlang ports for generating UUID:s
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+UUID:s are discussed in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:UUID"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ and for interfacing with the virtual machines of games
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Virtual machines of games are discussed in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Game-Development-Language"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
