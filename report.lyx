@@ -60,6 +60,7 @@
 
 \usepackage[hmargin=3cm,vmargin=3.5cm]{geometry} 
 \usepackage{algorithmic}
+\usepackage{listings}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -3175,6 +3176,20 @@ The strong isolation of Erlang processes make them ideal for multicore and
 \begin_layout Standard
 The distributed nature of Erlang is something the GGS makes use of when
  scaling across several computers in order to achieve higher performance.
+ The distribution is also important in creating redundancy.
+ Erlang promotes a non-defensive programming style in which processes are
+ allowed to crash and be restarted in favour of having the processes recover
+ from errors.
+ The distributed nature of Erlang means supervisor processes (discussed
+ in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Supervisor-structure"
+
+\end_inset
+
+) can reside on remote systems, thereby increasing the reliability of the
+ system as a whole.
 \end_layout
 
 \begin_layout Standard
@@ -3639,6 +3654,13 @@ d reliability systems in Erlang.
 
 \begin_layout Subsection
 Supervisor structure 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Supervisor-structure"
+
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
@@ -3719,7 +3741,7 @@ too many
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Note Note
@@ -3837,6 +3859,157 @@ Implementation
 
 \begin_layout Subsubsection
 User interface 
+\end_layout
+
+\begin_layout Section
+Example of a GGS server application in Javascript
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}
+\end_layout
+
+\begin_layout Plain Layout
+
+function playerCommand(player_id, command, args) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    if(command == "/nick") {
+\end_layout
+
+\begin_layout Plain Layout
+
+        changeNick(player_id, args);
+\end_layout
+
+\begin_layout Plain Layout
+
+    } else if(command == "message") {
+\end_layout
+
+\begin_layout Plain Layout
+
+        message(player_id, args);
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+function changeNick(player_id, nick) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    var old_nick = GGS.localStorage.getItem("nick_" + player_id);
+\end_layout
+
+\begin_layout Plain Layout
+
+    GGS.localStorage.setItem("nick_" + player_id, nick);
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (!old_nick) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        GGS.sendCommandToAll("notice", nick + " joined");
+\end_layout
+
+\begin_layout Plain Layout
+
+    } else {
+\end_layout
+
+\begin_layout Plain Layout
+
+        GGS.sendCommandToAll("notice", old_nick + " is now called " + nick);
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+function message(player_id, message) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    var nick = GGS.localStorage.getItem("nick_" + player_id);
+\end_layout
+
+\begin_layout Plain Layout
+
+    GGS.sendCommandToAll('message', nick + "> " + message);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+A concrete example of a simple chat server written in Javascript, running
+ on the GGS
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
