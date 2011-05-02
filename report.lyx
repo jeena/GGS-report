@@ -3993,7 +3993,7 @@ The information about which players are seated by each table is used when
  notifying all players by a table of an action.
  Consider a game of chess, each player notifies the table of its actions,
  the table then notifies the rest of the participants of these actions after
- having had the actions processed by the game VM, where an action could
+ having had the ac tions processed by the game VM, where an action could
  be moving a playing piece.
 \end_layout
 
@@ -4018,6 +4018,20 @@ After a crash in a table process, the entire table must be rebuilt and the
 
 \begin_layout Subsection
 The game virtual machine module
+\end_layout
+
+\begin_layout Standard
+This module is holds the game logic of a game and is responsible for the
+ vm associated with each game.
+ It consists the state of the vm and a table token associated with a running
+ game.
+ The game token is given to game vm during initialization.
+ This will create a new vm instance and various objects associated to the
+ vm instance.
+ Then the source code of a game is loaded into the vm and the game is ready
+ for startup.
+ This module does not affect game runtime but evaluates a new game state
+ and handles communication between the game and the players.
 \end_layout
 
 \begin_layout Subsection
