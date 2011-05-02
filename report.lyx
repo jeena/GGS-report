@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 #LyX 2.0 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
+=======
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+>>>>>>> Stashed changes
 \begin_document
 \begin_header
 \textclass report
@@ -507,6 +512,7 @@ Citation needed
 \end_inset
 
  The existing game servers are functional but they lack good fault tolerance
+<<<<<<< Updated upstream
  and the ability to scale well
 \begin_inset Note Note
 status open
@@ -519,6 +525,10 @@ Citation needed
 
 .
  Users will notice this in low uptime and many crashes.
+=======
+ and the ability to scale well.
+ Users will githubnotice this in low uptime and many crashes.
+>>>>>>> Stashed changes
  This is a problem that has existed and been resolved in other industries.
  In the telecom industry solutins to similar problems have been found.
 \end_layout
@@ -3730,6 +3740,16 @@ The parser of the GGS protocol implemented in the GGS prototype is designed
 \end_layout
 
 \begin_layout Standard
+Load balancing can often be implemented using dedicated software, this means
+ that in many applications load balancing may not be implemented because
+ it already exist functional solutions.
+ This depends on what specific needs the system have and a minor goal of
+ the project is to analyze whether the GGS project can use existing load
+ balancing tools or if it is necessary to implement load balancing in the
+ project.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -4909,6 +4929,10 @@ The project has not followed any specific software development methodology.
 
 \begin_layout Section
 Statistics
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Section
