@@ -4875,6 +4875,85 @@ The project has not followed any specific software development methodology.
 Statistics
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename graphics/msg_per_sec.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-layout-of-1"
+
+\end_inset
+
+The layout of the GGS.
+ The circles marked with 'C' topmost in the picture represent clients.
+ The cloud marked 'network' pictured directly below the clients can be any
+ network, for example the Internet.
+ The barell figure marked 'backup' is a process being fed backup data from
+ the coordinator.
+ The barell marked 'State' contains the state of a table, and this is fed
+ into the box marked 'Mnesia' which is database.
+ Finally the figure shaped as a shield marked 'GameVM' contains the actual
+ game process.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Future improvements
 \end_layout
