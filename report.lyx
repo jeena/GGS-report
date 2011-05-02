@@ -4078,9 +4078,16 @@ This entire section is bad.
 
 \begin_layout Standard
 By linking processes together and notifying parents when children exit,
- we can create supervisors.
+ supervisors are created.
  A supervisor is a common approach in ensuring that an application functions
- in the way it was intended.
+ in the way it was intended 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Savor:1997:HSA:851010.856089"
+
+\end_inset
+
+.
  When a process misbehaves, the supervisor takes some action to restore
  the process to a functional state.
  
