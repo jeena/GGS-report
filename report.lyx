@@ -2025,6 +2025,22 @@ name "sec:Generic"
 \end_layout
 
 \begin_layout Standard
+The GGS is a game server.
+ It was made with a desire to be suitable for any kind of game.
+ Any game with a client-server behaviour should be perfectly suited for
+ GGS.
+ A game should not only be able to vary in terms of genre, graphics, gameplay
+ etc, but also in the way the game is implemented.
+ Such as different programming languages.
+ The GGS should be OS independent and run on Windows, OSX and Linux.
+ The GGS can be run as a listen server on the players computer and host
+ games locally.
+ It could also be a dedicated server running on independent hardware.
+ It is meant to run any game in any environment in any way desired, therefor
+ being as generic as possible.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
