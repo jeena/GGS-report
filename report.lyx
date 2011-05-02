@@ -3314,6 +3314,28 @@ name "sec:Communication-with-external"
 \end_layout
 
 \begin_layout Standard
+A game launched on the GGS is run with help of a virtual machine.
+ For each programming language supported, there is a virtual machine that
+ interprets it and an interface for communication between the GGS, the game
+ and the players playing the game.
+ Callbacks written in Erlang are registered to the vm for the interface
+ to work.
+ It is only with the help of the interface that the game developer can access
+ the game state and share data between players.
+ The interface provides access to three objects called World, Player and
+ Localstorage.
+ The game state is safely stored in a database and retrieved for manipulation
+ by a call for the World object.
+ Interaction with the players is done the same way using the Player object
+ instead.
+ The Localstorage is a convenient way to store globals and other variables
+ seperated from the game state.
+ Unique id:s called gametokens are generated for hosted games so that they
+ are not mixed up.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -3358,7 +3380,7 @@ name "sec:The-modular-structure"
 \begin_layout Standard
 The separation of concerns, and principle of single responsibility 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 More information on the SRP is available at: 
