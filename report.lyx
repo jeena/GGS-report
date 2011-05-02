@@ -81,6 +81,12 @@
   morestring=[b]',
   morestring=[b]"
 }
+
+\usepackage{float}
+ 
+\floatstyle{ruled}
+\newfloat{code}{thp}{lop}
+\floatname{code}{Code}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -3626,6 +3632,236 @@ name "sub:The-structure-of"
 \end_layout
 
 \begin_layout Standard
+The GGS protocol is modelled after the HTTP protocol.
+ The main reason for this is the familiarity many developers already have
+ with HTTP due to its presence in internet software.
+ Each GGS protocol packet contains a headers section.
+ The headers section is followed by a data section.
+ In the headers section, parameters concerning the packet is placed.
+ In the data section, the actual data payload of the packet is placed.
+\end_layout
+
+\begin_layout Standard
+There is no requirement of any specific order of the parameters in the headers
+ section, however the data section must always follow directly after the
+ headers section.
+\end_layout
+
+\begin_layout Standard
+In the example below, line 1 contains a Game-Command parameter.
+ This parameter is used to determine which game-specific command the client
+ is trying to perform.
+ The handling of this parameter is specific to each game, and can be anything.
+\end_layout
+
+\begin_layout Standard
+Line 2 specifies a game token.
+ This is a UUID which is generated for each client upon authentication with
+ the GGS.
+ The GGS uses this token in case a client is disconnected and the new connection
+ created when the client reconnects must be re-paired with the player object
+ inside the GGS.
+ The UUID is also used as a unique ID within GDL VMs.
+\end_layout
+
+\begin_layout Standard
+Line 3 specifies the content type of the payload of this particular packet.
+ This parameter allows the GGS to invoke special parsers, should the data
+ be encoded or encrypted.
+ When encryption is employed, only the payload is encrypted, not the header
+ section.
+ This is a scheme which does not allow for strong encryption, but is deemed
+ feasible for gaming purposes.
+\end_layout
+
+\begin_layout Standard
+Line 4 specifies the content length of the payload following immediately
+ after the headers section.
+\end_layout
+
+\begin_layout Standard
+The parser of the GGS protocol implemented in the GGS prototype is designed
+ as a finite state machine using the gen_fsm behaviour.
+ When a full message has been parsed by the parser, the message is converted
+ into the internal structure of the GGS messages, and sent in to the system
+ from the protocol paser using message passing.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Packet below is not an algorithm, but I don't know how to change that label..
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstset{    
+\end_layout
+
+\begin_layout Plain Layout
+
+backgroundcolor=
+\backslash
+color{white},    
+\end_layout
+
+\begin_layout Plain Layout
+
+extendedchars=true,    
+\end_layout
+
+\begin_layout Plain Layout
+
+basicstyle=
+\backslash
+footnotesize
+\backslash
+ttfamily,    
+\end_layout
+
+\begin_layout Plain Layout
+
+showstringspaces=false,    
+\end_layout
+
+\begin_layout Plain Layout
+
+showspaces=false,    
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,    
+\end_layout
+
+\begin_layout Plain Layout
+
+numberstyle=
+\backslash
+footnotesize,    
+\end_layout
+
+\begin_layout Plain Layout
+
+numbersep=9pt,    
+\end_layout
+
+\begin_layout Plain Layout
+
+tabsize=2,    
+\end_layout
+
+\begin_layout Plain Layout
+
+breaklines=true,    
+\end_layout
+
+\begin_layout Plain Layout
+
+showtabs=false,    
+\end_layout
+
+\begin_layout Plain Layout
+
+captionpos=b
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}
+\end_layout
+
+\begin_layout Plain Layout
+
+Game-Command: chat
+\end_layout
+
+\begin_layout Plain Layout
+
+Token: e30174d4-185e-493b-a21a-832e2d9d7a1a
+\end_layout
+
+\begin_layout Plain Layout
+
+Content-Type: text
+\end_layout
+
+\begin_layout Plain Layout
+
+Content-Length: 18
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Hello world, guys!
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:A-sample-packet"
+
+\end_inset
+
+A sample packet sent from a client to the GGS during a chat session
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -3650,8 +3886,92 @@ name "sub:The-coordinator-module"
 
 \end_layout
 
+\begin_layout Standard
+The coordinator module is responsible for keeping track of all players,
+ their seats and tables.
+ Players register with the coordinator process when first connecting to
+ the server, and the coordinator places each player by their respective
+ table.
+\end_layout
+
+\begin_layout Standard
+The coordinator keeps mappings between each player and table, therefore
+ it is used to perform lookups on tables and players to find out which are
+ connected.
+ The connectivity of players and tables is important when sending messages
+ to all participants in a game.
+ A lookup in the coordinator process is performed prior to notifying all
+ players in a game to ensure the message reaches all players.
+ The lookup can be performed either using internal identification codes
+ or using the UUID associated with each client and table.
+\end_layout
+
+\begin_layout Standard
+The coordinator process contains important state, therefore a backup process
+ is kept at allt times.
+ All good data processed by the coordinator is stored for safekeeping in
+ the backup process as well.
+ Data which is potentisally harmful is not stored in the backup process.
+\end_layout
+
+\begin_layout Standard
+Upon a crash, the coordinator process recovers the prior good state from
+ the backup process and continues where it left off.
+ A supervisor process monitors the coordinator process and restarts the
+ process when it malfunctions.
+ There is a window of time between the crash of the coordinator and the
+ restarting of the coordinator, during this time, players can not be seated
+ by new tables, and can not disconnect from the server.
+ This window of time is very small, and the unavailability of the coordinator
+ process should not be noticed by more than a short time lag for the clients.
+\end_layout
+
+\begin_layout Standard
+Moving back to the example of the chess club, the coordinator process can
+ be seen as a judge, monitoring all moves of the players.
+ At the same time as acting as a judge, the coordinator process is also
+ a host in the chess club, seating players by their tables and offering
+ services to the players.
+\end_layout
+
 \begin_layout Subsection
 The table module
+\end_layout
+
+\begin_layout Standard
+The table module is mostly a hub used for communication.
+ New table processes are created by the coordinator on demand.
+ The table module does not contain any business logic, however each process
+ contains information concerning which players are seated by that particular
+ table.
+\end_layout
+
+\begin_layout Standard
+The information about which players are seated by each table is used when
+ notifying all players by a table of an action.
+ Consider a game of chess, each player notifies the table of its actions,
+ the table then notifies the rest of the participants of these actions after
+ having had the actions processed by the game VM, where an action could
+ be moving a playing piece.
+\end_layout
+
+\begin_layout Standard
+Each table is associated with a game VM.
+ The actions sent to a table are processed by the game VM, this is where
+ the game logic is implemented.
+\end_layout
+
+\begin_layout Standard
+After a crash in a table process, the entire table must be rebuilt and the
+ players must be re-associated with the table.
+ Data concerning players is kept in the coordinator process, and is restored
+ from there.
+ Data kept in the actual game is not automatically corrupted by the crash
+ in a table, however the table must be re-associated with the game VM is
+ was associated with prior to the crash of the table.
+ The table process maps well into the setting of the real-worl chess clib
+ scenario previously discussed.
+ A table works in the same way in a real world setting as in the GGS setting.
 \end_layout
 
 \begin_layout Subsection
