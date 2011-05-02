@@ -3314,6 +3314,28 @@ name "sec:Communication-with-external"
 \end_layout
 
 \begin_layout Standard
+A game launched on the GGS is run with help of a virtual machine.
+ For each programming language supported, there is a virtual machine that
+ interprets it and an interface for communication between the GGS, the game
+ and the players playing the game.
+ Callbacks written in Erlang are registered to the vm for the interface
+ to work.
+ It is only with the help of the interface that the game developer can access
+ the game state and share data between players.
+ The interface provides access to three objects called World, Player and
+ Localstorage.
+ The game state is safely stored in a database and retrieved for manipulation
+ by a call for the World object.
+ Interaction with the players is done the same way using the Player object
+ instead.
+ The Localstorage is a convenient way to store globals and other variables
+ seperated from the game state.
+ Unique id:s called gametokens are generated for hosted games so that they
+ are not mixed up.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -3358,7 +3380,7 @@ name "sec:The-modular-structure"
 \begin_layout Standard
 The separation of concerns, and principle of single responsibility 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 More information on the SRP is available at: 
@@ -3971,7 +3993,7 @@ The information about which players are seated by each table is used when
  notifying all players by a table of an action.
  Consider a game of chess, each player notifies the table of its actions,
  the table then notifies the rest of the participants of these actions after
- having had the actions processed by the game VM, where an action could
+ having had the ac tions processed by the game VM, where an action could
  be moving a playing piece.
 \end_layout
 
@@ -3996,6 +4018,20 @@ After a crash in a table process, the entire table must be rebuilt and the
 
 \begin_layout Subsection
 The game virtual machine module
+\end_layout
+
+\begin_layout Standard
+This module is holds the game logic of a game and is responsible for the
+ vm associated with each game.
+ It consists the state of the vm and a table token associated with a running
+ game.
+ The game token is given to game vm during initialization.
+ This will create a new vm instance and various objects associated to the
+ vm instance.
+ Then the source code of a game is loaded into the vm and the game is ready
+ for startup.
+ This module does not affect game runtime but evaluates a new game state
+ and handles communication between the game and the players.
 \end_layout
 
 \begin_layout Subsection
