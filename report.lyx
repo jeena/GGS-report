@@ -2566,16 +2566,20 @@ Site A
 Site B
 \emph default
  by a faulty network (illustrated by the cloud and lightening bolt).
- When 
+ When
 \emph on
-Site A
+ 
 \emph default
- and 
+the decoupled node
 \emph on
-Site B
+ 
 \emph default
- later re-establish communications, they may have generated the same ID:s
- if using algorithm 
+and
+\emph on
+ 
+\emph default
+the rest of the network later re-establish communication, they may have
+ generated the same ID:s if using algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:A-simple-generator"
@@ -2590,7 +2594,7 @@ reference "alg:A-simple-generator"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -2610,7 +2614,7 @@ begin{centering}
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename graphics/NetworkSPlit.eps
+	filename graphics/netsplit2.eps
 	scale 40
 
 \end_inset
