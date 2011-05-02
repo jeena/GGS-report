@@ -3283,6 +3283,97 @@ reference "sec:Game-Development-Language"
 \end_layout
 
 \begin_layout Standard
+Development of the GGS would have been hard if not impossible had it not
+ been for the 
+\emph on
+OTP
+\emph default
+ supplied with the standard Erlang distribution.
+ The OTP (Open Telecom Platform) is a set of standard libraries and design
+ patterns, called 
+\emph on
+behaviours
+\emph default
+, which are used when developing Erlang systems.
+\end_layout
+
+\begin_layout Standard
+The GGS makes heavy use of the behaviours supplied in the OTP.
+ The behaviours impose a programming style suitable for distributed and
+ concurrent applications, perfectly suitable for the GGS.
+ In particular, the GGS uses the following behaviours:
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+supervisor
+\emph default
+ behaviour, which is used when creating a supervisor.
+ Supervisors are used when monitoring processes in the Erlang system.
+ When a process exits wrongfully, the supervisor monitoring the process
+ in question decides which action to take.
+ In the GGS, the most common action is simply to restart the faulting process.
+ A more thorough discussion on supervisors can be found in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Supervisor-structure"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+gen_tcp 
+\emph default
+behaviour, which is used to work with TCP sockets for network communication.
+ Using the gen_tcp behaviour, network messages are converted to internal
+ Erlang messages and passed to a protocol parser, where the messages are
+ processed further.
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+gen_server
+\emph default
+ behaviour, which is used when constructing OTP servers in Erlang.
+ Using this behaviour, a state can easily be kept in a server process, greatly
+ increasing the usefulness of the server process.
+ There are many gen_servers in the GGS, it is the most widely used behaviour
+ in the project.
+ In addition to intruducing a state to the server, the gen_server behaviour
+ also imposes patterns for synchronous and asynchronous communication between
+ other gen_servers and other OTP behaviours.
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+gen_fsm
+\emph default
+ behaviour is used in one module in the GGS, the protocol parser.
+ Using the gen_fsm behaviour, finite state machines are easily developed.
+ Protocol parsers are an ideal example of where to use finite state machines,
+ which are widely used for parsing strings of text.
+\end_layout
+
+\begin_layout Standard
+In addition to supplying behaviours, the OTP also has a style for packaging
+ and running Erlang applications.
+ By packaging the GGS as an 
+\emph on
+application 
+\emph default
+the GGS can be started in a way uniform to most erlang software, providing
+ familiarity for other Erlang users, and eases the incorporation of the
+ GGS in other applications.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -4365,17 +4456,8 @@ Below is a concrete example of a simple chat server application written
 \end_layout
 
 \begin_layout Standard
-When the GGS receives a command from a client
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-We need to show a GGS packet somewhere
-\end_layout
-
-\end_inset
-
-, it is passed along to the game VM in a function called 
+When the GGS receives a command from a client, it is passed along to the
+ game VM in a function called 
 \emph on
 playerCommand.
 
@@ -4469,17 +4551,14 @@ changeNick
 \emph on
 changeNick 
 \emph default
-function uses a feature of the GGS called localStorage
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Write up on this!
-\end_layout
+function uses a feature of the GGS called localStorage (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Communication-with-external"
 
 \end_inset
 
-, which is an interface to the database backend contained in the database
+), which is an interface to the database backend contained in the database
  module (see 
 \begin_inset CommandInset ref
 LatexCommand ref
