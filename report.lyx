@@ -3995,13 +3995,27 @@ Techniques for ensuring reliability
 
 \begin_layout Standard
 One of the main goals of the project is to achieve high reliability.
- A highly reliable application is one that crashes very, very rarely 
-\begin_inset Note Note
-status open
+ The term 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Plain Layout
-CITATION NEEDED
-\end_layout
+reliable system
+\begin_inset Quotes erd
+\end_inset
+
+ is defined by the IEEE as a system with 
+\begin_inset Quotes eld
+\end_inset
+
+the ability of a system or component to perform its required functions under
+ stated conditions for a specified period of time
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "ieee_90"
 
 \end_inset
 
