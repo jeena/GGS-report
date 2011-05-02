@@ -61,6 +61,26 @@
 \usepackage[hmargin=3cm,vmargin=3.5cm]{geometry} 
 \usepackage{algorithmic}
 \usepackage{listings}
+
+\usepackage{color}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -3257,6 +3277,48 @@ Here we can have a more in-depth look at why Erlang was used, and outline
 \end_layout
 
 \begin_layout Section
+Communication with external systems and applications
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Communication-with-external"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+My idea here is that we describe the erlang-js (which failed, but nontheless),
+ v8, UUID and other external communication.
+ We shouldn't describe sockets here though..
+ or..
+ maybe?
+\end_layout
+
+\begin_layout Plain Layout
+Also discuss how we allow GDLs to communicate with Erlang, this is 
+\begin_inset Quotes eld
+\end_inset
+
+external
+\begin_inset Quotes erd
+\end_inset
+
+ to thre GDL.
+ Discuss the GGS world object (there is a reference to this secxtion for
+ that purpose)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 The modular structure of the GGS prototype
 \begin_inset CommandInset label
 LatexCommand label
@@ -3598,6 +3660,13 @@ The game virtual machine module
 
 \begin_layout Subsection
 The database module
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:The-database-module"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -3866,6 +3935,160 @@ Example of a GGS server application in Javascript
 \end_layout
 
 \begin_layout Standard
+Below is a concrete example of a simple chat server application written
+ using the GGS.
+ The language chosen for this chat server is JavaScript.
+ The GGS processes all incoming data through a protocol parser, which interprets
+ the data and parses it into an internal format for the GGS.
+\end_layout
+
+\begin_layout Standard
+When the GGS receives a command from a client
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We need to show a GGS packet somewhere
+\end_layout
+
+\end_inset
+
+, it is passed along to the game VM in a function called 
+\emph on
+playerCommand.
+
+\emph default
+ The 
+\emph on
+playerCommand
+\emph default
+ function is responsible for accepting the command into the VM.
+ Typically the 
+\emph on
+playerCommand
+\emph default
+ function contains conditional constructs which decide the next action to
+ take.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:A-concrete-example"
+
+\end_inset
+
+ an example of the 
+\emph on
+playerCommand
+\emph default
+ function can be seen.
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:A-concrete-example"
+
+\end_inset
+
+ the 
+\emph on
+playerCommand
+\emph default
+ function accepts two different commands.
+ The first command is a command which allows chat clients connected to the
+ chat server to change nicknames, which are used when chatting.
+ In order to change nickname, a client must send 
+\begin_inset Quotes eld
+\end_inset
+
+/nick
+\begin_inset Quotes erd
+\end_inset
+
+ immediately followed by a nickname.
+ When a message arrives to the GGS which has the form corresponding to the
+ nickname change, the 
+\emph on
+playerCommand
+\emph default
+ function is called with the parameters 
+\emph on
+player_id, command, 
+\emph default
+and 
+\emph on
+args
+\emph default
+ filled in appropriately.
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+playerCommand
+\emph default
+ function is responsible for calling the helper functions responsibly for
+ carrying out the actions of each message received.
+ 
+\emph on
+changeNick
+\emph default
+ is a function which is called when the 
+\begin_inset Quotes eld
+\end_inset
+
+/nick
+\begin_inset Quotes erd
+\end_inset
+
+ message is received.
+ The 
+\emph on
+changeNick 
+\emph default
+function uses a feature of the GGS called localStorage
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Write up on this!
+\end_layout
+
+\end_inset
+
+, which is an interface to the database backend contained in the database
+ module (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:The-database-module"
+
+\end_inset
+
+).
+ The database can be used as any key-value store, however the syntax for
+ insertions and fetch operations is tighty integrated in the GDL of the
+ GGS.
+\end_layout
+
+\begin_layout Standard
+Access to the localStorage is provided through the 
+\emph on
+GGS object
+\emph default
+, which also can be used to communicate with the rest of the system from
+ the GDL.
+ Implementation specifics of the GGS object are provided in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Communication-with-external"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float algorithm
 wide false
 sideways false
@@ -3879,7 +4102,92 @@ status open
 
 
 \backslash
-begin{lstlisting}
+lstset{    
+\end_layout
+
+\begin_layout Plain Layout
+
+language=JavaScript,    
+\end_layout
+
+\begin_layout Plain Layout
+
+backgroundcolor=
+\backslash
+color{white},    
+\end_layout
+
+\begin_layout Plain Layout
+
+extendedchars=true,    
+\end_layout
+
+\begin_layout Plain Layout
+
+basicstyle=
+\backslash
+footnotesize
+\backslash
+ttfamily,    
+\end_layout
+
+\begin_layout Plain Layout
+
+showstringspaces=false,    
+\end_layout
+
+\begin_layout Plain Layout
+
+showspaces=false,    
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,    
+\end_layout
+
+\begin_layout Plain Layout
+
+numberstyle=
+\backslash
+footnotesize,    
+\end_layout
+
+\begin_layout Plain Layout
+
+numbersep=9pt,    
+\end_layout
+
+\begin_layout Plain Layout
+
+tabsize=2,    
+\end_layout
+
+\begin_layout Plain Layout
+
+breaklines=true,    
+\end_layout
+
+\begin_layout Plain Layout
+
+showtabs=false,    
+\end_layout
+
+\begin_layout Plain Layout
+
+captionpos=b
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=JavaScript]
 \end_layout
 
 \begin_layout Plain Layout
@@ -3998,6 +4306,12 @@ end{lstlisting}
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:A-concrete-example"
+
+\end_inset
+
 A concrete example of a simple chat server written in Javascript, running
  on the GGS
 \end_layout
