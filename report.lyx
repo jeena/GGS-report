@@ -2968,21 +2968,15 @@ much like the threads in an operating system.
 \emph on
 context switching
 \emph default
-) is an expensive task in many systems.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Citation needed, perhaps the book for the 
-\emph on
-Unix Internals
-\emph default
- course?
-\end_layout
+) is an expensive task in many systems 
+\begin_inset CommandInset citation
+LatexCommand citep
+after "pg 80"
+key "McKusick:2004:DIF:1014910"
 
 \end_inset
 
- 
+.
 \end_layout
 
 \begin_layout Standard
@@ -3384,12 +3378,9 @@ status open
 
 \begin_layout Plain Layout
 More information on the SRP is available at: 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Insert adress!
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.objectmentor.com/resources/articles/srp.pdf"
 
 \end_inset
 
@@ -4962,22 +4953,7 @@ end{centering}
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:The-layout-of-1"
 
-\end_inset
-
-The layout of the GGS.
- The circles marked with 'C' topmost in the picture represent clients.
- The cloud marked 'network' pictured directly below the clients can be any
- network, for example the Internet.
- The barell figure marked 'backup' is a process being fed backup data from
- the coordinator.
- The barell marked 'State' contains the state of a table, and this is fed
- into the box marked 'Mnesia' which is database.
- Finally the figure shaped as a shield marked 'GameVM' contains the actual
- game process.
 \end_layout
 
 \end_inset
