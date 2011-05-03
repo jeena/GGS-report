@@ -4204,6 +4204,10 @@ Each game is uniquely identified by a table token and it's data is stored
  The Localstorage should contain data independent of the game state.
  Game resources, constants and globals are all examples of data that could
  reside within the Localstorage.
+ To store a value within the database, not only is the table token and the
+ name of the namespace required, but a unique key so that the value can
+ be successfully retrieved or modified later.
+ The key is fully decidable by the game developer.
  
 \end_layout
 
