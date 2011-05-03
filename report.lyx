@@ -360,22 +360,28 @@ status open
 
 
 \backslash
-nomenclature{Zork}{A textual computer game developed by students at MIT}
+nomenclature{
+\backslash
+textbf{Zork}}{A textual computer game developed by students at MIT}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{Pacman}{An early graphical computer game developed by Namco}
+nomenclature{
+\backslash
+textbf{Pacman}}{An early graphical computer game developed by Namco}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{NetHack}{An early computer game developed by the NetHack team,
- arguably the oldest computer game still in development}
+nomenclature{
+\backslash
+textbf{NetHack}}{An early computer game developed by the NetHack team, arguably
+ the oldest computer game still in development}
 \end_layout
 
 \end_inset
@@ -446,7 +452,9 @@ status open
 
 
 \backslash
-nomenclature{GGS}{Generic Game Server, a software for reliably hosting network
+nomenclature{
+\backslash
+textbf{GGS}}{Generic Game Server, a software for reliably hosting network
  games.
  The subject of this thesis.}
 \end_layout
@@ -508,7 +516,9 @@ status open
 
 
 \backslash
-nomenclature{Quake}{A first person shooter series developed by ID software.
+nomenclature{
+\backslash
+textbf{Quake}}{A first person shooter series developed by ID software.
  The series consists of four games.}
 \end_layout
 
@@ -516,7 +526,9 @@ nomenclature{Quake}{A first person shooter series developed by ID software.
 
 
 \backslash
-nomenclature{Doom}{A first person shooter series developed by ID software.
+nomenclature{
+\backslash
+textbf{Doom}}{A first person shooter series developed by ID software.
  The series consists of three games.}
 \end_layout
 
@@ -524,7 +536,9 @@ nomenclature{Doom}{A first person shooter series developed by ID software.
 
 
 \backslash
-nomenclature{World of Warcraft}{A MMORPG game developed by Blizzard.
+nomenclature{
+\backslash
+textbf{World of Warcraft}}{A MMORPG game developed by Blizzard.
  The world's most popular MMORPG by subscriber count.}
 \end_layout
 
@@ -532,7 +546,9 @@ nomenclature{World of Warcraft}{A MMORPG game developed by Blizzard.
 
 
 \backslash
-nomenclature{Counter-Strike}{A multiplayer first person shooter game, popular
+nomenclature{
+\backslash
+textbf{Counter-Strike}}{A multiplayer first person shooter game, popular
  in E-Sports.}
 \end_layout
 
@@ -540,15 +556,19 @@ nomenclature{Counter-Strike}{A multiplayer first person shooter game, popular
 
 
 \backslash
-nomenclature{Framework}{A supporting structure, the GGS is a framework for
- developing network games}
+nomenclature{
+\backslash
+textbf{Framework}}{A supporting structure, the GGS is a framework for developing
+ network games}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{First-person shooter}{A game in which centers around gun combat
+nomenclature{
+\backslash
+textbf{First-person shooter}}{A game in which centers around gun combat
  from the first person perspective.}
 \end_layout
 
@@ -556,7 +576,9 @@ nomenclature{First-person shooter}{A game in which centers around gun combat
 
 
 \backslash
-nomenclature{MMORPG}{Massively multiplayer online role playing game.
+nomenclature{
+\backslash
+textbf{MMORPG}}{Massively multiplayer online role playing game.
  An online game with several thousand participants.}
 \end_layout
 
@@ -601,15 +623,19 @@ status open
 
 
 \backslash
-nomenclature{Hardware failiure}{A failiure in hardware (hard drive, memory,
- processor, etc) which causes a system to stop functioning}
+nomenclature{
+\backslash
+textbf{Hardware failiure}}{A failiure in hardware (hard drive, memory, processor
+, etc) which causes a system to stop functioning}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{Software failiure}{A failiure in software (the GGS, the operating
+nomenclature{
+\backslash
+textbf{Software failiure}}{A failiure in software (the GGS, the operating
  system, etc) which causes a system to stop functioning}
 \end_layout
 
@@ -658,8 +684,9 @@ status open
 
 
 \backslash
-nomenclature{The nine nines}{A common goal for availability in the telecom
- business.
+nomenclature{
+\backslash
+textbf{The nine nines}}{A common goal for availability in the telecom business.
  A system with nine nines of availability is available 99.999999999% of the
  time}
 \end_layout
@@ -668,15 +695,19 @@ nomenclature{The nine nines}{A common goal for availability in the telecom
 
 
 \backslash
-nomenclature{Downtime}{The amount of time a system is unavailable and does
- not function}
+nomenclature{
+\backslash
+textbf{Downtime}}{The amount of time a system is unavailable and does not
+ function}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{Uptime}{The amount of time a system is available and functions}
+nomenclature{
+\backslash
+textbf{Uptime}}{The amount of time a system is available and functions}
 \end_layout
 
 \end_inset
@@ -888,51 +919,65 @@ status open
 
 
 \backslash
-nomenclature{SQL}{Structured Query Language, a computer language common
- in querying certain databases}
+nomenclature{
+\backslash
+textbf{SQL}}{Structured Query Language, a computer language common in querying
+ certain databases}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{JavaScript}{A programming language originally developed by
- Netscape, common in web programming}
+nomenclature{
+\backslash
+textbf{JavaScript}}{A programming language originally developed by Netscape,
+ common in web programming}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{COBOL}{Programming language}
+nomenclature{
+\backslash
+textbf{COBOL}}{Programming language}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{C++}{Programming language}
+nomenclature{
+\backslash
+textbf{C++}}{Programming language}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{Java}{Programming language}
+nomenclature{
+\backslash
+textbf{Java}}{Programming language}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{AXD301}{Telephone switch developed by Ericsson}
+nomenclature{
+\backslash
+textbf{AXD301}}{Telephone switch developed by Ericsson}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{Erlang}{A concurrent programming language, often used for telecom
+nomenclature{
+\backslash
+textbf{Erlang}}{A concurrent programming language, often used for telecom
  applications.
  The main language of the GGS}
 \end_layout
@@ -1093,15 +1138,19 @@ status open
 
 
 \backslash
-nomenclature{GDL}{Game Development Language, the language used to program
- games in the GGS}
+nomenclature{
+\backslash
+textbf{GDL}}{Game Development Language, the language used to program games
+ in the GGS}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{VM}{Virtual Machine}
+nomenclature{
+\backslash
+textbf{VM}}{Virtual Machine}
 \end_layout
 
 \end_inset
@@ -1187,14 +1236,18 @@ status open
 
 
 \backslash
-nomenclature{UDP}{User Datagram Protocol, a connectionless networking protocol}
+nomenclature{
+\backslash
+textbf{UDP}}{User Datagram Protocol, a connectionless networking protocol}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{TCP}{Transmission Control Protocol, a streaming network protocol}
+nomenclature{
+\backslash
+textbf{TCP}}{Transmission Control Protocol, a streaming network protocol}
 \end_layout
 
 \end_inset
@@ -1228,7 +1281,9 @@ status open
 
 
 \backslash
-nomenclature{Latency}{A measure of delay, often measured in milliseconds}
+nomenclature{
+\backslash
+textbf{Latency}}{A measure of delay, often measured in milliseconds}
 \end_layout
 
 \end_inset
@@ -1318,7 +1373,9 @@ status open
 
 
 \backslash
-nomenclature{Module}{A part of a larger system}
+nomenclature{
+\backslash
+textbf{Module}}{A part of a larger system}
 \end_layout
 
 \end_inset
@@ -2214,7 +2271,9 @@ status open
 
 
 \backslash
-nomenclature{HTTP}{Hyper Text Transport Protocol, a network protocol commonly
+nomenclature{
+\backslash
+textbf{HTTP}}{Hyper Text Transport Protocol, a network protocol commonly
  used to deliver web pages}
 \end_layout
 
@@ -2469,8 +2528,9 @@ status open
 
 
 \backslash
-nomenclature{Supervisor}{A process monitoring and hadning crashes in other
- processes}
+nomenclature{
+\backslash
+textbf{Supervisor}}{A process monitoring and hadning crashes in other processes}
 \end_layout
 
 \end_inset
@@ -2547,7 +2607,9 @@ status open
 
 
 \backslash
-nomenclature{Amazon EC2}{A cloud computation service}
+nomenclature{
+\backslash
+textbf{Amazon EC2}}{A cloud computation service}
 \end_layout
 
 \end_inset
@@ -2641,7 +2703,9 @@ status open
 
 
 \backslash
-nomenclature{UUID}{Universally Unique Identifier}
+nomenclature{
+\backslash
+textbf{UUID}}{Universally Unique Identifier}
 \end_layout
 
 \end_inset
@@ -2861,16 +2925,20 @@ status open
 
 
 \backslash
-nomenclature{MAC Address}{Media Access Control address, used to identify
- network cards}
+nomenclature{
+\backslash
+textbf{MAC Address}}{Media Access Control address, used to identify network
+ cards}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{SHA-1}{Cryptigraphic hash function, designed by the National
- Security Agency (NSA)}
+nomenclature{
+\backslash
+textbf{SHA-1}}{Cryptigraphic hash function, designed by the National Security
+ Agency (NSA)}
 \end_layout
 
 \end_inset
@@ -2969,9 +3037,10 @@ status open
 
 
 \backslash
-nomenclature{Network split}{Separation of two networks, occurs when two
- networks can not communicate, commonly because of a hardware or software
- failiure}
+nomenclature{
+\backslash
+textbf{Network split}}{Separation of two networks, occurs when two networks
+ can not communicate, commonly because of a hardware or software failiure}
 \end_layout
 
 \end_inset
@@ -3087,8 +3156,10 @@ status open
 
 
 \backslash
-nomenclature{Sandbox}{A protected environment in which computer software
- can be run safely}
+nomenclature{
+\backslash
+textbf{Sandbox}}{A protected environment in which computer software can
+ be run safely}
 \end_layout
 
 \end_inset
@@ -3214,42 +3285,54 @@ status open
 
 
 \backslash
-nomenclature{CouchDB}{Database server}
+nomenclature{
+\backslash
+textbf{CouchDB}}{Database server}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{Riak}{Database server}
+nomenclature{
+\backslash
+textbf{Riak}}{Database server}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{GitHub.com}{Social coding website}
+nomenclature{
+\backslash
+textbf{GitHub.com}}{Social coding website}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{ActionScript}{Programming language}
+nomenclature{
+\backslash
+textbf{ActionScript}}{Programming language}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{Lua}{Programming language}
+nomenclature{
+\backslash
+textbf{Lua}}{Programming language}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{.NET}{Software platform}
+nomenclature{
+\backslash
+textbf{.NET}}{Software platform}
 \end_layout
 
 \end_inset
@@ -3471,14 +3554,18 @@ status open
 
 
 \backslash
-nomenclature{LWP}{Light Weight Process}
+nomenclature{
+\backslash
+textbf{LWP}}{Light Weight Process}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{Context switch}{The act of switching from one context, commonly
+nomenclature{
+\backslash
+textbf{Context switch}}{The act of switching from one context, commonly
  a process, to another.
  Used by operating systems to achieve multi tasking}
 \end_layout
@@ -3665,8 +3752,10 @@ status open
 
 
 \backslash
-nomenclature{Mutex}{A construct for achieving mutial exclusion, used to
- avoid simultaneous access to shared resources in computer systems}
+nomenclature{
+\backslash
+textbf{Mutex}}{A construct for achieving mutial exclusion, used to avoid
+ simultaneous access to shared resources in computer systems}
 \end_layout
 
 \end_inset
@@ -3810,14 +3899,18 @@ status open
 
 
 \backslash
-nomenclature{OTP}{Open Telecom Platform, a software suite for Erlang}
+nomenclature{
+\backslash
+textbf{OTP}}{Open Telecom Platform, a software suite for Erlang}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{Behaviour}{A design pattern in OTP}
+nomenclature{
+\backslash
+textbf{Behaviour}}{A design pattern in OTP}
 \end_layout
 
 \end_inset
@@ -3921,8 +4014,9 @@ status open
 
 
 \backslash
-nomenclature{Application}{A way of packaging Erlang software in a uniform
- way}
+nomenclature{
+\backslash
+textbf{Application}}{A way of packaging Erlang software in a uniform way}
 \end_layout
 
 \end_inset
@@ -3999,8 +4093,10 @@ status open
 
 
 \backslash
-nomenclature{WebStorage}{A new standard for letting websites store data
- on visitors' computers}
+nomenclature{
+\backslash
+textbf{WebStorage}}{A new standard for letting websites store data on visitors'
+ computers}
 \end_layout
 
 \end_inset
@@ -4128,15 +4224,19 @@ status open
 
 
 \backslash
-nomenclature{SRP}{Single Responsibility Principle}
+nomenclature{
+\backslash
+textbf{SRP}}{Single Responsibility Principle}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{Object Oriented Programming}{A programming paradigm focusing
- on objects}
+nomenclature{
+\backslash
+textbf{Object Oriented Programming}}{A programming paradigm focusing on
+ objects}
 \end_layout
 
 \end_inset
@@ -4835,7 +4935,9 @@ status open
 
 
 \backslash
-nomenclature{Mnesia}{Database server used in the GGS}
+nomenclature{
+\backslash
+textbf{Mnesia}}{Database server used in the GGS}
 \end_layout
 
 \end_inset
@@ -4922,17 +5024,20 @@ status open
 
 
 \backslash
-nomenclature{Reliability}{The ability of a system or component to perform
- its required functions under stated conditions for a specified period of
- time}
+nomenclature{
+\backslash
+textbf{Reliability}}{The ability of a system or component to perform its
+ required functions under stated conditions for a specified period of time}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{IEEE}{Institute of Electrical and Electronics Engineers, read
- "I-triple-E"}
+nomenclature{
+\backslash
+textbf{IEEE}}{Institute of Electrical and Electronics Engineers, read "I-triple-
+E"}
 \end_layout
 
 \end_inset
@@ -5617,14 +5722,18 @@ status open
 
 
 \backslash
-nomenclature{V8}{JavaScript engine developed by Google}
+nomenclature{
+\backslash
+textbf{V8}}{JavaScript engine developed by Google}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-nomenclature{SpiderMonkey}{JavaScript engine developed by Mozilla}
+nomenclature{
+\backslash
+textbf{SpiderMonkey}}{JavaScript engine developed by Mozilla}
 \end_layout
 
 \end_inset
@@ -5931,7 +6040,9 @@ status open
 
 
 \backslash
-nomenclature{ETS}{Erlang Term Storage}
+nomenclature{
+\backslash
+textbf{ETS}}{Erlang Term Storage}
 \end_layout
 
 \end_inset
