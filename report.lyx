@@ -4747,10 +4747,53 @@ name "sub:The-database-module"
 \end_layout
 
 \begin_layout Standard
-Game data from all games on the GGS are stored here.
- The database module is using a database management system called Mnesia.
- Game data will not be lost when a game is stopped or has went down for
- unknown reasons.
+Game data from all games on the GGS are stored in the database backend of
+ the database module.
+\end_layout
+
+\begin_layout Standard
+In the GGS prototype the database module is using a database management
+ system called Mnesia.
+ Mnesia ships with the standard Erlang distribution and is a key-value store
+ type database.
+ Mnesia is designed to handle the stress of telecoms systems, and has some
+ features specifically tailored for telecoms which are not commonly found
+ in other databases.
+ Key features of the Mnesia database are:
+\end_layout
+
+\begin_layout Itemize
+Fast key/value lookups
+\end_layout
+
+\begin_layout Itemize
+Distribution of the database system
+\end_layout
+
+\begin_layout Itemize
+Fault tolerance
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "667766"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The features of Mnesia originally intended for telecoms prove very useful
+ for the purposes of the GGS as well.
+ The fault tolerance and speed of Mnesia are very valueable tools, the fast
+ key/value lookups permit many lookups per second to the database.
+\end_layout
+
+\begin_layout Standard
+Game data will not be lost when a game is stopped or has gone down for unknown
+ reasons.
  This makes it possible to continue a game just before the failure without
  having to start the game from the beginning.
  
@@ -4770,8 +4813,13 @@ nomenclature{Mnesia}{Database server used in the GGS}
 \end_layout
 
 \begin_layout Standard
-Each game is uniquely identified by a table token and it's data is stored
- within two different namespaces.
+The GGS stores the game state in the distributed Mnesia database, from which
+ the state can be restored in the event of a crash.
+\end_layout
+
+\begin_layout Standard
+Each game is uniquely identified by a table token and the data of each game
+ is stored within two different namespaces.
  The namespaces are named World and Localstorage.
  The World is used contain all game data related to the game state.
  This sort of game data may change during the runtime of the game.
@@ -4786,10 +4834,21 @@ Each game is uniquely identified by a table token and it's data is stored
 \end_layout
 
 \begin_layout Standard
-The interface of the database module has been inspired by the W3C Web Storage
- interface.
- Only difference is the usage of the game token and namespace within the
- database module of GGS.
+The interface of the database module is an implementation of the upcoming
+ W3C Web Storage specification.
+ Web Storage is intended for use in web browsers, providing a persistant
+ storage on the local machine for web applications.
+ The storage can be used to communicate in between browser windows (which
+ is difficult when using cookies), and to store larger chunks of data 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "webstorage:website"
+
+\end_inset
+
+.
+ Usage of the web storage standard in the GGS provides a well documented
+ interface to the database backend.
 \end_layout
 
 \begin_layout Section
