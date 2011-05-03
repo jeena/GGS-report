@@ -2968,21 +2968,15 @@ much like the threads in an operating system.
 \emph on
 context switching
 \emph default
-) is an expensive task in many systems.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Citation needed, perhaps the book for the 
-\emph on
-Unix Internals
-\emph default
- course?
-\end_layout
+) is an expensive task in many systems 
+\begin_inset CommandInset citation
+LatexCommand citep
+after "pg 80"
+key "McKusick:2004:DIF:1014910"
 
 \end_inset
 
- 
+.
 \end_layout
 
 \begin_layout Standard
@@ -3289,6 +3283,97 @@ reference "sec:Game-Development-Language"
 \end_layout
 
 \begin_layout Standard
+Development of the GGS would have been hard if not impossible had it not
+ been for the 
+\emph on
+OTP
+\emph default
+ supplied with the standard Erlang distribution.
+ The OTP (Open Telecom Platform) is a set of standard libraries and design
+ patterns, called 
+\emph on
+behaviours
+\emph default
+, which are used when developing Erlang systems.
+\end_layout
+
+\begin_layout Standard
+The GGS makes heavy use of the behaviours supplied in the OTP.
+ The behaviours impose a programming style suitable for distributed and
+ concurrent applications, perfectly suitable for the GGS.
+ In particular, the GGS uses the following behaviours:
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+supervisor
+\emph default
+ behaviour, which is used when creating a supervisor.
+ Supervisors are used when monitoring processes in the Erlang system.
+ When a process exits wrongfully, the supervisor monitoring the process
+ in question decides which action to take.
+ In the GGS, the most common action is simply to restart the faulting process.
+ A more thorough discussion on supervisors can be found in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Supervisor-structure"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+gen_tcp 
+\emph default
+behaviour, which is used to work with TCP sockets for network communication.
+ Using the gen_tcp behaviour, network messages are converted to internal
+ Erlang messages and passed to a protocol parser, where the messages are
+ processed further.
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+gen_server
+\emph default
+ behaviour, which is used when constructing OTP servers in Erlang.
+ Using this behaviour, a state can easily be kept in a server process, greatly
+ increasing the usefulness of the server process.
+ There are many gen_servers in the GGS, it is the most widely used behaviour
+ in the project.
+ In addition to intruducing a state to the server, the gen_server behaviour
+ also imposes patterns for synchronous and asynchronous communication between
+ other gen_servers and other OTP behaviours.
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+gen_fsm
+\emph default
+ behaviour is used in one module in the GGS, the protocol parser.
+ Using the gen_fsm behaviour, finite state machines are easily developed.
+ Protocol parsers are an ideal example of where to use finite state machines,
+ which are widely used for parsing strings of text.
+\end_layout
+
+\begin_layout Standard
+In addition to supplying behaviours, the OTP also has a style for packaging
+ and running Erlang applications.
+ By packaging the GGS as an 
+\emph on
+application 
+\emph default
+the GGS can be started in a way uniform to most erlang software, providing
+ familiarity for other Erlang users, and eases the incorporation of the
+ GGS in other applications.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -3314,25 +3399,59 @@ name "sec:Communication-with-external"
 \end_layout
 
 \begin_layout Standard
-A game launched on the GGS is run with help of a virtual machine.
+A game launched on the GGS is run within a virtual machine.
  For each programming language supported, there is a virtual machine that
- interprets it and an interface for communication between the GGS, the game
- and the players playing the game.
- Callbacks written in Erlang are registered to the vm for the interface
+ interprets the game.
+ Furthermore an interface for communication between the GGS, the game and
+ the players playing the game must be present.
+\end_layout
+
+\begin_layout Standard
+The reason for the GGS requiring a communication channel between the game
+ VM and Erlang is in part because the GGS makes heavy use of callbacks.
+ Callbacks written in Erlang are registered to the VM for the interface
  to work.
  It is only with the help of the interface that the game developer can access
- the game state and share data between players.
- The interface provides access to three objects called World, Player and
- Localstorage.
+ the game state and send messages between players.
+ The interface provides access to three objects called 
+\emph on
+world
+\emph default
+, 
+\emph on
+player
+\emph default
+ and 
+\emph on
+localstorage
+\emph default
+.
  The game state is safely stored in a database and retrieved for manipulation
- by a call for the World object.
- Interaction with the players is done the same way using the Player object
+ by a call for the world object.
+ Interaction with the players is done the same way using the player object
  instead.
- The Localstorage is a convenient way to store globals and other variables
+ The localstorage is a convenient way to store globals and other variables
  seperated from the game state.
  Unique id:s called gametokens are generated for hosted games so that they
  are not mixed up.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Go in to more detail about how the world, player and localstorage
+ objects are implemented.
+ Also discuss localstorage and how it derives from the webstorage standard
+ in detail.
+ This is a great point on how we try to follow standards.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3384,12 +3503,9 @@ status open
 
 \begin_layout Plain Layout
 More information on the SRP is available at: 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Insert adress!
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.objectmentor.com/resources/articles/srp.pdf"
 
 \end_inset
 
@@ -4011,7 +4127,7 @@ After a crash in a table process, the entire table must be rebuilt and the
  Data kept in the actual game is not automatically corrupted by the crash
  in a table, however the table must be re-associated with the game VM is
  was associated with prior to the crash of the table.
- The table process maps well into the setting of the real-worl chess clib
+ The table process maps well into the setting of the real-world chess clib
  scenario previously discussed.
  A table works in the same way in a real world setting as in the GGS setting.
 \end_layout
@@ -4021,16 +4137,40 @@ The game virtual machine module
 \end_layout
 
 \begin_layout Standard
-This module is holds the game logic of a game and is responsible for the
- vm associated with each game.
- It consists the state of the vm and a table token associated with a running
- game.
- The game token is given to game vm during initialization.
- This will create a new vm instance and various objects associated to the
- vm instance.
- Then the source code of a game is loaded into the vm and the game is ready
- for startup.
- This module does not affect game runtime but evaluates a new game state
+This module holds the game logic of a game and is responsible for the vm
+ associated with each game.
+ 
+\end_layout
+
+\begin_layout Standard
+The game VM contains the state of the VM and a table token associated with
+ a running game.
+ GameVM is started by the table module.
+ The table module hands over a token to the game VM during initialization.
+ During initialization a new VM instance and various objects associated
+ to the VM instance will be created.
+ Callbacks to Erlang are registered into the VM and then the source code
+ of a game is loaded into the VM and the game is ready for startup.
+ The only means for a game to communicate with the VM is through usage of
+ a provided interface.
+ 
+\end_layout
+
+\begin_layout Standard
+The VM itself makes it possible for the game developer to program in the
+ prograimming language covered by the VM.
+ In future releases, more game VM:s will be added to support more programming
+ languages.
+ Because the game VM keeps track of the correct table, the game developer
+ doesn't need to take this into consideration when programming a game.
+ If a method within the game sends data to a player, it will be delivered
+ to the player in the correct running game.
+ The same game token is used to store the game state in the db.
+ Therefore, no game states will be mixed up either.
+\end_layout
+
+\begin_layout Standard
+This module does not affect game runtime but evaluates a new game state
  and handles communication between the game and the players.
 \end_layout
 
@@ -4043,6 +4183,39 @@ name "sub:The-database-module"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Game data from all games on the GGS are stored here.
+ The database module is using a database management system called Mnesia.
+ Game data will not be lost when a game is stopped or has went down for
+ unknown reasons.
+ This makes it possible to continue a game just before the failure without
+ having to start the game from the beginning.
+ 
+\end_layout
+
+\begin_layout Standard
+Each game is uniquely identified by a table token and it's data is stored
+ within two different namespaces.
+ The namespaces are named World and Localstorage.
+ The World is used contain all game data related to the game state.
+ This sort of game data may change during the runtime of the game.
+ The Localstorage should contain data independent of the game state.
+ Game resources, constants and globals are all examples of data that could
+ reside within the Localstorage.
+ To store a value within the database, not only is the table token and the
+ name of the namespace required, but a unique key so that the value can
+ be successfully retrieved or modified later.
+ The key is fully decidable by the game developer.
+ 
+\end_layout
+
+\begin_layout Standard
+The interface of the database module has been inspired by the W3C Web Storage
+ interface.
+ Only difference is the usage of the game token and namespace within the
+ database module of GGS.
 \end_layout
 
 \begin_layout Section
@@ -4340,17 +4513,8 @@ Below is a concrete example of a simple chat server application written
 \end_layout
 
 \begin_layout Standard
-When the GGS receives a command from a client
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-We need to show a GGS packet somewhere
-\end_layout
-
-\end_inset
-
-, it is passed along to the game VM in a function called 
+When the GGS receives a command from a client, it is passed along to the
+ game VM in a function called 
 \emph on
 playerCommand.
 
@@ -4444,17 +4608,14 @@ changeNick
 \emph on
 changeNick 
 \emph default
-function uses a feature of the GGS called localStorage
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Write up on this!
-\end_layout
+function uses a feature of the GGS called localStorage (see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Communication-with-external"
 
 \end_inset
 
-, which is an interface to the database backend contained in the database
+), which is an interface to the database backend contained in the database
  module (see 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4904,7 +5065,8 @@ The project has not followed any specific software development methodology.
  are made by team members rather than an outside customer or stakeholder.
  The process can be described as a plan-driven development method going
  from brainstorming to design, then implementation and finally testing.
- Yet there have been cycles in the process such as redesign and code refactoring.
+ Yet there has been cycles in the process in form of redesign and code refactori
+ng.
 \end_layout
 
 \begin_layout Section
@@ -4962,22 +5124,7 @@ end{centering}
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:The-layout-of-1"
 
-\end_inset
-
-The layout of the GGS.
- The circles marked with 'C' topmost in the picture represent clients.
- The cloud marked 'network' pictured directly below the clients can be any
- network, for example the Internet.
- The barell figure marked 'backup' is a process being fed backup data from
- the coordinator.
- The barell marked 'State' contains the state of a table, and this is fed
- into the box marked 'Mnesia' which is database.
- Finally the figure shaped as a shield marked 'GameVM' contains the actual
- game process.
 \end_layout
 
 \end_inset
@@ -5006,6 +5153,10 @@ The specification of the GGS prototype is huge and like many other software
 Performance
 \end_layout
 
+\begin_layout Subsubsection
+Protocols
+\end_layout
+
 \begin_layout Standard
 Because of TCP being a connection oriented protocol, it isn't suited for
  all types of game data transfers.
@@ -5019,8 +5170,23 @@ y on the GGS.
  Latency is of highest importance in realtime games as it improves realism
  and fairness in gameplay and many game developers requires the freedom
  to take care of safety issues as packet losses themselves.
- This concludes that UDP would be a benefit for GGS, game developers and
- game players alike.
+ This concludes that UDP would be a benefit for the GGS, game developers
+ and game players alike.
+\end_layout
+
+\begin_layout Subsubsection
+Database
+\end_layout
+
+\begin_layout Standard
+Currently Mnesia is used for game data storage.
+ During stress tests, Mnesia has turned out to be the bottleneck due to
+ data losses when too many games are played on the GGS simultaneously.
+ This could be prevented by replacing Mnesia with another database management
+ system or use Mnesia in combination with the ETS module of erlang.
+ ETS provides fast access to the RAM and thus Mnesia could be used less
+ frequently.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -5029,14 +5195,14 @@ Compatibility
 
 \begin_layout Standard
 GGS relies on modern technologies.
- This includes the virtual machines(vm) that the GGS uses for communication
+ This includes the virtual machines(VM) that the GGS uses for communication
  between Erlang and the GDL:s.
- These specific vm:s are crucial for game developers to be able to write
+ These specific VM:s are crucial for game developers to be able to write
  games in other languages than Erlang.
- Therefore it would be best for the GGS to have as many of these vm:s implemente
+ Therefore it would be best for the GGS to have as many of these VM:s implemente
 d as possible.
- The vm:s taken into consideration so far have been unstable or incomplete
- and it is possible to search for more vm:s, testing them and intergrate
+ The VM:s taken into consideration so far have been unstable or incomplete
+ and it is possible to search for more VM:s, testing them and intergrate
  them into the GGS prototype.
 \end_layout
 
