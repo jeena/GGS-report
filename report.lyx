@@ -5220,10 +5220,30 @@ The GGS prototype installation procedure requires different configuring
 5.3.4 Usage
 \end_layout
 
+\begin_layout Subsubsection
+Programming languages
+\end_layout
+
 \begin_layout Standard
-The GGS doesn't support many programming languages nor does it have a complete
- documentation.
- This needs to be taken care of in future versions.
+The GGS doesn't support many programming languages.
+ For a programming language to be compatible with the GGS, not only does
+ it require a VM for that specific language, but the VM must have the ability
+ to communicate to Erlang.
+ More research is needed to find VM:s with this built in functionality.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Documentation
+\end_layout
+
+\begin_layout Standard
+To start the GGS isn't self explanatory.
+ This together with overall usage of GGS should be documented.
+ The interface for usage of game developers is also in need of documentation.
+ Features and requirements with respect to the GGS would assist users to
+ know what they need in order to use the GGS and how they would benefit
+ of it.
 \end_layout
 
 \begin_layout Chapter
