@@ -5195,14 +5195,14 @@ Compatibility
 
 \begin_layout Standard
 GGS relies on modern technologies.
- This includes the virtual machines(vm) that the GGS uses for communication
+ This includes the virtual machines(VM) that the GGS uses for communication
  between Erlang and the GDL:s.
- These specific vm:s are crucial for game developers to be able to write
+ These specific VM:s are crucial for game developers to be able to write
  games in other languages than Erlang.
- Therefore it would be best for the GGS to have as many of these vm:s implemente
+ Therefore it would be best for the GGS to have as many of these VM:s implemente
 d as possible.
- The vm:s taken into consideration so far have been unstable or incomplete
- and it is possible to search for more vm:s, testing them and intergrate
+ The VM:s taken into consideration so far have been unstable or incomplete
+ and it is possible to search for more VM:s, testing them and intergrate
  them into the GGS prototype.
 \end_layout
 
