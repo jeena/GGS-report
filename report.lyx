@@ -3323,8 +3323,42 @@ Testing
 \end_layout
 
 \begin_layout Standard
-NOTE: This is not a part of the final text.
- There has been some work on the area of testing game servers, see 
+There are several ways in which the GGS can be tested.
+ The most important aspect has been deemed to be the experience players
+ have when using the GGS.
+ In order to test the user experience of the GGS, a realistic usage scenario
+ has to be set up.
+\end_layout
+
+\begin_layout Standard
+The GGS is intended to be used for powering games which have many concurrent
+ players.
+ The players need not participate in the same instance of the game, games
+ such as chess are prime candidates for the GGS.
+\end_layout
+
+\begin_layout Standard
+When developing the GGS, two main categories of games exhibiting different
+ performance demands were identified; real-time games and turn-based games.
+ The real-time games were deemed more demanding than the turn based games.
+ Tests were carried out using a real time game, since this is the more demanding
+ type of games.
+\end_layout
+
+\begin_layout Standard
+The real time game chosen for testing the GGS is 
+\emph on
+Pong
+\emph default
+, a game in which two players play a game involving a all and two paddles.
+ The goal for each player is to shoot eside the othre player's paddle while
+ not allowing the ball to pass by her own paddle.
+ The game requires real time updates and is quite demanding when played
+ in several instances concurrently.
+\end_layout
+
+\begin_layout Standard
+There has been some work on the area of testing game servers, see 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Lidholt02designand"
@@ -3347,6 +3381,24 @@ number of clients
 \end_inset
 
  able to connect to the server, and the system load.
+\end_layout
+
+\begin_layout Standard
+Similar tests were performed on the GGS, and the results of these tests
+ are visible in chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Results-and-discussion"
+
+\end_inset
+
+.
+ The tests were initially performed by starting an operating system process
+ for each player.
+ Due to lack of hardware, not enough player processes could be started in
+ this way.
+ The bots were re-written in Erlang, and due to Erlang's light weigh threads,
+ enough processes could be created to successfully test the server.
 \end_layout
 
 \begin_layout Chapter
@@ -5729,6 +5781,13 @@ Usability
 
 \begin_layout Chapter
 Results and discussion 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Results-and-discussion"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
