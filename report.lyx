@@ -2285,6 +2285,16 @@ Load balancing is a key component to achieve scalability in network systems.
 \end_layout
 
 \begin_layout Standard
+Load balancing can often be implemented using dedicated software, this means
+ that in many applications load balancing may not be implemented because
+ it already exist functional solutions.
+ This depends on what specific needs the system have and a minor goal of
+ the project is to analyze whether the GGS project can use existing load
+ balancing tools or if it is necessary to implement load balancing in the
+ project.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -5071,6 +5081,29 @@ ng.
 
 \begin_layout Section
 Statistics
+\end_layout
+
+\begin_layout Standard
+Important things to note are that the number of clients is not a good way
+ of measuring the performance of the server because the server is possible
+ to have a large number of clients on the server but it can not handle all
+ the information.
+ Instead the performance of the server should be measured in the number
+ of messages it can handle per second.
+\end_layout
+
+\begin_layout Standard
+We were able to reach 6000 messages per second on the server, which corresponds
+ to around 350 clients.
+ However soon after this mnesia printed some warnings and the clients started
+ to lag.
+ With this in mind one thing to investigate is if mnesia is the bottleneck
+ in the system.
+ Current game servers do not use databases to save their state and maybe
+ we can see the reason here.
+ Other possible bottlenecks may be the protocol, but this seems less likely
+ than mnesia.
+ 
 \end_layout
 
 \begin_layout Standard
