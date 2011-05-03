@@ -4211,6 +4211,13 @@ Each game is uniquely identified by a table token and it's data is stored
  
 \end_layout
 
+\begin_layout Standard
+The interface of the database module has been inspired by the W3C Web Storage
+ interface.
+ Only difference is the usage of the game token and namespace within the
+ database module of GGS.
+\end_layout
+
 \begin_layout Section
 Techniques for ensuring reliability 
 \end_layout
@@ -5058,7 +5065,8 @@ The project has not followed any specific software development methodology.
  are made by team members rather than an outside customer or stakeholder.
  The process can be described as a plan-driven development method going
  from brainstorming to design, then implementation and finally testing.
- Yet there have been cycles in the process such as redesign and code refactoring.
+ Yet there has been cycles in the process in form of redesign and code refactori
+ng.
 \end_layout
 
 \begin_layout Section
