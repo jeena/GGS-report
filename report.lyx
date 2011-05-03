@@ -4139,14 +4139,30 @@ The game virtual machine module
 \begin_layout Standard
 This module holds the game logic of a game and is responsible for the vm
  associated with each game.
- It contains the state of the VM and a table token associated with a running
+ 
+\end_layout
+
+\begin_layout Standard
+It contains the state of the VM and a table token associated with a running
  game.
- The game token is given to game VM during initialization.
- This will create a new vm instance and various objects associated to the
- VM instance.
- Then the source code of a game is loaded into the VM and the game is ready
- for startup.
- This module does not affect game runtime but evaluates a new game state
+ The table token is given to game VM during initialization.
+ During initialization a new VM instance and various objects associated
+ to the VM instance will be created.
+ Callbacks to Erlang are registered into the VM and then the source code
+ of a game is loaded into the VM and the game is ready for startup.
+ 
+\end_layout
+
+\begin_layout Standard
+The VM itself makes it possible for the game developer to program in the
+ prograimming language covered by the VM.
+ In future releases, more game VM:s will be added to support more programming
+ languages.
+ 
+\end_layout
+
+\begin_layout Standard
+This module does not affect game runtime but evaluates a new game state
  and handles communication between the game and the players.
 \end_layout
 
