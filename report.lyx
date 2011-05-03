@@ -5153,6 +5153,10 @@ The specification of the GGS prototype is huge and like many other software
 Performance
 \end_layout
 
+\begin_layout Subsubsection
+Protocols
+\end_layout
+
 \begin_layout Standard
 Because of TCP being a connection oriented protocol, it isn't suited for
  all types of game data transfers.
@@ -5166,8 +5170,23 @@ y on the GGS.
  Latency is of highest importance in realtime games as it improves realism
  and fairness in gameplay and many game developers requires the freedom
  to take care of safety issues as packet losses themselves.
- This concludes that UDP would be a benefit for GGS, game developers and
- game players alike.
+ This concludes that UDP would be a benefit for the GGS, game developers
+ and game players alike.
+\end_layout
+
+\begin_layout Subsubsection
+Database
+\end_layout
+
+\begin_layout Standard
+Currently Mnesia is used for game data storage.
+ During stress tests, Mnesia has turned out to be the bottleneck due to
+ data losses when too many games are played on the GGS simultaneously.
+ This could be prevented by replacing Mnesia with another database management
+ system or use Mnesia in combination with the ETS module of erlang.
+ ETS provides fast access to the RAM and thus Mnesia could be used less
+ frequently.
+ 
 \end_layout
 
 \begin_layout Subsection
