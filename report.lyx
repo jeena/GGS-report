@@ -4185,6 +4185,28 @@ name "sub:The-database-module"
 
 \end_layout
 
+\begin_layout Standard
+Game data from all games on the GGS are stored here.
+ The database module is using a database management system called Mnesia.
+ Game data will not be lost when a game is stopped or has went down for
+ unknown reasons.
+ This makes it possible to continue a game just before the failure without
+ having to start the game from the beginning.
+ 
+\end_layout
+
+\begin_layout Standard
+Each game is uniquely identified by a table token and it's data is stored
+ within two different namespaces.
+ The namespaces are named World and Localstorage.
+ The World is used contain all game data related to the game state.
+ This sort of game data may change during the runtime of the game.
+ The Localstorage should contain data independent of the game state.
+ Game resources, constants and globals are all examples of data that could
+ reside within the Localstorage.
+ 
+\end_layout
+
 \begin_layout Section
 Techniques for ensuring reliability 
 \end_layout
