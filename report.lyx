@@ -4127,7 +4127,7 @@ After a crash in a table process, the entire table must be rebuilt and the
  Data kept in the actual game is not automatically corrupted by the crash
  in a table, however the table must be re-associated with the game VM is
  was associated with prior to the crash of the table.
- The table process maps well into the setting of the real-worl chess clib
+ The table process maps well into the setting of the real-world chess clib
  scenario previously discussed.
  A table works in the same way in a real world setting as in the GGS setting.
 \end_layout
@@ -4143,13 +4143,16 @@ This module holds the game logic of a game and is responsible for the vm
 \end_layout
 
 \begin_layout Standard
-It contains the state of the VM and a table token associated with a running
- game.
- The table token is given to game VM during initialization.
+The game VM contains the state of the VM and a table token associated with
+ a running game.
+ GameVM is started by the table module.
+ The table module hands over a token to the game VM during initialization.
  During initialization a new VM instance and various objects associated
  to the VM instance will be created.
  Callbacks to Erlang are registered into the VM and then the source code
  of a game is loaded into the VM and the game is ready for startup.
+ The only means for a game to communicate with the VM is through usage of
+ a provided interface.
  
 \end_layout
 
@@ -4158,7 +4161,12 @@ The VM itself makes it possible for the game developer to program in the
  prograimming language covered by the VM.
  In future releases, more game VM:s will be added to support more programming
  languages.
- 
+ Because the game VM keeps track of the correct table, the game developer
+ doesn't need to take this into consideration when programming a game.
+ If a method within the game sends data to a player, it will be delivered
+ to the player in the correct running game.
+ The same game token is used to store the game state in the db.
+ Therefore, no game states will be mixed up either.
 \end_layout
 
 \begin_layout Standard
