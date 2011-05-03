@@ -1305,10 +1305,6 @@ The implementation of the GGS described in this thesis is only a small prototype
 Method
 \end_layout
 
-\begin_layout Subsection
-Development process 
-\end_layout
-
 \begin_layout Standard
 A prototype was developed early on in the project in order to carry out
  experiments.
@@ -1342,11 +1338,7 @@ Once the basic structure of the GGS had been established, the first prototype
  flow of the application.
  This could be seen as an interative workflow, with the first prototype
  being the first iteration.
- The second iteration later became the final result of the GGS
-\end_layout
-
-\begin_layout Subsection
-Design
+ The second iteration later became the final result of the GGS.
 \end_layout
 
 \begin_layout Standard
@@ -1361,24 +1353,11 @@ The layout of the GGS is both layered and modular.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Perhaps a graphic of this modular layout..?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Testing and evaluation 
-\end_layout
-
-\begin_layout Standard
-Can we use quickcheck?
+An informal specification and list of requirements of the system was outlined
+ early on in the project.
+ Usaility goals for developers were set.
+ During the project several demo applications were constructed, by constructing
+ these applications, the usability goals were enforced.
 \end_layout
 
 \begin_layout Chapter
