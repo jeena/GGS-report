@@ -82,6 +82,22 @@
   morestring=[b]"
 }
 
+\lstdefinelanguage{Erlang}{
+  keywords={typeof, true, false, catch, return, null, catch, switch, var, if, in, while, do, else, case, break, expose},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this,erlv8_vm, erlv8_fun_invocation
+,erlv8_object},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{\%},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
 \usepackage{float}
  
 \floatstyle{ruled}
