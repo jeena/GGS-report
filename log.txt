@@ -1,0 +1,114 @@
+Jeena Paradies (25):
+      added Challenges
+      merged
+      added new readme
+      added generic
+      added gitignore
+      generic application server
+      added Different types of games
+      moved the prelude up before 'application server'
+      changed the order of names into alphabetical order
+      typo
+      added better logo file and a new report to bib.
+      centered the report, added GU-only logo
+      readded #report.lyx#
+      Merge branch 'master' of github.com:jeena/GGS-report
+      center
+      Merge branch 'master' of github.com:jeena/GGS-report
+      added dot
+      center
+      added dot
+      changed purpose and delimitations
+      Merge branch 'master' of github.com:jeena/GGS-report
+      added notes to UDP and TCP
+      rewriten 2.4 Availability
+      added GDL VM
+      changed networksplit image
+
+Jonatan Pålsson (50):
+      Added report
+      Changed styles some
+      Finally got the sections the way I wanted them.
+      Now the logo is in place, and the graphics look a bit nicer
+      Added bibtext bibliography database
+      Added Purpose, descrition of structural and load scalability
+      Purpose
+      Changed headings so ToC looks better
+      Added FC Gärtner to bibliography (fault tolerance)
+      Added section on fault tolerance (Niklas & Jonatan)
+      Moved graphics & cleaned up among old files
+      Added challenges section; different languages, types of games, designing protocols, apis, etc etc.
+      Added challenges section; different languages, types of games, designing protocols, apis, etc etc.
+      Merge branch 'master' of github.com:jeena/GGS-report
+      Changed title Overview -> Practice
+      Added reference to TUXEDO in bibliography
+      Removed superflous list item, added "3.2.1 Distribution", added footnote on "too many crashes" in 3.1.1
+      Added reference to UUID doc, added 2.5.1 "UUID", added algirithm 2.1, figure 2.1 (UUID related)
+      Thunder bolts should be yellow.. not black.. :)
+      Added most of the proposed changes, still to go: the graphic, "Site"
+      Added intro-text for introduction
+      Added intro-text to Chap.2: Theory
+      Merge branch 'master' of github.com:jeena/GGS-report
+      Added intro-text to chap 3: practice
+      Added some more to the background
+      Added comments on further changes
+      Added reference to generic game server testing, and short placeholder for testing part
+      Merge branch 'master' of github.com:jeena/GGS-report
+      Revised source
+      Added new introductory text
+      Moved purpose to background, and rewrote purpose
+      Added method section
+      Added graphic on chess room, added section on theoretical layout of GGS, added some on theoretical performance
+      Added some to the introduction
+      Added algorithm and some more text for 2.1
+      Added dia-file for graphic, added text on implementation
+      Added some text concerning the modular structure of the GGS
+      Added some text on the protocol parser & the GGS protocol
+      Merge branch 'jonte'
+      Added references for some statements
+      Added text on properties of erlang, much can be added here
+      Added Jeena's code for the JS chat server
+      Added description for JS server code, and highlighting for code
+      Generated PDF
+      Added info on coordinator module and table module
+      Added reference to the IEEE concerning definition of reliability
+      Added reference to Reviora for supervisors
+      Added diagram
+      Merge branch 'master' of github.com:jeena/GGS-report
+      Added reference for context switching, and new source (Unix internals book, McKusick)
+
+Kallfaktorn (12):
+      Addings to 5.1 Software development methodology
+      Merge branch 'master' of github.com:jeena/GGS-report
+      Person name spelling.
+      Added future improvements section and protocol performance issues.
+      Minor improvements.
+      Fixed Jeenas notions on Future improvements(5.3) and Performance(5.3.1)
+      Added 5.3.3 Setup.
+      Added another stup 5.3.4 Usage.
+      2.4 Generic. Text added.
+      Merge branch 'master' of github.com:jeena/GGS-report
+      3.3 Communication-with-external. Added text.
+      2.4.6 game vm. Text added.
+
+niklas (16):
+      Changed some formatting of the document!
+      Layout changes!
+      Added italics to some word and added a reference.
+      Added more content about scalability.
+      Merge branch 'master' of github.com:jeena/GGS-report
+      Added delimitations section!
+      Removed unnecessary heading
+      Added delimitations section!
+      Removed unnecessary heading
+      Added background content!
+      Added content in the fault tolerance section.
+      Small error changes!
+      Added a section about load balancing.
+      Changed bad content in the fault tolerance section
+      Small "error" changes!
+      Merge branch 'master' of github.com:jeena/GGS-report
+
+root (1):
+      Added 5.3.2 Compatibility.
+

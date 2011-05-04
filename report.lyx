@@ -4225,27 +4225,182 @@ begin{lstlisting}[language=Erlang]
 
 \begin_layout Plain Layout
 
+% @doc Exposes some GGS functions to JavaScript 
 \end_layout
 
 \begin_layout Plain Layout
 
+expose(GameVM, Table) ->
 \end_layout
 
 \begin_layout Plain Layout
 
-DROP CODE HERE
+    Global = erlv8_vm:global(GameVM),
 \end_layout
 
 \begin_layout Plain Layout
 
+    Global:set_value("GGS", erlv8_object:new([
 \end_layout
 
 \begin_layout Plain Layout
 
+        {"localStorage", erlv8_object:new([
 \end_layout
 
 \begin_layout Plain Layout
 
+            {"setItem", fun(#erlv8_fun_invocation{}, [Key, Val])->
+\end_layout
+
+\begin_layout Plain Layout
+
+                ggs_db:setItem(Table, local_storage, Key, Val)
+\end_layout
+
+\begin_layout Plain Layout
+
+            end},
+\end_layout
+
+\begin_layout Plain Layout
+
+            {"getItem", fun(#erlv8_fun_invocation{}, [Key])->
+\end_layout
+
+\begin_layout Plain Layout
+
+                ggs_db:getItem(Table, local_storage, Key)
+\end_layout
+
+\begin_layout Plain Layout
+
+            end}
+\end_layout
+
+\begin_layout Plain Layout
+
+            % more functions ...
+\end_layout
+
+\begin_layout Plain Layout
+
+        ])},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {"world", erlv8_object:new([
+\end_layout
+
+\begin_layout Plain Layout
+
+            {"setItem", fun(#erlv8_fun_invocation{}, [Key, Val])->
+\end_layout
+
+\begin_layout Plain Layout
+
+                ggs_db:setItem(Table, world, Key, Val),
+\end_layout
+
+\begin_layout Plain Layout
+
+                ggs_table:send_command_to_all(
+\end_layout
+
+\begin_layout Plain Layout
+
+	                Table, {"world_set", Key ++ "=" ++ Val}
+\end_layout
+
+\begin_layout Plain Layout
+
+                )
+\end_layout
+
+\begin_layout Plain Layout
+
+            end},
+\end_layout
+
+\begin_layout Plain Layout
+
+            {"getItem", fun(#erlv8_fun_invocation{}, [Key])->
+\end_layout
+
+\begin_layout Plain Layout
+
+                ggs_db:getItem(Table, world, Key),
+\end_layout
+
+\begin_layout Plain Layout
+
+            end}
+\end_layout
+
+\begin_layout Plain Layout
+
+            % more functions ...
+\end_layout
+
+\begin_layout Plain Layout
+
+        ])},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {"sendCommand", fun(#erlv8_fun_invocation{}, [Player, Command, Args])->
+\end_layout
+
+\begin_layout Plain Layout
+
+            ggs_table:send_command(Table, Player, {Command, Args})
+\end_layout
+
+\begin_layout Plain Layout
+
+        end},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {"sendCommandToAll", fun(#erlv8_fun_invocation{}, [Command, Args])->
+\end_layout
+
+\begin_layout Plain Layout
+
+            ggs_table:send_command_to_all(Table, {Command, Args})
+\end_layout
+
+\begin_layout Plain Layout
+
+        end}
+\end_layout
+
+\begin_layout Plain Layout
+
+         {"setTimeout", fund(#erlv8_fun_invocation{}, [Time, Function])->
+\end_layout
+
+\begin_layout Plain Layout
+
+            timer:apply_after(Time, ?MODULE, call_js, [GameVM, Function])
+\end_layout
+
+\begin_layout Plain Layout
+
+        end}
+\end_layout
+
+\begin_layout Plain Layout
+
+        % more functions ...
+\end_layout
+
+\begin_layout Plain Layout
+
+    ])).
 \end_layout
 
 \begin_layout Plain Layout
