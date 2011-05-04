@@ -1754,10 +1754,6 @@ A very simple example of the flow through the GGS system when a game played.
 
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Section
 Performance
 \end_layout
@@ -2138,7 +2134,7 @@ name "sec:Availability"
 One important factor of any server is the availability.
  A server to which you are unable to connect to is a useless server.
  Other then within telecomunication, their uptime is of about 99,9999999%,
- the game developer community hasn't approched this problem very genuinely
+ the game developer community has not approched this problem very genuinely
  yet so there is much room for improvement.
 \end_layout
 
@@ -4502,6 +4498,17 @@ Distribution
 Hot code replacement
 \end_layout
 
+\begin_layout Standard
+Hot code replacement is a technique used to update systems while they are
+ running.
+ The main use of hot code replacement are in critical systems that require
+ low downtime, such as telecom systems.
+ By using hot code replacement system can be able to achieve as high uptime
+ as possible and thus improving the reliability of the system.
+ Code replacement is a feature that exist in Erlang which means that with
+ some work it could be implemented into the GGS.
+\end_layout
+
 \begin_layout Section
 Implementation
 \end_layout
@@ -5191,7 +5198,7 @@ Protocols
 \end_layout
 
 \begin_layout Standard
-Because of TCP being a connection oriented protocol, it isn't suited for
+Because of TCP being a connection oriented protocol, it is not suited for
  all types of game data transfers.
  Each transmission will consume more network bandwith than connectionless
  protocols like UDP and cause uneccessary load on the processor.
@@ -5204,7 +5211,7 @@ y on the GGS.
  and fairness in gameplay and many game developers requires the freedom
  to take care of safety issues as packet losses themselves.
  This concludes that UDP would be a benefit for the GGS, game developers
- and game players alike.
+ and players alike.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5219,7 +5226,6 @@ Currently Mnesia is used for game data storage.
  system or use Mnesia in combination with the ETS module of erlang.
  ETS provides fast access to the RAM and thus Mnesia could be used less
  frequently.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -5258,7 +5264,7 @@ Programming languages
 \end_layout
 
 \begin_layout Standard
-The GGS doesn't support many programming languages.
+The GGS does not support many programming languages.
  For a programming language to be compatible with the GGS, not only does
  it require a VM for that specific language, but the VM must have the ability
  to communicate to Erlang.
@@ -5271,12 +5277,15 @@ Documentation
 \end_layout
 
 \begin_layout Standard
-To start the GGS isn't self explanatory.
+To start the GGS is not self explanatory.
  This together with overall usage of GGS should be documented.
  The interface for usage of game developers is also in need of documentation.
  Features and requirements with respect to the GGS would assist users to
  know what they need in order to use the GGS and how they would benefit
  of it.
+ The GGS does not support many programming languages nor does it have a
+ complete documentation.
+ This needs to be taken care of in future versions.
 \end_layout
 
 \begin_layout Chapter
