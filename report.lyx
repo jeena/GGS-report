@@ -5832,8 +5832,40 @@ This problem is not new, and a common solution is to use a Universally Unique
 e generator.
 \end_layout
 
+\begin_layout Subsection
+Protocol design
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Discuss how the early GGS protocol were going to use both UDP and binary
+ plists to be as fast as possible.
+ Then discuss how complex these solutions were going to be to implement
+ in the prototype.
+ Mention that the modular structure of the GGS allows these features to
+ be implemented later on, but are not currently implemented.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Design choices 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This section is wrongly placed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5930,8 +5962,36 @@ Coordinator
 Understanding OTP 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This section should possibly be removed.
+ Writing how using OTP posed problems for us learning-wise does not seem
+ relevant.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Usability
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Discuss how the GGS can be difficult to use for people not versed with Erlang
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
