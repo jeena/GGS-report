@@ -4085,7 +4085,6 @@ localstorage
  seperated from the game state.
  Unique id:s called gametokens are generated for hosted games so that they
  are not mixed up.
- 
 \begin_inset ERT
 status open
 
@@ -4097,6 +4096,186 @@ nomenclature{
 \backslash
 textbf{WebStorage}}{A new standard for letting websites store data on visitors'
  computers}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Exposing Erlang functionality to the GDL VM
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Prior to this section, the Erlang syntax has to be briefly explained.
+ I think the 'usage of erlang' section is a good place to do this in.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstset{    
+\end_layout
+
+\begin_layout Plain Layout
+
+language=Erlang,    
+\end_layout
+
+\begin_layout Plain Layout
+
+backgroundcolor=
+\backslash
+color{white},    
+\end_layout
+
+\begin_layout Plain Layout
+
+extendedchars=true,    
+\end_layout
+
+\begin_layout Plain Layout
+
+basicstyle=
+\backslash
+footnotesize
+\backslash
+ttfamily,    
+\end_layout
+
+\begin_layout Plain Layout
+
+showstringspaces=false,    
+\end_layout
+
+\begin_layout Plain Layout
+
+showspaces=false,    
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,    
+\end_layout
+
+\begin_layout Plain Layout
+
+numberstyle=
+\backslash
+footnotesize,    
+\end_layout
+
+\begin_layout Plain Layout
+
+numbersep=9pt,    
+\end_layout
+
+\begin_layout Plain Layout
+
+tabsize=2,    
+\end_layout
+
+\begin_layout Plain Layout
+
+breaklines=true,    
+\end_layout
+
+\begin_layout Plain Layout
+
+showtabs=false,    
+\end_layout
+
+\begin_layout Plain Layout
+
+captionpos=b
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=Erlang]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+DROP CODE HERE
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:exposing-erlang"
+
+\end_inset
+
+An example of how Erlang functionality is exposed to a Javascript GDL
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
