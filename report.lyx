@@ -4040,6 +4040,223 @@ textbf{Application}}{A way of packaging Erlang software in a uniform way}
 
 \end_layout
 
+\begin_layout Subsection
+Short introduction to the Erlang syntax
+\end_layout
+
+\begin_layout Standard
+In order to understand examples in this thesis, a small subset of Erlang
+ must be understood.
+ In this section, the very syntactic basics of Erlang are given.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Variables
+\series default
+ start with an uppercase letter, examples include 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt X, Var,} and {
+\backslash
+tt Global}
+\end_layout
+
+\end_inset
+
+.
+ A variable can only be assigned once.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Atoms
+\emph on
+ 
+\series default
+\emph default
+start with lower case letters, 
+for example:
+\lang english
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt atom, a}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Functions
+\series default
+ are defined starting with an atom for the name, parenthesis containing
+ parameters, an arrow, a function body and finally a dot marking the end
+ of a function.
+
+ 
+\lang english
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt square(X) -> X*X.}
+\end_layout
+
+\end_inset
+
+ is an example of a function producing the square of X.
+\end_layout
+
+\begin_layout Itemize
+Functions are 
+\series bold
+called
+\series default
+ by suffixing an atom with the function name with parenthesis, for example
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt square(10)}
+\end_layout
+
+\end_inset
+
+.
+ Qualified names can be specified using ':', for example: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt math:square(10)}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tuples
+\series default
+ are containers of fixed type for Erlang data types.
+ They are constructed using curly brackets, for example: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt 
+\backslash
+{atom1, atom2, atom3
+\backslash
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Lists
+\series default
+ are constructed using [ and ], for example: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt [1,2,3]}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Strings
+\series default
+ doubly qouted lists of characters, for example 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt "Hello world"}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Records
+\series default
+ are erlang tuples coupled with a tag for each tuple element.
+ This allows refering to elements by name instead of by position.
+ An example of a record looks like this: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt 
+\backslash
+#myRecord{}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
