@@ -2271,10 +2271,11 @@ name "sec:Choice-of-network"
 \end_layout
 
 \begin_layout Standard
-There are three main ways in which computer communication over the Internet
- usually takes place; TCP, UDP and HTTP.
- The first two are transport layer protocols, which are commonly used to
- transport application layer protocols, such as HTTP.
+There are two main ways in which computer communication over the Internet
+ usually takes place; TCP, UDP are known network layer protocols and HTTP
+ is the most prominent application layer protocol.
+ The transport layer protocols, are commonly used to transport application
+ layer protocols, such as HTTP.
  TCP and UDP can not be used on their own, without an application layer
  protocol on top.
  Application layer protocols such as HTTP on the other hand needs a transport
@@ -4070,7 +4071,7 @@ A game launched on the GGS is run within a virtual machine.
  For each programming language supported, there is a virtual machine that
  interprets the game.
  Furthermore an interface for communication between the GGS, the game and
- the players playing the game must be present.
+ the players playing the game is present.
 \end_layout
 
 \begin_layout Standard
@@ -4082,22 +4083,18 @@ The reason for the GGS requiring a communication channel between the game
  the game state and send messages between players.
  The interface provides access to three objects called 
 \emph on
-world
-\emph default
-, 
-\emph on
-player
+world, players
 \emph default
  and 
 \emph on
-localstorage
+localStorage
 \emph default
 .
  The game state is safely stored in a database and retrieved for manipulation
  by a call for the world object.
  Interaction with the players is done the same way using the player object
  instead.
- The localstorage is a convenient way to store globals and other variables
+ The localStorage is a convenient way to store globals and other variables
  seperated from the game state.
  Unique id:s called gametokens are generated for hosted games so that they
  are not mixed up.
@@ -4396,7 +4393,7 @@ expose(GameVM, Table) ->
 
 \begin_layout Plain Layout
 
-         {"setTimeout", fund(#erlv8_fun_invocation{}, [Time, Function])->
+         {"setTimeout", fun(#erlv8_fun_invocation{}, [Time, Function])->
 \end_layout
 
 \begin_layout Plain Layout
