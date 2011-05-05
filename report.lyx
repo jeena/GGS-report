@@ -1248,15 +1248,6 @@ The implementation of the GGS protocol, together with storage possibilities,
 \begin_inset ERT
 status open
 
-\begin_layout Standard
-The UDP protocol is not supported for communication between client and server.
- The TCP protocol was chosen in favor of UDP, because the implementation
- process using TCP was faster than if UDP would have been used.
- UDP is generally considered to be faster than TCP for the transfer of game
- (and other) related data, this is discussed in more depth in 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:Choice-of-network"
 \begin_layout Plain Layout
 
 
