@@ -693,6 +693,9 @@ Citation needed
  Users will notice this in low uptime and many crashes.
  This is a problem that has existed and been resolved in other industries.
  In the telecom industry solutins to similar problems have been found.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -728,10 +731,6 @@ textbf{Uptime}}{The amount of time a system is available and functions}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 A common figure often used in telecoms is that of 
 \emph on
 the nine nines
@@ -4063,7 +4062,7 @@ status open
 
 {
 \backslash
-tt X, Var,} and {
+tt X, Var}, and {
 \backslash
 tt Global}
 \end_layout
@@ -4082,16 +4081,13 @@ Atoms
  
 \series default
 \emph default
-start with lower case letters, 
-for example:
-\lang english
-
+start with lower case letters, for example:
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-{
+ {
 \backslash
 tt atom, a}
 \end_layout
@@ -4109,10 +4105,7 @@ Functions
  are defined starting with an atom for the name, parenthesis containing
  parameters, an arrow, a function body and finally a dot marking the end
  of a function.
-
  
-\lang english
-
 \begin_inset ERT
 status open
 
@@ -4182,7 +4175,7 @@ tt
 \backslash
 {atom1, atom2, atom3
 \backslash
-}}
+}}.
 \end_layout
 
 \end_inset
@@ -4208,7 +4201,7 @@ tt [1,2,3]}
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
@@ -4229,7 +4222,7 @@ tt "Hello world"}
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
@@ -4254,21 +4247,7 @@ tt
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Here we can have a more in-depth look at why Erlang was used, and outline
- the characteristics of EWrlang that we make use of in the GGS.
-\end_layout
-
-\end_inset
-
-
+.
 \end_layout
 
 \begin_layout Section
@@ -4314,10 +4293,29 @@ localstorage
  by a call for the world object.
  Interaction with the players is done the same way using the player object
  instead.
- The localstorage is a convenient way to store globals and other variables
- seperated from the game state.
+ The localstorage is a convenient way to store globals and other data seperated
+ from the game state.
+ In section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Exposing-Erlang-functionality"
+
+\end_inset
+
+ a concrete example of the implementation of the localStorage and world
+ objects is given.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
  Unique id:s called gametokens are generated for hosted games so that they
  are not mixed up.
+ -- good text, integrate more.
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status open
 
@@ -4337,21 +4335,172 @@ textbf{WebStorage}}{A new standard for letting websites store data on visitors'
 \end_layout
 
 \begin_layout Subsection
-Exposing Erlang functionality to the GDL VM
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Prior to this section, the Erlang syntax has to be briefly explained.
- I think the 'usage of erlang' section is a good place to do this in.
-\end_layout
+Exposing Erlang functionality to the GDL VM 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Exposing-Erlang-functionality"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+This section contains a concrete example of how the localStorage and world
+ objects are exposed to a GDL VM.
+ The example comes from the GGS prototype, which uses JavaScript powered
+ by Google V8 as its GDL VM.
+\end_layout
+
+\begin_layout Standard
+The code given in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:exposing-erlang"
+
+\end_inset
+
+ is specific to V8 and JavaScript, however implementations for different
+ GDL:s, or different JavaScript VM:s should be similar.
+\end_layout
+
+\begin_layout Standard
+In JavaScript is is common to use a top level object, called a global object,
+ to establish a global scope.
+ This allows declaration of global variables and functions.
+ To gain access to the global object in the GGS, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt erlv8
+\backslash
+_vm:global(..)}
+\end_layout
+
+\end_inset
+
+ function on line 2 of the example is used.
+ Using the global object, declarations of the world and GGS object can be
+ placed in the global scope.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt Global:set
+\backslash
+_value(..)}
+\end_layout
+
+\end_inset
+
+ is a call to the global object, declaring new objects in the global scope.
+ On line 4 the GGS object is declared.
+ By accessing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.localStorage }
+\end_layout
+
+\end_inset
+
+ from within the GDL, access to the localstorage is provided, thus the localstor
+age must be connected to the GGS object, this can be seen in line 5.
+\end_layout
+
+\begin_layout Standard
+Both the GGS and localStorage objects are dummy objects, which provide no
+ functionality, these two objects are simply placed in the GDL for the purpose
+ clearing up the code.
+ In order to perform an action using the GGS and localStorage objects, the
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt getItem} and {
+\backslash
+tt setItem}
+\end_layout
+
+\end_inset
+
+ functions must be used.
+ These items are directly connected to the database module of the GGS, which
+ is discussed in more detail in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:The-database-module"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Similarly the functions 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt sendCommand, sendCommandToAll} and {
+\backslash
+tt setTimeout}
+\end_layout
+
+\end_inset
+
+ are directly connected to a piece of code in the GGS which performs the
+ desired action.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt sendCommand}
+\end_layout
+
+\end_inset
+
+ functions are used to send commands or text to participants of the table.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt setTimeout}
+\end_layout
+
+\end_inset
+
+ function introduces timeouts to the V8 engine, which are not available
+ per default.
 \end_layout
 
 \begin_layout Standard
