@@ -5993,7 +5993,11 @@ To prevent any data loss, the good state of the worker processes is stored
 \end_layout
 
 \begin_layout Subsection
-Distribution
+Reduncancy
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection
