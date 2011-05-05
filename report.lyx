@@ -1406,16 +1406,13 @@ The first prototype of the GGS consisted of simple modules, however, due
 \begin_layout Standard
 Once the basic structure of the GGS had been established, the first prototype
  was removed, remaining was the structure of the modules and the internal
- flow of the application.
-<<<<<<< HEAD
- This could be seen as an iterative workflow, with the first prototype being
- the first iteration.
+ flow of the application.<<<<<<< HEAD This could be seen as an iterative
+ workflow, with the first prototype being the first iteration.
  The second iteration later became the result of the GGS
 \end_layout
 
 \begin_layout Subsection
-Design
- This could be seen as an interative workflow, with the first prototype
+Design This could be seen as an interative workflow, with the first prototype
  being the first iteration.
  The second iteration later became the final result of the GGS.
 \end_layout
@@ -6003,6 +6000,87 @@ Reduncancy
 \end_layout
 
 \begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:redundancy"
+
+\end_inset
+
+ depicts redundancy.
+ Fill this section in.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename graphics/redundancy.eps
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:redundancy"
+
+\end_inset
+
+To the left normal execution is pictured; the server state is backed up.
+ To the left; the exceptional excution, where the state is retrieved from
+ the backup to repopulate the server.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -6787,7 +6865,7 @@ We were able to reach 6000 messages per second on the server, which corresponds
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
