@@ -220,7 +220,7 @@ end{textblock*}
 \end_layout
 
 \begin_layout Title
-Reliable Generic Game Server
+A Reliable Generic Game Server
 \end_layout
 
 \begin_layout Author
@@ -3502,8 +3502,8 @@ reference "cha:Theory"
 \end_inset
 
 .
- Here the problems and their solutions are discussed in greater detail,
- and at times the text becomes more specific to GGS.
+ Here the problems and solutions are discussed in greater detail, and at
+ times the text becomes more specific to the GGS.
 \end_layout
 
 \begin_layout Standard
