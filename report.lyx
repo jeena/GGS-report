@@ -5334,6 +5334,157 @@ key "webstorage:website"
  interface to the database backend.
 \end_layout
 
+\begin_layout Subsection
+A case study
+\end_layout
+
+\begin_layout Standard
+So what happens when a client sends a typical game command? Let us look
+ at one particular example of a chat client sending the message to change
+ the nick of a user (we will discuss a example implementation in JavaScript
+ in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Example-of-a-GGS-server-application-in-JavaScript"
+
+\end_inset
+
+).
+ Every communication between modules happens asynchronously, nothing is
+ blocking, which is very important in concurrent systems.
+ It is probably much easier to follow the steps by following them on 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "fig:The-layout-of"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Client packages a Game-Command into a package which conforms to the protocol
+ structure the GGS is using and sends it over the network
+\end_layout
+
+\begin_layout Enumerate
+The player module, which is coupled to the TCP-module to react on incoming
+ messages accepts the message and forwards the raw data to the protocol
+ parser module
+\end_layout
+
+\begin_layout Enumerate
+The protocol parser parses the message and brings it into the format of
+ the internal GGS presentation of such a message, which is just a specialized
+ Erlang touple
+\end_layout
+
+\begin_layout Enumerate
+The protocol parser sends this Erlang touple back to the player module
+\end_layout
+
+\begin_layout Enumerate
+The player module checks if it is a Server-Command or a Game-Commane.
+ In our example it is a Game-Command and it sends the message to the table
+ module
+\end_layout
+
+\begin_layout Enumerate
+The table module sends it to its own Game VM
+\end_layout
+
+\begin_layout Enumerate
+The Game VM module calls the function 
+\emph on
+playerCommand(
+\begin_inset Quotes eld
+\end_inset
+
+278d5002-77d6-11e0-b772-af884def5349
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+nick
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Peter
+\begin_inset Quotes erd
+\end_inset
+
+)
+\emph default
+ within the JavaScript VM
+\end_layout
+
+\begin_layout Enumerate
+The JavaScript VM (JSVM) - at this stage Googles V8 JavaScript Engine -
+ evaluates the function within the sandboxed game context which has been
+ established earlier during the setup of the game.
+\end_layout
+
+\begin_layout Enumerate
+In the example (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Example-of-a-GGS-server-application-in-JavaScript"
+
+\end_inset
+
+) we see that the GGS-functios 
+\emph on
+GGS.localStorage.setItem(key, value)
+\emph default
+ and 
+\emph on
+GGS.localStorage(key)
+\emph default
+ are used.
+ Both are callbacks coupled to the database module functions.
+\end_layout
+
+\begin_layout Enumerate
+Data is being read from and written to the database and handed over to the
+ JSVM via the database module
+\end_layout
+
+\begin_layout Enumerate
+In the example the 
+\emph on
+GGS.sendCommandToAll()
+\emph default
+ is beeing called then which is a callback to a function of the table module
+ which iterates thrugh its player list and sends the command to every player
+\end_layout
+
+\begin_layout Enumerate
+The table module sends every player instance the message to send the message
+ with the change of a nickname of a particular user to its own client.
+\end_layout
+
+\begin_layout Enumerate
+The player module asks the protocol module to create a message conforming
+ to the protocol which is being used
+\end_layout
+
+\begin_layout Enumerate
+The protocol module creates a string according to the protocol and returns
+ it to the player module
+\end_layout
+
+\begin_layout Enumerate
+The player module sends the message with help of the gen_tcp module to the
+ client
+\end_layout
+
 \begin_layout Section
 Techniques for ensuring reliability 
 \end_layout
