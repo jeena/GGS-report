@@ -7233,7 +7233,7 @@ textbf{SpiderMonkey}}{JavaScript engine developed by Mozilla}
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 UUID 
 \end_layout
 
@@ -7257,7 +7257,7 @@ This problem is not new, and a common solution is to use a Universally Unique
 e generator.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Protocol design
 \end_layout
 
