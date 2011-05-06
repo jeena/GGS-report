@@ -1406,12 +1406,10 @@ The first prototype of the GGS consisted of simple modules, however, due
 \begin_layout Standard
 Once the basic structure of the GGS had been established, the first prototype
  was removed, remaining was the structure of the modules and the internal
- flow of the application.<<<<<<< HEAD This could be seen as an iterative
- workflow, with the first prototype being the first iteration.
- The second iteration later became the result of the GGS
+ flow of the application.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 Design This could be seen as an interative workflow, with the first prototype
  being the first iteration.
  The second iteration later became the final result of the GGS.
