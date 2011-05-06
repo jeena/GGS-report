@@ -3866,11 +3866,21 @@ A very important feature of Erlang, used in the GGS, is the ability to interface
  with external hardware and software.
  Erlang allows communication with external resources through 
 \emph on
-ports.
+ports
+\emph default
+ and 
+\emph on
+NIF
+\emph default
+:s (Native implemented functions)
+\emph on
+.
 
 \emph default
  Through ports communication can take place much in the same way communication
  is performed over sockets.
+ NIF:s are called like any other functions without any difference to the
+ caller but are implemented in C.
 \end_layout
 
 \begin_layout Standard
@@ -3891,7 +3901,7 @@ reference "sub:UUID"
 
 \end_inset
 
- and for interfacing with the virtual machines of games
+ and NIF:s for interfacing with the virtual machines of games
 \begin_inset Foot
 status collapsed
 
