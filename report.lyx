@@ -7801,7 +7801,7 @@ addcontentsline{toc}{section}{Glossary}
 
 
 \backslash
-printnomenclature
+\printnomenclature
 \end_layout
 
 \end_inset
