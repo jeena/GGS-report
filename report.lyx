@@ -4438,7 +4438,7 @@ name "alg:exposing-erlang"
 
 \end_inset
 
-An example of how Erlang functionality is exposed to a Javascript GDL
+An example of how Erlang functionality is exposed to a JavaScript GDL
 \end_layout
 
 \end_inset
@@ -5639,8 +5639,15 @@ Implementation
 User interface 
 \end_layout
 
-\begin_layout Section
-Example of a GGS server application in Javascript
+\begin_layout Subsection
+Example of a GGS server application in JavaScript
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Example-of-a-GGS-server-application-in-JavaScript"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6017,7 +6024,7 @@ name "alg:A-concrete-example"
 
 \end_inset
 
-A concrete example of a simple chat server written in Javascript, running
+A concrete example of a simple chat server written in JavaScript, running
  on the GGS
 \end_layout
 
