@@ -4018,7 +4018,7 @@ The
 \emph on
 gen_fsm
 \emph default
- behaviour is used in one module in the GGS, the protocol parser.
+ behaviour is used in the protocol parser module in the GGS.
  Using the gen_fsm behaviour, finite state machines are easily developed.
  Protocol parsers are an ideal example of where to use finite state machines,
  which are widely used for parsing strings of text.
@@ -4085,12 +4085,10 @@ A game launched on the GGS is run within a virtual machine.
 \end_layout
 
 \begin_layout Standard
-The reason for the GGS requiring a communication channel between the game
- VM and Erlang is in part because the GGS makes heavy use of callbacks.
- Callbacks written in Erlang are registered to the VM for the interface
- to work.
+Callbacks written in Erlang are registered to the VM for the interface to
+ work.
  It is only with the help of the interface that the game developer can access
- the game state and send messages between players.
+ the game state and send messages to the clients.
  The interface provides access to three objects called 
 \emph on
 world, players
@@ -4102,8 +4100,15 @@ localStorage
 .
  The game state is safely stored in a database and retrieved for manipulation
  by a call for the world object.
- Interaction with the players is done the same way using the player object
- instead.
+ Interaction with the players is done by using the 
+\emph on
+GGS.sendCommand(player_id, command, args)
+\emph default
+ and 
+\emph on
+GGS.
+\emph default
+sendCommandToAll(command, args).
  The localStorage is a convenient way to store globals and other variables
  seperated from the game state.
  Unique id:s called gametokens are generated for hosted games so that they
