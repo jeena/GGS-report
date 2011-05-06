@@ -5652,17 +5652,25 @@ Below is a concrete example of a simple chat server application written
 \end_layout
 
 \begin_layout Standard
-When the GGS receives a command from a client, it is passed along to the
- game VM in a function called 
+When the GGS receives a 
 \emph on
-playerCommand.
-
+Game-Command
 \emph default
- The 
+ from a client, it is passed along to the game VM through a function called
+ 
 \emph on
 playerCommand
 \emph default
- function is responsible for accepting the command into the VM.
+ which is the entry point for each game and has to be implemented by the
+ developer; one can think of it like the 
+\emph on
+main()
+\emph default
+ function of a C or Java programm
+\emph on
+.
+
+\emph default
  Typically the 
 \emph on
 playerCommand
@@ -5698,15 +5706,15 @@ playerCommand
  function accepts two different commands.
  The first command is a command which allows chat clients connected to the
  chat server to change nicknames, which are used when chatting.
- In order to change nickname, a client must send 
+ In order to change the nickname, a client must send a Game-Command 
 \begin_inset Quotes eld
 \end_inset
 
-/nick
+nick
 \begin_inset Quotes erd
 \end_inset
 
- immediately followed by a nickname.
+ with the actuall new nickname as a argument.
  When a message arrives to the GGS which has the form corresponding to the
  nickname change, the 
 \emph on
@@ -5738,7 +5746,7 @@ changeNick
 \begin_inset Quotes eld
 \end_inset
 
-/nick
+nick
 \begin_inset Quotes erd
 \end_inset
 
@@ -5894,7 +5902,7 @@ function playerCommand(player_id, command, args) {
 
 \begin_layout Plain Layout
 
-    if(command == "/nick") {
+    if(command == "nick") {
 \end_layout
 
 \begin_layout Plain Layout
