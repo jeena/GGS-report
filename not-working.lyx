@@ -416,8 +416,8 @@ key "nethack:website"
 .
  The games often took place in a textual world, leaving the task of picturing
  the world up to the player.
- Multiplayer games were not as common as they are today, whereas most games
- today are expected to have a multiplayer mode, most early games did not.
+ Multi-player games were not as common as they are today, whereas most games
+ today are expected to have a multi-player mode, most early games did not.
 \end_layout
 
 \begin_layout Standard
@@ -453,8 +453,8 @@ key "esa:website,thenumbers:website"
 \begin_layout Standard
 Due to the increasing importance of computer gaming, more focus should be
  spent on improving the quality of the gaming service.
- As more and more computer games are gaining multiplayer capabilities, the
- demands for multiplayer networking software rises.
+ As more and more computer games are gaining multi-player capabilities,
+ the demands for multiplayer networking software rises.
  This thesis is about techniques for improving the quality of this networking
  software.
 \end_layout
@@ -554,16 +554,18 @@ textbf{Doom}}{A first person shooter series developed by ID software.
 \backslash
 nomenclature{
 \backslash
-textbf{Counter-Strike}}{A multiplayer first person shooter game, popular
- in E-Sports.}
+textbf{World of Warcraft}}{A MMORPG game developed by Blizzard.
+ The world's most popular MMORPG by subscriber count.}
 \end_layout
 
 \begin_layout Plain Layout
 
-/nomenclature{
+
 \backslash
-textbf{World of Warcraft}}{A MMORPG game developed by Blizzard.
- The world's most popular MMORPG by subscriber count.}
+nomenclature{
+\backslash
+textbf{Counter-Strike}}{A multiplayer first person shooter game, popular
+ in E-Sports.}
 \end_layout
 
 \begin_layout Plain Layout
@@ -738,7 +740,7 @@ the nine nines
 \begin_inset Formula $99.999999999\%$
 \end_inset
 
- of availability, or roughly 
+ of availability, or rougly 
 \begin_inset Formula $15ms$
 \end_inset
 
@@ -757,11 +759,11 @@ Citation needed
  industry would not have been accepted in the telecoms industry.
  This level of instability should not be accepted in the game server industry
  either.
- An unavailable phone system could potentially have life threatening consequence
-s, leaving the public unable to contact emergency services.
+ An unavailabvle phone system could potentially have life threatening consequenc
+es, leaving the public unable to contant emergency services.
  The same can not be said about an unavailable game server.
  The statement that game servers are less important than phone systems is
- not a reason not to draw wisdom from what the telecoms have already learned.
+ not a reason not to draw wisdom from what the telecoms have already learnt.
 \end_layout
 
 \begin_layout Standard
@@ -1271,8 +1273,9 @@ textbf{TCP}}{Transmission Control Protocol, a streaming network protocol}
 
 \begin_layout Standard
 The UDP protocol is not supported for communication between client and server.
- The TCP protocol was chosen in favor of UDP, due to the fact that the implement
-ation process using TCP was faster than if UDP would have been used.
+ The TCP protocol was chosen in favour of UDP, due to the fact that the
+ implementation process using TCP was faster than if UDP would have been
+ used.
  UDP is generally considered to be faster than TCP for the transfer of game
  (and other) related data, this is discussed in more depth in 
 \begin_inset CommandInset ref
@@ -1332,7 +1335,7 @@ key "Farber:2002:NGT:566500.566508"
 \emph on
 Counter Strike
 \emph default
- or massively multiplayer online role playing games (MMORPGs), for example
+ or massively multiplayer online role playing games (MMORPG:s), for example
  
 \emph on
 World of Warcraft
@@ -1398,11 +1401,14 @@ textbf{Module}}{A part of a larger system}
 The first prototype of the GGS consisted of simple modules, however, due
  to the separation of concerns among the modules, they were easily independently
  modified and improved.
- Once the basic structure of the GGS had been established, the first prototype
+\end_layout
+
+\begin_layout Standard
+Once the basic structure of the GGS had been established, the first prototype
  was removed, remaining was the structure of the modules and the internal
  flow of the application.
- This could be seen as an iterative workflow, with the first prototype being
- the first iteration.
+ This could be seen as an interative workflow, with the first prototype
+ being the first iteration.
  The second iteration later became the final result of the GGS.
 \end_layout
 
@@ -1420,7 +1426,7 @@ The layout of the GGS is both layered and modular.
 \begin_layout Standard
 An informal specification and list of requirements of the system was outlined
  early on in the project.
- Usability goals for developers were set.
+ Usaility goals for developers were set.
  During the project several demo applications were constructed, by constructing
  these applications, the usability goals were enforced.
 \end_layout
@@ -2036,7 +2042,7 @@ INDSTATE
 
 \end_inset
 
-alert the coordinator, unregistering the players
+alert the coordinator, de-registering the players
 \end_layout
 
 \begin_layout Plain Layout
@@ -2111,7 +2117,7 @@ In a first person shooter game, the speed of delivery of messages is essential.
  Failure to deliver messages in time results in choppy gameplay for the
  players.
  In strategy games, the reliability of delivery may be more important than
- the speed, since the game is not perceived as choppy even if the messages
+ the speed, since the game is not perceieved as choppy even if the messages
  are delayed.
 \end_layout
 
@@ -2141,7 +2147,7 @@ status open
 Tue apr 26, 9:15.
  Continue from here on.
  Discuss which results we may expect in a fully fledged GGS system.
- What impedes the speeds, what raises the CPU load (and therefore the temperatur
+ What impedes the speeds, what raises the CPU load (and therefore the temperetur
 es & power consumption).
  What factors are there in the network saturation problem?
 \end_layout
@@ -2386,7 +2392,8 @@ name "sec:Generic"
 \begin_layout Standard
 The GGS is a game server.
  It was made with a desire to be suitable for any kind of game.
- Any game with a client-server behavior should be perfectly suited for GGS.
+ Any game with a client-server behaviour should be perfectly suited for
+ GGS.
  A game should not only be able to vary in terms of genre, graphics, gameplay
  etc, but also in the way the game is implemented.
  Such as different programming languages.
@@ -2457,7 +2464,7 @@ In order to make the GGS prototype fault tolerant the programming language
 
 \begin_layout Standard
 The need for fault tolerance in game servers is not as obvious as it may
- be for other type of servers.
+ be for other typ of servers.
  In general all servers strive to be fault tolerant as fault tolerance means
  more uptime and a safer system.
  This applies to game servers as well, in brief good fault tolerance is
@@ -3108,7 +3115,7 @@ end{centering}
 status open
 
 \begin_layout Plain Layout
-Add clients on each side, and replace the cloud with pole-landlines being
+Add clients on each side, and replace the cloud with phole-landlines being
  cut by a pair of scissors
 \end_layout
 
@@ -3194,11 +3201,11 @@ name "sec:Game-Development-Language"
 There is only a very limited number of game developers who would like to
  write their games in Erlang, therefore we had to come up with something
  to resolve this problem.
- The main idea was to offer a replaceable module which would introduce a
+ The main idea was to offer a replacable module which would introduce a
  interface to different virtual machines which would run the game code.
- This way a game developer can write the game in his favorite language while
- the server part still is written in Erlang and can benefit from all of
- its advantages.
+ This way a game developer can write the game in his favourite language
+ while the server part still is written in Erlang and can benefit from all
+ of its advantages.
 \end_layout
 
 \begin_layout Subsection
@@ -3421,7 +3428,7 @@ The real time game chosen for testing the GGS is
 Pong
 \emph default
 , a game in which two players play a game involving a all and two paddles.
- The goal for each player is to shoot beside the other players paddle while
+ The goal for each player is to shoot eside the othre player's paddle while
  not allowing the ball to pass by her own paddle.
  The game requires real time updates and is quite demanding when played
  in several instances concurrently.
@@ -3514,7 +3521,7 @@ Overview of the prototype
 
 \begin_layout Standard
 The prototype of the GGS was developed using the Erlang language.
- The functional and concurrent style of Erlang facilitates development of
+ The functional and concurrent style of Erlang facilitates devlopment of
  software based on a real-world model 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -3541,7 +3548,7 @@ Light Weight Processes; LWP
 much like the threads in an operating system.
  Threads in a Linux system, for example, are treated much like operating
  system processes in different systems.
- Due to the size of data structures related to each process, swapping one
+ Due to the size of datastructures related to each process, swapping one
  process for another (known as 
 \emph on
 context switching
@@ -3605,7 +3612,7 @@ Erlang allows the GGS to create several process for each player connecting,
  these processes can handle a multitude of different tasks, parsing data
  for example.
  Since each task is handled by a different process, the tasks are clearly
- separated and the failure of one is easily recovered without affecting
+ separated and the failiure of one is easily recovered without affecting
  the others.
 \end_layout
 
@@ -3719,9 +3726,9 @@ reference "fig:The-layout-of"
 
  the entire GGS system is represented graphically.
  The circles marked with 'C' topmost in the picture represent game clients.
- These circles represent processes running on gamers computers, and not
+ These circles represent processes running on gamers' computers, and not
  on the GGS machine.
- If a game of chess is to be played on the server, the clients on the gamers
+ If a game of chess is to be played on the server, the clients on the gamers'
  machines will be chess game clients.
  Clients connect through a network, pictured as a cloud, to the dispatcher
  process in the GGS.
@@ -3751,7 +3758,7 @@ name "sec:The-usage-of-erlang"
 \begin_layout Standard
 Erlang was designed by Ericsson, beginning in 1986, for the purpose of creating
  concurrent applications and improving telecom software.
- Features essential for the telecom industry to achieve high availability
+ Features essential for the telecom instustry to achieve high availability
  in telecom switches were added to the language.
 \begin_inset ERT
 status open
@@ -3772,7 +3779,7 @@ textbf{Mutex}}{A construct for achieving mutial exclusion, used to avoid
 \end_layout
 
 \begin_layout Standard
-Erlang uses message passing in favor of shared memory, mutexes and locks,
+Erlang uses message passing in favour of shared memory, mutextes and locks,
  something which at the time was controversial among fellow developers 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -3788,7 +3795,7 @@ key "Armstrong:2010:ERL:1810891.1810910"
 \end_layout
 
 \begin_layout Standard
-In using message passing in favor of the methods commonly used at the time,
+In using message passing in favour of the methods commonly used at the time,
  the issues commonly associated with shared memory and locking were avoided.
  In Erlang, everything is a process, and everything operates in its own
  memory space.
@@ -3822,8 +3829,8 @@ key "Armstrong03"
 \end_layout
 
 \begin_layout Standard
-The strong isolation of Erlang processes make them ideal for multi-core
- and distributed systems.
+The strong isolation of Erlang processes make them ideal for multicore and
+ distributed systems.
  Distribution of software is included as a fundamental part in the Erlang
  language.
  The 'physical' location of a process, e.g.
@@ -3838,7 +3845,7 @@ The distributed nature of Erlang is something the GGS makes use of when
  scaling across several computers in order to achieve higher performance.
  The distribution is also important in creating redundancy.
  Erlang promotes a non-defensive programming style in which processes are
- allowed to crash and be restarted in favor of having the processes recover
+ allowed to crash and be restarted in favour of having the processes recover
  from errors.
  The distributed nature of Erlang means supervisor processes (discussed
  in section 
@@ -3946,16 +3953,16 @@ OTP
  The OTP (Open Telecom Platform) is a set of standard libraries and design
  patterns, called 
 \emph on
-behaviors
+behaviours
 \emph default
 , which are used when developing Erlang systems.
 \end_layout
 
 \begin_layout Standard
-The GGS makes heavy use of the behaviors supplied in the OTP.
- The behaviors impose a programming style suitable for distributed and concurren
-t applications, perfectly suitable for the GGS.
- In particular, the GGS uses the following behaviors:
+The GGS makes heavy use of the behaviours supplied in the OTP.
+ The behaviours impose a programming style suitable for distributed and
+ concurrent applications, perfectly suitable for the GGS.
+ In particular, the GGS uses the following behaviours:
 \end_layout
 
 \begin_layout Itemize
@@ -3963,7 +3970,7 @@ The
 \emph on
 supervisor
 \emph default
- behavior, which is used when creating a supervisor.
+ behaviour, which is used when creating a supervisor.
  Supervisors are used when monitoring processes in the Erlang system.
  When a process exits wrongfully, the supervisor monitoring the process
  in question decides which action to take.
@@ -3983,8 +3990,8 @@ The
 \emph on
 gen_tcp 
 \emph default
-behavior, which is used to work with TCP sockets for network communication.
- Using the gen_tcp behavior, network messages are converted to internal
+behaviour, which is used to work with TCP sockets for network communication.
+ Using the gen_tcp behaviour, network messages are converted to internal
  Erlang messages and passed to a protocol parser, where the messages are
  processed further.
 \end_layout
@@ -3994,14 +4001,14 @@ The
 \emph on
 gen_server
 \emph default
- behavior, which is used when constructing OTP servers in Erlang.
- Using this behavior, a state can easily be kept in a server process, greatly
+ behaviour, which is used when constructing OTP servers in Erlang.
+ Using this behaviour, a state can easily be kept in a server process, greatly
  increasing the usefulness of the server process.
- There are many gen_servers in the GGS, it is the most widely used behavior
+ There are many gen_servers in the GGS, it is the most widely used behaviour
  in the project.
- In addition to introducing a state to the server, the gen_server behavior
+ In addition to intruducing a state to the server, the gen_server behaviour
  also imposes patterns for synchronous and asynchronous communication between
- other gen_servers and other OTP behaviors.
+ other gen_servers and other OTP behaviours.
 \end_layout
 
 \begin_layout Itemize
@@ -4009,14 +4016,14 @@ The
 \emph on
 gen_fsm
 \emph default
- behavior is used in the protocol parser module in the GGS.
- Using the gen_fsm behavior, finite state machines are easily developed.
+ behaviour is used in the protocol parser module in the GGS.
+ Using the gen_fsm behaviour, finite state machines are easily developed.
  Protocol parsers are an ideal example of where to use finite state machines,
  which are widely used for parsing strings of text.
 \end_layout
 
 \begin_layout Standard
-In addition to supplying behaviors, the OTP also has a style for packaging
+In addition to supplying behaviours, the OTP also has a style for packaging
  and running Erlang applications.
  By packaging the GGS as an 
 \emph on
@@ -4212,7 +4219,7 @@ tt [1,2,3]}
 \series bold
 Strings
 \series default
- doubly quoted lists of characters, for example 
+ doubly qouted lists of characters, for example 
 \begin_inset ERT
 status open
 
@@ -4234,7 +4241,7 @@ tt "Hello world"}
 Records
 \series default
  are erlang tuples coupled with a tag for each tuple element.
- This allows referring to elements by name instead of by position.
+ This allows refering to elements by name instead of by position.
  An example of a record looks like this: 
 \begin_inset ERT
 status open
@@ -4296,8 +4303,8 @@ localstorage
  by a call for the world object.
  Interaction with the players is done the same way using the player object
  instead.
- The localstorage is a convenient way to store global data and other data
- separated from the game state.
+ The localstorage is a convenient way to store globals and other data seperated
+ from the game state.
  In section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4305,7 +4312,7 @@ reference "sub:Exposing-Erlang-functionality"
 
 \end_inset
 
- a concrete example of the implementation of the localstorage and world
+ a concrete example of the implementation of the localStorage and world
  objects is given.
 \begin_inset Note Note
 status open
@@ -4349,7 +4356,7 @@ name "sub:Exposing-Erlang-functionality"
 \end_layout
 
 \begin_layout Standard
-This section contains a concrete example of how the localstorage and world
+This section contains a concrete example of how the localStorage and world
  objects are exposed to a GDL VM.
  The example comes from the GGS prototype, which uses JavaScript powered
  by Google V8 as its GDL VM.
@@ -4426,10 +4433,10 @@ age must be connected to the GGS object, this can be seen in line 5.
 \end_layout
 
 \begin_layout Standard
-Both the GGS and localstorage objects are dummy objects, which provide no
+Both the GGS and localStorage objects are dummy objects, which provide no
  functionality, these two objects are simply placed in the GDL for the purpose
  clearing up the code.
- In order to perform an action using the GGS and localstorage objects, the
+ In order to perform an action using the GGS and localStorage objects, the
  
 \begin_inset ERT
 status open
@@ -4845,7 +4852,7 @@ TODO: Go in to more detail about how the world, player and localstorage
 status open
 
 \begin_layout Plain Layout
-My idea here is that we describe the erlang-js (which failed, but nonetheless),
+My idea here is that we describe the erlang-js (which failed, but nontheless),
  v8, UUID and other external communication.
  We shouldn't describe sockets here though..
  or..
@@ -4861,7 +4868,7 @@ external
 \begin_inset Quotes erd
 \end_inset
 
- to three GDL.
+ to thre GDL.
  Discuss the GGS world object (there is a reference to this secxtion for
  that purpose)
 \end_layout
@@ -4909,7 +4916,7 @@ target "http://www.objectmentor.com/resources/articles/srp.pdf"
 \begin_layout Standard
 The responsibility and concern of each module comes from the responsibility
  and concern of the real-world entity the model represents.
- The modeling of the GGS after a real world system was discussed in chapter
+ The modelling of the GGS after a real world system was discussed in chapter
  
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -4996,8 +5003,8 @@ Is this the proper way to day the dispatcher greets connecting players?
 
  The dispatcher is the module which handles the interfacing to the operating
  system when working with sockets.
- Operating system limits concerning the number of open files, or number
- of open sockets are handled here.
+ Operating system limits concering the number of open files, or number of
+ open sockets are handled here.
  The operating system limits can impose problems on the GGS, this is discussed
  more in detail in chapter 
 \begin_inset CommandInset ref
@@ -5078,7 +5085,7 @@ reference "sub:The-protocol-parser"
 \end_inset
 
 .
- Raw communication, without passing the data through a protocol parser is
+ Raw communication, witout passing the data through a protocol parser is
  in theory possible, but is not useful.
 \end_layout
 
@@ -5116,7 +5123,7 @@ The coordinator spawns a new player process, with the same socket reference
 
 \begin_layout Enumerate
 The player process resumes operation, immediately starting a new protocol
- parser process, and begins to receive and send network messages again.
+ parser process, and begind receiving and sending network messaged again.
 \end_layout
 
 \begin_layout Standard
@@ -5163,7 +5170,7 @@ name "sub:The-protocol-parser"
 \end_layout
 
 \begin_layout Standard
-The protocol parser is an easily interchangeable module in the GGS, handling
+The protocol parser is an easily interchangable module in the GGS, handling
  the client-to-server, and server-to-client protocol parsing.
  In the GGS prototype, there is only one protocol supported, namely the
  
@@ -5172,7 +5179,7 @@ GGS Protocol
 \emph default
 .
  The role of the protocol parser is to translate the meaning of packets
- sent using the protocol in use to internal messages of the GGS system.
+ sent using the prototocol in use to internal messages of the GGS system.
  The GGS protocol, discussed below is used as a sample protocol in order
  to explain how protocol parsers can be built for the GGS.
 \end_layout
@@ -5189,7 +5196,7 @@ name "sub:The-structure-of"
 \end_layout
 
 \begin_layout Standard
-The GGS protocol is modeled after the HTTP protocol.
+The GGS protocol is modelled after the HTTP protocol.
  The main reason for this is the familiarity many developers already have
  with HTTP due to its presence in internet software.
  Each GGS protocol packet contains a headers section.
@@ -5238,10 +5245,10 @@ Line 4 specifies the content length of the payload following immediately
 
 \begin_layout Standard
 The parser of the GGS protocol implemented in the GGS prototype is designed
- as a finite state machine using the gen_fsm behavior.
+ as a finite state machine using the gen_fsm behaviour.
  When a full message has been parsed by the parser, the message is converted
  into the internal structure of the GGS messages, and sent in to the system
- from the protocol parser using message passing.
+ from the protocol paser using message passing.
 \end_layout
 
 \begin_layout Standard
@@ -5557,11 +5564,11 @@ The game VM contains the state of the VM and a table token associated with
 
 \begin_layout Standard
 The VM itself makes it possible for the game developer to program in the
- programming language covered by the VM.
+ prograimming language covered by the VM.
  In future releases, more game VM:s will be added to support more programming
  languages.
  Because the game VM keeps track of the correct table, the game developer
- does not need to take this into consideration when programming a game.
+ doesn't need to take this into consideration when programming a game.
  If a method within the game sends data to a player, it will be delivered
  to the player in the correct running game.
  The same game token is used to store the game state in the database.
@@ -5633,7 +5640,7 @@ key "667766"
 \begin_layout Standard
 The features of Mnesia originally intended for telecoms prove very useful
  for the purposes of the GGS as well.
- The fault tolerance and speed of Mnesia are very valuable tools, the fast
+ The fault tolerance and speed of Mnesia are very valueable tools, the fast
  key/value lookups permit many lookups per second to the database.
 \end_layout
 
@@ -5672,8 +5679,8 @@ Each game is uniquely identified by a table token and the data of each game
  The World is used contain all game data related to the game state.
  This sort of game data may change during the runtime of the game.
  The Localstorage should contain data independent of the game state.
- Game resources, constants and global variables are all examples of data
- that could reside within the Localstorage.
+ Game resources, constants and globals are all examples of data that could
+ reside within the Localstorage.
  To store a value within the database, not only is the table token and the
  name of the namespace required, but a unique key so that the value can
  be successfully retrieved or modified later.
@@ -5684,7 +5691,7 @@ Each game is uniquely identified by a table token and the data of each game
 \begin_layout Standard
 The interface of the database module is an implementation of the upcoming
  W3C Web Storage specification.
- Web Storage is intended for use in web browsers, providing a persistent
+ Web Storage is intended for use in web browsers, providing a persistant
  storage on the local machine for web applications.
  The storage can be used to communicate in between browser windows (which
  is difficult when using cookies), and to store larger chunks of data 
@@ -5741,7 +5748,7 @@ The player module, which is coupled to the TCP-module to react on incoming
 \begin_layout Enumerate
 The protocol parser parses the message and brings it into the format of
  the internal GGS presentation of such a message, which is just a specialized
- Erlang tuple
+ Erlang touple
 \end_layout
 
 \begin_layout Enumerate
@@ -5749,7 +5756,7 @@ The protocol parser sends this Erlang touple back to the player module
 \end_layout
 
 \begin_layout Enumerate
-The player module checks if it is a Server-Command or a Game-Command.
+The player module checks if it is a Server-Command or a Game-Commane.
  In our example it is a Game-Command and it sends the message to the table
  module
 \end_layout
@@ -5797,14 +5804,14 @@ The JavaScript VM (JSVM) - at this stage Googles V8 JavaScript Engine -
 \end_layout
 
 \begin_layout Enumerate
-In the example in section 
+In the example (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Example-of-a-GGS-app"
+reference "sec:Example-of-a-GGS-server-application-in-JavaScript"
 
 \end_inset
 
- we see that the GGS-functions 
+) we see that the GGS-functios 
 \emph on
 GGS.localStorage.setItem(key, value)
 \emph default
@@ -5826,8 +5833,8 @@ In the example the
 \emph on
 GGS.sendCommandToAll()
 \emph default
- is being called then which is a callback to a function of the table module
- which iterates through its player list and sends the command to every player
+ is beeing called then which is a callback to a function of the table module
+ which iterates thrugh its player list and sends the command to every player
 \end_layout
 
 \begin_layout Enumerate
@@ -5894,8 +5901,8 @@ GGS.sendCommand(player_id, command, args)
 GGS.
 \emph default
 sendCommandToAll(command, args).
- The localstorage is a convenient way to store global data and other variables
- separated from the game state.
+ The localStorage is a convenient way to store globals and other variables
+ seperated from the game state.
  Unique id:s called gametokens are generated for hosted games so that they
  are not mixed up.
 \begin_inset ERT
@@ -6452,7 +6459,7 @@ In Erlang, we have a simple version of supervisors.
 \end_layout
 
 \begin_layout Standard
-When the linking of processes in order to monitor exit behavior is coupled
+When the linking of processes in order to monitor exit behaviour is coupled
  with the transparent distribution of Erlang, a very powerful supervision
  system is created.
  For instance, we can restart a failing process on a different, new node,
@@ -6592,7 +6599,7 @@ To prevent any data loss, the good state of the worker processes is stored
 \end_layout
 
 \begin_layout Subsection
-Redundancy
+Reduncancy
 \end_layout
 
 \begin_layout Standard
@@ -6673,7 +6680,7 @@ name "fig:redundancy"
 \end_inset
 
 To the left normal execution is pictured; the server state is backed up.
- To the right; the exceptional execution, where the state is retrieved from
+ To the left; the exceptional excution, where the state is retrieved from
  the backup to repopulate the server.
 \end_layout
 
@@ -6703,14 +6710,7 @@ Hot code replacement is a technique used to update systems while they are
 \end_layout
 
 \begin_layout Section
-Example of a GGS server application in JavaScript
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Example-of-a-GGS-app"
-
-\end_inset
-
-
+Example of a GGS server application in Javascript
 \end_layout
 
 \begin_layout Standard
@@ -6736,7 +6736,7 @@ playerCommand
 \emph on
 main()
 \emph default
- function of a C or Java program
+ function of a C or Java programm
 \emph on
 .
 
@@ -6784,7 +6784,7 @@ nick
 \begin_inset Quotes erd
 \end_inset
 
- with the actual new nickname as a argument.
+ with the actuall new nickname as a argument.
  When a message arrives to the GGS which has the form corresponding to the
  nickname change, the 
 \emph on
@@ -6825,7 +6825,7 @@ nick
 \emph on
 changeNick 
 \emph default
-function uses a feature of the GGS called localstorage (see section 
+function uses a feature of the GGS called localStorage (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Communication-with-the-GDL-VM"
@@ -7183,7 +7183,7 @@ There were two possible solutions to the problem of the JavaScript to Erlang
 
 \begin_layout Standard
 Attempts at creating the communication path from JavaScript to Erlang were
- initially made, however the communication path never became stable enough
+ initially made, however the communiucation path never became stable enough
  for usage in the GGS and the erlang_js software was abandoned.
 \end_layout
 
@@ -7233,7 +7233,7 @@ textbf{SpiderMonkey}}{JavaScript engine developed by Mozilla}
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 UUID 
 \end_layout
 
@@ -7257,62 +7257,26 @@ This problem is not new, and a common solution is to use a Universally Unique
 e generator.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Protocol design
 \end_layout
 
 \begin_layout Standard
-Initially the GGS protocol was designed to use the UDP protocol for transport.
- Due to the lack of error checking in the UDP protocol, the UDP protocol
- is faster than the TCP protocol, this was a main reason to use UDP.
- The GGS does however need error checking to be as reliable as possible,
- therefore an error checking layer would have to be placed on top of UDP.
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Standard
-The development of an error checking layer was weighed against the implementatio
-n of TCP instead of UDP, thus losing some speed.
- Even though speed was lost, TCP was chosen due to the relative ease of
- implementation compared to UDP.
- Due to the modularity of the GGS, a UDP extension is possible by replacing
- the network parts of the GGS.
+\begin_layout Plain Layout
+Discuss how the early GGS protocol were going to use both UDP and binary
+ plists to be as fast as possible.
+ Then discuss how complex these solutions were going to be to implement
+ in the prototype.
+ Mention that the modular structure of the GGS allows these features to
+ be implemented later on, but are not currently implemented.
 \end_layout
-
-\begin_layout Standard
-Furthermore, in a move to increase the speed of the GGS protocol the binary
- BSON protocol 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bson:website"
 
 \end_inset
 
- was initially considered.
- BSON is a protocol which can be used for very fast traversal of data.
- The BSON protocol is however rather difficult to read in its plain format,
- and no implementation has been bade for the GGS.
-\end_layout
 
-\begin_layout Standard
-The Apache Thrift 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Slee2007"
-
-\end_inset
-
- was also an alternative.
- Using Thrift would mean the GGS would feature a standard protocol for network
- communication.
- Before finding out about Thrift, an implementation of the GGS protocol
- had already been made, moving to Thrift would mean too much work.
-\end_layout
-
-\begin_layout Standard
-The use of Thrift, BSON, or other protocols can be supported quite easily
- by developing protocol modules for each protocol.
- No protocol modules for these protocols have however been developed during
- the writing of this thesis
 \end_layout
 
 \begin_layout Section
@@ -7419,6 +7383,23 @@ Coordinator
  club up in the exact state it was prior to the fire.
 \end_layout
 
+\begin_layout Section
+Usability
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Discuss how the GGS can be difficult to use for people not versed with Erlang
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Results and discussion 
 \begin_inset CommandInset label
@@ -7431,18 +7412,21 @@ name "chap:Results-and-discussion"
 \end_layout
 
 \begin_layout Section
-Statistics
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Mention the hardware which the GGS was run on; A Thinkpad T410 wityh a core
- i5 and 4GB of ram.
+Software development methodology
 \end_layout
 
-\end_inset
+\begin_layout Standard
+The project has not followed any specific software development methodology.
+ All work has been based on a predefined schedule and the specifications
+ are made by team members rather than an outside customer or stakeholder.
+ The process can be described as a plan-driven development method going
+ from brainstorming to design, then implementation and finally testing.
+ Yet there has been cycles in the process in form of redesign and code refactori
+ng.
+\end_layout
 
-
+\begin_layout Section
+Statistics
 \end_layout
 
 \begin_layout Standard
@@ -7667,7 +7651,7 @@ Future improvements
 \begin_layout Standard
 The specification of the GGS prototype is huge and like many other software
  projects relying on outside technologies, in time it would require a lot
- of maintenance.
+ of maintanance.
  Therefore there are a lot of areas in which the GGS could be improved such
  as performance, compatibility, ease of setup and usage.
 \end_layout
@@ -7683,14 +7667,14 @@ Protocols
 \begin_layout Standard
 Because of TCP being a connection oriented protocol, it is not suited for
  all types of game data transfers.
- Each transmission will consume more network bandwidth than connectionless
- protocols like UDP and cause unnecessary load on the processor.
+ Each transmission will consume more network bandwith than connectionless
+ protocols like UDP and cause uneccessary load on the processor.
  Therefore support for UDP would mean that more games could be run simultaneousl
 y on the GGS.
  Another advantage of UDP is latency being reduced.
  Without having to setup a connection for each group packets of data being
  sent, they will be sent instantly and therefore arrive earlier.
- Latency is of highest importance in real-time games as it improves realism
+ Latency is of highest importance in realtime games as it improves realism
  and fairness in gameplay and many game developers requires the freedom
  to take care of safety issues as packet losses themselves.
  This concludes that UDP would be a benefit for the GGS, game developers
@@ -7740,7 +7724,7 @@ GGS relies on modern technologies.
  Therefore it would be best for the GGS to have as many of these VM:s implemente
 d as possible.
  The VM:s taken into consideration so far have been unstable or incomplete
- and it is possible to search for more VM:s, testing them and integrate
+ and it is possible to search for more VM:s, testing them and intergrate
  them into the GGS prototype.
 \end_layout
 
@@ -7749,8 +7733,8 @@ Setup
 \end_layout
 
 \begin_layout Standard
-The GGS prototype installation procedure requires different configuration
- and building steps and thus it is not in an acceptable release state.
+The GGS prototype installation procedure requires different configuring
+ and building steps and thus it isn't in an acceptable release state.
  An executable installation file for each supported platform would be optimal.
 \end_layout
 
@@ -7806,7 +7790,7 @@ addcontentsline{toc}{section}{Glossary}
 
 
 \backslash
-
+printnomenclature
 \end_layout
 
 \end_inset
