@@ -4552,18 +4552,6 @@ reference "cha:Theory"
 In the text below the word module refers to the actual code of the discussed
  feature, while the word process is used when referring to a running instance
  of the code.
- Those familiar to object oriented programming may be helped by thinking
- in the lines of classes and objects.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Am I right here?
-\end_layout
-
-\end_inset
-
-
 \begin_inset ERT
 status open
 
