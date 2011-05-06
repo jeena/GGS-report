@@ -7428,21 +7428,18 @@ name "chap:Results-and-discussion"
 \end_layout
 
 \begin_layout Section
-Software development methodology
-\end_layout
-
-\begin_layout Standard
-The project has not followed any specific software development methodology.
- All work has been based on a predefined schedule and the specifications
- are made by team members rather than an outside customer or stakeholder.
- The process can be described as a plan-driven development method going
- from brainstorming to design, then implementation and finally testing.
- Yet there has been cycles in the process in form of redesign and code refactori
-ng.
-\end_layout
-
-\begin_layout Section
 Statistics
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mention the hardware which the GGS was run on; A Thinkpad T410 wityh a core
+ i5 and 4GB of ram.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
