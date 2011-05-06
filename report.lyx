@@ -554,18 +554,16 @@ textbf{Doom}}{A first person shooter series developed by ID software.
 \backslash
 nomenclature{
 \backslash
-textbf{World of Warcraft}}{A MMORPG game developed by Blizzard.
- The world's most popular MMORPG by subscriber count.}
+textbf{Counter-Strike}}{A multiplayer first person shooter game, popular
+ in E-Sports.}
 \end_layout
 
 \begin_layout Plain Layout
 
-
+/nomenclature{
 \backslash
-nomenclature{
-\backslash
-textbf{Counter-Strike}}{A multiplayer first person shooter game, popular
- in E-Sports.}
+textbf{World of Warcraft}}{A MMORPG game developed by Blizzard.
+ The world's most popular MMORPG by subscriber count.}
 \end_layout
 
 \begin_layout Plain Layout
