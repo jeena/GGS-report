@@ -6651,21 +6651,57 @@ Protocol design
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Discuss how the early GGS protocol were going to use both UDP and binary
- plists to be as fast as possible.
- Then discuss how complex these solutions were going to be to implement
- in the prototype.
- Mention that the modular structure of the GGS allows these features to
- be implemented later on, but are not currently implemented.
+Initially the GGS protocol was designed to use the UDP protocol for transport.
+ Due to the lack of error checking in the UDP protocol, the UDP protocol
+ is faster than the TCP protocol, this was a main reason to use UDP.
+ The GGS does however need error checking to be as reliable as possible,
+ therefore an error checking layer would have to be placed on top of UDP.
 \end_layout
+
+\begin_layout Standard
+The development of an error checking layer was weighed against the implementatio
+n of TCP instead of UDP, thus losing some speed.
+ Even though speed was lost, TCP was chosen due to the relative ease of
+ implementation compared to UDP.
+ Due to the modularity of the GGS, a UDP extension is possible by replacing
+ the network parts of the GGS.
+\end_layout
+
+\begin_layout Standard
+Furthermore, in a move to increase the speed of the GGS prototcol the binary
+ BSON protocol 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bson:website"
 
 \end_inset
 
+ was initially considered.
+ BSON is a protocol which can be used for vert fast traversal of data.
+ The BSON protocol is however rather difficult to read in its plain format,
+ and no implementation has been bade for the GGS.
+\end_layout
 
+\begin_layout Standard
+The Apache Thrift 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Slee2007"
+
+\end_inset
+
+ was also an alternative.
+ Using Thrift would mean the GGS would feature a standard protocol for network
+ communication.
+ Before finding out about Thrift, an implementation of the GGS protocol
+ had already been made, moving to Thrift would mean too much work.
+\end_layout
+
+\begin_layout Standard
+The use of Thrift, BSON, or other protocols can be supported quite easily
+ by develpping protocol modules for each protocol.
+ No protocol modules for these protocols have however been developed during
+ the writing of this thesis
 \end_layout
 
 \begin_layout Section
@@ -6770,23 +6806,6 @@ Coordinator
 \emph default
  rounding up all the tables, running to a new location and building the
  club up in the exact state it was prior to the fire.
-\end_layout
-
-\begin_layout Section
-Usability
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Discuss how the GGS can be difficult to use for people not versed with Erlang
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Chapter
