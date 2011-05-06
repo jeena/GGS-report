@@ -6077,7 +6077,7 @@ name "fig:redundancy"
 \end_inset
 
 To the left normal execution is pictured; the server state is backed up.
- To the left; the exceptional excution, where the state is retrieved from
+ To the right; the exceptional excution, where the state is retrieved from
  the backup to repopulate the server.
 \end_layout
 
