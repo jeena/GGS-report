@@ -220,7 +220,7 @@ end{textblock*}
 \end_layout
 
 \begin_layout Title
-Reliable Generic Game Server
+A Reliable Generic Game Server
 \end_layout
 
 \begin_layout Author
@@ -455,7 +455,7 @@ Due to the increasing importance of computer gaming, more focus should be
  spent on improving the quality of the gaming service.
  As more and more computer games are gaining multi-player capabilities,
  the demands for multiplayer networking software rises.
- This thesis is about techniques for improving the quality if this networking
+ This thesis is about techniques for improving the quality of this networking
  software.
 \end_layout
 
@@ -611,14 +611,15 @@ generic
  framework for developing network games.
  The framework is generic in the sense that it is not bound to a specific
  game.
- There are many different types of games, some are inheritly more time sensitive
- than others, strategy games are examples of games which are not very sensitive
- to time delays, first-person shooters however, can be very sensitive.
+ There are many different types of games, some are inherently more time
+ sensitive than others, strategy games are examples of games which are not
+ very sensitive to time delays, first-person shooters however, can be very
+ sensitive.
 \end_layout
 
 \begin_layout Standard
 The generic nature of the GGS allows the creation of many different types
- of games, the motivation behind this is to remove the neccessity of writing
+ of games, the motivation behind this is to remove the necessity of writing
  new game servers when developing new games.
 \end_layout
 
@@ -627,9 +628,9 @@ The GGS is in addition to being generic, also
 \emph on
 reliable
 \emph default
- in the sense that the gaming service provided is consistant and available.
- A consistant and available server is a server that handles hardware failiures
- and software failiures gracefully.
+ in the sense that the gaming service provided is consistent and available.
+ A consistent and available server is a server that handles hardware failures
+ and software failures gracefully.
  In the event of a component breaking within the GGS, the error is handled
  by fault recovery processes, thereby creating a more reliable system.
 \begin_inset ERT
@@ -666,7 +667,7 @@ Background
 
 \begin_layout Standard
 The game industry is a quickly growing industry where the need for new technique
-s is large.
+s are large.
  One specific section where the development has stalled is the game server
  section.
 \begin_inset Note Note
@@ -692,7 +693,10 @@ Citation needed
 .
  Users will notice this in low uptime and many crashes.
  This is a problem that has existed and been resolved in other industries.
- In the telecom industry solutins to similar problems have been found.
+ In the telecom industry solutions to similar problems have been found.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -728,10 +732,6 @@ textbf{Uptime}}{The amount of time a system is available and functions}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 A common figure often used in telecoms is that of 
 \emph on
 the nine nines
@@ -1011,8 +1011,8 @@ A database server can also be seen as an application server.
 \end_layout
 
 \begin_layout Standard
-One of the purposes of this thesis is to investigate how we can make a game
- server as generic as possible.
+One purpose of this thesis is to investigate how we can make a game server
+ as generic as possible.
  Some important helpers are discussed, such as abstraction of the network
  layer, data store and game specific features.
  
@@ -1106,8 +1106,8 @@ The purpose of creating a generic and fault tolerant game server is to provide
 \end_layout
 
 \begin_layout Standard
-Fault tolerance is important for the GGS in order to create a reliable service.
- The purpose of a reliable game server is to provide a consistant service
+Fault tolerance is important for the GGS to create a reliable service.
+ The purpose of a reliable game server is to provide a consistent service
  to people using the server.
  Going back to the telecom example, the purpose of creating a reliable telecom
  system is to allow calls, possibly emergency calls, at any time.
@@ -1139,9 +1139,9 @@ The word
 generic
 \emph default
  in the name of the GGS implies that the system is able to run a very broad
- range of different code, for instance code written in different programming
- languages, in addition to a broad range of different game types.
- In order to support this, a virtual machine (VM) for each 
+ range of different code, for instance code wrote in different programming
+ languages, besides a broad range of different game types.
+ To support this, a virtual machine (VM) for each 
 \emph on
 game development language
 \emph default
@@ -1310,7 +1310,7 @@ textbf{Latency}}{A measure of delay, often measured in milliseconds}
 \begin_layout Standard
 In real time games all players are playing together at the same time.
  Latency is a huge problem in real time games, a typical round trip time
- for such games is one of 
+ for such games are one of 
 \begin_inset Formula $50$
 \end_inset
 
@@ -1346,7 +1346,7 @@ World of Warcraft
 \begin_layout Standard
 In turn based games each player has to wait for their turn.
  Latency is not a problem since the gameplay does not require fast interactions
- between the players, long round trip times will not be noticed.
+ among the players, long round trip times will not be noticed.
  Examples of turn based games include board and card games, as well as multiplay
 er games like 
 \emph on
@@ -1367,9 +1367,8 @@ Due to the limited capability of threading in many GDL VM:s, the GGS prototype
 The implementation of the GGS described in this thesis is only a small prototype
  and tests will be performed on simple games like pong or chess, thus there
  are no need to implement more advanced features in the system.
- It is important to note that these limitations only apply for the prototype
- of the project, and that further developments to the GGS could be to implement
- these features.
+ Note that these limitations only apply for the prototype of the project,
+ and that further developments to the GGS could be to implement these features.
 \end_layout
 
 \begin_layout Section
@@ -1377,8 +1376,7 @@ Method
 \end_layout
 
 \begin_layout Standard
-A prototype was developed early on in the project in order to carry out
- experiments.
+A prototype was developed early on in the project to carry out experiments.
  Using this prototype, the system was divided into modules.
  A demand specification was created, using this specification, the modules
  were easily identifiable.
@@ -1401,8 +1399,8 @@ textbf{Module}}{A part of a larger system}
 
 \begin_layout Standard
 The first prototype of the GGS consisted of simple modules, however, due
- to the separation of concerns between the modules, they were easily independant
-ly modified and improved.
+ to the separation of concerns among the modules, they were easily independently
+ modified and improved.
 \end_layout
 
 \begin_layout Standard
@@ -1421,7 +1419,7 @@ The layout of the GGS is both layered and modular.
  GGS.
  The modular structure of the GGS plays an important role in making the
  system fault tolerant.
- The approach to fault tolerance is by replication, and restarting faulting
+ The approach to fault tolerance is by replication, and restarting the faulting
  modules with the last known good data.
 \end_layout
 
@@ -1450,7 +1448,7 @@ In this chapter, the theory behind the techniques used in the GGS are discussed.
  Benchmarking techniques are discussed.
  The options when choosing network protocols are given, along with a discussion
  of each alternative.
- Finally, a overview of scalability, fault tolerance and availability is
+ Finally, an overview of scalability, fault tolerance and availability are
  presented.
 \end_layout
 
@@ -1466,7 +1464,7 @@ name "sec:Design-of-the"
 \end_layout
 
 \begin_layout Standard
-The GGS is modelled after a real world system performing much of the same
+The GGS is modeled after a real world system performing much of the same
  duties as GGS.
  This is common practice 
 \begin_inset CommandInset citation
@@ -1475,12 +1473,11 @@ key "armstrong2011"
 
 \end_inset
 
- in the computer software world, in order to understand complex problems
- more easily.
+ in the computer software world, to understand complex problems more easily.
  While there may not always be a real world example of a system performing
- th exact duties of the system being modelled in the computer, it is often
+ the exact duties of the system being modeled in the computer, it is often
  easier to create and analyze requirements for real world systems and processes
- than systems existing soley in a computer.
+ than systems existing solely in a computer.
  The requirements and limitations imposed on the real-world system can,
  using the proper tools, be transferred in to the software.
 \end_layout
@@ -1625,7 +1622,7 @@ Räkning
 
  can be kept, ensuring that there are not too many players within the building.
  In the GGS setting, too many players entering would mean too many connections
- have been accepted to the GGS system, and that the structure of the system
+ have been accepted by the GGS system, and that the structure of the system
  thus must be modified, adding additional servers.
 \end_layout
 
@@ -1651,16 +1648,16 @@ Moves by players are made using the tables present in the chess club.
 \end_layout
 
 \begin_layout Standard
-This isolation of the games plays an imporant part in many properties of
+This isolation of the games play an important part in many properties of
  the GGS, the isolation means that games can for example be transferred
- between different chess clubs, furthermore, if cheating takes place, corruption
+ among different chess clubs, furthermore, if cheating takes place, corruption
  can only occur in the particular table where it was found, and can not
  spread.
 \end_layout
 
 \begin_layout Standard
-Moving chess players from one location to another is one of the alterations
- made to the real world chess club system to make the system more appropriate
+Moving chess players from one location to another is one alteration made
+ to the real world chess club system to make the system more appropriate
  for a software setting.
  Allowing games to be transferred is not a property usually desired in a
  real world chess club, where transferring players would mean moving the
@@ -1681,10 +1678,10 @@ reference "alg:game-lifecycle"
 \end_inset
 
 .
- In order to make this life cycle as efficient and useful as possible, the
- scalability, fault tolerant and generic traits are added to the GGS.
+ To make this life cycle as efficient and useful as possible, the scalability,
+ fault tolerant and generic traits are added to the GGS.
  These are not shown in the algorithm, as these traits are tools in making
- the algorithm behave as efficient as possible, and are not the main focus
+ the algorithm behaves as efficient as possible, and are not the main focus
  when studying the life cycle of a game.
 \end_layout
 
@@ -2117,10 +2114,10 @@ There are many ways in which performance could be measured.
 
 \begin_layout Standard
 In a first person shooter game, the speed of delivery of messages is essential.
- Failiure to deliver messages in time results in choppy gameplay for the
+ Failure to deliver messages in time results in choppy gameplay for the
  players.
  In strategy games, the reliability of delivery may be more important than
- the speed, since the game is not percieved as choppy even if the messages
+ the speed, since the game is not perceieved as choppy even if the messages
  are delayed.
 \end_layout
 
@@ -2128,7 +2125,7 @@ In a first person shooter game, the speed of delivery of messages is essential.
 For someone operating a GGS, it is perhaps more interesting to measure the
  system load, memory consumption, energy consumption and network saturation.
  These topics are discussed in theory in this section.
- The practical results for the prototype are discussed in chapter 
+ The practical results for the prototype is discussed in chapter 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "cha:Implementation-of-a"
@@ -2470,8 +2467,8 @@ The need for fault tolerance in game servers is not as obvious as it may
  be for other typ of servers.
  In general all servers strive to be fault tolerant as fault tolerance means
  more uptime and a safer system.
- This applies to game servers aswell, in brief good fault tolerance is a
- way of satisfying customers.
+ This applies to game servers as well, in brief good fault tolerance is
+ a way of satisfying customers.
  In general, game servers differ from many other fault tolerant systems
  in that high-availability is more important than the safety of the system.
  For example a simple calculation error will not be critical for a game
@@ -2498,14 +2495,14 @@ name "sec:Availability"
 
 \begin_layout Standard
 One important factor of any server is the availability.
- A server to which you are unable to connect to is a useless server.
- Other then within telecomunication, their uptime is of about 99,9999999%,
- the game developer community hasn't approched this problem very genuinely
+ A server to which you are unable to connect to is an useless server.
+ Other then within telecommunication, their uptime is of about 99,9999999%,
+ the game developer community has not approached this problem very genuinely
  yet so there is much room for improvement.
 \end_layout
 
 \begin_layout Standard
-There are several good papers on how to migrate whole virtual machines between
+There are several good papers on how to migrate whole virtual machines among
  nodes to replicate them
 \begin_inset Note Note
 status open
@@ -2572,22 +2569,22 @@ Each instance of the GGS contains several tables.
  or a poker game.
  The way that the GGS scales is to distribute these tables on different
  servers.
- In many games it is not necessary for a player to move between tables during
+ In many games it is not necessary for a player to move among tables during
  games.
  This is for example not a common occurrence in chess, where it would be
  represented as a player standing up from her current table and sitting
  down at a new table, all within the same game session.
- With this in mind, the main focus of the GGS is not to move players between
- tables, but to keep a player in a table, and to start new tables instead.
- When a server has reached a certain amount of players the performance will
+ Therefore, the main focus of the GGS is not to move players among tables,
+ but to keep a player in a table, and to start new tables instead.
+ When a server has reached a certain number of players the performance will
  start to decrease.
  To avoid this the GGS will start new tables on another server, using this
- technique the players will be close to evenly distributed between the servers.
+ technique the players will be close to evenly distributed among the servers.
  It is important to investigate and find out how many players that are optimal
  for each server.
- This approach makes it possible to utilize all resources with moderate
- load, instead of having some resources with heavy load and some with almost
- no load.
+ This approach makes it possible to use all resources with moderate load,
+ instead of having some resources with heavy load and some with almost no
+ load.
 \end_layout
 
 \begin_layout Standard
@@ -2609,7 +2606,7 @@ Load balancing
 \end_layout
 
 \begin_layout Standard
-The need for load balancing varies between different kind of systems.
+The need for load balancing varies among different kind of systems.
  Small systems that only use one or a couple of servers can cope with a
  simple implementation of it, while in large systems it is critical to have
  extensive and well working load balancing.
@@ -3165,6 +3162,7 @@ We only support languages running in a sandboxed environment.
  In the storage each game has its own namespace, much like a table in a
  relational database.
  A game is not allowed to venture outside this namespace, and can because
+ this not modify the persistent data of other games.
  of this not modify the persistent data of other games.
 \begin_inset ERT
 status open
@@ -3642,7 +3640,7 @@ dispatcher module
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -4051,13 +4049,828 @@ textbf{Application}}{A way of packaging Erlang software in a uniform way}
 
 \end_layout
 
+\begin_layout Subsection
+Short introduction to the Erlang syntax
+\end_layout
+
+\begin_layout Standard
+In order to understand examples in this thesis, a small subset of Erlang
+ must be understood.
+ In this section, the very syntactic basics of Erlang are given.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Variables
+\series default
+ start with an uppercase letter, examples include 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt X, Var}, and {
+\backslash
+tt Global}
+\end_layout
+
+\end_inset
+
+.
+ A variable can only be assigned once.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Atoms
+\emph on
+ 
+\series default
+\emph default
+start with lower case letters, for example:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ {
+\backslash
+tt atom, a}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Functions
+\series default
+ are defined starting with an atom for the name, parenthesis containing
+ parameters, an arrow, a function body and finally a dot marking the end
+ of a function.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt square(X) -> X*X.}
+\end_layout
+
+\end_inset
+
+ is an example of a function producing the square of X.
+\end_layout
+
+\begin_layout Itemize
+Functions are 
+\series bold
+called
+\series default
+ by suffixing an atom with the function name with parenthesis, for example
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt square(10)}
+\end_layout
+
+\end_inset
+
+.
+ Qualified names can be specified using ':', for example: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt math:square(10)}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tuples
+\series default
+ are containers of fixed type for Erlang data types.
+ They are constructed using curly brackets, for example: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt 
+\backslash
+{atom1, atom2, atom3
+\backslash
+}}.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Lists
+\series default
+ are constructed using [ and ], for example: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt [1,2,3]}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Strings
+\series default
+ doubly qouted lists of characters, for example 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt "Hello world"}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Records
+\series default
+ are erlang tuples coupled with a tag for each tuple element.
+ This allows refering to elements by name instead of by position.
+ An example of a record looks like this: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt 
+\backslash
+#myRecord{}}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Communication with external systems and applications
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Communication-with-external"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A game launched on the GGS is run within a virtual machine.
+ For each programming language supported, there is a virtual machine that
+ interprets the game.
+ Furthermore an interface for communication between the GGS, the game and
+ the players playing the game must be present.
+\end_layout
+
+\begin_layout Standard
+The reason for the GGS requiring a communication channel between the game
+ VM and Erlang is in part because the GGS makes heavy use of callbacks.
+ Callbacks written in Erlang are registered to the VM for the interface
+ to work.
+ It is only with the help of the interface that the game developer can access
+ the game state and send messages between players.
+ The interface provides access to three objects called 
+\emph on
+world
+\emph default
+, 
+\emph on
+player
+\emph default
+ and 
+\emph on
+localstorage
+\emph default
+.
+ The game state is safely stored in a database and retrieved for manipulation
+ by a call for the world object.
+ Interaction with the players is done the same way using the player object
+ instead.
+ The localstorage is a convenient way to store globals and other data seperated
+ from the game state.
+ In section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Exposing-Erlang-functionality"
+
+\end_inset
+
+ a concrete example of the implementation of the localStorage and world
+ objects is given.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ Unique id:s called gametokens are generated for hosted games so that they
+ are not mixed up.
+ -- good text, integrate more.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{WebStorage}}{A new standard for letting websites store data on visitors'
+ computers}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Exposing Erlang functionality to the GDL VM 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Exposing-Erlang-functionality"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This section contains a concrete example of how the localStorage and world
+ objects are exposed to a GDL VM.
+ The example comes from the GGS prototype, which uses JavaScript powered
+ by Google V8 as its GDL VM.
+\end_layout
+
+\begin_layout Standard
+The code given in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:exposing-erlang"
+
+\end_inset
+
+ is specific to V8 and JavaScript, however implementations for different
+ GDL:s, or different JavaScript VM:s should be similar.
+\end_layout
+
+\begin_layout Standard
+In JavaScript is is common to use a top level object, called a global object,
+ to establish a global scope.
+ This allows declaration of global variables and functions.
+ To gain access to the global object in the GGS, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt erlv8
+\backslash
+_vm:global(..)}
+\end_layout
+
+\end_inset
+
+ function on line 2 of the example is used.
+ Using the global object, declarations of the world and GGS object can be
+ placed in the global scope.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt Global:set
+\backslash
+_value(..)}
+\end_layout
+
+\end_inset
+
+ is a call to the global object, declaring new objects in the global scope.
+ On line 4 the GGS object is declared.
+ By accessing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.localStorage }
+\end_layout
+
+\end_inset
+
+ from within the GDL, access to the localstorage is provided, thus the localstor
+age must be connected to the GGS object, this can be seen in line 5.
+\end_layout
+
+\begin_layout Standard
+Both the GGS and localStorage objects are dummy objects, which provide no
+ functionality, these two objects are simply placed in the GDL for the purpose
+ clearing up the code.
+ In order to perform an action using the GGS and localStorage objects, the
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt getItem} and {
+\backslash
+tt setItem}
+\end_layout
+
+\end_inset
+
+ functions must be used.
+ These items are directly connected to the database module of the GGS, which
+ is discussed in more detail in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:The-database-module"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Similarly the functions 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt sendCommand, sendCommandToAll} and {
+\backslash
+tt setTimeout}
+\end_layout
+
+\end_inset
+
+ are directly connected to a piece of code in the GGS which performs the
+ desired action.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt sendCommand}
+\end_layout
+
+\end_inset
+
+ functions are used to send commands or text to participants of the table.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt setTimeout}
+\end_layout
+
+\end_inset
+
+ function introduces timeouts to the V8 engine, which are not available
+ per default.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstset{    
+\end_layout
+
+\begin_layout Plain Layout
+
+language=Erlang,    
+\end_layout
+
+\begin_layout Plain Layout
+
+backgroundcolor=
+\backslash
+color{white},    
+\end_layout
+
+\begin_layout Plain Layout
+
+extendedchars=true,    
+\end_layout
+
+\begin_layout Plain Layout
+
+basicstyle=
+\backslash
+footnotesize
+\backslash
+ttfamily,    
+\end_layout
+
+\begin_layout Plain Layout
+
+showstringspaces=false,    
+\end_layout
+
+\begin_layout Plain Layout
+
+showspaces=false,    
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,    
+\end_layout
+
+\begin_layout Plain Layout
+
+numberstyle=
+\backslash
+footnotesize,    
+\end_layout
+
+\begin_layout Plain Layout
+
+numbersep=9pt,    
+\end_layout
+
+\begin_layout Plain Layout
+
+tabsize=2,    
+\end_layout
+
+\begin_layout Plain Layout
+
+breaklines=true,    
+\end_layout
+
+\begin_layout Plain Layout
+
+showtabs=false,    
+\end_layout
+
+\begin_layout Plain Layout
+
+captionpos=b
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=Erlang]
+\end_layout
+
+\begin_layout Plain Layout
+
+% @doc Exposes some GGS functions to JavaScript 
+\end_layout
+
+\begin_layout Plain Layout
+
+expose(GameVM, Table) ->
+\end_layout
+
+\begin_layout Plain Layout
+
+    Global = erlv8_vm:global(GameVM),
+\end_layout
+
+\begin_layout Plain Layout
+
+    Global:set_value("GGS", erlv8_object:new([
+\end_layout
+
+\begin_layout Plain Layout
+
+        {"localStorage", erlv8_object:new([
+\end_layout
+
+\begin_layout Plain Layout
+
+            {"setItem", fun(#erlv8_fun_invocation{}, [Key, Val])->
+\end_layout
+
+\begin_layout Plain Layout
+
+                ggs_db:setItem(Table, local_storage, Key, Val)
+\end_layout
+
+\begin_layout Plain Layout
+
+            end},
+\end_layout
+
+\begin_layout Plain Layout
+
+            {"getItem", fun(#erlv8_fun_invocation{}, [Key])->
+\end_layout
+
+\begin_layout Plain Layout
+
+                ggs_db:getItem(Table, local_storage, Key)
+\end_layout
+
+\begin_layout Plain Layout
+
+            end}
+\end_layout
+
+\begin_layout Plain Layout
+
+            % more functions ...
+\end_layout
+
+\begin_layout Plain Layout
+
+        ])},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {"world", erlv8_object:new([
+\end_layout
+
+\begin_layout Plain Layout
+
+            {"setItem", fun(#erlv8_fun_invocation{}, [Key, Val])->
+\end_layout
+
+\begin_layout Plain Layout
+
+                ggs_db:setItem(Table, world, Key, Val),
+\end_layout
+
+\begin_layout Plain Layout
+
+                ggs_table:send_command_to_all(
+\end_layout
+
+\begin_layout Plain Layout
+
+	                Table, {"world_set", Key ++ "=" ++ Val}
+\end_layout
+
+\begin_layout Plain Layout
+
+                )
+\end_layout
+
+\begin_layout Plain Layout
+
+            end},
+\end_layout
+
+\begin_layout Plain Layout
+
+            {"getItem", fun(#erlv8_fun_invocation{}, [Key])->
+\end_layout
+
+\begin_layout Plain Layout
+
+                ggs_db:getItem(Table, world, Key),
+\end_layout
+
+\begin_layout Plain Layout
+
+            end}
+\end_layout
+
+\begin_layout Plain Layout
+
+            % more functions ...
+\end_layout
+
+\begin_layout Plain Layout
+
+        ])},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {"sendCommand", fun(#erlv8_fun_invocation{}, [Player, Command, Args])->
+\end_layout
+
+\begin_layout Plain Layout
+
+            ggs_table:send_command(Table, Player, {Command, Args})
+\end_layout
+
+\begin_layout Plain Layout
+
+        end},
+\end_layout
+
+\begin_layout Plain Layout
+
+        {"sendCommandToAll", fun(#erlv8_fun_invocation{}, [Command, Args])->
+\end_layout
+
+\begin_layout Plain Layout
+
+            ggs_table:send_command_to_all(Table, {Command, Args})
+\end_layout
+
+\begin_layout Plain Layout
+
+        end}
+\end_layout
+
+\begin_layout Plain Layout
+
+         {"setTimeout", fund(#erlv8_fun_invocation{}, [Time, Function])->
+\end_layout
+
+\begin_layout Plain Layout
+
+            timer:apply_after(Time, ?MODULE, call_js, [GameVM, Function])
+\end_layout
+
+\begin_layout Plain Layout
+
+        end}
+\end_layout
+
+\begin_layout Plain Layout
+
+        % more functions ...
+\end_layout
+
+\begin_layout Plain Layout
+
+    ])).
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:exposing-erlang"
+
+\end_inset
+
+An example of how Erlang functionality is exposed to a Javascript GDL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Here we can have a more in-depth look at why Erlang was used, and outline
- the characteristics of EWrlang that we make use of in the GGS.
+TODO: Go in to more detail about how the world, player and localstorage
+ objects are implemented.
+ Also discuss localstorage and how it derives from the webstorage standard
+ in detail.
+ This is a great point on how we try to follow standards.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+My idea here is that we describe the erlang-js (which failed, but nontheless),
+ v8, UUID and other external communication.
+ We shouldn't describe sockets here though..
+ or..
+ maybe?
+\end_layout
+
+\begin_layout Plain Layout
+Also discuss how we allow GDLs to communicate with Erlang, this is 
+\begin_inset Quotes eld
+\end_inset
+
+external
+\begin_inset Quotes erd
+\end_inset
+
+ to thre GDL.
+ Discuss the GGS world object (there is a reference to this secxtion for
+ that purpose)
 \end_layout
 
 \end_inset
@@ -5786,30 +6599,118 @@ To prevent any data loss, the good state of the worker processes is stored
 \end_layout
 
 \begin_layout Subsection
-Distribution
+Reduncancy
+\end_layout
+
+\begin_layout Standard
+The modules in the GGS are built to be capable of redundant operation.
+ By adding a backup process to sensitive processes, the state can be kept
+ in the event of a crash.
+ The coordinator of the GGS prototype has this backup feature built in.
+ The coordinator passes state along to the backup process which keeps the
+ data safe.
+ In the event of a crash, the coordinator recovers the state from the backup
+ process.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:redundancy"
+
+\end_inset
+
+ depicts the redundancy built in to the coordinator process.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename graphics/redundancy.eps
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:redundancy"
+
+\end_inset
+
+To the left normal execution is pictured; the server state is backed up.
+ To the left; the exceptional excution, where the state is retrieved from
+ the backup to repopulate the server.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 Hot code replacement
 \end_layout
 
+\begin_layout Standard
+Hot code replacement is a technique used to update systems while they are
+ running.
+ The main use of hot code replacement are in critical systems that require
+ low downtime, such as telecom systems.
+ By using hot code replacement system can be able to achieve as high uptime
+ as possible and thus improving the reliability of the system.
+ Code replacement is a feature that exist in Erlang which means that with
+ some work it could be implemented into the GGS.
+\end_layout
+
 \begin_layout Section
-Implementation
-\end_layout
-
-\begin_layout Subsubsection
-User interface 
-\end_layout
-
-\begin_layout Subsection
-Example of a GGS server application in JavaScript
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Example-of-a-GGS-server-application-in-JavaScript"
-
-\end_inset
-
-
+Example of a GGS server application in Javascript
 \end_layout
 
 \begin_layout Standard
@@ -5966,7 +6867,7 @@ reference "sec:Communication-with-the-GDL-VM"
 \begin_inset Float algorithm
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -6483,25 +7384,6 @@ Coordinator
 \end_layout
 
 \begin_layout Section
-Understanding OTP 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-This section should possibly be removed.
- Writing how using OTP posed problems for us learning-wise does not seem
- relevant.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
 Usability
 \end_layout
 
@@ -6574,7 +7456,7 @@ We were able to reach 6000 messages per second on the server, which corresponds
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -6595,6 +7477,134 @@ begin{centering}
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename graphics/msg_per_sec.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename graphics/ping.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename graphics/msg_per_secoutput.eps
 
 \end_inset
 
@@ -6655,7 +7665,7 @@ Protocols
 \end_layout
 
 \begin_layout Standard
-Because of TCP being a connection oriented protocol, it isn't suited for
+Because of TCP being a connection oriented protocol, it is not suited for
  all types of game data transfers.
  Each transmission will consume more network bandwith than connectionless
  protocols like UDP and cause uneccessary load on the processor.
@@ -6668,7 +7678,7 @@ y on the GGS.
  and fairness in gameplay and many game developers requires the freedom
  to take care of safety issues as packet losses themselves.
  This concludes that UDP would be a benefit for the GGS, game developers
- and game players alike.
+ and players alike.
 \end_layout
 
 \begin_layout Subsubsection
@@ -6737,7 +7747,7 @@ Programming languages
 \end_layout
 
 \begin_layout Standard
-The GGS doesn't support many programming languages.
+The GGS does not support many programming languages.
  For a programming language to be compatible with the GGS, not only does
  it require a VM for that specific language, but the VM must have the ability
  to communicate to Erlang.
@@ -6750,12 +7760,15 @@ Documentation
 \end_layout
 
 \begin_layout Standard
-To start the GGS isn't self explanatory.
+To start the GGS is not self explanatory.
  This together with overall usage of GGS should be documented.
  The interface for usage of game developers is also in need of documentation.
  Features and requirements with respect to the GGS would assist users to
  know what they need in order to use the GGS and how they would benefit
  of it.
+ The GGS does not support many programming languages nor does it have a
+ complete documentation.
+ This needs to be taken care of in future versions.
 \end_layout
 
 \begin_layout Chapter
