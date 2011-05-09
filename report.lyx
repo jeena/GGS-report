@@ -7446,6 +7446,50 @@ Mention the hardware which the GGS was run on; A Thinkpad T410 wityh a core
 \end_layout
 
 \begin_layout Standard
+The testing of the GGS prototype occurred in two sessions, one session where
+ the system was tested with clients that were using mnesia and one session
+ with clients that did not use mnesia.
+ The data that were measured during both test sessions where how many messages
+ per second the server could handle, during the second test session the
+ delay between the server and the clients also was measured.
+ There was also a testing session where the number of clients were measured,
+ however this was not a good measurement of performance and therefore these
+ numbers will not be included in the report.
+ The hardware that the GGS was running on was a Thinkpad T410, with an Intel
+ i5 processor and 4GB of RAM.
+\end_layout
+
+\begin_layout Standard
+In the first test, where mnesia was used, the server had a peak value of
+ nearly 6000 messages per second.
+ When this number was reached mnesia warned that it was overloaded and shortly
+ after that mnesia crashed.
+ This result was not unexpected as this test put the database under heavy
+ load.
+ In the next testing session, the test was conducted with another client
+ that did not use mnesia.
+ Witout mnesia the server peaked at 60000 messages per second, however this
+ was only for a very short time.
+ The average throughput was around 25000 messages per second, five times
+ more than what the server was able to process with mnesia.
+ 
+\end_layout
+
+\begin_layout Standard
+In the second testing session the delay between the server and clients was
+ also measured.
+ A connection can be seen between those values, as long as the server is
+ under moderate load the delay is low and stable.
+ When the load on the server increases heavily the delay will do the same,
+ this is because the server can not process all incoming messages and therefore
+ messages are put in a queue within the system.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 Important things to note are that the number of clients is not a good way
  of measuring the performance of the server because the server is possible
  to have a large number of clients on the server but it can not handle all
@@ -7454,7 +7498,7 @@ Important things to note are that the number of clients is not a good way
  of messages it can handle per second.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 We were able to reach 6000 messages per second on the server, which corresponds
  to around 350 clients.
  However soon after this mnesia printed some warnings and the clients started
@@ -7468,11 +7512,16 @@ We were able to reach 6000 messages per second on the server, which corresponds
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -7536,7 +7585,7 @@ end{centering}
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -7600,7 +7649,7 @@ end{centering}
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -7668,7 +7717,7 @@ Future improvements
 The specification of the GGS prototype is huge and like many other software
  projects relying on outside technologies, in time it would require a lot
  of maintenance.
- Therefore there are a lot of areas in which the GGS could be improved such
+ Therefore there is a lot of areas in which the GGS could be improved such
  as performance, compatibility, ease of setup and usage.
 \end_layout
 
