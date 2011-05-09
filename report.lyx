@@ -1356,8 +1356,8 @@ ng them, a Generic Game Server should address all of them and help the developer
 \end_layout
 
 \begin_layout Standard
-Due to the limited capability of threading in many GDL VM:s, the GGS prototype
- will not support MMORPG:s.
+Due to the limited capability of threading in many GDL VMs, the GGS prototype
+ will not support MMORPGs.
 \end_layout
 
 \begin_layout Standard
@@ -2976,7 +2976,7 @@ Ds generated until 3400 A.D.
  This is accomplished by gathering several different sources of information,
  such as: time, MAC addresses of network cards, and operating system data,
  such as percentage of memory in use, mouse cursor position and process
- ID:s.
+ IDs.
  The gathered data is then 
 \emph on
 hashed
@@ -3028,7 +3028,7 @@ and
  
 \emph default
 the rest of the network later re-establish communication, they may have
- generated the same ID:s if using algorithm 
+ generated the same IDs if using algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:A-simple-generator"
@@ -3036,7 +3036,7 @@ reference "alg:A-simple-generator"
 \end_inset
 
 , even when mutual system-wide exclusion is implemented.
- This is exactly the problem UUID:s solve.
+ This is exactly the problem UUIDs solve.
 \begin_inset ERT
 status open
 
@@ -3863,24 +3863,24 @@ ports
 \emph on
 NIF
 \emph default
-:s (Native implemented functions)
+s (Native implemented functions)
 \emph on
 .
 
 \emph default
  Through ports communication can take place much in the same way communication
  is performed over sockets.
- NIF:s are called like any other functions without any difference to the
+ NIFs are called like any other functions without any difference to the
  caller but are implemented in C.
 \end_layout
 
 \begin_layout Standard
-The GGS uses Erlang ports for generating UUID:s
+The GGS uses Erlang ports for generating UUIDs
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-UUID:s are discussed in section 
+UUIDs are discussed in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:UUID"
@@ -3892,7 +3892,7 @@ reference "sub:UUID"
 
 \end_inset
 
- and NIF:s for interfacing with the virtual machines of games
+ and NIFs for interfacing with the virtual machines of games
 \begin_inset Foot
 status collapsed
 
@@ -4364,7 +4364,7 @@ reference "alg:exposing-erlang"
 \end_inset
 
  is specific to V8 and JavaScript, however implementations for different
- GDL:s, or different JavaScript VM:s should be similar.
+ GDLs, or different JavaScript VMs should be similar.
 \end_layout
 
 \begin_layout Standard
@@ -5558,7 +5558,7 @@ The game VM contains the state of the VM and a table token associated with
 \begin_layout Standard
 The VM itself makes it possible for the game developer to program in the
  programming language covered by the VM.
- In future releases, more game VM:s will be added to support more programming
+ In future releases, more game VMs will be added to support more programming
  languages.
  Because the game VM keeps track of the correct table, the game developer
  does not need to take this into consideration when programming a game.
@@ -5896,7 +5896,7 @@ GGS.
 sendCommandToAll(command, args).
  The localstorage is a convenient way to store global data and other variables
  separated from the game state.
- Unique id:s called gametokens are generated for hosted games so that they
+ Unique ids called gametokens are generated for hosted games so that they
  are not mixed up.
 \begin_inset ERT
 status open
@@ -7242,7 +7242,7 @@ Erlang identifies processes uniquely throughout the entire Erlang network
  using process IDs (PID).
  When we wish to refer to erlang processes from outside our erlang system,
  for example in a virtual machine for a different language, possibly on
- a different machine, these PID:s are no longer useful.
+ a different machine, these PIDs are no longer useful.
  
 \end_layout
 
@@ -7250,9 +7250,9 @@ Erlang identifies processes uniquely throughout the entire Erlang network
 This problem is not new, and a common solution is to use a Universally Unique
  Identifier, a UUID.
  These identifiers are generated both using randomization and using time.
- A reasonably large number of UUID:s can be generated before a collision
+ A reasonably large number of UUIDs can be generated before a collision
  should occur.
- There are standard tools in many UNIX systems to generate UUID:s, we chose
+ There are standard tools in many UNIX systems to generate UUIDs, we chose
  to use the uuidgen command, which employs an equidistributed combined Tausworth
 e generator.
 \end_layout
@@ -7734,14 +7734,14 @@ Compatibility
 \begin_layout Standard
 GGS relies on modern technologies.
  This includes the virtual machines(VM) that the GGS uses for communication
- between Erlang and the GDL:s.
- These specific VM:s are crucial for game developers to be able to write
+ between Erlang and the GDLs.
+ These specific VMs are crucial for game developers to be able to write
  games in other languages than Erlang.
- Therefore it would be best for the GGS to have as many of these VM:s implemente
-d as possible.
- The VM:s taken into consideration so far have been unstable or incomplete
- and it is possible to search for more VM:s, testing them and integrate
- them into the GGS prototype.
+ Therefore it would be best for the GGS to have as many of these VMs implemented
+ as possible.
+ The VMs taken into consideration so far have been unstable or incomplete
+ and it is possible to search for more VMs, testing them and integrate them
+ into the GGS prototype.
 \end_layout
 
 \begin_layout Subsection
@@ -7767,7 +7767,7 @@ The GGS does not support many programming languages.
  For a programming language to be compatible with the GGS, not only does
  it require a VM for that specific language, but the VM must have the ability
  to communicate to Erlang.
- More research is needed to find VM:s with this built in functionality.
+ More research is needed to find VMs with this built in functionality.
  
 \end_layout
 
