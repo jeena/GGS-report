@@ -4862,7 +4862,7 @@ external
 \end_inset
 
  to three GDL.
- Discuss the GGS world object (there is a reference to this secxtion for
+ Discuss the GGS world object (there is a reference to this section for
  that purpose)
 \end_layout
 
@@ -5465,10 +5465,10 @@ The coordinator keeps mappings between each player and table, therefore
 
 \begin_layout Standard
 The coordinator process contains important state, therefore a backup process
- is kept at allt times.
+ is kept at all times.
  All good data processed by the coordinator is stored for safekeeping in
  the backup process as well.
- Data which is potentisally harmful is not stored in the backup process.
+ Data which is potentially harmful is not stored in the backup process.
 \end_layout
 
 \begin_layout Standard
@@ -5508,7 +5508,7 @@ The information about which players are seated by each table is used when
  notifying all players by a table of an action.
  Consider a game of chess, each player notifies the table of its actions,
  the table then notifies the rest of the participants of these actions after
- having had the ac tions processed by the game VM, where an action could
+ having had the actions processed by the game VM, where an action could
  be moving a playing piece.
 \end_layout
 
@@ -6842,7 +6842,7 @@ reference "sub:The-database-module"
 
 ).
  The database can be used as any key-value store, however the syntax for
- insertions and fetch operations is tighty integrated in the GDL of the
+ insertions and fetch operations is tightly integrated in the GDL of the
  GGS.
 \end_layout
 
@@ -7116,11 +7116,11 @@ name "cha:Problems-of-implementation"
 This chapter contains specific problems encountered when implementing the
  GGS prototype.
  Some of the problems described have solutions attached, however some problems
- were not solved, therefore only ideas for slutions have been attached.
+ were not solved, therefore only ideas for solutions have been attached.
 \end_layout
 
 \begin_layout Standard
-The integration of JavaScript as a GDL in the GGS prototype was particularily
+The integration of JavaScript as a GDL in the GGS prototype was particularly
  difficult, and is handled in this section.
  Unique identification is also handled, as is the design of the GGS protocol.
 \end_layout
@@ -7130,7 +7130,7 @@ JavaScript engine
 \end_layout
 
 \begin_layout Standard
-The GGS prototype uses a vistual machine to sandbox each game.
+The GGS prototype uses a virtual machine to sandbox each game.
  JavaScript was chosen for the prototype due to its commonality in web applicati
 ons and the flexibility of the language.
  Any language with the proper bindings to Erlang could have been used in
@@ -7157,7 +7157,7 @@ IonMonkey
 \end_layout
 
 \begin_layout Standard
-For the Mozilla machines, there exists an Erlang binding called erlang_js,
+For the Mozilla machines, there exists a Erlang binding called erlang_js,
  and for the V8 machine a binding called erlv8 exists.
 \end_layout
 
@@ -7238,8 +7238,8 @@ UUID
 \end_layout
 
 \begin_layout Standard
-Erlang identifies processes uniquely throughout the entire Erlang network
- using process IDs (PID).
+Erlang identifies processes uniquely throughout the Erlang network using
+ process IDs (PID).
  When we wish to refer to erlang processes from outside our erlang system,
  for example in a virtual machine for a different language, possibly on
  a different machine, these PIDs are no longer useful.
@@ -7386,9 +7386,9 @@ Coordinator
 \end_layout
 
 \begin_layout Standard
-All the moves made in the game are recorded by the table, such that the
- table can restore the game in case something would happen, such as the
- table tipping over, which would represent the table process crashing.
+All the moves made in the game is recorded by the table, such that the table
+ can restore the game if something would happen, such as the table tipping
+ over, which would represent the table process crashing.
 \end_layout
 
 \begin_layout Standard
@@ -7416,7 +7416,7 @@ Coordinator
 Coordinator
 \emph default
  rounding up all the tables, running to a new location and building the
- club up in the exact state it was prior to the fire.
+ club up in the exact state it was before the fire.
 \end_layout
 
 \begin_layout Chapter
@@ -7430,13 +7430,21 @@ name "chap:Results-and-discussion"
 
 \end_layout
 
+\begin_layout Standard
+In this chapter the results of the GGS prototype is presented and discussed.
+ The results of the testing is presented with both graphical and textual
+ content.
+ Together with the test data there are thoughts about how future improvements
+ to the prototype could look like.
+\end_layout
+
 \begin_layout Section
 Statistics
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Mention the hardware which the GGS was run on; A Thinkpad T410 wityh a core
+Mention the hardware which the GGS was run on; A Thinkpad T410 with a core
  i5 and 4GB of ram.
 \end_layout
 
@@ -7455,7 +7463,7 @@ The testing of the GGS prototype occurred in two sessions, one session where
  There was also a testing session where the number of clients were measured,
  however this was not a good measurement of performance and therefore these
  numbers will not be included in the report.
- The hardware that the GGS was running on was a Thinkpad T410, with an Intel
+ The hardware that the GGS was running on was a Thinkpad T410, with a Intel
  i5 processor and 4GB of RAM.
 \end_layout
 
@@ -7468,8 +7476,8 @@ In the first test, where mnesia was used, the server had a peak value of
  load.
  In the next testing session, the test was conducted with another client
  that did not use mnesia.
- Witout mnesia the server peaked at 60000 messages per second, however this
- was only for a very short time.
+ Without mnesia the server peaked at 60000 messages per second, however
+ this was only for a very short time.
  The average throughput was around 25000 messages per second, five times
  more than what the server was able to process with mnesia.
  
@@ -7480,7 +7488,7 @@ In the second testing session the delay between the server and clients was
  also measured.
  A connection can be seen between those values, as long as the server is
  under moderate load the delay is low and stable.
- When the load on the server increases heavily the delay will do the same,
+ When the load on the server increases heavily the delay does the same,
  this is because the server can not process all incoming messages and therefore
  messages are put in a queue within the system.
 \end_layout
@@ -7740,8 +7748,8 @@ y on the GGS.
  Without having to setup a connection for each group packets of data being
  sent, they will be sent instantly and therefore arrive earlier.
  Latency is of highest importance in real-time games as it improves realism
- and fairness in gameplay and many game developers requires the freedom
- to take care of safety issues as packet losses themselves.
+ and fairness in gameplay and many game developers require the freedom to
+ take care of safety issues as packet losses themselves.
  This concludes that UDP would be a benefit for the GGS, game developers
  and players alike.
 \end_layout
@@ -7788,9 +7796,8 @@ GGS relies on modern technologies.
  games in other languages than Erlang.
  Therefore it would be best for the GGS to have as many of these VMs implemented
  as possible.
- The VMs taken into consideration so far have been unstable or incomplete
- and it is possible to search for more VMs, testing them and integrate them
- into the GGS prototype.
+ The VMs considered so far have been unstable or incomplete and it is possible
+ to search for more VMs, testing them and integrate them into the GGS prototype.
 \end_layout
 
 \begin_layout Subsection
@@ -7827,10 +7834,9 @@ Documentation
 \begin_layout Standard
 To start the GGS is not self explanatory.
  This together with overall usage of GGS should be documented.
- The interface for usage of game developers is also in need of documentation.
+ The interface for usage of game developers are also in need of documentation.
  Features and requirements with respect to the GGS would assist users to
- know what they need in order to use the GGS and how they would benefit
- of it.
+ know what they need to use the GGS and how they would benefit of it.
  The GGS does not support many programming languages nor does it have a
  complete documentation.
  This needs to be taken care of in future versions.
