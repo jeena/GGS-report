@@ -6583,38 +6583,38 @@ reference "fig:The-layout-of"
 \end_layout
 
 \begin_layout Enumerate
-Client packages a Game-Command into a package which conforms to the protocol
- structure the GGS is using and sends it over the network
+The client packages a Game-Command into a package which conforms to the
+ protocol structure the GGS is using and sends it over the network.
 \end_layout
 
 \begin_layout Enumerate
-The player module, which is coupled to the TCP-module to react on incoming
- messages accepts the message and forwards the raw data to the protocol
- parser module
+The player process, which is coupled to the TCP-process which reacts on
+ incoming messages, accepts the message and forwards the raw data to the
+ protocol parser process.
 \end_layout
 
 \begin_layout Enumerate
-The protocol parser parses the message and brings it into the format of
- the internal GGS presentation of such a message, which is just a specialized
- Erlang tuple
+The protocol parser process parses the message and brings it into the format
+ of the internal GGS presentation of such a message, which is just a specialized
+ Erlang tuple.
 \end_layout
 
 \begin_layout Enumerate
-The protocol parser sends this Erlang touple back to the player module
+The protocol parser sends this Erlang touple back to the player process.
 \end_layout
 
 \begin_layout Enumerate
-The player module checks if it is a Server-Command or a Game-Command.
+The player process checks if it is a Server-Command or a Game-Command.
  In our example it is a Game-Command and it sends the message to the table
- module
+ process.
 \end_layout
 
 \begin_layout Enumerate
-The table module sends it to its own Game VM
+The table process sends it to its own Game VM process.
 \end_layout
 
 \begin_layout Enumerate
-The Game VM module calls the function 
+The game VM process calls the function 
 \emph on
 playerCommand(
 \begin_inset Quotes eld
@@ -6642,7 +6642,7 @@ Peter
 
 )
 \emph default
- within the JavaScript VM
+ within the JavaScript VM.
 \end_layout
 
 \begin_layout Enumerate
@@ -6673,7 +6673,7 @@ GGS.localStorage(key)
 
 \begin_layout Enumerate
 Data is being read from and written to the database and handed over to the
- JSVM via the database module
+ JSVM via the database process.
 \end_layout
 
 \begin_layout Enumerate
@@ -6682,44 +6682,241 @@ In the example the
 GGS.sendCommandToAll()
 \emph default
  is being called then which is a callback to a function of the table module
- which iterates through its player list and sends the command to every player
+ which iterates through its player list and sends the command to every player.
 \end_layout
 
 \begin_layout Enumerate
-The table module sends every player instance the message to send the message
+The table process sends every player process the message to send the message
  with the change of a nickname of a particular user to its own client.
 \end_layout
 
 \begin_layout Enumerate
-The player module asks the protocol module to create a message conforming
- to the protocol which is being used
+The player process asks the protocol process to create a message conforming
+ to the protocol which is being used.
 \end_layout
 
 \begin_layout Enumerate
-The protocol module creates a string according to the protocol and returns
- it to the player module
+The protocol process creates a string according to the protocol and returns
+ it to the player process.
 \end_layout
 
 \begin_layout Enumerate
-The player module sends the message with help of the gen_tcp module to the
- client
+The player process sends the message with help of the gen_tcp module to
+ the client.
 \end_layout
 
 \begin_layout Subsection
-Initialization of a game
+Initialization and life cycle of a game
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Fill this in!
+This case study describes the initialization and definition of a game and
+ in roughly its life cycle untill it is removed from the GGS.
 \end_layout
 
+\begin_layout Subsubsection
+Initialization
+\end_layout
+
+\begin_layout Enumerate
+A client connects via TCP to the GGS.
+\end_layout
+
+\begin_layout Enumerate
+The dispatcher process reacts on the incomming connecction and creates a
+ new player process.
+\end_layout
+
+\begin_layout Enumerate
+The dispatcher process couples the TCP connection to the newly created player
+ process, this way the new player process is responsible to react on incoming
+ messages.
+\end_layout
+
+\begin_layout Enumerate
+The client sends a message with a 
+\begin_inset Quotes eld
 \end_inset
 
+hello
+\begin_inset Quotes erd
+\end_inset
 
+ Server-Command to initiate a handshake.
+\end_layout
+
+\begin_layout Enumerate
+The player module parses the message with help of the protocol module.
+\end_layout
+
+\begin_layout Enumerate
+If the message was just a plain 
+\begin_inset Quotes eld
+\end_inset
+
+hello
+\begin_inset Quotes erd
+\end_inset
+
+, without a table token, then the player process asks the coordinator process
+ to create a new table process and add this player process to this newly
+ created table.
+ If the client did send a table token then the player process asks the coordinat
+or to att the player process to this table.
+\end_layout
+
+\begin_layout Enumerate
+During the creation of a new table the table process creates a new game
+ VM process which creates its own game context within the JavaScript VM.
+\end_layout
+
+\begin_layout Enumerate
+The player process answers to the client with a 
+\begin_inset Quotes eld
+\end_inset
+
+hello
+\begin_inset Quotes erd
+\end_inset
+
+ Client-Command and passes on the clients player token along with the informatio
+n about if it should define a game - because it is the first client to connect
+ to this table - or not and the table token it was assigned to.
+\end_layout
+
+\begin_layout Subsubsection
+Defining a game
+\end_layout
+
+\begin_layout Standard
+Because of the generic nature of the GGS it is the clients job to load up
+ the source code of the game it would like to play.
+ It is possible to alter the GGS prototype so that only the server maintainer
+ is able to install new games on the server but this way the GGS is much
+ more generic.
+\end_layout
+
+\begin_layout Standard
+The first client which connects to a table is responsible to provide the
+ JavaScript server source code.
+ To do so there is a 
+\begin_inset Quotes eld
+\end_inset
+
+define
+\begin_inset Quotes erd
+\end_inset
+
+ Server-Command.
+\end_layout
+
+\begin_layout Enumerate
+If during the handshake with the 
+\begin_inset Quotes eld
+\end_inset
+
+hello
+\begin_inset Quotes erd
+\end_inset
+
+ command the client gets the task of providing the server source code then
+ it sends a 
+\begin_inset Quotes eld
+\end_inset
+
+define
+\begin_inset Quotes erd
+\end_inset
+
+ Server-Command message with the source code as its parameter.
+\end_layout
+
+\begin_layout Enumerate
+The player process parses, once again with help of the protocoll module,
+ the message.
+\end_layout
+
+\begin_layout Enumerate
+The player process sends the source code to its table process as a 
+\begin_inset Quotes eld
+\end_inset
+
+define
+\begin_inset Quotes erd
+\end_inset
+
+ message.
+\end_layout
+
+\begin_layout Enumerate
+The table process forwards it to the game VM process.
+\end_layout
+
+\begin_layout Enumerate
+The game VM process executes the source code within the JavaScript VM.
+\end_layout
+
+\begin_layout Enumerate
+The JavaScript VM evaluates the source code - which has to implement the
+ playerCommand() function - within the games context.
+\end_layout
+
+\begin_layout Enumerate
+Now the game is fully initialized and can be used by all clients with help
+ of the playerCommand() function.
+\end_layout
+
+\begin_layout Enumerate
+The table process saves the source code in the database for backup reasons
+ (this is not yet implemented).
+\end_layout
+
+\begin_layout Enumerate
+The player process sends a 
+\begin_inset Quotes eld
+\end_inset
+
+defined
+\begin_inset Quotes erd
+\end_inset
+
+ Client-Command to the client.
+ This way the client is notified that everything went well and it can start
+ the game.
+\end_layout
+
+\begin_layout Standard
+If it is not the first client on the table, it will get a define=false during
+ the handshake and is not obligated to send the server source code.
+\end_layout
+
+\begin_layout Subsubsection
+Life cycle
+\end_layout
+
+\begin_layout Enumerate
+Initialization
+\end_layout
+
+\begin_layout Enumerate
+Defining a game
+\end_layout
+
+\begin_layout Enumerate
+Other clients connect and initialize but do not define anything.
+\end_layout
+
+\begin_layout Enumerate
+Typical communication
+\end_layout
+
+\begin_layout Enumerate
+Clients disconnect
+\end_layout
+
+\begin_layout Enumerate
+When the last client disconnects the table process terminates and with it
+ the game context and database content (not implemented yet).
 \end_layout
 
 \begin_layout Subsection
