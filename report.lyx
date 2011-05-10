@@ -6580,6 +6580,19 @@ Hot code replacement is a technique used to update systems while they are
 Case studies
 \end_layout
 
+\begin_layout Standard
+This section contains three case studies.
+ These case studies have been written to provide examples of how the flow
+ through the GGS can look when performing different tasks.
+ The first case study outlines the flow of sending a common message to the
+ GDL VM and receiving a response.
+ The second case study provides an example of the process of connecting
+ to the GGS to set up a game.
+ The third and final case study is a section of code from the GGS.
+ The code in the third study shows how a simple chat server can be implemented
+ in the GGS using JavaScript as GDL.
+\end_layout
+
 \begin_layout Subsection
 Typical communication
 \end_layout
