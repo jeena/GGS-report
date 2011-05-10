@@ -6587,7 +6587,8 @@ Typical communication
 \begin_layout Standard
 This case study describes the flow through the GGS when a typical command
  is encountered.
- Consider a chat client sending the message to change the nick of a user.
+ Below is a case study where a chat client sends a message to change the
+ nick of a user.
  The actual code performing the change of a nick in JavaScript is discussed
  in section 
 \begin_inset CommandInset ref
@@ -6599,19 +6600,23 @@ reference "sec:Example-of-a-GGS-app"
 .
  All communication between modules is asynchronous, nothing is blocking,
  which is very important in concurrent systems.
- It is probably much easier to follow the steps by following them on 
+ To follow the example more easily, looking at the graphic in section 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "fig:The-layout-of"
 
 \end_inset
 
-.
+ is recommended.
 \end_layout
 
 \begin_layout Enumerate
-The client packages a Game-Command into a package which conforms to the
- protocol structure the GGS is using and sends it over the network.
+The client packages a Game-Command into a 
+\emph on
+GGS protocol packet
+\emph default
+ which conforms to the protocol structure the GGS is using and sends it
+ over the network.
 \end_layout
 
 \begin_layout Enumerate
@@ -6762,13 +6767,9 @@ The dispatcher process couples the TCP connection to the newly created player
 
 \begin_layout Enumerate
 The client sends a message with a 
-\begin_inset Quotes eld
-\end_inset
-
+\noun on
 hello
-\begin_inset Quotes erd
-\end_inset
-
+\noun default
  Server-Command to initiate a handshake.
 \end_layout
 
@@ -6778,13 +6779,9 @@ The player module parses the message with help of the protocol module.
 
 \begin_layout Enumerate
 If the message was just a plain 
-\begin_inset Quotes eld
-\end_inset
-
+\noun on
 hello
-\begin_inset Quotes erd
-\end_inset
-
+\noun default
 , without a table token, then the player process asks the coordinator process
  to create a new table process and add this player process to this newly
  created table.
@@ -6799,13 +6796,9 @@ During the creation of a new table the table process creates a new game
 
 \begin_layout Enumerate
 The player process answers to the client with a 
-\begin_inset Quotes eld
-\end_inset
-
+\noun on
 hello
-\begin_inset Quotes erd
-\end_inset
-
+\noun default
  Client-Command and passes on the clients player token along with the informatio
 n about if it should define a game - because it is the first client to connect
  to this table - or not and the table token it was assigned to.
@@ -6816,67 +6809,54 @@ Defining a game
 \end_layout
 
 \begin_layout Standard
-Because of the generic nature of the GGS it is the clients job to load up
- the source code of the game it would like to play.
+The generic nature of the GGS leaves it up to the client to define which
+ game should be run.
+ The definition is done in the GDL, in this example, the GDL is JavaScript.
  It is possible to alter the GGS prototype so that only the server maintainer
- is able to install new games on the server but this way the GGS is much
- more generic.
+ is able to install new games on the server however the current implementation
+ of the GGS is much more generic.
 \end_layout
 
 \begin_layout Standard
 The first client which connects to a table is responsible to provide the
  JavaScript server source code.
  To do so there is a 
-\begin_inset Quotes eld
-\end_inset
-
+\noun on
 define
-\begin_inset Quotes erd
-\end_inset
-
+\noun default
  Server-Command.
 \end_layout
 
 \begin_layout Enumerate
 If during the handshake with the 
-\begin_inset Quotes eld
-\end_inset
-
+\noun on
 hello
-\begin_inset Quotes erd
-\end_inset
-
- command the client gets the task of providing the server source code then
- it sends a 
-\begin_inset Quotes eld
-\end_inset
-
+\noun default
+ command the client is assigned the task of providing the server source
+ code then the client must send a 
+\noun on
 define
-\begin_inset Quotes erd
-\end_inset
-
+\noun default
  Server-Command message with the source code as its parameter.
+ Only the first client will get the information about the need of defining
+ a game during the handshake.
 \end_layout
 
 \begin_layout Enumerate
-The player process parses, once again with help of the protocoll module,
- the message.
+The player process parses the message, with help of the protocol module.
 \end_layout
 
 \begin_layout Enumerate
-The player process sends the source code to its table process as a 
-\begin_inset Quotes eld
-\end_inset
-
+The player process sends the source code to the table process assigned to
+ the player as a 
+\noun on
 define
-\begin_inset Quotes erd
-\end_inset
-
+\noun default
  message.
 \end_layout
 
 \begin_layout Enumerate
-The table process forwards it to the game VM process.
+The table process forwards the source code to the game VM process.
 \end_layout
 
 \begin_layout Enumerate
@@ -6885,12 +6865,12 @@ The game VM process executes the source code within the JavaScript VM.
 
 \begin_layout Enumerate
 The JavaScript VM evaluates the source code - which has to implement the
- playerCommand() function - within the games context.
+ playerCommand() function - within the context of the game.
 \end_layout
 
 \begin_layout Enumerate
-Now the game is fully initialized and can be used by all clients with help
- of the playerCommand() function.
+The game is at this point fully initialized and can be used by all clients
+ with help of the playerCommand() function.
 \end_layout
 
 \begin_layout Enumerate
@@ -6900,21 +6880,12 @@ The table process saves the source code in the database for backup reasons
 
 \begin_layout Enumerate
 The player process sends a 
-\begin_inset Quotes eld
-\end_inset
-
+\noun on
 defined
-\begin_inset Quotes erd
-\end_inset
-
+\noun default
  Client-Command to the client.
  This way the client is notified that everything went well and it can start
  the game.
-\end_layout
-
-\begin_layout Standard
-If it is not the first client on the table, it will get a define=false during
- the handshake and is not obligated to send the server source code.
 \end_layout
 
 \begin_layout Subsubsection
@@ -6943,7 +6914,7 @@ Clients disconnect
 
 \begin_layout Enumerate
 When the last client disconnects the table process terminates and with it
- the game context and database content (not implemented yet).
+ the game context and database content (not implemented in the prototype).
 \end_layout
 
 \begin_layout Subsection
