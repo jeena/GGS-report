@@ -460,7 +460,7 @@ Due to the increasing importance of computer gaming, more focus should be
 \end_layout
 
 \begin_layout Standard
-The reliable generic game server, hereafter known as GGS
+The Reliable Generic Game Server, hereafter known as the GGS
 \begin_inset ERT
 status open
 
@@ -2391,11 +2391,11 @@ n between server and client.
  The GGS protocol is described in more detail in section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:The-structure-of"
+reference "sub:The-protocol-parser"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -4284,624 +4284,6 @@ tt
 \end_layout
 
 \begin_layout Section
-Communication with external systems and applications
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Communication-with-external"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A game launched on the GGS is run within a virtual machine.
- For each programming language supported, there is a virtual machine that
- interprets the game.
- Furthermore an interface for communication between the GGS, the game and
- the players playing the game must be present.
-\end_layout
-
-\begin_layout Standard
-The reason for the GGS requiring a communication channel between the game
- VM and Erlang is in part because the GGS makes heavy use of callbacks.
- Callbacks written in Erlang are registered to the VM for the interface
- to work.
- It is only with the help of the interface that the game developer can access
- the game state and send messages between players.
- The interface provides access to three objects called 
-\emph on
-world
-\emph default
-, 
-\emph on
-player
-\emph default
- and 
-\emph on
-localstorage
-\emph default
-.
- The game state is safely stored in a database and retrieved for manipulation
- by a call for the world object.
- Interaction with the players is done the same way using the player object
- instead.
- The localstorage is a convenient way to store global data and other data
- separated from the game state.
- In section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Exposing-Erlang-functionality"
-
-\end_inset
-
- a concrete example of the implementation of the localstorage and world
- objects is given.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
- Unique id:s called gametokens are generated for hosted games so that they
- are not mixed up.
- -- good text, integrate more.
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{WebStorage}}{A new standard for letting websites store data on visitors'
- computers}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Exposing Erlang functionality to the GDL VM 
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Exposing-Erlang-functionality"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-This section contains a concrete example of how the localstorage and world
- objects are exposed to a GDL VM.
- The example comes from the GGS prototype, which uses JavaScript powered
- by Google V8 as its GDL VM.
-\end_layout
-
-\begin_layout Standard
-The code given in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:exposing-erlang"
-
-\end_inset
-
- is specific to V8 and JavaScript, however implementations for different
- GDLs, or different JavaScript VMs should be similar.
-\end_layout
-
-\begin_layout Standard
-In JavaScript is is common to use a top level object, called a global object,
- to establish a global scope.
- This allows declaration of global variables and functions.
- To gain access to the global object in the GGS, the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-tt erlv8
-\backslash
-_vm:global(..)}
-\end_layout
-
-\end_inset
-
- function on line 2 of the example is used.
- Using the global object, declarations of the world and GGS object can be
- placed in the global scope.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-tt Global:set
-\backslash
-_value(..)}
-\end_layout
-
-\end_inset
-
- is a call to the global object, declaring new objects in the global scope.
- On line 4 the GGS object is declared.
- By accessing 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-tt GGS.localStorage }
-\end_layout
-
-\end_inset
-
- from within the GDL, access to the localstorage is provided, thus the localstor
-age must be connected to the GGS object, this can be seen in line 5.
-\end_layout
-
-\begin_layout Standard
-Both the GGS and localstorage objects are dummy objects, which provide no
- functionality, these two objects are simply placed in the GDL for the purpose
- clearing up the code.
- In order to perform an action using the GGS and localstorage objects, the
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-tt getItem} and {
-\backslash
-tt setItem}
-\end_layout
-
-\end_inset
-
- functions must be used.
- These items are directly connected to the database module of the GGS, which
- is discussed in more detail in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:The-database-module"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Similarly the functions 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-tt sendCommand, sendCommandToAll} and {
-\backslash
-tt setTimeout}
-\end_layout
-
-\end_inset
-
- are directly connected to a piece of code in the GGS which performs the
- desired action.
- The 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-tt sendCommand}
-\end_layout
-
-\end_inset
-
- functions are used to send commands or text to participants of the table.
- The 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\backslash
-tt setTimeout}
-\end_layout
-
-\end_inset
-
- function introduces timeouts to the V8 engine, which are not available
- per default.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-lstset{    
-\end_layout
-
-\begin_layout Plain Layout
-
-language=Erlang,    
-\end_layout
-
-\begin_layout Plain Layout
-
-backgroundcolor=
-\backslash
-color{white},    
-\end_layout
-
-\begin_layout Plain Layout
-
-extendedchars=true,    
-\end_layout
-
-\begin_layout Plain Layout
-
-basicstyle=
-\backslash
-footnotesize
-\backslash
-ttfamily,    
-\end_layout
-
-\begin_layout Plain Layout
-
-showstringspaces=false,    
-\end_layout
-
-\begin_layout Plain Layout
-
-showspaces=false,    
-\end_layout
-
-\begin_layout Plain Layout
-
-numbers=left,    
-\end_layout
-
-\begin_layout Plain Layout
-
-numberstyle=
-\backslash
-footnotesize,    
-\end_layout
-
-\begin_layout Plain Layout
-
-numbersep=9pt,    
-\end_layout
-
-\begin_layout Plain Layout
-
-tabsize=2,    
-\end_layout
-
-\begin_layout Plain Layout
-
-breaklines=true,    
-\end_layout
-
-\begin_layout Plain Layout
-
-showtabs=false,    
-\end_layout
-
-\begin_layout Plain Layout
-
-captionpos=b
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{lstlisting}[language=Erlang]
-\end_layout
-
-\begin_layout Plain Layout
-
-% @doc Exposes some GGS functions to JavaScript 
-\end_layout
-
-\begin_layout Plain Layout
-
-expose(GameVM, Table) ->
-\end_layout
-
-\begin_layout Plain Layout
-
-    Global = erlv8_vm:global(GameVM),
-\end_layout
-
-\begin_layout Plain Layout
-
-    Global:set_value("GGS", erlv8_object:new([
-\end_layout
-
-\begin_layout Plain Layout
-
-        {"localStorage", erlv8_object:new([
-\end_layout
-
-\begin_layout Plain Layout
-
-            {"setItem", fun(#erlv8_fun_invocation{}, [Key, Val])->
-\end_layout
-
-\begin_layout Plain Layout
-
-                ggs_db:setItem(Table, local_storage, Key, Val)
-\end_layout
-
-\begin_layout Plain Layout
-
-            end},
-\end_layout
-
-\begin_layout Plain Layout
-
-            {"getItem", fun(#erlv8_fun_invocation{}, [Key])->
-\end_layout
-
-\begin_layout Plain Layout
-
-                ggs_db:getItem(Table, local_storage, Key)
-\end_layout
-
-\begin_layout Plain Layout
-
-            end}
-\end_layout
-
-\begin_layout Plain Layout
-
-            % more functions ...
-\end_layout
-
-\begin_layout Plain Layout
-
-        ])},
-\end_layout
-
-\begin_layout Plain Layout
-
-        {"world", erlv8_object:new([
-\end_layout
-
-\begin_layout Plain Layout
-
-            {"setItem", fun(#erlv8_fun_invocation{}, [Key, Val])->
-\end_layout
-
-\begin_layout Plain Layout
-
-                ggs_db:setItem(Table, world, Key, Val),
-\end_layout
-
-\begin_layout Plain Layout
-
-                ggs_table:send_command_to_all(
-\end_layout
-
-\begin_layout Plain Layout
-
-	                Table, {"world_set", Key ++ "=" ++ Val}
-\end_layout
-
-\begin_layout Plain Layout
-
-                )
-\end_layout
-
-\begin_layout Plain Layout
-
-            end},
-\end_layout
-
-\begin_layout Plain Layout
-
-            {"getItem", fun(#erlv8_fun_invocation{}, [Key])->
-\end_layout
-
-\begin_layout Plain Layout
-
-                ggs_db:getItem(Table, world, Key),
-\end_layout
-
-\begin_layout Plain Layout
-
-            end}
-\end_layout
-
-\begin_layout Plain Layout
-
-            % more functions ...
-\end_layout
-
-\begin_layout Plain Layout
-
-        ])},
-\end_layout
-
-\begin_layout Plain Layout
-
-        {"sendCommand", fun(#erlv8_fun_invocation{}, [Player, Command, Args])->
-\end_layout
-
-\begin_layout Plain Layout
-
-            ggs_table:send_command(Table, Player, {Command, Args})
-\end_layout
-
-\begin_layout Plain Layout
-
-        end},
-\end_layout
-
-\begin_layout Plain Layout
-
-        {"sendCommandToAll", fun(#erlv8_fun_invocation{}, [Command, Args])->
-\end_layout
-
-\begin_layout Plain Layout
-
-            ggs_table:send_command_to_all(Table, {Command, Args})
-\end_layout
-
-\begin_layout Plain Layout
-
-        end}
-\end_layout
-
-\begin_layout Plain Layout
-
-         {"setTimeout", fund(#erlv8_fun_invocation{}, [Time, Function])->
-\end_layout
-
-\begin_layout Plain Layout
-
-            timer:apply_after(Time, ?MODULE, call_js, [GameVM, Function])
-\end_layout
-
-\begin_layout Plain Layout
-
-        end}
-\end_layout
-
-\begin_layout Plain Layout
-
-        % more functions ...
-\end_layout
-
-\begin_layout Plain Layout
-
-    ])).
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{lstlisting}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:exposing-erlang"
-
-\end_inset
-
-An example of how Erlang functionality is exposed to a Javascript GDL
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: Go in to more detail about how the world, player and localstorage
- objects are implemented.
- Also discuss localstorage and how it derives from the webstorage standard
- in detail.
- This is a great point on how we try to follow standards.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-My idea here is that we describe the erlang-js (which failed, but nonetheless),
- v8, UUID and other external communication.
- We shouldn't describe sockets here though..
- or..
- maybe?
-\end_layout
-
-\begin_layout Plain Layout
-Also discuss how we allow GDLs to communicate with Erlang, this is 
-\begin_inset Quotes eld
-\end_inset
-
-external
-\begin_inset Quotes erd
-\end_inset
-
- to three GDL.
- Discuss the GGS world object (there is a reference to this section for
- that purpose)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
 The modular structure of the GGS prototype
 \begin_inset CommandInset label
 LatexCommand label
@@ -5784,8 +5166,212 @@ sendCommandToAll(command, args).
  are not mixed up.
 \end_layout
 
+\begin_layout Standard
+A game launched on the GGS is run within a virtual machine.
+ For each programming language supported, there is a virtual machine that
+ interprets the game.
+ Furthermore an interface for communication between the GGS, the game and
+ the players playing the game must be present.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ Unique id:s called gametokens are generated for hosted games so that they
+ are not mixed up.
+ -- good text, integrate more.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{WebStorage}}{A new standard for letting websites store data on visitors'
+ computers}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
-Exposing Erlang functionality to the GDL VM
+Exposing Erlang functionality to the GDL VM 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Exposing-Erlang-functionality"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This section contains a concrete example of how the localstorage and world
+ objects are exposed to a GDL VM.
+ The example comes from the GGS prototype, which uses JavaScript powered
+ by Google V8 as its GDL VM.
+\end_layout
+
+\begin_layout Standard
+The code given in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:exposing-erlang"
+
+\end_inset
+
+ is specific to V8 and JavaScript, however implementations for different
+ GDLs, or different VMs should be similar.
+\end_layout
+
+\begin_layout Standard
+In JavaScript is is common to use a top level object, called a global object,
+ to establish a global scope.
+ This allows the declaration of global variables and functions.
+ To gain access to the global object in the GGS, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt erlv8
+\backslash
+_vm:global(..)}
+\end_layout
+
+\end_inset
+
+ function on line 2 of the example is used.
+ Using the global object, declarations of the world and GGS object can be
+ placed in the global scope.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt Global:set
+\backslash
+_value(..)}
+\end_layout
+
+\end_inset
+
+ is a call to the global object, declaring new objects in the global scope.
+ On line 4 the GGS object is declared.
+ By accessing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.localStorage }
+\end_layout
+
+\end_inset
+
+ from within the GDL, access to the localstorage is provided, thus the localstor
+age must be connected to the GGS object, this can be seen in line 5.
+\end_layout
+
+\begin_layout Standard
+Both the GGS and localstorage objects are dummy objects, which provide no
+ functionality, these two objects are simply placed in the GDL for the purpose
+ clearing up the code.
+ In order to perform an action using the GGS and localstorage objects, the
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt getItem} and {
+\backslash
+tt setItem}
+\end_layout
+
+\end_inset
+
+ functions must be used.
+ These items are directly connected to the database module of the GGS, which
+ is discussed in more detail in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:The-database-module"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Similarly the functions 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt sendCommand, sendCommandToAll} and {
+\backslash
+tt setTimeout}
+\end_layout
+
+\end_inset
+
+ are directly connected to a piece of code in the GGS which performs the
+ desired action.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt sendCommand}
+\end_layout
+
+\end_inset
+
+ functions are used to send commands or text to participants of the table.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt setTimeout}
+\end_layout
+
+\end_inset
+
+ function introduces timeouts to the V8 engine, which are not available
+ per default.
 \end_layout
 
 \begin_layout Standard
@@ -5806,7 +5392,7 @@ Prior to this section, the Erlang syntax has to be briefly explained.
 \begin_inset Float algorithm
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
