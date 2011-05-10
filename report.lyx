@@ -7491,15 +7491,18 @@ key "Slee2007"
  was also an alternative.
  Using Thrift would mean the GGS would feature a standard protocol for network
  communication.
- Before finding out about Thrift, an implementation of the GGS protocol
- had already been made, moving to Thrift would mean too much work.
+ Before finding out about Thrift during a lecture of Joe Armstrong (one
+ of the inventors of Erlang), an implementation of the GGS protocol had
+ already been implemented, moving to Thrift would mean too much efford for
+ a prototype during the short amount of time.
 \end_layout
 
 \begin_layout Standard
-The use of Thrift, BSON, or other protocols can be supported quite easily
- by developing protocol modules for each protocol.
+The use of Thrift, Google protocol buffers - which is a different approach
+ to that implemented by Google - or other protocols can be supported quite
+ easily by developing protocol modules for each the protocols.
  No protocol modules for these protocols have however been developed during
- the writing of this thesis
+ the writing of this thesis.
 \end_layout
 
 \begin_layout Chapter
