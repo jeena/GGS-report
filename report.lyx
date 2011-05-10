@@ -2374,6 +2374,30 @@ Same here it is simply not true for a generic server to chose one or the
 
 \end_layout
 
+\begin_layout Subsection
+The GGS protocol
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Refer to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:The-structure-of"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Generic
 \begin_inset CommandInset label
