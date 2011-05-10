@@ -7344,8 +7344,7 @@ This chapter contains specific problems encountered when implementing the
 
 \begin_layout Standard
 The integration of JavaScript as a GDL in the GGS prototype was particularly
- difficult, and is handled in this section.
- Unique identification is also handled, as is the design of the GGS protocol.
+ difficult, and is handled in this section and so is the protocol design.
 \end_layout
 
 \begin_layout Section
@@ -7459,39 +7458,17 @@ textbf{SpiderMonkey}}{JavaScript engine developed by Mozilla}
 \end_layout
 
 \begin_layout Section
-UUID 
-\end_layout
-
-\begin_layout Standard
-Erlang identifies processes uniquely throughout the Erlang network using
- process IDs (PID).
- When we wish to refer to erlang processes from outside our erlang system,
- for example in a virtual machine for a different language, possibly on
- a different machine, these PIDs are no longer useful.
- 
-\end_layout
-
-\begin_layout Standard
-This problem is not new, and a common solution is to use a Universally Unique
- Identifier, a UUID.
- These identifiers are generated both using randomization and using time.
- A reasonably large number of UUIDs can be generated before a collision
- should occur.
- There are standard tools in many UNIX systems to generate UUIDs, we chose
- to use the uuidgen command, which employs an equidistributed combined Tausworth
-e generator.
-\end_layout
-
-\begin_layout Section
 Protocol design
 \end_layout
 
 \begin_layout Standard
-Initially the GGS protocol was designed to use the UDP protocol for transport.
+Initially the GGS protocol was planed to use the UDP protocol for transport.
  Due to the lack of error checking in the UDP protocol, the UDP protocol
- is faster than the TCP protocol, this was a main reason to use UDP.
- The GGS does however need error checking to be as reliable as possible,
- therefore an error checking layer would have to be placed on top of UDP.
+ is faster than the TCP protocol, this was a main reason in the desire to
+ use UDP.
+ The GGS does however need error checking for some of it parts to be as
+ reliable as possible.
+ Therefore an error checking layer would have to be placed on top of UDP.
 \end_layout
 
 \begin_layout Standard
