@@ -3511,9 +3511,10 @@ and distribution of erlang nodes on physical nodes.
 \end_layout
 
 \begin_layout Standard
-The chapter ends with case studies of particular features of the GGS.
- The case studies serve as concrete examples of the implementations outlined
- in the rest of this chapter.
+The chapter ends with case studies and code examples of particular features
+ of the GGS.
+ The case studies and the code serve as concrete examples of the implementations
+ outlined in the rest of this chapter.
 \end_layout
 
 \begin_layout Section
@@ -6720,7 +6721,7 @@ Fill this in!
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Example of a GGS server application in JavaScript
 \begin_inset CommandInset label
 LatexCommand label
