@@ -560,7 +560,9 @@ textbf{Counter-Strike}}{A multiplayer first person shooter game, popular
 
 \begin_layout Plain Layout
 
-/nomenclature{
+
+\backslash
+nomenclature{
 \backslash
 textbf{World of Warcraft}}{A MMORPG game developed by Blizzard.
  The world's most popular MMORPG by subscriber count.}
@@ -7297,110 +7299,6 @@ The use of Thrift, BSON, or other protocols can be supported quite easily
  by developing protocol modules for each protocol.
  No protocol modules for these protocols have however been developed during
  the writing of this thesis
-\end_layout
-
-\begin_layout Section
-Design choices 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-This section is wrongly placed
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-When designing concurrent applications, it is useful to picture them as
- real world scenarios, and to model each actor as a real world process.
- A real world process is a process which performs some action in the real
- world, such as a mailbox receiving a letter, a door being opened, a person
- translating a text, a soccer player kicking the ball, just to name a few
- examples.
- Since we focus on games in this project, it is suitable to model our system
- as a place where games take place.
- We imagined a chess club.
- 
-\end_layout
-
-\begin_layout Standard
-The clients pictured as green circles can be thought of as the physical
- chess players.
-\end_layout
-
-\begin_layout Standard
-When a player wants to enter the our particular chess club, he must first
- be let in by the doorman, called the 
-\emph on
-Dispatcher
-\emph default
- in the GGS.
-\end_layout
-
-\begin_layout Standard
-He then gets a name badge, and thus becomes a 
-\emph on
-Player
-\emph default
- process in the system.
- He is also guided in to the lobby by the 
-\emph on
-Coordinator
-\emph default
-, which has the role of the host of the chess club.
-\end_layout
-
-\begin_layout Standard
-When players wish to play against each other, they talk to the 
-\emph on
-Coordinator
-\emph default
- who pairs them up, and places them at a table.
- Once they have sat down at the table, they no longer need the assistance
- of the 
-\emph on
-Coordinator
-\emph default
-, all further communication takes place via the table.
- This can be thought of as the actual chess game commencing.
- 
-\end_layout
-
-\begin_layout Standard
-All the moves made in the game is recorded by the table, such that the table
- can restore the game if something would happen, such as the table tipping
- over, which would represent the table process crashing.
-\end_layout
-
-\begin_layout Standard
-Once a player wishes to leave a game, or the entire facility, he should
- contact the 
-\emph on
-Coordinator
-\emph default
-, who revokes his name badge and the 
-\emph on
-Dispatcher
-\emph default
- will let the player out.
-\end_layout
-
-\begin_layout Standard
-With the information kept in the tables and the 
-\emph on
-Coordinator
-\emph default
- combined, we can rebuild the entire state of the server at a different
- location.
- This can be thought of the chess club catching fire, and the 
-\emph on
-Coordinator
-\emph default
- rounding up all the tables, running to a new location and building the
- club up in the exact state it was before the fire.
 \end_layout
 
 \begin_layout Chapter
