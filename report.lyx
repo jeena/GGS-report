@@ -6588,7 +6588,8 @@ This section contains three case studies.
  GDL VM and receiving a response.
  The second case study provides an example of the process of connecting
  to the GGS to set up a game.
- The third and final case study is a section of code from the GGS.
+ The third and final case study is a section of code from a part of a game
+ for the GGS.
  The code in the third study shows how a simple chat server can be implemented
  in the GGS using JavaScript as GDL.
 \end_layout
@@ -7366,11 +7367,12 @@ ons and the flexibility of the language.
 \end_layout
 
 \begin_layout Standard
-There are two main JavaScript virtual machines, or 
+There are two JavaScript virtual machines, or 
 \emph on
-engines
+engines,
 \emph default
- available at the time of the writing of this thesis.
+ with suitable bindings to erlang available at the time of the writing of
+ this thesis.
  There is a group of machines developed by Mozilla called 
 \emph on
 TraceMonkey, JaegerMonkey, SpiderMonkey 
@@ -7379,9 +7381,13 @@ and
 \emph on
 IonMonkey
 \emph default
-, and also there is Google V8.
- The group of Mozilla machines are largely the same, and are referred to
- as the same machine for simplicity.
+, and also there is Googles 
+\emph on
+V8
+\emph default
+.
+ The members in the group of Mozilla machines are largely the same, and
+ are referred to as the same machine for simplicity.
 \end_layout
 
 \begin_layout Standard
@@ -7394,25 +7400,24 @@ erlang_js
 \end_layout
 
 \begin_layout Standard
-Erlang_js provides direct communication with the JavaScript VM.
- Which is exactly what is desired, however also required is thee possibility
- to communicate from erlang_js to Erlang.
- The ability to communicate from JavaScript to Erlang functionality is not
- yet implemented in erlang_js, due to lack of time on the behalf of the
- erlang_js developers.
+erlang_js provides direct communication with the JavaScript VM.
+ Which is exactly what is desired, however also required is the possibility
+ to communicate from JavaScript to Erlang.
+ The ability to communicate from JavaScript to Erlang is not yet implemented
+ in erlang_js, due to lack of time of the erlang_js developers.
 \end_layout
 
 \begin_layout Standard
-There were two possible solutions to the problem of the JavaScript to Erlang
- communication path missing, the path could be implemented by the GGS project,
- or a switch from erlang_js for some other JavaScript engine could be made.
+There were two possible solutions to the problem, either one would implement
+ the missing functionality, or a switch from erlang_js to some other JavaScript
+ engine with better bindings could be made.
  
 \end_layout
 
 \begin_layout Standard
-Attempts at creating the communication path from JavaScript to Erlang were
- initially made, however the communication path never became stable enough
- for usage in the GGS and the erlang_js software was abandoned.
+Attempts at implementing the missing functionality were initially made but
+ never became stable enough for usage in the GGS and the erlang_js software
+ was abandoned.
 \end_layout
 
 \begin_layout Subsection
@@ -7420,18 +7425,16 @@ erlv8
 \end_layout
 
 \begin_layout Standard
-erlv8 is powered by the V8 engine developed by Google rather than the engines
- developed by Mozilla.
- The ability to communicate with Erlang from JavaScript using callbacks
- is available in the erlv8 bindings, therefore this feature does not have
- to be added to the bindings in order to be used in the GGS.
+erlv8 is powered by the V8 engine developed by Google.
+ The ability to communicate from JavaScript to Erlang using callbacks (aka
+ NIF) is available in the erlv8 bindings and can be used within the GGS.
 \end_layout
 
 \begin_layout Standard
-Initial releases of the erlv8 bindings had stability issues, these were
- however solved by the erlv8 developers during the usage of erlv8 in the
- GGS.
- erlv8 is the JavaScript engine powering JavaScript as a GDL in the GGS.
+Initial releases of the erlv8 bindings had stability issues, these however
+ were resolved by the erlv8 developers during the development GGS.
+ At this point erlv8 is the JavaScript engine powering JavaScript as a GDL
+ in the GGS.
 \end_layout
 
 \begin_layout Standard
