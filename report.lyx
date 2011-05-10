@@ -7476,23 +7476,8 @@ The development of an error checking layer was weighed against the implementatio
 n of TCP instead of UDP, thus losing some speed.
  Even though speed was lost, TCP was chosen due to the relative ease of
  implementation compared to UDP.
- Due to the modularity of the GGS, a UDP extension is possible by replacing
- the network parts of the GGS.
-\end_layout
-
-\begin_layout Standard
-Furthermore, in a move to increase the speed of the GGS protocol the binary
- BSON protocol 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "bson:website"
-
-\end_inset
-
- was initially considered.
- BSON is a protocol which can be used for very fast traversal of data.
- The BSON protocol is however rather difficult to read in its plain format,
- and no implementation has been bade for the GGS.
+ Due to the modularity of the GGS, a UDP extension is easily possible by
+ replacing the network parts of the GGS.
 \end_layout
 
 \begin_layout Standard
