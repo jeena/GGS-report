@@ -6558,9 +6558,10 @@ Typical communication
 \end_layout
 
 \begin_layout Standard
-So what happens when a client sends a typical game command? Let us look
- at one particular example of a chat client sending the message to change
- the nick of a user (we will discuss a example implementation in JavaScript
+This case study describes the flow through the GGS when a typical command
+ is encountered.
+ Consider a chat client sending the message to change the nick of a user.
+ The actual code performing the change of a nick in JavaScript is discussed
  in section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6568,9 +6569,9 @@ reference "sec:Example-of-a-GGS-app"
 
 \end_inset
 
-).
- Every communication between modules happens asynchronously, nothing is
- blocking, which is very important in concurrent systems.
+.
+ All communication between modules is asynchronous, nothing is blocking,
+ which is very important in concurrent systems.
  It is probably much easier to follow the steps by following them on 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -6721,8 +6722,8 @@ Fill this in!
 
 \end_layout
 
-\begin_layout Section
-Example of a GGS server application in JavaScript
+\begin_layout Subsection
+A GGS server application in JavaScript
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Example-of-a-GGS-app"
