@@ -2293,29 +2293,6 @@ textbf{HTTP}}{Hyper Text Transport Protocol, a network protocol commonly
 \end_layout
 
 \begin_layout Subsection
-HTTP
-\end_layout
-
-\begin_layout Standard
-Since HTTP is so widely used on the Internet today in web servers, it is
- available on most Internet connected devices.
- This means that if HTTP is used in the GGS, firewalls will not pose problems,
- which is a great benefit.
- However, due to the intended usage of HTTP in web servers, the protocol
- was designed to be stateless and client-initiated.
- In order to maintain a state during a game session using HTTP, some sort
- of token would have to be passed between client and server at all times,
- much like how a web server works.
- These facts combined makes HTTP unsuitable for our purposes, since the
- GGS requires a state to be maintained throughout a session, and also needs
- to push data from the server to clients without the clients requesting
- data.
- It should also be mentioned that HTTP uses the TCP protocol for transport,
- and what is said about TCP also applies to HTTP.
- 
-\end_layout
-
-\begin_layout Subsection
 UDP
 \end_layout
 
@@ -2375,23 +2352,46 @@ Same here it is simply not true for a generic server to chose one or the
 \end_layout
 
 \begin_layout Subsection
-The GGS protocol
+HTTP
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+Since HTTP is so widely used on the Internet today in web servers, it is
+ available on most Internet connected devices.
+ This means that if HTTP is used in the GGS, firewalls will not pose problems,
+ which is a great benefit.
+ However, due to the intended usage of HTTP in web servers, the protocol
+ was designed to be stateless and client-initiated.
+ In order to maintain a state during a game session using HTTP, some sort
+ of token would have to be passed between client and server at all times,
+ much like how a web server works.
+ These facts combined makes HTTP unsuitable for our purposes, since the
+ GGS requires a state to be maintained throughout a session, and also needs
+ to push data from the server to clients without the clients requesting
+ data.
+ It should also be mentioned that HTTP uses the TCP protocol for transport,
+ and what is said about TCP also applies to HTTP.
+ 
+\end_layout
 
-\begin_layout Plain Layout
-Refer to 
+\begin_layout Subsection
+The GGS Protocol
+\end_layout
+
+\begin_layout Standard
+HTTP was designed to be a stateless protocoll which by adding some overhead
+ is able to remove the need of a permanent connection and a state for each
+ client.
+ The GGS however already has a permanent connection to each client because
+ it needs to push information to the clients.
+ Therefore is able to use the state to minimize the overhead in the communicatio
+n between server and client.
+ Because of that it has been decided to invent a new protocol which human
+ readable like HTTP but customized for this special use.
+ The GGS protocol is described in more detail in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:The-structure-of"
-
-\end_inset
-
-.
-\end_layout
 
 \end_inset
 
@@ -2399,7 +2399,7 @@ reference "sub:The-structure-of"
 \end_layout
 
 \begin_layout Section
-Generic
+Generic Structure of the GGS
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Generic"
@@ -2414,8 +2414,8 @@ The GGS is a game server.
  It was made with a desire to be suitable for any kind of game.
  Any game with a client-server behavior should be perfectly suited for GGS.
  A game should not only be able to vary in terms of genre, graphics, gameplay
- etc, but also in the way the game is implemented.
- Such as different programming languages.
+ etc, but also in the way the game is implemented such as different programming
+ languages.
  The GGS should be OS independent and run on Windows, OSX and Linux.
  The GGS can be run as a listen server on the players computer and host
  games locally.
@@ -2425,17 +2425,11 @@ The GGS is a game server.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Bad name of the chapter, but here we should give the theory of how the server
- is generic
-\end_layout
-
-\end_inset
-
-
+Another aspect was the desire to let a client to load up the source code
+ to the game it would like to play on the GGS.
+ This way every client could connect to the server and install the game
+ through a API without the need of installation through the server provider
+ or maintainer.
 \end_layout
 
 \begin_layout Section
