@@ -7488,10 +7488,18 @@ Messages per second
 \series default
  is used to see how many incoming and outgoing messages the server can process
  each second.
- The results of the messages per second testing are shown in figure 
+ The results of the messages per second testing are shown for a high demanding
+ application in figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:msg-per-sec-MNESIA"
+
+\end_inset
+
+, and for a low demanding application in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:msg-per-sec-NOMNESIA"
 
 \end_inset
 
@@ -7798,6 +7806,12 @@ end{centering}
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:msg-per-sec-NOMNESIA"
+
+\end_inset
+
 The graph shows messages per second for intervals of clients connected.
  No database is connected.
 \end_layout
@@ -7817,11 +7831,32 @@ Future improvements
 \end_layout
 
 \begin_layout Standard
-The specification of the GGS prototype is huge and like many other software
- projects relying on outside technologies, in time it would require a lot
- of maintenance.
- Therefore there is a lot of areas in which the GGS could be improved such
- as performance, compatibility, ease of setup and usage.
+There are several things in the GGS that can be improved.
+ In this section the most important additions to the GGS are described,
+ along with a motivation as to why these additions are not found in the
+ GGS prototype.
+\end_layout
+
+\begin_layout Subsection
+Distribution
+\end_layout
+
+\begin_layout Standard
+The GGS was originally intended to be a distributed application, running
+ on several machines at once.
+ The design of the GGS should support this, it has however not been tested.
+ The technologies, such as supervisor trees and the servers supplied by
+ the OTP which are used in the GGS all support the development of distributed
+ applications.
+\end_layout
+
+\begin_layout Standard
+Distribution was however not implemented in the GGS.
+ Other parts of the GGS were prioritized.
+ A futute improvement is therefore to implement distribution in the GGS.
+ A simple way to achieve this is to keep one GGS instance as a coordinating
+ instance, and to keep clients on other instances of the GGS, which can
+ be dynamically added as new clients connect.
 \end_layout
 
 \begin_layout Subsection
@@ -7830,6 +7865,17 @@ Performance
 
 \begin_layout Subsubsection
 Protocols
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Need references for assertions about UDP being nicer on the CPU.
+ Motivate why UDP is not implemented.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7857,10 +7903,30 @@ Database
 Currently Mnesia is used for game data storage.
  During stress tests, Mnesia has turned out to be the bottleneck due to
  data losses when too many games are played on the GGS simultaneously.
- This could be prevented by replacing Mnesia with another database management
- system or use Mnesia in combination with the ETS module of erlang.
- ETS provides fast access to the RAM and thus Mnesia could be used less
- frequently.
+ 
+\end_layout
+
+\begin_layout Standard
+The usage of Mnesia in the GGS is not the usage originally intended.
+ Originally a cache was to be placed before Mnesia.
+ The cache could be either Erlang Term Storage (ETS) or an Erlang process
+ which keeps track of all database actions.
+ The cache periodically flushes its contents to Mnesia, thereby reducing
+ the Mnesia transactions overall.
+\end_layout
+
+\begin_layout Standard
+The cache was never implemented in the prototype due to other parts of the
+ GGS being prioritized.
+ The current implementation of the database backend is not optimal, however
+ it functions reliably, therefore it was deemed sufficient for the prototype.
+\end_layout
+
+\begin_layout Standard
+A possible future addition to the GGS could be to add this cache in the
+ database module.
+ The API would not need to change, as this could be implemented internally
+ in the database module.
  
 \begin_inset ERT
 status open
@@ -7880,49 +7946,6 @@ textbf{ETS}}{Erlang Term Storage}
 \end_layout
 
 \begin_layout Subsection
-Compatibility
-\end_layout
-
-\begin_layout Standard
-GGS relies on modern technologies.
- This includes the virtual machines(VM) that the GGS uses for communication
- between Erlang and the GDLs.
- These specific VMs are crucial for game developers to be able to write
- games in other languages than Erlang.
- Therefore it would be best for the GGS to have as many of these VMs implemented
- as possible.
- The VMs considered so far have been unstable or incomplete and it is possible
- to search for more VMs, testing them and integrate them into the GGS prototype.
-\end_layout
-
-\begin_layout Subsection
-Setup
-\end_layout
-
-\begin_layout Standard
-The GGS prototype installation procedure requires different configuration
- and building steps and thus it is not in an acceptable release state.
- An executable installation file for each supported platform would be optimal.
-\end_layout
-
-\begin_layout Subsection*
-5.3.4 Usage
-\end_layout
-
-\begin_layout Subsubsection
-Programming languages
-\end_layout
-
-\begin_layout Standard
-The GGS does not support many programming languages.
- For a programming language to be compatible with the GGS, not only does
- it require a VM for that specific language, but the VM must have the ability
- to communicate to Erlang.
- More research is needed to find VMs with this built in functionality.
- 
-\end_layout
-
-\begin_layout Subsubsection
 Documentation
 \end_layout
 
@@ -7956,7 +7979,7 @@ addcontentsline{toc}{section}{Glossary}
 
 
 \backslash
-
+printnomenclature
 \end_layout
 
 \end_inset
