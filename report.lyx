@@ -7431,11 +7431,11 @@ name "chap:Results-and-discussion"
 \end_layout
 
 \begin_layout Standard
-In this chapter the results of the GGS prototype is presented and discussed.
- The results of the testing is presented with both graphical and textual
+In this chapter the results of the GGS prototype are presented and discussed.
+ The results of the testing are presented with both graphical and textual
  content.
- Together with the test data there are thoughts about how future improvements
- to the prototype could look like.
+ Finally thoughts about how future improvements to the prototype could look
+ like are given.
 \end_layout
 
 \begin_layout Section
@@ -7454,32 +7454,110 @@ Mention the hardware which the GGS was run on; A Thinkpad T410 with a core
 \end_layout
 
 \begin_layout Standard
-The testing of the GGS prototype occurred in two sessions, one session where
- the system was tested with clients that were using mnesia and one session
- with clients that did not use mnesia.
- The data that were measured during both test sessions where how many messages
- per second the server could handle, during the second test session the
- delay between the server and the clients also was measured.
- There was also a testing session where the number of clients were measured,
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The testing of the GGS prototype occurred in two sessions
+\end_layout
+
+\end_inset
+
+Testing of the GGS took place in two separate sessions.
+ The first session simulates a highly demanding application, the second
+ session simulated a less demanding application.
+ The highly demanding application is a real time game which does several
+ asynchronous database writes each second.
+ The less demanding application does not perform any database reads or writes.
+\end_layout
+
+\begin_layout Standard
+Each of the two simulations use JavaScript as the GDL.
+ The JavaScript is run through Google V8.
+ The database module uses Mnesia.
+\end_layout
+
+\begin_layout Standard
+During the sessions two measurements were recorded.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Messages per second
+\series default
+ is used to see how many incoming and outgoing messages the server can process
+ each second.
+ The results of the messages per second testing are shown in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:msg-per-sec-MNESIA"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Latency between server and client
+\series default
+ is used to measure the round-trip time for a message travelling between
+ the client and server.
+ This measurement is used to determine how many players the server can handle
+ while still providing a playable gaming experience.
+ The results of the latency test can be seen in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:latency-graph"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+There was also a testing session where the number of clients were measured,
  however this was not a good measurement of performance and therefore these
  numbers will not be included in the report.
- The hardware that the GGS was running on was a Thinkpad T410, with a Intel
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Since we donät include this..
+ should we mention it?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The hardware that the GGS was running on was a Thinkpad T410, with a Intel
  i5 processor and 4GB of RAM.
 \end_layout
 
 \begin_layout Standard
-In the first test, where mnesia was used, the server had a peak value of
+In the first test, where Mnesia was used, the server had a peak value of
  nearly 6000 messages per second.
- When this number was reached mnesia warned that it was overloaded and shortly
- after that mnesia crashed.
+ When this number was reached Mnesia warned that it was overloaded and shortly
+ after that Mnesia failed to serve requests.
  This result was not unexpected as this test put the database under heavy
  load.
  In the next testing session, the test was conducted with another client
- that did not use mnesia.
+ that did not use Mnesia.
  Without mnesia the server peaked at 60000 messages per second, however
  this was only for a very short time.
  The average throughput was around 25000 messages per second, five times
- more than what the server was able to process with mnesia.
+ more than what the server was able to process with Mnesia in place.
  
 \end_layout
 
@@ -7576,7 +7654,15 @@ end{centering}
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:msg-per-sec-MNESIA"
 
+\end_inset
+
+The graph shows messages per second for intervals of clients connected.
+ Each client performs 3 asynchronous writes to the Mnesia database each
+ second.
 \end_layout
 
 \end_inset
@@ -7593,7 +7679,7 @@ end{centering}
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -7640,7 +7726,15 @@ end{centering}
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:latency-graph"
 
+\end_inset
+
+This graph shows the latency in a low-demand application.
+ The ping is measured in milliseconds for a message to make a round-trip
+ between client and server.
 \end_layout
 
 \end_inset
@@ -7657,7 +7751,7 @@ end{centering}
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -7704,7 +7798,8 @@ end{centering}
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
+The graph shows messages per second for intervals of clients connected.
+ No database is connected.
 \end_layout
 
 \end_inset
