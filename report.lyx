@@ -2705,21 +2705,6 @@ name "sub:UUID"
 \end_inset
 
 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{UUID}}{Universally Unique Identifier}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2882,6 +2867,24 @@ A simple (insufficient) generator for identifiers
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{UUID}}{Universally Unique Identifier}
 \end_layout
 
 \end_inset
