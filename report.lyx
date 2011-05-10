@@ -5898,22 +5898,6 @@ sendCommandToAll(command, args).
  separated from the game state.
  Unique ids called gametokens are generated for hosted games so that they
  are not mixed up.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{WebStorage}}{A new standard for letting websites store data on visitors'
- computers}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -6867,7 +6851,7 @@ reference "sec:Communication-with-the-GDL-VM"
 \begin_inset Float algorithm
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
