@@ -1544,7 +1544,12 @@ Räkning
 \begin_inset Quotes erd
 \end_inset
 
- ?
+?
+\end_layout
+
+\begin_layout Plain Layout
+Richard: it means a list where you count how many people entered or left
+ for example
 \end_layout
 
 \end_inset
@@ -1569,8 +1574,8 @@ Coordinator
 \end_layout
 
 \begin_layout Standard
-Moves by players are made using the tables present in the chess club.
- Every game is isolated to a table, just as expected.
+A player can only move the figures on her table in the chess club thus every
+ game is isolated to a table, just as expected.
  This means that communication during a game only has to pass by the players
  of that particular game and the coordinator, making sure that no cheating
  takes place.
@@ -1607,11 +1612,11 @@ reference "alg:game-lifecycle"
 \end_inset
 
 .
- To make this life cycle as efficient and useful as possible, the scalability,
- fault tolerant and generic traits are added to the GGS.
- These are not shown in the algorithm, as these traits are tools in making
- the algorithm behaves as efficient as possible, and are not the main focus
- when studying the life cycle of a game.
+ To make this life cycle as efficient and useful as possible the scalability,
+ fault tolerance and generic traits are being added to the GGS.
+ These are not shown in the algorithm because these traits are tools in
+ making the algorithm behaves as efficient as possible and are not the main
+ focus when studying the life cycle of a game.
 \end_layout
 
 \begin_layout Standard
@@ -1630,7 +1635,7 @@ reference "alg:game-lifecycle"
 \begin_inset Float algorithm
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -2016,7 +2021,8 @@ name "alg:game-lifecycle"
 
 \end_inset
 
-A very simple example of the flow through the GGS system when a game played.
+A very simple example of the flow through the GGS system when a game is
+ played.
 \end_layout
 
 \end_inset
@@ -2042,9 +2048,10 @@ There are many ways in which performance could be measured.
 \end_layout
 
 \begin_layout Standard
-In a first person shooter game, the speed of delivery of messages is essential.
- Failure to deliver messages in time results in choppy gameplay for the
- players.
+In a first person shooter game, the speed of delivery of messages with informati
+on about the current positions of all players is essential.
+ The failure to deliver messages in time results in choppy gameplay for
+ the players.
  In strategy games, the reliability of delivery may be more important than
  the speed, since the game is not perceived as choppy even if the messages
  are delayed.
@@ -2070,7 +2077,7 @@ Performance measurements
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Tue apr 26, 9:15.
