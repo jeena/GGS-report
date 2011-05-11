@@ -678,7 +678,7 @@ key "news/cnet/com/WoWProblems"
 
 .
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Citation needed
@@ -689,7 +689,7 @@ Citation needed
  The existing game servers are functional but they lack good fault tolerance
  and the ability to scale well
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Citation needed
@@ -765,8 +765,8 @@ key "Armstrong03"
  either.
  An unavailable phone system could potentially have life threatening consequence
 s, leaving the public unable to contact emergency services.
- The same can not be said about an unavailable game server.
- The statement that game servers are less important than phone systems is
+ The same cannot be said about an unavailable game server.
+ The statement that game servers are less important than phone systems are
  not a reason not to draw wisdom from what the telecoms have already learned.
 \end_layout
 
@@ -1066,7 +1066,7 @@ reference "cha:Implementation-of-a"
  provides a description of the prototype developed for this thesis.
   
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 We could go on and on about erlang..
@@ -1127,7 +1127,7 @@ Returning to the game industry, emergency services will not be contacted
  Consider an online casino company.
  The online casino company's servers must be available at all times to allow
  customers to play.
- If the servers are unavailable, customers can not play, and the company
+ If the servers are unavailable, customers cannot play, and the company
  loses money.
  In this scenario, an unavailable server can be compared to a closed real-world
  casino.
@@ -1651,8 +1651,7 @@ Moves by players are made using the tables present in the chess club.
 This isolation of the games play an important part in many properties of
  the GGS, the isolation means that games can for example be transferred
  among different chess clubs, furthermore, if cheating takes place, corruption
- can only occur in the particular table where it was found, and can not
- spread.
+ can only occur in the particular table where it was found, and cannot spread.
 \end_layout
 
 \begin_layout Standard
@@ -2273,8 +2272,8 @@ There are two main ways in which computer communication over the Internet
  is the most prominent application layer protocol.
  The transport layer protocols, are commonly used to transport application
  layer protocols, such as HTTP.
- TCP and UDP can not be used on their own, without an application layer
- protocol on top.
+ TCP and UDP cannot be used on their own, without an application layer protocol
+ on top.
  Application layer protocols such as HTTP on the other hand needs a transport
  layer protocol in order to work.
  
@@ -3074,7 +3073,7 @@ status open
 nomenclature{
 \backslash
 textbf{Network split}}{Separation of two networks, occurs when two networks
- can not communicate, commonly because of a hardware or software failiure}
+ cannot communicate, commonly because of a hardware or software failiure}
 \end_layout
 
 \end_inset
@@ -3174,7 +3173,7 @@ Security
 \begin_layout Standard
 We only support languages running in a sandboxed environment.
  Each game session is started in its own sandbox.
- The sandboxing isolates the games in such a way that they can not interfere
+ The sandboxing isolates the games in such a way that they cannot interfere
  with each other.
  If sandboxing was not in place, one game could potentially modify the contents
  of a different game.
@@ -4214,7 +4213,7 @@ In using message passing in favor of the methods commonly used at the time,
  the issues commonly associated with shared memory and locking were avoided.
  In Erlang, everything is a process, and everything operates in its own
  memory space.
- Memory can not be shared among processes, which prohibits a process from
+ Memory cannot be shared among processes, which prohibits a process from
  corrupting the memory of a different process.
 \end_layout
 
@@ -5281,8 +5280,8 @@ Upon a crash, the coordinator process recovers the prior good state from
  A supervisor process monitors the coordinator process and restarts the
  process when it malfunctions.
  There is a window of time between the crash of the coordinator and the
- restarting of the coordinator, during this time, players can not be seated
- by new tables, and can not disconnect from the server.
+ restarting of the coordinator, during this time, players cannot be seated
+ by new tables, and cannot disconnect from the server.
  This window of time is very small, and the unavailability of the coordinator
  process should not be noticed by more than a short time lag for the clients.
 \end_layout
@@ -7639,7 +7638,7 @@ In the second testing session the delay between the server and clients was
  A connection can be seen between those values, as long as the server is
  under moderate load the delay is low and stable.
  When the load on the server increases heavily the delay does the same,
- this is because the server can not process all incoming messages and therefore
+ this is because the server cannot process all incoming messages and therefore
  messages are put in a queue within the system.
 \end_layout
 
@@ -7650,7 +7649,7 @@ status collapsed
 \begin_layout Plain Layout
 Important things to note are that the number of clients is not a good way
  of measuring the performance of the server because the server is possible
- to have a large number of clients on the server but it can not handle all
+ to have a large number of clients on the server but it cannot handle all
  the information.
  Instead the performance of the server should be measured in the number
  of messages it can handle per second.
