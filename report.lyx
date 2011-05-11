@@ -1010,8 +1010,8 @@ The choice of the implementation language for the prototype of the GGS was
  to develop highly available and dependable telecom switches.
  One of the most reliable systems ever developed by Ericsson, the AXD301
  was developed using Erlang.
- The AXD301 is also possibly has the largest code base even written in a
- functional language 
+ The AXD301 has possibly the largest code base even written in a functional
+ language 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Armstrong03"
@@ -1563,7 +1563,7 @@ Coordinator
 \emph default
 , and is seated by a table.
  The coordinator keeps track of all the players in the building, and all
- moved made by the players.
+ moves made by the players.
  The information available to the coordinator means that cheating can be
  monitored and book keeping can be performed by this entity.
 \end_layout
@@ -1572,23 +1572,24 @@ Coordinator
 Moves by players are made using the tables present in the chess club.
  Every game is isolated to a table, just as expected.
  This means that communication during a game only has to pass by the players
- of that particular game, and the coordinator, making sure that no cheating
+ of that particular game and the coordinator, making sure that no cheating
  takes place.
 \end_layout
 
 \begin_layout Standard
 This isolation of the games play an important part in many properties of
  the GGS, the isolation means that games can for example be transferred
- among different chess clubs, furthermore, if cheating takes place, corruption
- can only occur in the particular table where it was found, and cannot spread.
+ among different chess clubs.
+ Furthermore, if cheating takes place, corruption can only occur in the
+ particular table where it was found and cannot spread.
 \end_layout
 
 \begin_layout Standard
 Moving chess players from one location to another is one alteration made
  to the real world chess club system to make the system more appropriate
  for a software setting.
- Allowing games to be transferred is not a property usually desired in a
- real world chess club, where transferring players would mean moving the
+ Allowing games to be transferred is not an attribute usually desired in
+ a real world chess club, where transferring players would mean moving the
  players from one building to another.
  In the software setting, moving players means moving the game processes
  from one system to another, perhaps to balance the system load.
@@ -1597,7 +1598,7 @@ Moving chess players from one location to another is one alteration made
 \end_layout
 
 \begin_layout Standard
-The simplified life cycle of a game in GGS can be viewed using algorithm
+The simplified life cycle of a game in the GGS can be viewed using algorithm
  
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -1621,8 +1622,8 @@ reference "alg:game-lifecycle"
 
 \end_inset
 
- are arbitrary for this example, there are no limits in the GGS on the number
- of players connecting, for example.
+ are arbitrary for this example, there are for example no limits in the
+ GGS on the number of players connecting.
 \end_layout
 
 \begin_layout Standard
@@ -2069,7 +2070,7 @@ Performance measurements
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tue apr 26, 9:15.
@@ -2091,14 +2092,8 @@ Which games are affected by what, and what does this mean for the number
 \end_layout
 
 \begin_layout Standard
-How many players can we have on a server? Performance differences between
- games? e.g can one game have thousands players on a server and another only
- have hundreds? Questions
-\end_layout
-
-\begin_layout Standard
-In the current state game servers is coded for each game that needs it,
- in many cases this seems like a bad solution.
+In the current state game servers are coded for each game that needs it,
+ often this seems like a bad solution.
  Developers that want to make a network game need to understand network
  programming.
  A way to change this is a generic game server which give the game developers
@@ -2109,7 +2104,7 @@ In the current state game servers is coded for each game that needs it,
  to be discussed here.
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Create a game with several thousand players, see how our server scales,
@@ -2199,7 +2194,7 @@ name "sec:Choice-of-network"
 There are two main ways in which computer communication over the Internet
  usually takes place; TCP, UDP are known network layer protocols and HTTP
  is the most prominent application layer protocol.
- The transport layer protocols, are commonly used to transport application
+ The transport layer protocols are commonly used to transport application
  layer protocols, such as HTTP.
  TCP and UDP cannot be used on their own, without an application layer protocol
  on top.
@@ -2242,7 +2237,7 @@ Many online games use UDP as the carrier for their application layer protocol.
  ruling out UDP as the transport later protocol.
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Perhaps we should only say that we chose TCP just for our GGS prototype
@@ -2269,7 +2264,7 @@ For reliable transfers, TCP is often used on the Internet.
  thus TCP is a better alternative than UDP.
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Same here it is simply not true for a generic server to chose one or the
@@ -2290,20 +2285,19 @@ HTTP
 \begin_layout Standard
 Since HTTP is so widely used on the Internet today in web servers, it is
  available on most Internet connected devices.
- This means that if HTTP is used in the GGS, firewalls will not pose problems,
+ This means that if HTTP is used in the GGS, firewalls will not be a problem,
  which is a great benefit.
  However, due to the intended usage of HTTP in web servers, the protocol
  was designed to be stateless and client-initiated.
  In order to maintain a state during a game session using HTTP, some sort
  of token would have to be passed between client and server at all times,
  much like how a web server works.
- These facts combined makes HTTP unsuitable for our purposes, since the
- GGS requires a state to be maintained throughout a session, and also needs
- to push data from the server to clients without the clients requesting
+ These facts combined make HTTP inappropriate for use in the GGS, since
+ the GGS requires a state to be maintained throughout a session and also
+ needs to push data from the server to clients without the clients requesting
  data.
  It should also be mentioned that HTTP uses the TCP protocol for transport,
- and what is said about TCP also applies to HTTP.
- 
+ and what is said about TCP applies to HTTP.
 \end_layout
 
 \begin_layout Subsection
@@ -2311,15 +2305,15 @@ The GGS Protocol
 \end_layout
 
 \begin_layout Standard
-HTTP was designed to be a stateless protocoll which by adding some overhead
+HTTP was designed to be a stateless protocol, which by adding some overhead
  is able to remove the need of a permanent connection and a state for each
  client.
  The GGS however already has a permanent connection to each client because
  it needs to push information to the clients.
- Therefore is able to use the state to minimize the overhead in the communicatio
-n between server and client.
- Because of that it has been decided to invent a new protocol which human
- readable like HTTP but customized for this special use.
+ Therefore it is able to use the state to minimize the overhead in the communica
+tion between server and client.
+ Therefore it was decided to invent a new protocol which was human readable
+ like HTTP but customized for this special use.
  The GGS protocol is described in more detail in section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2352,13 +2346,13 @@ The GGS is a game server.
  The GGS can be run as a listen server on the players computer and host
  games locally.
  It could also be a dedicated server running on independent hardware.
- It is meant to run any game in any environment in any way desired, therefor
+ It is meant to run any game in any environment in any way desired, therefore
  being as generic as possible.
 \end_layout
 
 \begin_layout Standard
-Another aspect was the desire to let a client to load up the source code
- to the game it would like to play on the GGS.
+Another aspect was the desire to let a client upload the source code of
+ the game it would like to play on the GGS.
  This way every client could connect to the server and install the game
  through a API without the need of installation through the server provider
  or maintainer.
@@ -2378,14 +2372,13 @@ name "sec:Fault-Tolerance"
 \begin_layout Standard
 Fault tolerance is an important factor in all servers, a server that is
  fault tolerant should be able to follow a given specification when parts
- of the system failures.
+ of the system fails.
  This means that fault tolerance is different in each system depending on
  what specification they have.
  A system could be fault tolerant in different aspects, one is where the
  system is guaranteed to be available but not safe and it could also be
  reversed, that the system is safe but not guaranteed to be available.
- Depending on the system one property may be more important(some example
- here).
+ Depending on the system one property may be more important.
  A system could also have non existent fault tolerance or it could be both
  safe and guaranteed to be available.
  It should be noted that it is not possible to achieve complete fault tolerance,
@@ -2399,7 +2392,8 @@ In order to make the GGS prototype fault tolerant the programming language
  Erlang has been used.
  Erlang will not guarantee a fault tolerant system but it has features that
  support and encourage the development of fault tolerant systems.
- In the GGS it is important that the system overall is fault tolerant.
+ In the GGS it is important that the system overall is fault tolerant and
+ not small parts only.
  Crashes of the whole system should be avoided as this would make the system
  unusable for a time.
  By using supervisor structures it is possible to crash and restart small
@@ -2412,8 +2406,8 @@ The need for fault tolerance in game servers is not as obvious as it may
  be for other type of servers.
  In general all servers strive to be fault tolerant as fault tolerance means
  more uptime and a safer system.
- This applies to game servers as well, in brief good fault tolerance is
- a way of satisfying customers.
+ This applies to game servers as well, briefly good fault tolerance is a
+ way of satisfying customers.
  In general, game servers differ from many other fault tolerant systems
  in that high-availability is more important than the safety of the system.
  For example a simple calculation error will not be critical for a game
@@ -2448,17 +2442,7 @@ One important factor of any server is the availability.
 
 \begin_layout Standard
 There are several good papers on how to migrate whole virtual machines among
- nodes to replicate them
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Add more information about that
-\end_layout
-
-\end_inset
-
- but for the GGS a different approach has been chosen.
+ nodes to replicate them but for the GGS a different approach has been chosen.
  Instead of just duplicating a virtual machine, the programming language
  Erlang has been used which offers several features to increase the availability.
  Some of them are 
@@ -3875,7 +3859,7 @@ key "armstrong2011"
 .
  In Erlang, most things are processes.
  The software running the Erlang code is known as the Erlang machine, or
- an Erlang node.
+ a Erlang node.
  Each Erlang node is capable of running several 
 \emph on
 threads 
@@ -7901,7 +7885,7 @@ Currently Mnesia is used for game data storage.
 \begin_layout Standard
 The usage of Mnesia in the GGS is not the usage originally intended.
  Originally a cache was to be placed before Mnesia.
- The cache could be either Erlang Term Storage (ETS) or an Erlang process
+ The cache could be either Erlang Term Storage (ETS) or a Erlang process
  which keeps track of all database actions.
  The cache periodically flushes its contents to Mnesia, thereby reducing
  the Mnesia transactions overall.
