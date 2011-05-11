@@ -669,7 +669,14 @@ Background
 The game industry is a quickly growing industry where the need for new technique
 s are large.
  One specific section where the development has stalled is the game server
- section.
+ section 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "news/cnet/com/WoWProblems"
+
+\end_inset
+
+.
 \begin_inset Note Note
 status open
 
