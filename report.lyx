@@ -666,10 +666,10 @@ Background
 \end_layout
 
 \begin_layout Standard
-The game industry is a quickly growing industry where the need for new technique
-s are large.
- One specific section where the development has stalled is the game server
- section 
+The game industry is a quickly growing industry with high revenues and many
+ clever computer scientists.
+ Strangely enough their customers often experience long downtimes due to
+ maintaining or because of problems with the servers 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "news/cnet/com/WoWProblems"
@@ -677,30 +677,9 @@ key "news/cnet/com/WoWProblems"
 \end_inset
 
 .
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Citation needed
-\end_layout
-
-\end_inset
-
- The existing game servers are functional but they lack good fault tolerance
- and the ability to scale well
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Citation needed
-\end_layout
-
-\end_inset
-
-.
- Users will notice this in low uptime and many disconnections from the server.
  This is a problem that has existed and been resolved in other industries.
- In the telecom industry solutions to similar problems have been found.
+ The telecom industry, for instance, has already found solutions to similar
+ problems.
 \end_layout
 
 \begin_layout Standard
