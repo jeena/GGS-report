@@ -1172,7 +1172,7 @@ Limitations of the prototype
 \end_layout
 
 \begin_layout Standard
-The implementation of the GGS protocol, together with storage possibilities,
+The implementation of the GGS protocol together with storage possibilities,
  server capacity, and game language support imposes some limitations on
  the project.
  To get a functional prototype some limits must be set on the types games
@@ -1206,7 +1206,8 @@ textbf{TCP}}{Transmission Control Protocol, a streaming network protocol}
 \begin_layout Standard
 The UDP protocol is not supported for communication between client and server.
  The TCP protocol was chosen in favor of UDP, due to the fact that the implement
-ation process using TCP was faster than if UDP would have been used.
+ation process using TCP was faster and easier than if UDP would have been
+ used.
  UDP is generally considered to be faster than TCP for the transfer of game
  (and other) related data, this is discussed in more depth in 
 \begin_inset CommandInset ref
@@ -1253,14 +1254,14 @@ In real time games all players are playing together at the same time.
 \begin_inset Formula $200ms$
 \end_inset
 
- is reported to be intolerable 
+ is reported to be intolerable (see 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Farber:2002:NGT:566500.566508"
 
 \end_inset
 
-.
+).
  Latency sensitive games include most of the first person shooters with
  multiplayer ability, for example 
 \emph on
@@ -1297,7 +1298,7 @@ Due to the limited capability of threading in many GDL VMs, the GGS prototype
 \begin_layout Standard
 The implementation of the GGS described in this thesis is only a small prototype
  and tests will be performed on simple games like pong or chess, thus there
- are no need to implement more advanced features in the system.
+ is no need to implement more advanced features in the system.
  Note that these limitations only apply for the prototype of the project,
  and that further developments to the GGS could be to implement these features.
 \end_layout
