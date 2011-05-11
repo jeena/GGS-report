@@ -691,7 +691,7 @@ Citation needed
 \end_inset
 
 .
- Users will notice this in low uptime and many crashes.
+ Users will notice this in low uptime and many disconnections from the server.
  This is a problem that has existed and been resolved in other industries.
  In the telecom industry solutions to similar problems have been found.
 \end_layout
@@ -3213,9 +3213,201 @@ name "sec:Game-Development-Language"
 \begin_layout Standard
 There is only a very limited number of game developers who would like to
  write their games in Erlang, therefore we had to come up with something
- to resolve this problem.
- The main idea was to offer a replaceable module which would introduce a
- interface to different virtual machines which would run the game code.
+ to resolve this problem. The main idea was to offer a replaceable module which would introduce an interface to different virtual machines which would run the game code.
+ This way a game developer can write the game in his favorite language while
+ the server part still is written in Erlang and can benefit from all its
+ advantages.
+\end_layout
+
+\begin_layout Subsection
+JavaScript
+\end_layout
+
+\begin_layout Standard
+JavaScript has gained a lot of popularity lately, it is used in large projects
+ such as 
+\emph on
+Riak
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.basho.com/An-Introduction-to-Riak.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, 
+\emph on
+CouchDB
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://couchdb.apache.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ On the popular social coding site 
+\emph on
+GitHub.com
+\emph default
+, 18%
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+during the writing of the thesis the percentage went up to 19% 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://github.com/languages/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ of all code is written in JavaScript.
+ The popularity of JavaScript in the programming community, in combination
+ with the availability of several different JavaScript virtual machines
+ was an important influence in choosing JavaScript as the main control language
+ for our GGS prototype.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{CouchDB}}{Database server}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{Riak}}{Database server}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{GitHub.com}}{Social coding website}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{ActionScript}}{Programming language}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{Lua}}{Programming language}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{.NET}}{Software platform}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Other languages
+\end_layout
+
+\begin_layout Standard
+Other languages like 
+\emph on
+lua
+\emph default
+, 
+\emph on
+ActionScript
+\emph default
+ are suitable as well because there is a virtual machine for each of them
+ which can be 
+\begin_inset Quotes eld
+\end_inset
+
+plugged in
+\begin_inset Quotes erd
+\end_inset
+
+ into our GDL VM interface.
+ With help of the 
+\emph on
+Java Virtual Machine
+\emph default
+ or the 
+\emph on
+.NET 
+\emph default
+environment it is even possible to run nearly every available programming
+ language in a sandbox as a GDL.
+\end_layout
+
+\begin_layout Standard
+Due lack of time we have decided to use just the Erlang <-> JavaScrThere
+ is only a very limited number of game developers who would like to write
+ their games in Erlang, therefore we had to come up with something to resolve
+ this problem.
+ The main idea was to offer a replacable module which would introduce an interface to different virtual machines which would run
+ the game code.
  This way a game developer can write the game in his favorite language while
  the server part still is written in Erlang and can benefit from all of
  its advantages.
@@ -3257,7 +3449,7 @@ CouchDB
 \emph default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Flex URL
@@ -3282,7 +3474,7 @@ GitHub.com
 \emph default
 , 18%
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 during the writing of the thesis the percentage went up to 19% 
@@ -3307,7 +3499,7 @@ https://github.com/languages/
  was an important influence in choosing JavaScript as the main control language
  for our GGS prototype.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3428,7 +3620,201 @@ The GGS is intended to be used for powering games which have many concurrent
 \end_layout
 
 \begin_layout Standard
-When developing the GGS, two main categories of games exhibiting different
+When developing the GGS, two main categories of games exhibitinThere is
+ only a very limited number of game developers who would like to write their
+ games in Erlang, therefore we had to come up with something to resolve
+ this problem.
+ The main idea was to offer a replacable module which would introduce a
+ interface to different virtual machines which would run the game code.
+ This way a game developer can write the game in his favourite language
+ while the server part still is written in Erlang and can benefit from all
+ of its advantages.
+\end_layout
+
+\begin_layout Subsection
+JavaScript
+\end_layout
+
+\begin_layout Standard
+JavaScript has gained a lot of popularity lately, it is used in large projects
+ such as 
+\emph on
+Riak
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.basho.com/An-Introduction-to-Riak.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, 
+\emph on
+CouchDB
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://couchdb.apache.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ On the popular social coding site 
+\emph on
+GitHub.com
+\emph default
+, 18%
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+during the writing of the thesis the percentage went up to 19% 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://github.com/languages/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ of all code is written in JavaScript.
+ The popularity of JavaScript in the programming community, in combination
+ with the availability of several different JavaScript virtual machines
+ was an important influence in choosing JavaScript as the main control language
+ for our GGS prototype.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{CouchDB}}{Database server}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{Riak}}{Database server}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{GitHub.com}}{Social coding website}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{ActionScript}}{Programming language}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{Lua}}{Programming language}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{.NET}}{Software platform}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Other languages
+\end_layout
+
+\begin_layout Standard
+Other languages like 
+\emph on
+lua
+\emph default
+, 
+\emph on
+ActionScript
+\emph default
+ are suitable as well because there is a virtual machine for each of them
+ which can be 
+\begin_inset Quotes eld
+\end_inset
+
+plugged in
+\begin_inset Quotes erd
+\end_inset
+
+ into our GDL VM interface.
+ With help of the 
+\emph on
+Java Virtual Machine
+\emph default
+ or the 
+\emph on
+.NET 
+\emph default
+environment it is even possible to run nearly every available programming
+ language in a sandbox as a GDL.
+\end_layout
+
+\begin_layout Standard
+Due lack of time we have decided to use just the Erlang <-> JavaScrg different
  performance demands were identified; real-time games and turn-based games.
  The real-time games were deemed more demanding than the turn based games.
  Tests were carried out using a real time game, since this is the more demanding
