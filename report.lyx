@@ -1394,7 +1394,7 @@ name "sec:Design-of-the"
 
 \begin_layout Standard
 The GGS is modeled after a real world system performing much of the same
- duties as GGS.
+ duties as the GGS.
  This is common practice 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1402,11 +1402,11 @@ key "armstrong2011"
 
 \end_inset
 
- in the computer software world, to understand complex problems more easily.
+ in the computer software world to understand complex problems more easily.
  While there may not always be a real world example of a system performing
  the exact duties of the system being modeled in the computer, it is often
  easier to create and analyze requirements for real world systems and processes
- than systems existing solely in a computer.
+ than systems existing solely in virtual form in a computer.
  The requirements and limitations imposed on the real-world system can,
  using the proper tools, be transferred in to the software.
 \end_layout
@@ -1505,7 +1505,7 @@ Chess club
 \end_inset
 
  with two players (P) sitting by each chess table (Table), a coordinator
- keeps track of all moves and players in the building.
+ keeps track of all movements of players in the building.
  A player has to pass by the entrance to enter or exit the building.
  The building is represented by the outermost box.
 \end_layout
@@ -1527,7 +1527,7 @@ reference "fig:theory-layout"
  a graphical representation for the chess club is presented.
  The club is seen from above.
  The outermost box represents the building.
- In the GGS setting, the building would represent one instance of GGS.
+ In the GGS setting, the building would represent one instance of the GGS.
  Several buildings linked together would represent a cluster of GGS instances.
  In order for a player (the P symbol in the graphic) to enter the theoretical
  chess club, the player must pass by the entrance.
@@ -1544,7 +1544,12 @@ Räkning
 \begin_inset Quotes erd
 \end_inset
 
- ?
+?
+\end_layout
+
+\begin_layout Plain Layout
+Richard: it means a list where you count how many people entered or left
+ for example
 \end_layout
 
 \end_inset
@@ -1569,8 +1574,8 @@ Coordinator
 \end_layout
 
 \begin_layout Standard
-Moves by players are made using the tables present in the chess club.
- Every game is isolated to a table, just as expected.
+A player can only move the figures on her table in the chess club thus every
+ game is isolated to a table, just as expected.
  This means that communication during a game only has to pass by the players
  of that particular game and the coordinator, making sure that no cheating
  takes place.
@@ -1607,11 +1612,11 @@ reference "alg:game-lifecycle"
 \end_inset
 
 .
- To make this life cycle as efficient and useful as possible, the scalability,
- fault tolerant and generic traits are added to the GGS.
- These are not shown in the algorithm, as these traits are tools in making
- the algorithm behaves as efficient as possible, and are not the main focus
- when studying the life cycle of a game.
+ To make this life cycle as efficient and useful as possible the scalability,
+ fault tolerance and generic traits are being added to the GGS.
+ These are not shown in the algorithm because these traits are tools in
+ making the algorithm behaves as efficient as possible and are not the main
+ focus when studying the life cycle of a game.
 \end_layout
 
 \begin_layout Standard
@@ -1630,7 +1635,7 @@ reference "alg:game-lifecycle"
 \begin_inset Float algorithm
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -2016,7 +2021,8 @@ name "alg:game-lifecycle"
 
 \end_inset
 
-A very simple example of the flow through the GGS system when a game played.
+A very simple example of the flow through the GGS system when a game is
+ played.
 \end_layout
 
 \end_inset
@@ -2042,9 +2048,10 @@ There are many ways in which performance could be measured.
 \end_layout
 
 \begin_layout Standard
-In a first person shooter game, the speed of delivery of messages is essential.
- Failure to deliver messages in time results in choppy gameplay for the
- players.
+In a first person shooter game, the speed of delivery of messages with informati
+on about the current positions of all players is essential.
+ The failure to deliver messages in time results in choppy gameplay for
+ the players.
  In strategy games, the reliability of delivery may be more important than
  the speed, since the game is not perceived as choppy even if the messages
  are delayed.
@@ -2070,7 +2077,7 @@ Performance measurements
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Tue apr 26, 9:15.
@@ -2089,22 +2096,8 @@ Which games are affected by what, and what does this mean for the number
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-In the current state game servers are coded for each game that needs it,
- often this seems like a bad solution.
- Developers that want to make a network game need to understand network
- programming.
- A way to change this is a generic game server which give the game developers
- a server which they implement their game towards.
- This approach would not only make it easier to develop network games, it
- would also allow games in different programming languages to be implemented
- using the same server.
- to be discussed here.
- 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Create a game with several thousand players, see how our server scales,
@@ -2180,7 +2173,7 @@ Find reference on how to benchmark distributed, multiprocess systems
 \end_layout
 
 \begin_layout Section
-Choice of network protocol
+Choosing a network protocol
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Choice-of-network"
@@ -2191,14 +2184,15 @@ name "sec:Choice-of-network"
 \end_layout
 
 \begin_layout Standard
-There are two main ways in which computer communication over the Internet
- usually takes place; TCP, UDP are known network layer protocols and HTTP
- is the most prominent application layer protocol.
+There are two main types of protocols with help of which computer communication
+ over the Internet usually takes place; TCP and UDP which are known as the
+ network layer protocols and HTTP which is the most prominent application
+ layer protocol.
  The transport layer protocols are commonly used to transport application
- layer protocols, such as HTTP.
- TCP and UDP cannot be used on their own, without an application layer protocol
- on top.
- Application layer protocols such as HTTP on the other hand needs a transport
+ layer protocols such as HTTP.
+ TCP and UDP cannot be used on their own without an application layer protocol
+ on top of them.
+ Application layer protocols such as HTTP on the other hand need a transport
  layer protocol in order to work.
  
 \begin_inset ERT
@@ -2228,26 +2222,11 @@ Many online games use UDP as the carrier for their application layer protocol.
  UDP moves data across a network very quickly, however it does not ensure
  that the data transferred arrives in consistent manner.
  Data sent via UDP may be repeated, lost or out of order.
- To ensure the data transferred is in good shape, some sort of error checking
- mechanisms must be implemented.
+ To ensure that the data is transferred is in good shape, some sort of error
+ checking mechanisms must be implemented.
  UDP is a good choice for applications where it is more important that data
  arrives in a timely manner than that all data arrives undamaged, it is
- thus very suitable for media streaming, for example.
- In the GGS reliability of transfer was chosen before the speed of the transfer,
- ruling out UDP as the transport later protocol.
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Perhaps we should only say that we chose TCP just for our GGS prototype
- and why.
- If we leave it like that it seems that we think it is not suitable.
-\end_layout
-
-\end_inset
-
-
+ thus very suitable for media streaming for example.
 \end_layout
 
 \begin_layout Subsection
@@ -2255,27 +2234,12 @@ TCP
 \end_layout
 
 \begin_layout Standard
-For reliable transfers, TCP is often used on the Internet.
+For reliable transfers TCP is often used on the Internet.
  Built in to the protocol are the error checking and correction mechanisms
  missing in UDP.
  This ensures the consistency of data, but also makes the transfer slower
  than if UDP had been used.
- In the GGS, data consistency is more important than transfer speeds, and
- thus TCP is a better alternative than UDP.
  
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Same here it is simply not true for a generic server to chose one or the
- other.
- We should rephrase it so it is clear that we only state it about the GGS
- prototype.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -2283,7 +2247,7 @@ HTTP
 \end_layout
 
 \begin_layout Standard
-Since HTTP is so widely used on the Internet today in web servers, it is
+Since HTTP is so widely used in web servers on the Internet today, it is
  available on most Internet connected devices.
  This means that if HTTP is used in the GGS, firewalls will not be a problem,
  which is a great benefit.
@@ -2296,8 +2260,7 @@ Since HTTP is so widely used on the Internet today in web servers, it is
  the GGS requires a state to be maintained throughout a session and also
  needs to push data from the server to clients without the clients requesting
  data.
- It should also be mentioned that HTTP uses the TCP protocol for transport,
- and what is said about TCP applies to HTTP.
+ It should also be mentioned that HTTP uses the TCP protocol for transport.
 \end_layout
 
 \begin_layout Subsection
@@ -2325,7 +2288,7 @@ reference "sub:The-protocol-parser"
 \end_layout
 
 \begin_layout Section
-Generic Structure of the GGS
+Generic structure of the GGS
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Generic"
@@ -2338,14 +2301,15 @@ name "sec:Generic"
 \begin_layout Standard
 The GGS is a game server.
  It was made with a desire to be suitable for any kind of game.
- Any game with a client-server behavior should be perfectly suited for GGS.
+ Any game with a client-server behavior should be perfectly suited for the
+ GGS.
  A game should not only be able to vary in terms of genre, graphics, gameplay
- etc, but also in the way the game is implemented such as different programming
- languages.
+ etc, but also in the way the game is implemented for example in different
+ programming languages.
  The GGS should be OS independent and run on Windows, OSX and Linux.
  The GGS can be run as a listen server on the players computer and host
  games locally.
- It could also be a dedicated server running on independent hardware.
+ It could also be a dedicated server running on dedicated independent hardware.
  It is meant to run any game in any environment in any way desired, therefore
  being as generic as possible.
 \end_layout
@@ -2354,12 +2318,19 @@ The GGS is a game server.
 Another aspect was the desire to let a client upload the source code of
  the game it would like to play on the GGS.
  This way every client could connect to the server and install the game
- through a API without the need of installation through the server provider
- or maintainer.
+ through a 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "API"
+description "Application programming interface"
+
+\end_inset
+
+ without the need of installation through the server provider or maintainer.
 \end_layout
 
 \begin_layout Section
-Fault Tolerance
+Fault tolerance
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Fault-Tolerance"
