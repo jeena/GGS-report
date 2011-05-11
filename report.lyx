@@ -671,7 +671,7 @@ s are large.
  One specific section where the development has stalled is the game server
  section.
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Citation needed
@@ -682,7 +682,7 @@ Citation needed
  The existing game servers are functional but they lack good fault tolerance
  and the ability to scale well
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Citation needed
@@ -787,10 +787,10 @@ Citation needed...
 \end_layout
 
 \begin_layout Standard
-In the current state game servers are developed on a per-game basis, in
- many cases this seems like a bad solution.
+In the current state game servers are developed on a per-game basis, often
+ this seems like a bad solution.
  Developers of network game need to understand network programming.
- A way to change this is a generic game server which give the game developers
+ A way to change this is a generic game server which gives the game developers
  a server which they implement their game towards.
  This approach would not only make it easier to develop network games, it
  would also allow games in different programming languages to be implemented
@@ -857,10 +857,10 @@ reference "sec:Fault-Tolerance"
 dependability
 \emph default
  in a system, so that the dependability is high even in presence of errors.
- Dependability is defined as the statistical probability of the system functioni
-ng as intended at a given point in time.
- Fault tolerance is defined as the property of a system to always follow
- a specification, even in the presence of errors.
+ Dependability is the statistical probability of the system functioning
+ as intended at a given point in time.
+ Fault tolerance is the property of a system always to follow a specification,
+ even in the presence of errors.
  The specification could take the form of error handling procedures which
  activate when an error occurs.
  This means that a fault tolerant, dependable system, will have a very high
@@ -1018,8 +1018,8 @@ One purpose of this thesis is to investigate how we can make a game server
 \begin_layout Standard
 As an aid in discussing the theoretical parts of the GGS a prototype has
  been developed.
- The prototype does not feature all of the characteristics described in
- this thesis.
+ The prototype does not feature all the characteristics described in this
+ thesis.
  A selection has been made among the features, and the most important ones
  have been implemented either full or in part in the prototype.
 \end_layout
