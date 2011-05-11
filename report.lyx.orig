@@ -677,6 +677,31 @@ key "news/cnet/com/WoWProblems"
 \end_inset
 
 .
+<<<<<<< HEAD
+=======
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Citation needed
+\end_layout
+
+\end_inset
+
+ The existing game servers are functional but they lack good fault tolerance
+ and the ability to scale well
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Citation needed
+\end_layout
+
+\end_inset
+
+.
+ Users will notice this in low uptime and many disconnections from the server.
+>>>>>>> ce870026864489f18fd7f6921817c44fb8e18743
  This is a problem that has existed and been resolved in other industries.
  The telecom industry, for instance, has already found solutions to similar
  problems.
@@ -726,7 +751,7 @@ the nine nines
 \begin_inset Formula $99.999999999\%$
 \end_inset
 
- of availability 
+ of availability
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Armstrong03"
@@ -739,7 +764,7 @@ key "Armstrong03"
 
  downtime in a year.
  The level of instability and bad fault tolerance seen in the game server
- industry would not have been accepted in the telecom industry.
+ industry would not have been accepted in the telecoms industry.
  This level of instability should not be accepted in the game server industry
  either.
  An unavailable phone system could potentially have life threatening consequence
@@ -751,43 +776,50 @@ s, leaving the public unable to contact emergency services.
 
 \begin_layout Standard
 Moving back to the gaming industry.
- The main reason to develop reliable servers is a higher revenue, do archive
- this it is important for game companies to expand their customer base.
- Reliable game servers will create a good image of the company.
+ The main reason to develop reliable servers are monetary, it is important
+ for game companies to expand its customer base.
+ Reliable game servers are one improvement that will create a good image
+ of a company.
  In general the downtime of game servers is much higher than the downtime
- of telecom systems evenso the overall structure of the systems is similar
- in many ways.
- It should be possible to learn and reuse solutions from the telecom systems
- to improve game servers.
+ of telecom system 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Citation needed...
+\end_layout
+
+\end_inset
+
+.
+ The structure of the system is similar in many ways and it should be possible
+ to reuse solutions from the telecom system to improve game servers.
  
 \end_layout
 
 \begin_layout Standard
 In the current state game servers are developed on a per-game basis, often
  this seems like a bad solution.
- Developers of multiplayer games need to understand network programming,
- which above all be a problem for small companies and indipendent game developer
-s who often lack expertise in that field.
- A way to help them in the competition would be to offer a generic game
- server which gives them a environment in which they can implement their
- game in.
+ Developers of network game need to understand network programming.
+ A way to change this is a generic game server which gives the game developers
+ a server which they implement their game towards.
  This approach would not only make it easier to develop network games, it
  would also allow games in different programming languages to be implemented
  using the same server.
 \end_layout
 
 \begin_layout Standard
-Some key factors to the development of the GGS have been isolated.
- Many of these are found in the telecom sector too.
+Some factors key to the development of GGS have been isolated.
+ Many of these come from the telecom sector.
  The factors are 
 \emph on
 scalability, fault tolerance 
 \emph default
-and a 
+and being 
 \emph on
 generic
 \emph default
- nature.
+.
  These terms are defined below.
 \end_layout
 
