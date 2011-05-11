@@ -1394,7 +1394,7 @@ name "sec:Design-of-the"
 
 \begin_layout Standard
 The GGS is modeled after a real world system performing much of the same
- duties as GGS.
+ duties as the GGS.
  This is common practice 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1402,11 +1402,11 @@ key "armstrong2011"
 
 \end_inset
 
- in the computer software world, to understand complex problems more easily.
+ in the computer software world to understand complex problems more easily.
  While there may not always be a real world example of a system performing
  the exact duties of the system being modeled in the computer, it is often
  easier to create and analyze requirements for real world systems and processes
- than systems existing solely in a computer.
+ than systems existing solely in virtual form in a computer.
  The requirements and limitations imposed on the real-world system can,
  using the proper tools, be transferred in to the software.
 \end_layout
@@ -1527,7 +1527,7 @@ reference "fig:theory-layout"
  a graphical representation for the chess club is presented.
  The club is seen from above.
  The outermost box represents the building.
- In the GGS setting, the building would represent one instance of GGS.
+ In the GGS setting, the building would represent one instance of the GGS.
  Several buildings linked together would represent a cluster of GGS instances.
  In order for a player (the P symbol in the graphic) to enter the theoretical
  chess club, the player must pass by the entrance.
