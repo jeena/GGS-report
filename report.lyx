@@ -2456,8 +2456,8 @@ The need for fault tolerance in game servers is not as obvious as it may
  be for other type of servers.
  In general all servers strive to be fault tolerant as fault tolerance means
  more uptime and a safer system.
- This applies to game servers as well, in brief good fault tolerance is
- a way of satisfying customers.
+ This applies to game servers as well, briefly good fault tolerance is a
+ way of satisfying customers.
  In general, game servers differ from many other fault tolerant systems
  in that high-availability is more important than the safety of the system.
  For example a simple calculation error will not be critical for a game
@@ -2492,17 +2492,7 @@ One important factor of any server is the availability.
 
 \begin_layout Standard
 There are several good papers on how to migrate whole virtual machines among
- nodes to replicate them
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Add more information about that
-\end_layout
-
-\end_inset
-
- but for the GGS a different approach has been chosen.
+ nodes to replicate them but for the GGS a different approach has been chosen.
  Instead of just duplicating a virtual machine, the programming language
  Erlang has been used which offers several features to increase the availability.
  Some of them are 
@@ -3919,7 +3909,7 @@ key "armstrong2011"
 .
  In Erlang, most things are processes.
  The software running the Erlang code is known as the Erlang machine, or
- an Erlang node.
+ a Erlang node.
  Each Erlang node is capable of running several 
 \emph on
 threads 
@@ -7945,7 +7935,7 @@ Currently Mnesia is used for game data storage.
 \begin_layout Standard
 The usage of Mnesia in the GGS is not the usage originally intended.
  Originally a cache was to be placed before Mnesia.
- The cache could be either Erlang Term Storage (ETS) or an Erlang process
+ The cache could be either Erlang Term Storage (ETS) or a Erlang process
  which keeps track of all database actions.
  The cache periodically flushes its contents to Mnesia, thereby reducing
  the Mnesia transactions overall.
