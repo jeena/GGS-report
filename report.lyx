@@ -1505,7 +1505,7 @@ Chess club
 \end_inset
 
  with two players (P) sitting by each chess table (Table), a coordinator
- keeps track of all moves and players in the building.
+ keeps track of all movements of players in the building.
  A player has to pass by the entrance to enter or exit the building.
  The building is represented by the outermost box.
 \end_layout
