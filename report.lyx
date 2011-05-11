@@ -840,8 +840,8 @@ dependability
  as intended at a given point in time.
  Fault tolerance is the property of a system always to follow a specification,
  even in the presence of errors.
- The specification could take the form of error handling procedures which
- activate when an error occurs.
+ The specification could define error handling procedures which activate
+ when an error occurs.
  This means that a fault tolerant, dependable system, will have a very high
  probability of functioning at a given point in time, and is exactly what
  is desired.
@@ -987,7 +987,7 @@ A database server can also be seen as an application server.
 \end_layout
 
 \begin_layout Standard
-One purpose of this thesis is to investigate how we can make a game server
+One purpose of this thesis is to investigate how one could make a game server
  as generic as possible.
  Some important helpers are discussed, such as abstraction of the network
  layer, data store and game specific features.
@@ -995,19 +995,19 @@ One purpose of this thesis is to investigate how we can make a game server
 \end_layout
 
 \begin_layout Standard
-As an aid in discussing the theoretical parts of the GGS a prototype has
- been developed.
+A prototype has been developed in order to aid the discussion of the theoretical
+ parts of the GGS.
  The prototype does not feature all the characteristics described in this
  thesis.
- A selection has been made among the features, and the most important ones
+ A selection has been made among the features and the most important ones
  have been implemented either full or in part in the prototype.
 \end_layout
 
 \begin_layout Standard
-The choice of implementation language for the prototype of the GGS was made
- with inspiration from the telecom industry.
- The Erlang language was developed by the telecom company Ericsson to develop
- highly available and dependable telecom switches.
+The choice of the implementation language for the prototype of the GGS was
+ made with inspiration from the telecom industry.
+ The Erlang language was developed by the swedish telecom company Ericsson
+ to develop highly available and dependable telecom switches.
  One of the most reliable systems ever developed by Ericsson, the AXD301
  was developed using Erlang.
  The AXD301 is also possibly has the largest code base even written in a
@@ -1020,7 +1020,8 @@ key "Armstrong03"
 
 .
  The same language is used to develop the prototype of the GGS.
- Usage of Erlang in the GGS is discussed in further detail in section 
+ The usage of Erlang in the GGS is discussed in further detail in section
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:The-usage-of-erlang"
@@ -1028,25 +1029,6 @@ reference "sec:The-usage-of-erlang"
 \end_inset
 
 .
- Chapter 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "cha:Implementation-of-a"
-
-\end_inset
-
- provides a description of the prototype developed for this thesis.
-  
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-We could go on and on about erlang..
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
