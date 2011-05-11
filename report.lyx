@@ -2089,22 +2089,8 @@ Which games are affected by what, and what does this mean for the number
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-In the current state game servers are coded for each game that needs it,
- often this seems like a bad solution.
- Developers that want to make a network game need to understand network
- programming.
- A way to change this is a generic game server which give the game developers
- a server which they implement their game towards.
- This approach would not only make it easier to develop network games, it
- would also allow games in different programming languages to be implemented
- using the same server.
- to be discussed here.
- 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Create a game with several thousand players, see how our server scales,
