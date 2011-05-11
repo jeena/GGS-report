@@ -1036,25 +1036,6 @@ Purpose
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-The purpose of the GGS project.
- What is the purpose of creating a fault tolerant server, why is it generic,
- and what good does it do to have a scalable system? In the background,
- we should give the motivations behind creating this software, but here
- we should outline why the software is needed.
- This section should be shortened, and the bulk of the text should be moved
- to theory or background.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The purpose of creating a generic and fault tolerant game server is to provide
  a good framework for the development of many different types of games.
  Allowing the system to scale up and down is a powerful way to maximize
@@ -1070,20 +1051,20 @@ Fault tolerance is important for the GGS to create a reliable service.
  Going back to the telecom example, the purpose of creating a reliable telecom
  system is to allow calls, possibly emergency calls, at any time.
  Should the telecom network be unavailable at any time, emergency services
- may become unavailable, furthermore the consumer image of the telecom system
- degrades.
+ may become unavailable, furthermore the consumer's image of the telecom
+ system degrades.
 \end_layout
 
 \begin_layout Standard
 Returning to the game industry, emergency services will not be contacted
- using a game server, however an unavailable server will degrade the consumer
+ using a game server, however an unavailable server will degrade the consumer's
  image of the system.
  Consider an online casino company.
  The online casino company's servers must be available at all times to allow
  customers to play.
- If the servers are unavailable, customers cannot play, and the company
- loses money.
- In this scenario, an unavailable server can be compared to a closed real-world
+ If the servers are unavailable customers cannot play and the company loses
+ money.
+ In this scenario an unavailable server can be compared to a closed real-world
  casino.
 \end_layout
 
