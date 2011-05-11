@@ -3541,11 +3541,11 @@ The GGS is intended to be used for powering games which have many concurrent
 \end_layout
 
 \begin_layout Standard
-When developing the GGS, two main categories of games exhibitinThere is
- only a very limited number of game developers who would like to write their
- games in Erlang, therefore we had to come up with something to resolve
- this problem.
- The main idea was to offer a replacable module which would introduce a
+When developing the GGS, two main categories of games exhibit in.
+ There is only a very limited number of game developers who would like to
+ write their games in Erlang, therefore we had to come up with something
+ to resolve this problem.
+ The main idea was to offer a replacable module which would introduce an
  interface to different virtual machines which would run the game code.
  This way a game developer can write the game in his favourite language
  while the server part still is written in Erlang and can benefit from all
@@ -7395,6 +7395,64 @@ The use of Thrift, Google protocol buffers - which is a different approach
  the writing of this thesis.
 \end_layout
 
+\begin_layout Section
+Software testing
+\end_layout
+
+\begin_layout Subsection
+Unit testing
+\end_layout
+
+\begin_layout Standard
+Unit testing is a way to check if functionality works by manually creating
+ test cases for sections of code.
+ In most cases whole functions.
+ Unit testing is good, not only for revealing software bugs, but also to
+ state that a feature is working according to the specification.
+ Unit testing is a common way to test software and has proven useful within
+ the GGS when functions takes complicated arguments.
+ In these cases it is easy to set up a scenario that should work.
+ 
+\end_layout
+
+\begin_layout Standard
+Erlang provides a module for unit testing called eunit.
+ Eunit, being a part of OTP, is rich in functionality and well documented
+ yet it doesn't allow any means of testing asynchronous behaviours as opposed
+ to other means of software testing.
+\end_layout
+
+\begin_layout Subsection
+Automated test case generation
+\end_layout
+
+\begin_layout Standard
+The problem of writing software tests manually, is that it takes a lot of
+ time.
+ There exists other ways to test software that address this problem by generatin
+g test cases with certain properties.
+ This allows for testing functions with a lot of different input parameters
+ without having to implement each specific test itself.
+ The drawback of generating test cases instead of manually creating them,
+ is when the types or structures of the parameters of a function are complicated.
+ This makes it hard to find suitable rules for the tests to generate.
+ 
+\end_layout
+
+\begin_layout Standard
+One tool used for automatic test case generation is QuickCheck originally
+ made for the programming language Haskell.
+ There are a lot of reimplementations of QuickCheck in various programming
+ languages.
+ Erlang QuickCheck(EQC) and Triq are two variants of QuickCheck for Erlang.
+ The one desided to be used within the GGS is EQC.
+ Besides the standard functionality that QuickCheck provides, EQC is capable
+ of testing concurrency within a program.
+ Because of EQC being a commercial product, a lot of features of EQC are
+ unused, including the means of testing concurrency.
+ 
+\end_layout
+
 \begin_layout Chapter
 Results and discussion 
 \begin_inset CommandInset label
@@ -7408,8 +7466,7 @@ name "chap:Results-and-discussion"
 
 \begin_layout Standard
 In this chapter the results of the GGS prototype are presented and discussed.
- The results of the testing are presented with both graphical and textual
- content.
+ The results of the ing are presented with both graphical and textual content.
  Finally thoughts about how future improvements to the prototype could look
  like are given.
 \end_layout
