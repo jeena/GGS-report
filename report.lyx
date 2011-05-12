@@ -3417,7 +3417,7 @@ Lua
 \emph on
 ActionScript
 \emph default
- are suitable as well because there is a virtual machine for each of them
+ are suitable as well since there is a virtual machine for each of them
  which can be 
 \begin_inset Quotes eld
 \end_inset
@@ -3552,11 +3552,6 @@ reference "cha:Theory"
 \begin_layout Standard
 Much of what is discussed in this chapter has been implemented in the Erlang
  GGS prototype.
- Specific solutions such as 
-\emph on
-supervisor structures 
-\emph default
-and distribution of erlang nodes on physical nodes.
  The different means of communications within the GGS and outside the GGS
  with third parties are also discussed here.
 \end_layout
