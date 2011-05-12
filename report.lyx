@@ -6255,11 +6255,11 @@ name "sub:Hot-code-replacement"
 \begin_layout Standard
 Hot code replacement is a technique used to update systems while they are
  running.
- The main use of hot code replacement are in critical systems that require
+ The main use of hot code replacement is in critical systems that require
  low downtime, such as telecom systems.
  By using hot code replacement, systems can be able to achieve as high uptime
  as possible and thus improving the reliability of the system.
- Code replacement is a feature that exist in Erlang which means that with
+ Code replacement is a feature that exists in Erlang which means that with
  some work it could be implemented into the GGS.
 \end_layout
 
