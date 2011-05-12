@@ -5945,7 +5945,7 @@ name "sub:Supervisor-structure"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Note Note
@@ -6006,6 +6006,12 @@ end{centering}
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-supervisor-structure"
+
+\end_inset
+
 The supervisor structure of GGS
 \end_layout
 
@@ -6033,6 +6039,8 @@ key "Savor:1997:HSA:851010.856089"
 .
  When a process misbehaves, the supervisor takes some action to restore
  the process to a functional state.
+ In the case of the GGS, a process misbehaving most commonly triggers a
+ restart of the faulting process.
  
 \end_layout
 
@@ -6043,18 +6051,18 @@ There are several approaches to supervisor design in general (when not just
  process(es) it supervises, and let the supervisor make decisions based
  on this state.
  The supervisor has a specification of how the process it supervises should
- function, and this is how it makes decisions.
+ function, this is how it makes decisions.
  
 \end_layout
 
 \begin_layout Standard
-In Erlang, we have a simple version of supervisors.
- We do not inspect the state of the processes being supervised.
- We do have a specification of how the supervised processes should behave,
- but on a higher level.
+In Erlang, there is a simple version of supervisors.
+ No state of the processes being supervised is inspected.
+ There is, however a specification of how the supervised processes should
+ behave, but on a higher level.
  The specification describes things such as how many times in a given time
  interval a child process may crash, which processes need restarting when
- crashes occur, and so forth.
+ crashes occur, etc.
  
 \end_layout
 
@@ -6068,8 +6076,9 @@ When the linking of processes in order to monitor exit behavior is coupled
 \end_layout
 
 \begin_layout Standard
-In the GGS, we have separated the system in to two large supervised parts.
- We try to restart a crashing child separately, if this fails too many
+In the GGS, the system has been separated into two large supervised parts.
+ An attempt to restart a crashing child separately is made, if this fails
+ too many
 \begin_inset Foot
 status collapsed
 
@@ -6088,26 +6097,33 @@ too many
 
 \end_inset
 
- times, we restart the nearest supervisor of this child.
+ times, the nearest supervisor of this child is restarted.
  This ensures separation of the subsystems so that a crash is as isolated
  as possible.
 \end_layout
 
 \begin_layout Standard
-The graphic above shows our two subsystems, the coordinator subsystem and
- the dispatcher subsystem.
+Figure 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "fig:The-supervisor-structure"
+
+\end_inset
+
+ shows our two subsystems, the coordinator subsystem and the dispatcher
+ subsystem.
  Since these two systems perform very different tasks they have been separated.
  Each subsystem has one worker process, the coordinator or the dispatcher.
  The worker process keeps a state which should not be lost upon a crash.
 \end_layout
 
 \begin_layout Standard
-We have chosen to let faulty processes crash very easily when they receive
- bad data, or something unexpected happens.
+A choice has been made to let faulty processes crash very easily when they
+ receive bad data, or something unexpected happens.
  The alternative to crashing would have been to try and fix this faulty
  data, or to foresee the unexpected events.
- We chose not to do this because it is so simple to monitor and restart
- processes, and so difficult to try and mend broken states.
+ This was not chosen since it is so simple to monitor and restart processes,
+ and so difficult to try and mend broken states.
  This approach is something widely deployed in the Erlang world, and developers
  are often encouraged to “Let it crash”.
 \end_layout
@@ -6115,9 +6131,9 @@ We have chosen to let faulty processes crash very easily when they receive
 \begin_layout Standard
 To prevent any data loss, the good state of the worker processes is stored
  in their respective backup processes.
- When a worker process (re)starts, it asks the backup process for any previous
- state, if there is any that state is loaded in to the worker and it proceeds
- where it left off.
+ When a worker process (re)starts, the backup process is queried for any
+ previous state, if there is any, that state is loaded in to the worker
+ and it proceeds where it left off.
  If on the other hand no state is available, a special message is delivered
  instead, making the worker create a new state, this is what happens when
  the workers are first created.
@@ -6144,6 +6160,12 @@ reference "fig:redundancy"
 \end_inset
 
  depicts the redundancy built in to the coordinator process.
+\end_layout
+
+\begin_layout Standard
+This type of redundancy is only implemented in the coordinator process,
+ similar configurations should however be possible for all modules of the
+ GGS.
 \end_layout
 
 \begin_layout Standard
@@ -6233,24 +6255,24 @@ name "sub:Hot-code-replacement"
 \begin_layout Standard
 Hot code replacement is a technique used to update systems while they are
  running.
- The main use of hot code replacement are in critical systems that require
+ The main use of hot code replacement is in critical systems that require
  low downtime, such as telecom systems.
  By using hot code replacement, systems can be able to achieve as high uptime
  as possible and thus improving the reliability of the system.
- Code replacement is a feature that exist in Erlang which means that with
+ Code replacement is a feature that exists in Erlang which means that with
  some work it could be implemented into the GGS.
 \end_layout
 
 \begin_layout Section
-Software testing
+Testing
 \end_layout
 
 \begin_layout Standard
-In order to make sure the GGS prototype adheres to the specification set
+In order to make sure the GGS prototype adheres to the specification set,
  two different approaches to software testing are used.
  For simpler testing the GGS prototype uses unit tests.
  Modules are tested on a high level, making sure each function in the module
- tested functiions according to specification.
+ tested functions according to specification.
 \end_layout
 
 \begin_layout Standard
@@ -6280,9 +6302,6 @@ Unit testing is a way to check if the functionality adheres to the specification
  In most cases whole functions.
  Unit testing is good, not only for revealing software bugs, but also to
  state that a feature is working according to the specification.
- Unit testing is a common way to test software and has proven useful within
- the GGS when functions take complicated arguments.
- In these cases it is easy to set up a scenario that should work.
  
 \end_layout
 
@@ -6295,19 +6314,10 @@ Unit testing is a useful way to create regression tests.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 Erlang provides a module for unit testing called eunit.
- Eunit, being a part of OTP, is rich in functionality and well documented
- yet it doesn't allow any means of testing asynchronous behaviours as opposed
- to other means of software testing.
-\end_layout
-
-\end_inset
-
-
+ Eunit, being a part of OTP, is rich in functionality and well documented,
+ it doesn't however allow any means of testing asynchronous behaviours as
+ opposed to other means of software testing.
 \end_layout
 
 \begin_layout Subsection
@@ -6315,7 +6325,7 @@ Automated test case generation
 \end_layout
 
 \begin_layout Standard
-The problem of writing software tests manually, is that it takes a lot of
+The problem of writing software tests manually is that it takes a lot of
  time.
  There exists other ways to test software that address this problem by generatin
 g test cases with certain properties.
