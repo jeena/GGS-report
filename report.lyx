@@ -4964,23 +4964,23 @@ The information about which players are seated by each table is used when
  Consider a game of chess, each player notifies the table of its actions,
  the table then notifies the rest of the participants of these actions after
  having had the actions processed by the game VM, where an action could
- be moving a playing piece.
+ be moving a piece in the game.
 \end_layout
 
 \begin_layout Standard
 Each table is associated with a game VM.
- The actions sent to a table are processed by the game VM, this is where
+ The actions sent to a table is processed by the game VM, this is where
  the game logic is implemented.
 \end_layout
 
 \begin_layout Standard
 After a crash in a table process, the entire table must be rebuilt and the
  players must be re-associated with the table.
- Data concerning players is kept in the coordinator process, and is restored
+ Data concerning players is kept in the coordinator process and is restored
  from there.
  Data kept in the actual game is not automatically corrupted by the crash
- in a table, however the table must be re-associated with the game VM is
- was associated with prior to the crash of the table.
+ in a table, however the table must be re-associated with the game VM it
+ was associated with before the crash of the table.
  The table process maps well into the setting of the real-world chess club
  scenario previously discussed.
  A table works in the same way in a real world setting as in the GGS setting.
