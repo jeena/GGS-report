@@ -2515,7 +2515,7 @@ name "sec:Scalability"
 \end_layout
 
 \begin_layout Standard
-Each instance of the GGS contains several tables.
+Each instance of the GGS contains several so called tables.
  Each table is an isolated instance of a game, for instance a chess game
  or a poker game.
  The way that the GGS scales is to distribute these tables on different
@@ -8101,6 +8101,11 @@ To start the GGS is not self explanatory.
 
 \begin_layout Chapter
 Conclusion
+\end_layout
+
+\begin_layout Standard
+This thesis describes a method to create a reliable and generic game server
+ with help of the techniques used in the telecom industry.
 \end_layout
 
 \begin_layout Standard
