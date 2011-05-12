@@ -3428,8 +3428,8 @@ Testing
 
 \begin_layout Standard
 There are several ways in which the GGS can be tested.
- The most important aspect has been deemed to be the experience players
- have when using the GGS.
+ The most important aspect is deemed to be the experience players have when
+ using the GGS.
  To test the user experience of the GGS, a realistic usage scenario has
  to be set up.
 \end_layout
@@ -3437,21 +3437,21 @@ There are several ways in which the GGS can be tested.
 \begin_layout Standard
 The GGS is intended to be used for powering games which have many concurrent
  players.
- The players does not need to participate in the same instance of the game,
- games such as chess are prime candidates for the GGS.
+ The players do not need to participate in the same instance of the game,
+ games such as chess are possible candidates for the testing sessions.
 \end_layout
 
 \begin_layout Standard
 When developing the GGS, two main categories of games exhibiting different
  performance requirements were identified; real-time games and turn-based
  games.
- The real-time games were deemed more demanding than the turn based games.
- Tests were carried out using a real time game, since this is the more demanding
+ The real-time games are deemed more demanding than the turn based games.
+ Tests are carried out using a real time game, since this is the more demanding
  type of games.
 \end_layout
 
 \begin_layout Standard
-The real time game chosen for testing the GGS is 
+The real time game chosen for testing of the GGS is 
 \emph on
 Pong
 \emph default
@@ -3476,7 +3476,7 @@ bots
 \emph default
  for testing his generic hazard-gaming server.
  Lidholt describes how his server, capable of running several different
- casino games are tested using artificial players, so called bots.
+ casino games is tested using artificial players, so called bots.
  Performance is measured in 
 \begin_inset Quotes eld
 \end_inset
@@ -3489,7 +3489,7 @@ number of clients
 \end_layout
 
 \begin_layout Standard
-Similar tests were performed on the GGS, and the results of these tests
+Similar tests have been performed on the GGS, and the results of these tests
  are visible in chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3503,7 +3503,7 @@ reference "chap:Results-and-discussion"
  Due to lack of hardware, not enough player processes could be started in
  this way.
  The bots were rewritten in Erlang, and due to Erlang's light weigh threads,
- enough processes could be created to test successfully the server.
+ enough processes could have been created to test the server successfully.
 \end_layout
 
 \begin_layout Chapter
