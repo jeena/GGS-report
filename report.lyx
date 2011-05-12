@@ -7412,8 +7412,8 @@ erlv8
 
 \begin_layout Standard
 erlv8 is powered by the V8 engine developed by Google.
- The ability to communicate from JavaScript to Erlang using callbacks (aka
- NIF) is available in the erlv8 bindings and can be used within the GGS.
+ The ability to communicate from JavaScript to Erlang using NIF callbacks
+ is available in the erlv8 bindings and can be used within the GGS.
 \end_layout
 
 \begin_layout Standard
