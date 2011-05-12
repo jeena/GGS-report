@@ -2812,9 +2812,9 @@ textbf{UUID}}{Universally Unique Identifier}
 \end_layout
 
 \begin_layout Standard
-Inside the GGS, everything has a unique identifier.
+Inside the GGS everything has a unique identifier.
  There are identifiers for players, tables and other resources.
- When players communicate amongst each other, or communicate with tables,
+ When players communicate amongst each other or communicate with tables,
  they need to be able to uniquely identify all of these resources.
  Within one machine, this is mostly not a problem.
  A simple system with a counter can be imagined, where each request for
@@ -2897,10 +2897,10 @@ Ds generated until 3400 A.D.
 \end_inset
 
 .
- This is accomplished by gathering several different sources of information,
- such as: time, MAC addresses of network cards, and operating system data,
- such as percentage of memory in use, mouse cursor position and process
- IDs.
+ The generation of a UUID is accomplished by gathering several different
+ sources of information, such as: time, MAC addresses of network cards,
+ and operating system data, such as percentage of memory in use, mouse cursor
+ position and process IDs.
  The gathered data is then 
 \emph on
 hashed
@@ -2930,15 +2930,7 @@ reference "fig:network-split"
 
 \end_inset
 
-, where 
-\emph on
-Site A
-\emph default
- is separated from 
-\emph on
-Site B
-\emph default
- by a faulty network (illustrated by the cloud and lightening bolt).
+, where an example of a network split is presented.
  When
 \emph on
  
