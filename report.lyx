@@ -6264,15 +6264,15 @@ Hot code replacement is a technique used to update systems while they are
 \end_layout
 
 \begin_layout Section
-Software testing
+Testing
 \end_layout
 
 \begin_layout Standard
-In order to make sure the GGS prototype adheres to the specification set
+In order to make sure the GGS prototype adheres to the specification set,
  two different approaches to software testing are used.
  For simpler testing the GGS prototype uses unit tests.
  Modules are tested on a high level, making sure each function in the module
- tested functiions according to specification.
+ tested functions according to specification.
 \end_layout
 
 \begin_layout Standard
@@ -6302,9 +6302,6 @@ Unit testing is a way to check if the functionality adheres to the specification
  In most cases whole functions.
  Unit testing is good, not only for revealing software bugs, but also to
  state that a feature is working according to the specification.
- Unit testing is a common way to test software and has proven useful within
- the GGS when functions take complicated arguments.
- In these cases it is easy to set up a scenario that should work.
  
 \end_layout
 
@@ -6317,19 +6314,10 @@ Unit testing is a useful way to create regression tests.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 Erlang provides a module for unit testing called eunit.
- Eunit, being a part of OTP, is rich in functionality and well documented
- yet it doesn't allow any means of testing asynchronous behaviours as opposed
- to other means of software testing.
-\end_layout
-
-\end_inset
-
-
+ Eunit, being a part of OTP, is rich in functionality and well documented,
+ it doesn't however allow any means of testing asynchronous behaviours as
+ opposed to other means of software testing.
 \end_layout
 
 \begin_layout Subsection
@@ -6337,7 +6325,7 @@ Automated test case generation
 \end_layout
 
 \begin_layout Standard
-The problem of writing software tests manually, is that it takes a lot of
+The problem of writing software tests manually is that it takes a lot of
  time.
  There exists other ways to test software that address this problem by generatin
 g test cases with certain properties.
