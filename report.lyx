@@ -2391,9 +2391,7 @@ name "sec:Generic"
 
 \begin_layout Standard
 The GGS is a game server.
- It was made with a desire to be suitable for any kind of game.
- Any game with a client-server behavior should be perfectly suited for the
- GGS.
+ It was made with a desire to be suitable for many kinds of games.
  A game should not only be able to vary in terms of genre, graphics, gameplay
  etc, but also in the way the game is implemented for example in different
  programming languages.
@@ -2406,9 +2404,8 @@ The GGS is a game server.
 \end_layout
 
 \begin_layout Standard
-Another aspect is the desire to let a client upload the source code of the
- game it would like to play on the GGS.
- This way every client could connect to the server and install the game
+Clients upload the source code of the game it would like to play on the
+ GGS, this way any client can connect to the server and install the game
  through a API without the need of installation through the server provider
  or maintainer.
 \end_layout
