@@ -3544,6 +3544,11 @@ name "cha:Implementation-of-a"
 \end_layout
 
 \begin_layout Standard
+As mentioned earlier in the thesis, a prototype of the GGS has been developed
+ in order to test hypotheses and provide concrete examples.
+\end_layout
+
+\begin_layout Standard
 This chapter contains the realization of much of the principles and techniques
  described in chapter 
 \begin_inset CommandInset ref
@@ -3577,15 +3582,6 @@ Overview of the prototype
 
 \begin_layout Standard
 The prototype of the GGS was developed using the Erlang language.
- The functional and concurrent style of Erlang facilitates development of
- software based on a real-world model 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "armstrong2011"
-
-\end_inset
-
-.
  In Erlang, most things are processes.
  The software running the Erlang code is known as the Erlang machine, or
  a Erlang node.
@@ -3602,6 +3598,8 @@ Light Weight Processes; LWP
 , 
 \emph default
 much like the threads in an operating system.
+ There are however differences between operating system threads and the
+ LWPs of erlang.
  Threads in a Linux system, for example, are treated much like operating
  system processes in different systems.
  Due to the size of data structures related to each process, swapping one
@@ -3652,7 +3650,7 @@ The cost of swapping operating system processes becomes a problem when many
  If the GGS system had been developed using regular operating system processes,
  it would have had to be designed in a way to minimize the number of processes.
  Using Erlang, which is capable of running very many processes, several
- times more than an operating system can, the mapping between the real world
+ times more than an operating system, the relation between the real world
  system (described in 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -3756,7 +3754,7 @@ The layout of the GGS.
  network, for example the Internet.
  The barell figure marked 'backup' is a process being fed backup data from
  the coordinator.
- The barell marked 'State' contains the state of a table, and this is fed
+ The barrel marked 'State' contains the state of a table, and this is fed
  into the box marked 'Mnesia' which is database.
  Finally the figure shaped as a shield marked 'GameVM' contains the actual
  game process.
@@ -3784,8 +3782,8 @@ reference "fig:The-layout-of"
  The circles marked with 'C' topmost in the picture represent game clients.
  These circles represent processes running on gamers computers, and not
  on the GGS machine.
- If a game of chess is to be played on the server, the clients on the gamers
- machines will be chess game clients.
+ If a game of chess is to be played on the server, the clients on the machines
+ of the gamers will be chess game clients.
  Clients connect through a network, pictured as a cloud, to the dispatcher
  process in the GGS.
  The dispatcher process and all other modules are discussed in
@@ -3809,6 +3807,13 @@ name "sec:The-usage-of-erlang"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+As mentioned earlier, the GGS prototype is implemented in Erlang.
+ The current section and the subsequent section function as a short introduction
+ to Erlang, focusing on the parts of the language neccessary to understand
+ the material regarding Erlang presented in this thesis.
 \end_layout
 
 \begin_layout Standard
@@ -3853,8 +3858,11 @@ key "Armstrong:2010:ERL:1810891.1810910"
 \begin_layout Standard
 In using message passing in favor of the methods commonly used at the time,
  the issues commonly associated with shared memory and locking were avoided.
- In Erlang, everything is a process, and everything operates in its own
- memory space.
+\end_layout
+
+\begin_layout Standard
+In Erlang, everything is a process, and everything operates in its own memory
+ space.
  Memory cannot be shared among processes, which prohibits a process from
  corrupting the memory of a different process.
 \end_layout
@@ -3872,9 +3880,9 @@ Light Weight Processes.
 \emph default
 The Erlang processes are very cheaply created.
  Processes exist within an Erlang machine, or Erlang node.
- The Erlang machine has its own scheduler and does not rely on the operating
- system's scheduler, this is a main reason of Erlang's capability of running
- many concurrent processes 
+ The Erlang machine has its own scheduler and does not rely on the scheduler
+ of the operating system, this is a main reason of Erlang's capability of
+ running many concurrent processes 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Armstrong03"
@@ -3897,10 +3905,16 @@ The strong isolation of Erlang processes make them ideal for multi-core
 \end_layout
 
 \begin_layout Standard
-The distributed nature of Erlang is something the GGS makes use of when
+The distributed nature of Erlang is something the GGS can make use of when
  scaling across several computers in order to achieve higher performance.
  The distribution is also important in creating redundancy.
- Erlang promotes a non-defensive programming style in which processes are
+ The GGS prototype does not make use of the distributed nature of Erlang,
+ however the GGS prototype is constructed in such a way that making use
+ of the distributed nature should now pose a big ptoblem.
+\end_layout
+
+\begin_layout Standard
+Erlang promotes a non-defensive programming style in which processes are
  allowed to crash and be restarted in favor of having the processes recover
  from errors.
  The distributed nature of Erlang means supervisor processes (discussed
@@ -3934,7 +3948,15 @@ s (Native implemented functions)
  Through ports communication can take place much in the same way communication
  is performed over sockets.
  NIFs are called like any other functions without any difference to the
- caller but are implemented in C.
+ caller but are implemented in C, this implementation makes NIFs a very
+ efficient way to interface with the outside world 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "NIF:website"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
