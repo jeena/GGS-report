@@ -6125,11 +6125,79 @@ name "sub:Supervisor-structure"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-This entire section is bad.
+We should really do this graphic in EPS instead of PNG
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename graphics/Supervisor_tree_GGS.eps
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The supervisor structure of GGS
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6209,81 +6277,6 @@ too many
  times, we restart the nearest supervisor of this child.
  This ensures separation of the subsystems so that a crash is as isolated
  as possible.
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-We should really do this graphic in EPS instead of PNG
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename graphics/Supervisor_tree_GGS.eps
-	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-The supervisor structure of GGS
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -7941,6 +7934,15 @@ Distribution was however not implemented in the GGS.
 
 \begin_layout Subsection
 Performance
+\end_layout
+
+\begin_layout Standard
+The GGS prototype was not developed for maximum performance.
+ Performance optimizations were considered, many were however not implemented
+ in the prorotype.
+ There are several performance optimizations which can be included in future
+ versions of the GGS, below are some of the most important performance optimizat
+ions identified.
 \end_layout
 
 \begin_layout Subsubsection
