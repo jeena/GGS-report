@@ -2317,7 +2317,7 @@ The GGS is a game server.
  A game should not only be able to vary in terms of genre, graphics, gameplay
  etc, but also in the way the game is implemented for example in different
  programming languages.
- The GGS should be OS independent and run on Windows, OSX and Linux.
+ The GGS should be OS independent and run on Windows, OS X and Linux.
  The GGS can be run as a listen server on the players computer and host
  games locally.
  It could also be a dedicated server running on dedicated independent hardware.
@@ -2326,18 +2326,29 @@ The GGS is a game server.
 \end_layout
 
 \begin_layout Standard
-Another aspect was the desire to let a client upload the source code of
- the game it would like to play on the GGS.
+Another aspect is the desire to let a client upload the source code of the
+ game it would like to play on the GGS.
  This way every client could connect to the server and install the game
- through a 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "API"
-description "Application programming interface"
+ through a API without the need of installation through the server provider
+ or maintainer.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{API}}{Application programming interface}
+\end_layout
 
 \end_inset
 
- without the need of installation through the server provider or maintainer.
+
 \end_layout
 
 \begin_layout Section
@@ -2352,17 +2363,36 @@ name "sec:Fault-Tolerance"
 \end_layout
 
 \begin_layout Standard
-Fault tolerance is an important factor in all servers, a server that is
- fault tolerant should be able to follow a given specification when parts
- of the system fails.
+Merriam-Webster’s dictionary 
+\begin_inset CommandInset citation
+LatexCommand citeyearpar
+key "Dictionary.com2011"
+
+\end_inset
+
+ defines fault tolerance as:
+\end_layout
+
+\begin_layout Quotation
+1.
+ The ability of a system or component to continue normal operation despite
+ the presence of hardware or software faults.
+ This often involves some degree of redundancy.
+\end_layout
+
+\begin_layout Quotation
+2.
+ The number of faults a system or component can withstand before normal
+ operation is impaired.
+ 
+\end_layout
+
+\begin_layout Standard
+Fault tolerance is an important factor in servers, a server that is fault
+ tolerant should be able to follow a given specification when parts of the
+ system fail.
  This means that fault tolerance is different in each system depending on
- what specification they have.
- A system could be fault tolerant in different aspects, one is where the
- system is guaranteed to be available but not safe and it could also be
- reversed, that the system is safe but not guaranteed to be available.
- Depending on the system one property may be more important.
- A system could also have non existent fault tolerance or it could be both
- safe and guaranteed to be available.
+ what specification it has.
  It should be noted that it is not possible to achieve complete fault tolerance,
  a system will always have a certain risk of failure.
  With this in mind the goal is to make the GGS prototype as fault tolerant
@@ -2372,14 +2402,14 @@ Fault tolerance is an important factor in all servers, a server that is
 \begin_layout Standard
 In order to make the GGS prototype fault tolerant the programming language
  Erlang has been used.
- Erlang will not guarantee a fault tolerant system but it has features that
- support and encourage the development of fault tolerant systems.
- In the GGS it is important that the system overall is fault tolerant and
- not small parts only.
+ Erlang will not guarantee a fault tolerant system, however it has features
+ that support and encourage the development of fault tolerant systems.
+ In the GGS it is important that the complete system is fault tolerant,
+ not only small parts.
  Crashes of the whole system should be avoided as this would make the system
  unusable for a time.
  By using supervisor structures it is possible to crash and restart small
- parts of the system, this is convenient as fault can be handled within
+ parts of the system, this is convenient as faults can be handled within
  small modules thus never forcing a crash of the system.
 \end_layout
 
