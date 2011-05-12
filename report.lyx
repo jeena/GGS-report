@@ -2974,8 +2974,8 @@ reference "alg:A-simple-generator"
 \begin_layout Standard
 The obvious solution to this problem is to ensure mutual exclusion by using
  some sort of a lock, which may work well in many concurrent systems.
- In a distributed system such as the GGS however, this lock, along with the
- state, would have to be distributed.
+ In a distributed system such as the GGS however, this lock, along with
+ the state, would have to be distributed.
  If the lock is not distributed, no guaranties can be made that two nodes
  in the distributed system do not generate the same identifier.
 \end_layout
@@ -4353,8 +4353,8 @@ target "http://www.objectmentor.com/resources/articles/srp.pdf"
 
  are widely respected as good practices in the world of software engineering
  and development.
- By dividing the GGS into modules each part of the GGS can be modified
- without damaging, or requiring changes in the rest of the system.
+ By dividing the GGS into modules each part of the GGS can be modified without
+ damaging, or requiring changes in the rest of the system.
  Due to the hot code updates featured in Erlang, it is theoretically possible
  to update parts of the GGS while the system is running, this has however
  not been implemented in the prototype.
@@ -4999,12 +4999,13 @@ This module holds the game logic of a game and is responsible for the VM
 \begin_layout Standard
 The game VM contains the state of the VM and a table token associated with
  a running game.
- GameVM is started by the table module.
- The table module hands over a token to the game VM during initialization.
+ The game VM is started by the table module.
+ The table module hands over a token used for identification to the game
+ VM during initialization.
  During initialization a new VM instance and various objects associated
- to the VM instance will be created.
- Callbacks to Erlang are registered into the VM and then the source code
- of a game is loaded into the VM and the game is ready for startup.
+ to the VM instance are created.
+ Callbacks to Erlang are registered into the VM and the source code of a
+ game is loaded into the VM, finally the game is ready for startup.
  The only means for a game to communicate with the VM is through usage of
  a provided interface.
  
@@ -5015,12 +5016,12 @@ The VM itself makes it possible for the game developer to program in the
  programming language covered by the VM.
  In future releases, more game VMs will be added to support more programming
  languages.
- Because the game VM keeps track of the correct table, the game developer
+ Since the game VM keeps track of the correct table, the game developer
  does not need to take this into consideration when programming a game.
- If a method within the game sends data to a player, it will be delivered
+ If a method within the game sends data to a player, the data is delivered
  to the player in the correct running game.
  The same game token is used to store the game state in the database.
- Therefore, no game states will be mixed up either.
+ Therefore, no game states can be mixed up.
 \end_layout
 
 \begin_layout Standard
