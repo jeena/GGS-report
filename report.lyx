@@ -6060,8 +6060,9 @@ In Erlang, there is a simple version of supervisors.
  No state of the processes being supervised is inspected.
  There is, however a specification of how the supervised processes should
  behave, but on a higher level.
- The specification describes things such as how many times in a given interval a child process may crash, which processes need restarting when
- crashes occur, etc.
+ The specification describes things such as how many times in a given interval
+ a child process may crash, which processes need restarting when crashes
+ occur, etc.
  
 \end_layout
 
@@ -6119,8 +6120,8 @@ reference "fig:The-supervisor-structure"
 \begin_layout Standard
 A choice has been made to let faulty processes crash very easily when they
  receive bad data, or something unexpected happens.
- The alternative to crashing would have been to try to fix this faulty
- data, or to foresee the unexpected events.
+ The alternative to crashing would have been to try to fix this faulty data,
+ or to foresee the unexpected events.
  This was not chosen since it is so simple to monitor and restart processes,
  and so difficult to try to mend broken states.
  This approach is something widely deployed in the Erlang world, and developers
@@ -8080,21 +8081,6 @@ textbf{ETS}}{Erlang Term Storage}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Documentation
-\end_layout
-
-\begin_layout Standard
-To start the GGS is not self explanatory.
- This together with overall usage of GGS should be documented.
- The interface for usage of game developers are also in need of documentation.
- Features and requirements with respect to the GGS would assist users to
- know what they need to use the GGS and how they would benefit of it.
- The GGS does not support many programming languages nor does it have a
- complete documentation.
- This needs to be taken care of in future versions.
 \end_layout
 
 \begin_layout Chapter
