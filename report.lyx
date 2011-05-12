@@ -6485,9 +6485,7 @@ status open
 {
 \backslash
 tt playerCommand(278d5 ..
- 49, nick, Peter)
-\emph on
-}
+ 49, nick, Peter)}
 \end_layout
 
 \end_inset
@@ -6521,9 +6519,7 @@ status open
 
 {
 \backslash
-tt GGS.localStorage.setItem(key, value)
-\emph on
-}
+tt GGS.localStorage.setItem(key, value)}
 \end_layout
 
 \end_inset
@@ -6540,9 +6536,7 @@ status open
 
 {
 \backslash
-tt GGS.localStorage(key)
-\emph on
-}
+tt GGS.localStorage(key)}
 \end_layout
 
 \end_inset
@@ -6569,9 +6563,7 @@ status open
 
 {
 \backslash
-tt GGS.sendCommandToAll()
-\emph on
-}
+tt GGS.sendCommandToAll()}
 \end_layout
 
 \end_inset
@@ -6730,12 +6722,38 @@ The game VM process executes the source code within the JavaScript VM.
 
 \begin_layout Enumerate
 The JavaScript VM evaluates the source code - which has to implement the
- playerCommand() function - within the context of the game.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand()}
+\end_layout
+
+\end_inset
+
+ function - within the context of the game.
 \end_layout
 
 \begin_layout Enumerate
 The game is at this point fully initialized and can be used by all clients
- with help of the playerCommand() function.
+ with help of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand()}
+\end_layout
+
+\end_inset
+
+ function.
 \end_layout
 
 \begin_layout Enumerate
@@ -6778,8 +6796,8 @@ Clients disconnect
 \end_layout
 
 \begin_layout Enumerate
-When the last client disconnects the table process terminates and with it
- the game context and database content (not implemented in the prototype).
+When the last client disconnects, the table process terminates and with
+ it the game context and database content (not implemented in the prototype).
 \end_layout
 
 \begin_layout Subsection
