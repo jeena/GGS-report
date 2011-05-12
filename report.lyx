@@ -2239,12 +2239,22 @@ There are two main types of protocols with help of which computer communication
  network layer protocols and HTTP which is the most prominent application
  layer protocol.
  The transport layer protocols are commonly used to transport application
- layer protocols such as HTTP.
+ layer protocols such as HTTP, FTP and IRC.
  TCP and UDP cannot be used on their own without an application layer protocol
  on top of them.
  Application layer protocols such as HTTP on the other hand need a transport
  layer protocol in order to work.
- 
+\end_layout
+
+\begin_layout Standard
+In order for the GGS to communicate with clients over a network, both an
+ application layer protocol and a network layer protocol must be chosen.
+ This section outlines some candidates for application and network layer
+ protocols for the GGS, along with a motivation as to why the described
+ protocol was or was not chosen.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -2256,6 +2266,24 @@ nomenclature{
 \backslash
 textbf{HTTP}}{Hyper Text Transport Protocol, a network protocol commonly
  used to deliver web pages}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{FTP}}{File Transfer Protocol}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{IRC}}{Internet Relay Chat}
 \end_layout
 
 \end_inset
@@ -2279,6 +2307,14 @@ Many online games use UDP as the carrier for their application layer protocol.
  thus very suitable for media streaming for example.
 \end_layout
 
+\begin_layout Standard
+The need to implement custom error checking, and possibly correction makes
+ UDP a bad candidate for the GGS.
+ If error checking and correction were to be implemented in the GGS project,
+ UDP would be a good candidate, however the time neccessary to implement
+ these features makes this option unfeasable.
+\end_layout
+
 \begin_layout Subsection
 TCP
 \end_layout
@@ -2289,7 +2325,12 @@ For reliable transfers TCP is often used on the Internet.
  missing in UDP.
  This ensures the consistency of data, but also makes the transfer slower
  than if UDP had been used.
- 
+ TCP was chosen for the GGS as the network layer protocol even though TCP
+ can be considerably slower than UDP.
+ The error checking mechanisms in TCP are reason enough to use TCP instead
+ of UDP in the GGS prototype.
+ The implementation of UDP is still possible, it will however not appear
+ in the prototype.
 \end_layout
 
 \begin_layout Subsection
