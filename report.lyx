@@ -2536,12 +2536,11 @@ Load balancing
 \begin_layout Standard
 The need for load balancing varies among different kind of systems.
  Small systems that only use one or a couple of servers can cope with a
- simple implementation of it, while in large systems it is critical to have
- extensive and well working load balancing.
- The need also depends on what kind of server structure that the system
- works on.
- A static structure where the number of servers are predefined or a dynamic
- structure where the number varies.
+ simple implementation of load balancing, while in large systems it is useful
+ to have extensive and well working load balancing.
+ The need also depends on what kind of server structure the system works
+ on, a static structure where the number of servers are predefined or a
+ dynamic structure where the number varies.
 \begin_inset ERT
 status open
 
@@ -2560,7 +2559,7 @@ textbf{Amazon EC2}}{A cloud computation service}
 \end_layout
 
 \begin_layout Standard
-Load balancing and scaling is difficult in different scenarios.
+Load balancing and scaling are difficult in different scenarios.
  When running in a separate server park, there are a set number of servers
  available, this means that an even distribution on all servers is preferable.
  When running the GGS in a cloud, such as Amazon EC2, it is possible to
@@ -2592,7 +2591,7 @@ How do we distribute load on these new servers?
 \begin_layout Standard
 Load balancing is a key component to achieve scalability in network systems.
  The GGS is a good example of a system that needs to be scalable, to attain
- this load balancing is necessary.
+ this, load balancing is necessary.
  Optimization of the load balancing for a system is an important task to
  provide a stable and fast load balancer.
  There are certain persistence problems that can occur with load balancing,
