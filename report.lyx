@@ -6827,12 +6827,38 @@ Game-Command
  from a client, it is passed along to the game VM through a function called
  
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  which is the entry point for each game and has to be implemented by the
- developer; one can think of it like the 
+ developer; it can be seen as the 
 \emph on
-main()
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt main()}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function of a C or Java program
 \emph on
@@ -6841,7 +6867,20 @@ main()
 \emph default
  Typically the 
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function contains conditional constructs which decide the next action to
  take.
@@ -6854,7 +6893,20 @@ reference "alg:A-concrete-example"
 
  an example of the 
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function can be seen.
 \end_layout
@@ -6869,24 +6921,46 @@ reference "alg:A-concrete-example"
 
  the 
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function accepts two different commands.
  The first command is a command which allows chat clients connected to the
  chat server to change nicknames, which are used when chatting.
  In order to change the nickname, a client must send a Game-Command 
-\begin_inset Quotes eld
-\end_inset
-
+\noun on
 nick
-\begin_inset Quotes erd
+\noun default
+ with the actual new nick name as a argument.
+ When a message arrives to the GGS which has the form corresponding to the
+ nick name change, the 
+\emph on
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
 \end_inset
 
- with the actual new nickname as a argument.
- When a message arrives to the GGS which has the form corresponding to the
- nickname change, the 
-\emph on
-playerCommand
+
 \emph default
  function is called with the parameters 
 \emph on
@@ -6902,26 +6976,61 @@ args
 \begin_layout Standard
 The 
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function is responsible for calling the helper functions responsibly for
  carrying out the actions of each message received.
  
 \emph on
-changeNick
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt changeNick}
+\end_layout
+
+\end_inset
+
+
 \emph default
  is a function which is called when the 
-\begin_inset Quotes eld
-\end_inset
-
+\noun on
 nick
-\begin_inset Quotes erd
-\end_inset
-
+\noun default
  message is received.
  The 
 \emph on
-changeNick 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt changeNick}
+\end_layout
+
+\end_inset
+
+ 
 \emph default
 function uses a feature of the GGS called localstorage (see section 
 \begin_inset CommandInset ref
@@ -6945,12 +7054,19 @@ reference "sub:The-database-module"
 \end_layout
 
 \begin_layout Standard
-Access to the localStorage is provided through the 
+Access to the 
+\noun on
+localStorage
+\noun default
+ is provided through the 
 \emph on
-GGS object
+\noun on
+GGS
+\noun default
+ 
 \emph default
-, which also can be used to communicate with the rest of the system from
- the GDL.
+object, which also can be used to communicate with the rest of the system
+ from the GDL.
  Implementation specifics of the GGS object are provided in 
 \begin_inset CommandInset ref
 LatexCommand ref
