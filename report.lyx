@@ -5054,7 +5054,7 @@ name "sub:The-database-module"
 \end_layout
 
 \begin_layout Standard
-Game data from all games on the GGS are stored in the database backend of
+Game data from all games on the GGS is stored in the database backend of
  the database module.
 \end_layout
 
@@ -5063,9 +5063,9 @@ In the GGS prototype the database module is using a database management
  system called Mnesia.
  Mnesia ships with the standard Erlang distribution and is a key-value store
  type database.
- Mnesia is designed to handle the stress of telecoms systems, and has some
- features specifically tailored for telecoms which are not commonly found
- in other databases.
+ Mnesia is designed to handle the stress of telecoms systems, therefore
+ it has some features specifically tailored for telecoms which are not commonly
+ found in other databases.
  Key features of the Mnesia database are:
 \end_layout
 
@@ -5095,12 +5095,12 @@ key "667766"
 The features of Mnesia originally intended for telecoms prove very useful
  for the purposes of the GGS as well.
  The fault tolerance and speed of Mnesia are very valuable tools, the fast
- key/value lookups permit many lookups per second to the database.
+ key/value lookups permit many lookups per second from the database.
 \end_layout
 
 \begin_layout Standard
-Game data will not be lost when a game is stopped or has gone down for unknown
- reasons.
+Game data will not be lost when a game is stopped or has gone down for any
+ reason.
  This makes it possible to continue a game just before the failure without
  having to start the game from the beginning.
  
@@ -5129,12 +5129,32 @@ The GGS stores the game state in the distributed Mnesia database, from which
 \begin_layout Standard
 Each game is uniquely identified by a table token and the data of each game
  is stored within two different namespaces.
- The namespaces are named World and Localstorage.
- The World is used contain all game data related to the game state.
+ The namespaces are named 
+\noun on
+world
+\noun default
+ and 
+\noun on
+Localstorage
+\noun default
+.
+ The 
+\noun on
+World
+\noun default
+ is used contain all game data related to the game state.
  This sort of game data may change during the runtime of the game.
- The Localstorage should contain data independent of the game state.
+ The 
+\noun on
+Localstorage
+\noun default
+ contains data independent of the game state.
  Game resources, constants and global variables are all examples of data
- that could reside within the Localstorage.
+ that reside within the 
+\noun on
+Localstorage
+\noun default
+.
  To store a value within the database, not only is the table token and the
  name of the namespace required, but a unique key so that the value can
  be successfully retrieved or modified later.
