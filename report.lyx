@@ -1445,7 +1445,7 @@ key "armstrong2011"
 \end_layout
 
 \begin_layout Standard
-The real world system chosen for the GGS is a 
+The real world system chosen to represent the GGS is a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1454,6 +1454,10 @@ Chess club
 \end_inset
 
  - a building where chess players can meet and play chess.
+ In the following text the choice of using a chess club for modelling the
+ GGS is discussed.
+ The chess club is described in greater detail, furthermore the corresponding
+ parts of the chess club in the GGS are described.
  Since a real-world scenario is readily available, and to such a large extent
  resembles the computer software required for the GGS, the next step in
  developing the GGS system is to duplicate this real world scenario in a
@@ -1647,9 +1651,9 @@ reference "alg:game-lifecycle"
 .
  To make this life cycle as efficient and useful as possible the scalability,
  fault tolerance and generic traits are being added to the GGS.
- These are not shown in the algorithm because these traits are tools in
- making the algorithm behaves as efficient as possible and are not the main
- focus when studying the life cycle of a game.
+ These are not shown in the algorithm since these traits are tools in making
+ the algorithm behave as efficient as possible and are not the main focus
+ when studying the life cycle of a game.
 \end_layout
 
 \begin_layout Standard
@@ -2094,7 +2098,7 @@ on about the current positions of all players is essential.
 For someone operating a GGS, it is perhaps more interesting to measure the
  system load, memory consumption, energy consumption and network saturation.
  These topics are discussed in theory in this section.
- The practical results for the prototype is discussed in chapter 
+ The implementation for the prototype is discussed in chapter 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "cha:Implementation-of-a"
@@ -2102,6 +2106,15 @@ reference "cha:Implementation-of-a"
 \end_inset
 
 .
+ For test results, refer to chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Results-and-discussion"
+
+\end_inset
+
+, which contains graphs and a discussion concerning the performance of the
+ GGS prototype.
 \end_layout
 
 \begin_layout Standard
