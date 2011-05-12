@@ -5184,7 +5184,7 @@ name "sec:Communication-with-the-GDL-VM"
 A game launched on the GGS is run within a virtual machine.
  For each programming language supported, there is a virtual machine which
  interprets the game.
- Furthermore an interface for communication between the GGS, the game and
+ Furthermore an interface for communication among the GGS, the game and
  the players playing the game is present.
 \end_layout
 
@@ -5212,7 +5212,7 @@ localStorage
 .
  The game state is safely stored in a database and retrieved for manipulation
  by a call for the world object.
- Interaction with the players is done by using the 
+ Interaction with the players are done by using the 
 \emph on
 
 \begin_inset ERT
@@ -5309,7 +5309,7 @@ reference "alg:exposing-erlang"
 \end_layout
 
 \begin_layout Standard
-In JavaScript is is common to use a top level object, called a global object,
+In JavaScript it is common to use a top level object, called a global object,
  to establish a global scope.
  This allows the declaration of global variables and functions.
  To gain access to the global object in the GGS, the 
@@ -5384,7 +5384,7 @@ localStorage
 \noun default
  objects are dummy objects, which provide no functionality, these two objects
  are simply placed in the GDL for the purpose clearing up the code.
- In order to perform an action using the GGS and 
+ To perform an action using the GGS and 
 \noun on
 localStorage
 \noun default
@@ -5834,7 +5834,7 @@ Techniques for ensuring reliability
 \end_layout
 
 \begin_layout Standard
-One of the main goals of the project is to achieve high reliability.
+One main goal of the project is to achieve high reliability.
  The term 'reliable system' is defined by the IEEE as 
 \end_layout
 
@@ -6042,7 +6042,7 @@ key "Savor:1997:HSA:851010.856089"
 There are several approaches to supervisor design in general (when not just
  considering how they work in Erlang).
  One common approach is to have the supervisor look in to the state of the
- process(es) it supervises, and let the supervisor make decisions based
+ process(es) it supervises, and let the supervisor makes decisions based
  on this state.
  The supervisor has a specification of how the process it supervises should
  function, this is how it makes decisions.
@@ -6054,18 +6054,18 @@ In Erlang, there is a simple version of supervisors.
  No state of the processes being supervised is inspected.
  There is, however a specification of how the supervised processes should
  behave, but on a higher level.
- The specification describes things such as how many times in a given time
- interval a child process may crash, which processes need restarting when
- crashes occur, etc.
+ The specification describes things such as how many times in a given interval
+ a child process may crash, which processes need restarting when crashes
+ occur, etc.
  
 \end_layout
 
 \begin_layout Standard
-When the linking of processes in order to monitor exit behavior is coupled
- with the transparent distribution of Erlang, a very powerful supervision
- system is created.
- For instance, we can restart a failing process on a different, new node,
- with minimal impact on the system as a whole.
+When the linking of processes to monitor exit behavior is coupled with the
+ transparent distribution of Erlang, a very powerful supervision system
+ is created.
+ For instance, it is possible to restart a failing process on a different,
+ new node, with minimal impact on the system as a whole.
  
 \end_layout
 
@@ -6108,28 +6108,28 @@ reference "fig:The-supervisor-structure"
  subsystem.
  Since these two systems perform very different tasks they have been separated.
  Each subsystem has one worker process, the coordinator or the dispatcher.
- The worker process keeps a state which should not be lost upon a crash.
+ The worker process keeps a state which should not be lost on a crash.
 \end_layout
 
 \begin_layout Standard
 A choice has been made to let faulty processes crash very easily when they
  receive bad data, or something unexpected happens.
- The alternative to crashing would have been to try and fix this faulty
- data, or to foresee the unexpected events.
+ The alternative to crashing would have been to try to fix this faulty data,
+ or to foresee the unexpected events.
  This was not chosen since it is so simple to monitor and restart processes,
- and so difficult to try and mend broken states.
+ and so difficult to try to mend broken states.
  This approach is something widely deployed in the Erlang world, and developers
  are often encouraged to “Let it crash”.
 \end_layout
 
 \begin_layout Standard
-To prevent any data loss, the good state of the worker processes is stored
+To prevent any data loss, the good state of the worker processes are stored
  in their respective backup processes.
  When a worker process (re)starts, the backup process is queried for any
  previous state, if there is any, that state is loaded in to the worker
  and it proceeds where it left off.
  If on the other hand no state is available, a special message is delivered
- instead, making the worker create a new state, this is what happens when
+ instead, making the worker creates a new state, this is what happens when
  the workers are first created.
 \end_layout
 
@@ -6138,14 +6138,13 @@ Redundancy
 \end_layout
 
 \begin_layout Standard
-The modules in the GGS are built to be capable of redundant operation.
+The modules in the GGS are built to be capable of redundant operations.
  By adding a backup process to sensitive processes, the state can be kept
  in the event of a crash.
  The coordinator of the GGS prototype has this backup feature built in.
  The coordinator passes state along to the backup process which keeps the
  data safe.
- In the event of a crash, the coordinator recovers the state from the backup
- process.
+ If a crash occurs, the coordinator recovers the state from the backup process.
  Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6409,8 +6408,8 @@ Typical communication
 This case study describes the flow through the GGS when a typical command
  is encountered.
  Below is a case study where a chat client sends a message to change the
- nick of a user.
- The actual code performing the change of a nick in JavaScript is discussed
+ nick name of a user.
+ The actual code performing the change of a nick name in JavaScript is discussed
  in section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6457,7 +6456,8 @@ The protocol parser sends this Erlang touple back to the player process.
 \end_layout
 
 \begin_layout Enumerate
-The player process checks if it is a Server-Command or a Game-Command.
+The player process checks if the command is is a Server-Command or a Game-Comman
+d.
  In our example it is a Game-Command and it sends the message to the table
  process.
 \end_layout
@@ -6469,31 +6469,21 @@ The table process sends it to its own Game VM process.
 \begin_layout Enumerate
 The game VM process calls the function 
 \emph on
-playerCommand(
-\begin_inset Quotes eld
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand(278d5 ..
+ 49, nick, Peter)}
+\end_layout
+
 \end_inset
 
-278d5002-77d6-11e0-b772-af884def5349
-\begin_inset Quotes erd
-\end_inset
 
-, 
-\begin_inset Quotes eld
-\end_inset
-
-nick
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Peter
-\begin_inset Quotes erd
-\end_inset
-
-)
 \emph default
  within the JavaScript VM.
 \end_layout
@@ -6514,25 +6504,64 @@ reference "sec:Example-of-a-GGS-app"
 
  we see that the GGS-functions 
 \emph on
-GGS.localStorage.setItem(key, value)
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.localStorage.setItem(key, value)}
+\end_layout
+
+\end_inset
+
+
 \emph default
  and 
 \emph on
-GGS.localStorage(key)
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.localStorage(key)}
+\end_layout
+
+\end_inset
+
+
 \emph default
  are used.
  Both are callbacks coupled to the database module functions.
 \end_layout
 
 \begin_layout Enumerate
-Data is being read from and written to the database and handed over to the
- JSVM via the database process.
+Data is read from and written to the database and handed over to the JSVM
+ via the database process.
 \end_layout
 
 \begin_layout Enumerate
 In the example the 
 \emph on
-GGS.sendCommandToAll()
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.sendCommandToAll()}
+\end_layout
+
+\end_inset
+
+
 \emph default
  is being called then which is a callback to a function of the table module
  which iterates through its player list and sends the command to every player.
@@ -6686,12 +6715,38 @@ The game VM process executes the source code within the JavaScript VM.
 
 \begin_layout Enumerate
 The JavaScript VM evaluates the source code - which has to implement the
- playerCommand() function - within the context of the game.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand()}
+\end_layout
+
+\end_inset
+
+ function - within the context of the game.
 \end_layout
 
 \begin_layout Enumerate
 The game is at this point fully initialized and can be used by all clients
- with help of the playerCommand() function.
+ with help of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand()}
+\end_layout
+
+\end_inset
+
+ function.
 \end_layout
 
 \begin_layout Enumerate
@@ -6734,8 +6789,8 @@ Clients disconnect
 \end_layout
 
 \begin_layout Enumerate
-When the last client disconnects the table process terminates and with it
- the game context and database content (not implemented in the prototype).
+When the last client disconnects, the table process terminates and with
+ it the game context and database content (not implemented in the prototype).
 \end_layout
 
 \begin_layout Subsection
@@ -6765,12 +6820,38 @@ Game-Command
  from a client, it is passed along to the game VM through a function called
  
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  which is the entry point for each game and has to be implemented by the
- developer; one can think of it like the 
+ developer; it can be seen as the 
 \emph on
-main()
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt main()}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function of a C or Java program
 \emph on
@@ -6779,7 +6860,20 @@ main()
 \emph default
  Typically the 
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function contains conditional constructs which decide the next action to
  take.
@@ -6792,7 +6886,20 @@ reference "alg:A-concrete-example"
 
  an example of the 
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function can be seen.
 \end_layout
@@ -6807,24 +6914,46 @@ reference "alg:A-concrete-example"
 
  the 
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function accepts two different commands.
  The first command is a command which allows chat clients connected to the
  chat server to change nicknames, which are used when chatting.
  In order to change the nickname, a client must send a Game-Command 
-\begin_inset Quotes eld
-\end_inset
-
+\noun on
 nick
-\begin_inset Quotes erd
+\noun default
+ with the actual new nick name as a argument.
+ When a message arrives to the GGS which has the form corresponding to the
+ nick name change, the 
+\emph on
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
 \end_inset
 
- with the actual new nickname as a argument.
- When a message arrives to the GGS which has the form corresponding to the
- nickname change, the 
-\emph on
-playerCommand
+
 \emph default
  function is called with the parameters 
 \emph on
@@ -6840,26 +6969,61 @@ args
 \begin_layout Standard
 The 
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function is responsible for calling the helper functions responsibly for
  carrying out the actions of each message received.
  
 \emph on
-changeNick
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt changeNick}
+\end_layout
+
+\end_inset
+
+
 \emph default
  is a function which is called when the 
-\begin_inset Quotes eld
-\end_inset
-
+\noun on
 nick
-\begin_inset Quotes erd
-\end_inset
-
+\noun default
  message is received.
  The 
 \emph on
-changeNick 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt changeNick}
+\end_layout
+
+\end_inset
+
+ 
 \emph default
 function uses a feature of the GGS called localstorage (see section 
 \begin_inset CommandInset ref
@@ -6883,12 +7047,19 @@ reference "sub:The-database-module"
 \end_layout
 
 \begin_layout Standard
-Access to the localStorage is provided through the 
+Access to the 
+\noun on
+localStorage
+\noun default
+ is provided through the 
 \emph on
-GGS object
+\noun on
+GGS
+\noun default
+ 
 \emph default
-, which also can be used to communicate with the rest of the system from
- the GDL.
+object, which also can be used to communicate with the rest of the system
+ from the GDL.
  Implementation specifics of the GGS object are provided in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7149,15 +7320,15 @@ name "cha:Problems-of-implementation"
 \end_layout
 
 \begin_layout Standard
-This chapter contains specific problems encountered when implementing the
- GGS prototype.
+This chapter contains descriptions of specific problems encountered when
+ implementing the GGS prototype.
  Some of the problems described have solutions attached, however some problems
  were not solved, therefore only ideas for solutions have been attached.
 \end_layout
 
 \begin_layout Standard
 The integration of JavaScript as a GDL in the GGS prototype was particularly
- difficult, and is handled in this section and so is the protocol design.
+ difficult, and is handled in this section, so is the protocol design.
 \end_layout
 
 \begin_layout Section
@@ -7199,6 +7370,8 @@ V8
 \begin_layout Standard
 For the Mozilla machines, there exists a Erlang binding called erlang_js,
  and for the V8 machine a binding called erlv8 exists.
+ Below follows a discussion about the different bindings and machines, and
+ a motivation as to why erlv8 was preferred over erlang_js.
 \end_layout
 
 \begin_layout Subsection
@@ -7206,9 +7379,9 @@ erlang_js
 \end_layout
 
 \begin_layout Standard
-erlang_js provides direct communication with the JavaScript VM.
- Which is exactly what is desired, however also required is the possibility
- to communicate from JavaScript to Erlang.
+erlang_js provides direct communication with the JavaScript VM, which is
+ exactly what is desired, however also required is the possibility to communicat
+e from JavaScript to Erlang.
  The ability to communicate from JavaScript to Erlang is not yet implemented
  in erlang_js, due to lack of time of the erlang_js developers.
 \end_layout
@@ -7232,8 +7405,8 @@ erlv8
 
 \begin_layout Standard
 erlv8 is powered by the V8 engine developed by Google.
- The ability to communicate from JavaScript to Erlang using callbacks (aka
- NIF) is available in the erlv8 bindings and can be used within the GGS.
+ The ability to communicate from JavaScript to Erlang using NIF callbacks
+ is available in the erlv8 bindings and can be used within the GGS.
 \end_layout
 
 \begin_layout Standard
@@ -7311,9 +7484,10 @@ key "Slee2007"
 \end_layout
 
 \begin_layout Standard
-The use of Thrift, Google protocol buffers - which is a different approach
- to that implemented by Google - or other protocols can be supported quite
- easily by developing protocol modules for each the protocols.
+The use of Google protocol buffers - which is a different approach to a
+ standard protocol framework, implemented by Google - or other protocols
+ can be supported quite easily by developing protocol modules for each the
+ protocols.
  No protocol modules for these protocols have however been developed during
  the writing of this thesis.
 \end_layout
@@ -7403,31 +7577,11 @@ In this chapter the results of the GGS prototype are presented and discussed.
 
 \begin_layout Section
 Statistics
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Mention the hardware which the GGS was run on; A Thinkpad T410 with a core
- i5 and 4GB of ram.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The testing of the GGS prototype occurred in two sessions
-\end_layout
-
-\end_inset
-
 Testing of the GGS took place in two separate sessions.
- The first session simulates a highly demanding application, the second
+ The first session simulated a highly demanding application, the second
  session simulated a less demanding application.
  The highly demanding application is a real time game which does several
  asynchronous database writes each second.
@@ -7540,6 +7694,11 @@ In the second testing session the delay between the server and clients was
  When the load on the server increases heavily the delay does the same,
  this is because the server cannot process all incoming messages and therefore
  messages are put in a queue within the system.
+\end_layout
+
+\begin_layout Standard
+It should be noted that with distribution in place, having the GGS deployed
+ on several machines, test results could reveal much higher numbers.
 \end_layout
 
 \begin_layout Standard
@@ -7816,7 +7975,7 @@ The GGS was originally intended to be a distributed application, running
 \begin_layout Standard
 Distribution was however not implemented in the GGS.
  Other parts of the GGS were prioritized.
- A futute improvement is therefore to implement distribution in the GGS.
+ A future improvement is therefore to implement distribution in the GGS.
  A simple way to achieve this is to keep one GGS instance as a coordinating
  instance, and to keep clients on other instances of the GGS, which can
  be dynamically added as new clients connect.
@@ -7915,21 +8074,6 @@ textbf{ETS}}{Erlang Term Storage}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Documentation
-\end_layout
-
-\begin_layout Standard
-To start the GGS is not self explanatory.
- This together with overall usage of GGS should be documented.
- The interface for usage of game developers are also in need of documentation.
- Features and requirements with respect to the GGS would assist users to
- know what they need to use the GGS and how they would benefit of it.
- The GGS does not support many programming languages nor does it have a
- complete documentation.
- This needs to be taken care of in future versions.
 \end_layout
 
 \begin_layout Chapter
