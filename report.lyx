@@ -2405,10 +2405,21 @@ name "sec:Availability"
 
 \begin_layout Standard
 One important factor of any server is the availability.
- A server to which you are unable to connect to is an useless server.
- Other then within telecommunication, their uptime is of about 99,9999999%,
- the game developer community has not approached this problem very genuinely
- yet so there is much room for improvement.
+ A server which is unreachable is an useless server.
+ 
+\end_layout
+
+\begin_layout Standard
+Within the telecom sector high availability has been achieved 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "armstrong2011"
+
+\end_inset
+
+.
+ In the game development sector however the lack of high availability problem
+ has not yet been solved.
 \end_layout
 
 \begin_layout Standard
@@ -2418,7 +2429,8 @@ There are several good papers on how to migrate whole virtual machines among
  of the VM to a storage external to the VM is made.
  The state is stored in a fast, fault tolerant data store instead of inside
  the VM.
- Some of them are 
+ In addition to migrating the state of the game VM, the GGS uses tools from
+ the OTP, some of them are 
 \emph on
 hot code replacement
 \emph default
