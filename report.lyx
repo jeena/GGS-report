@@ -4270,7 +4270,7 @@ tt [1,2,3]}
 \series bold
 Strings
 \series default
- doubly quoted lists of characters, for example 
+ are double-quoted lists of characters, for example 
 \begin_inset ERT
 status open
 
