@@ -7377,6 +7377,8 @@ V8
 \begin_layout Standard
 For the Mozilla machines, there exists a Erlang binding called erlang_js,
  and for the V8 machine a binding called erlv8 exists.
+ Below follows a discussion about the different bindings and machines, and
+ a motivation as to why erlv8 was preferred over erlang_js.
 \end_layout
 
 \begin_layout Subsection
