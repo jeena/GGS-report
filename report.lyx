@@ -3219,8 +3219,7 @@ Erlang is not a very popular language for game development, therefore the
  interface to different virtual machines which would run the game code.
  This way a game developer can write the game in his favorite language while
  the server part still is written in Erlang and can benefit from all the
- advantages of the Erlang language.
- In this section, a few potential languages are given.
+ advantages the Erlang language provides.
 \end_layout
 
 \begin_layout Subsection
@@ -3229,20 +3228,21 @@ JavaScript
 
 \begin_layout Standard
 JavaScript is a prime GDL candidate for the GGS.
- The language is very flexible, a general knowledge of the language is present
- in the computer science community, furthermore there are virtual machines
- readily available for JavaScript.
+ The language is very flexible, and a large base of developers within the
+ web community is using this language on the client side within the browser
+ and therefore are used to it.
 \end_layout
 
 \begin_layout Standard
-JavaScript has gained a lot of popularity lately, it is used in large projects
- such as 
+JavaScript, as a interpreted script language, has gained a lot of popularity
+ in other fields of computer science lately.
+ It is used as a server side language in large projects such as 
 \emph on
 Riak
 \emph default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Flex URL
@@ -3260,7 +3260,7 @@ http://wiki.basho.com/An-Introduction-to-Riak.html
 
 \end_inset
 
-, 
+ or 
 \emph on
 CouchDB
 \emph default
@@ -3315,22 +3315,17 @@ https://github.com/languages/
 \end_layout
 
 \begin_layout Standard
-Since the GGS is intended to be connected to several different GDL VMs the
- choice for the first language implemented for the GGS prototype seems not
- only to depend on the technical features of the GDL chosen, in this case
- JavaScript.
- A different, albeit still important non technical feature of JavaScript
- is the familiarity with the language of the members of the GGS development
- team.
+Apart from that there are virtual machines with bindings to Erlang readily
+ available for JavaScript which are provided by organisations like Mozilla
+ and companies like Google.
+ In the end this choice was more or less arbitrary since the GGS is intended
+ to be able to run several different GDL VMs, and one had to be the first.
+ 
 \end_layout
 
 \begin_layout Standard
-The popularity of JavaScript in the programming community, in combination
- with the availability of several different JavaScript virtual machines
- was an important influence in choosing JavaScript as the main control language
- for our GGS prototype.
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3433,8 +3428,8 @@ Testing
 
 \begin_layout Standard
 There are several ways in which the GGS can be tested.
- The most important aspect has been deemed to be the experience players
- have when using the GGS.
+ The most important aspect is deemed to be the experience players have when
+ using the GGS.
  To test the user experience of the GGS, a realistic usage scenario has
  to be set up.
 \end_layout
@@ -3442,21 +3437,21 @@ There are several ways in which the GGS can be tested.
 \begin_layout Standard
 The GGS is intended to be used for powering games which have many concurrent
  players.
- The players does not need to participate in the same instance of the game,
- games such as chess are prime candidates for the GGS.
+ The players do not need to participate in the same instance of the game,
+ games such as chess are possible candidates for the testing sessions.
 \end_layout
 
 \begin_layout Standard
 When developing the GGS, two main categories of games exhibiting different
  performance requirements were identified; real-time games and turn-based
  games.
- The real-time games were deemed more demanding than the turn based games.
- Tests were carried out using a real time game, since this is the more demanding
+ The real-time games are deemed more demanding than the turn based games.
+ Tests are carried out using a real time game, since this is the more demanding
  type of games.
 \end_layout
 
 \begin_layout Standard
-The real time game chosen for testing the GGS is 
+The real time game chosen for testing of the GGS is 
 \emph on
 Pong
 \emph default
@@ -3481,7 +3476,7 @@ bots
 \emph default
  for testing his generic hazard-gaming server.
  Lidholt describes how his server, capable of running several different
- casino games are tested using artificial players, so called bots.
+ casino games is tested using artificial players, so called bots.
  Performance is measured in 
 \begin_inset Quotes eld
 \end_inset
@@ -3494,7 +3489,7 @@ number of clients
 \end_layout
 
 \begin_layout Standard
-Similar tests were performed on the GGS, and the results of these tests
+Similar tests have been performed on the GGS, and the results of these tests
  are visible in chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3508,7 +3503,7 @@ reference "chap:Results-and-discussion"
  Due to lack of hardware, not enough player processes could be started in
  this way.
  The bots were rewritten in Erlang, and due to Erlang's light weigh threads,
- enough processes could be created to test successfully the server.
+ enough processes could have been created to test the server successfully.
 \end_layout
 
 \begin_layout Chapter
@@ -5950,7 +5945,7 @@ name "sub:Supervisor-structure"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Note Note
@@ -6011,6 +6006,12 @@ end{centering}
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-supervisor-structure"
+
+\end_inset
+
 The supervisor structure of GGS
 \end_layout
 
@@ -6038,6 +6039,8 @@ key "Savor:1997:HSA:851010.856089"
 .
  When a process misbehaves, the supervisor takes some action to restore
  the process to a functional state.
+ In the case of the GGS, a process misbehaving most commonly triggers a
+ restart of the faulting process.
  
 \end_layout
 
@@ -6048,18 +6051,17 @@ There are several approaches to supervisor design in general (when not just
  process(es) it supervises, and let the supervisor makes decisions based
  on this state.
  The supervisor has a specification of how the process it supervises should
- function, and this is how it makes decisions.
+ function, this is how it makes decisions.
  
 \end_layout
 
 \begin_layout Standard
 In Erlang, there is a simple version of supervisors.
- It does not inspect the state of the processes being supervised.
- We do have a specification of how the supervised processes should behave,
- but on a higher level.
- The specification describes things such as how many times in a given interval
- a child process may crash, which processes need restarting when crashes
- occur, and so forth.
+ No state of the processes being supervised is inspected.
+ There is, however a specification of how the supervised processes should
+ behave, but on a higher level.
+ The specification describes things such as how many times in a given interval a child process may crash, which processes need restarting when
+ crashes occur, etc.
  
 \end_layout
 
@@ -6073,8 +6075,9 @@ When the linking of processes to monitor exit behavior is coupled with the
 \end_layout
 
 \begin_layout Standard
-In the GGS, the system is separated into two large supervised parts.
- We try to restart a crashing child separately, if this fails too many
+In the GGS, the system has been separated into two large supervised parts.
+ An attempt to restart a crashing child separately is made, if this fails
+ too many
 \begin_inset Foot
 status collapsed
 
@@ -6093,26 +6096,33 @@ too many
 
 \end_inset
 
- times, we restart the nearest supervisor of this child.
+ times, the nearest supervisor of this child is restarted.
  This ensures separation of the subsystems so that a crash is as isolated
  as possible.
 \end_layout
 
 \begin_layout Standard
-The graphic above shows our two subsystems, the coordinator subsystem and
- the dispatcher subsystem.
+Figure 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "fig:The-supervisor-structure"
+
+\end_inset
+
+ shows our two subsystems, the coordinator subsystem and the dispatcher
+ subsystem.
  Since these two systems perform very different tasks they have been separated.
  Each subsystem has one worker process, the coordinator or the dispatcher.
  The worker process keeps a state which should not be lost on a crash.
 \end_layout
 
 \begin_layout Standard
-We have chosen to let faulty processes crash easily when they receive bad
- data, or if something unexpected happens.
- The alternative to crashing would have been to try to fix this faulty data,
- or to foresee the unexpected events.
- We chose not to do this because it is so simple to monitor and restart
- processes, and so difficult to try to mend broken states.
+A choice has been made to let faulty processes crash very easily when they
+ receive bad data, or something unexpected happens.
+ The alternative to crashing would have been to try to fix this faulty
+ data, or to foresee the unexpected events.
+ This was not chosen since it is so simple to monitor and restart processes,
+ and so difficult to try to mend broken states.
  This approach is something widely deployed in the Erlang world, and developers
  are often encouraged to “Let it crash”.
 \end_layout
@@ -6120,9 +6130,9 @@ We have chosen to let faulty processes crash easily when they receive bad
 \begin_layout Standard
 To prevent any data loss, the good state of the worker processes are stored
  in their respective backup processes.
- When a worker process (re)starts, it asks the backup process for any previous
- state, if there is any that state is loaded in to the worker and it proceeds
- where it left off.
+ When a worker process (re)starts, the backup process is queried for any
+ previous state, if there is any, that state is loaded in to the worker
+ and it proceeds where it left off.
  If on the other hand no state is available, a special message is delivered
  instead, making the worker creates a new state, this is what happens when
  the workers are first created.
@@ -6149,6 +6159,12 @@ reference "fig:redundancy"
 \end_inset
 
  depicts the redundancy built in to the coordinator process.
+\end_layout
+
+\begin_layout Standard
+This type of redundancy is only implemented in the coordinator process,
+ similar configurations should however be possible for all modules of the
+ GGS.
 \end_layout
 
 \begin_layout Standard
@@ -6238,24 +6254,24 @@ name "sub:Hot-code-replacement"
 \begin_layout Standard
 Hot code replacement is a technique used to update systems while they are
  running.
- The main use of hot code replacement are in critical systems that require
+ The main use of hot code replacement is in critical systems that require
  low downtime, such as telecom systems.
  By using hot code replacement, systems can be able to achieve as high uptime
  as possible and thus improving the reliability of the system.
- Code replacement is a feature that exist in Erlang which means that with
+ Code replacement is a feature that exists in Erlang which means that with
  some work it could be implemented into the GGS.
 \end_layout
 
 \begin_layout Section
-Software testing
+Testing
 \end_layout
 
 \begin_layout Standard
-In order to make sure the GGS prototype adheres to the specification set
+In order to make sure the GGS prototype adheres to the specification set,
  two different approaches to software testing are used.
  For simpler testing the GGS prototype uses unit tests.
  Modules are tested on a high level, making sure each function in the module
- tested functiions according to specification.
+ tested functions according to specification.
 \end_layout
 
 \begin_layout Standard
@@ -6285,9 +6301,6 @@ Unit testing is a way to check if the functionality adheres to the specification
  In most cases whole functions.
  Unit testing is good, not only for revealing software bugs, but also to
  state that a feature is working according to the specification.
- Unit testing is a common way to test software and has proven useful within
- the GGS when functions take complicated arguments.
- In these cases it is easy to set up a scenario that should work.
  
 \end_layout
 
@@ -6300,19 +6313,10 @@ Unit testing is a useful way to create regression tests.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 Erlang provides a module for unit testing called eunit.
- Eunit, being a part of OTP, is rich in functionality and well documented
- yet it doesn't allow any means of testing asynchronous behaviours as opposed
- to other means of software testing.
-\end_layout
-
-\end_inset
-
-
+ Eunit, being a part of OTP, is rich in functionality and well documented,
+ it doesn't however allow any means of testing asynchronous behaviours as
+ opposed to other means of software testing.
 \end_layout
 
 \begin_layout Subsection
@@ -6320,7 +6324,7 @@ Automated test case generation
 \end_layout
 
 \begin_layout Standard
-The problem of writing software tests manually, is that it takes a lot of
+The problem of writing software tests manually is that it takes a lot of
  time.
  There exists other ways to test software that address this problem by generatin
 g test cases with certain properties.
@@ -6410,8 +6414,8 @@ Typical communication
 This case study describes the flow through the GGS when a typical command
  is encountered.
  Below is a case study where a chat client sends a message to change the
- nick of a user.
- The actual code performing the change of a nick in JavaScript is discussed
+ nick name of a user.
+ The actual code performing the change of a nick name in JavaScript is discussed
  in section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6458,7 +6462,8 @@ The protocol parser sends this Erlang touple back to the player process.
 \end_layout
 
 \begin_layout Enumerate
-The player process checks if it is a Server-Command or a Game-Command.
+The player process checks if the command is is a Server-Command or a Game-Comman
+d.
  In our example it is a Game-Command and it sends the message to the table
  process.
 \end_layout
@@ -6470,31 +6475,21 @@ The table process sends it to its own Game VM process.
 \begin_layout Enumerate
 The game VM process calls the function 
 \emph on
-playerCommand(
-\begin_inset Quotes eld
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand(278d5 ..
+ 49, nick, Peter)}
+\end_layout
+
 \end_inset
 
-278d5002-77d6-11e0-b772-af884def5349
-\begin_inset Quotes erd
-\end_inset
 
-, 
-\begin_inset Quotes eld
-\end_inset
-
-nick
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Peter
-\begin_inset Quotes erd
-\end_inset
-
-)
 \emph default
  within the JavaScript VM.
 \end_layout
@@ -6515,25 +6510,64 @@ reference "sec:Example-of-a-GGS-app"
 
  we see that the GGS-functions 
 \emph on
-GGS.localStorage.setItem(key, value)
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.localStorage.setItem(key, value)}
+\end_layout
+
+\end_inset
+
+
 \emph default
  and 
 \emph on
-GGS.localStorage(key)
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.localStorage(key)}
+\end_layout
+
+\end_inset
+
+
 \emph default
  are used.
  Both are callbacks coupled to the database module functions.
 \end_layout
 
 \begin_layout Enumerate
-Data is being read from and written to the database and handed over to the
- JSVM via the database process.
+Data is read from and written to the database and handed over to the JSVM
+ via the database process.
 \end_layout
 
 \begin_layout Enumerate
 In the example the 
 \emph on
-GGS.sendCommandToAll()
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.sendCommandToAll()}
+\end_layout
+
+\end_inset
+
+
 \emph default
  is being called then which is a callback to a function of the table module
  which iterates through its player list and sends the command to every player.
@@ -6687,12 +6721,38 @@ The game VM process executes the source code within the JavaScript VM.
 
 \begin_layout Enumerate
 The JavaScript VM evaluates the source code - which has to implement the
- playerCommand() function - within the context of the game.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand()}
+\end_layout
+
+\end_inset
+
+ function - within the context of the game.
 \end_layout
 
 \begin_layout Enumerate
 The game is at this point fully initialized and can be used by all clients
- with help of the playerCommand() function.
+ with help of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand()}
+\end_layout
+
+\end_inset
+
+ function.
 \end_layout
 
 \begin_layout Enumerate
@@ -6735,8 +6795,8 @@ Clients disconnect
 \end_layout
 
 \begin_layout Enumerate
-When the last client disconnects the table process terminates and with it
- the game context and database content (not implemented in the prototype).
+When the last client disconnects, the table process terminates and with
+ it the game context and database content (not implemented in the prototype).
 \end_layout
 
 \begin_layout Subsection
@@ -6766,12 +6826,38 @@ Game-Command
  from a client, it is passed along to the game VM through a function called
  
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  which is the entry point for each game and has to be implemented by the
- developer; one can think of it like the 
+ developer; it can be seen as the 
 \emph on
-main()
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt main()}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function of a C or Java program
 \emph on
@@ -6780,7 +6866,20 @@ main()
 \emph default
  Typically the 
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function contains conditional constructs which decide the next action to
  take.
@@ -6793,7 +6892,20 @@ reference "alg:A-concrete-example"
 
  an example of the 
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function can be seen.
 \end_layout
@@ -6808,24 +6920,46 @@ reference "alg:A-concrete-example"
 
  the 
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function accepts two different commands.
  The first command is a command which allows chat clients connected to the
  chat server to change nicknames, which are used when chatting.
  In order to change the nickname, a client must send a Game-Command 
-\begin_inset Quotes eld
-\end_inset
-
+\noun on
 nick
-\begin_inset Quotes erd
+\noun default
+ with the actual new nick name as a argument.
+ When a message arrives to the GGS which has the form corresponding to the
+ nick name change, the 
+\emph on
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
 \end_inset
 
- with the actual new nickname as a argument.
- When a message arrives to the GGS which has the form corresponding to the
- nickname change, the 
-\emph on
-playerCommand
+
 \emph default
  function is called with the parameters 
 \emph on
@@ -6841,26 +6975,61 @@ args
 \begin_layout Standard
 The 
 \emph on
-playerCommand
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand}
+\end_layout
+
+\end_inset
+
+
 \emph default
  function is responsible for calling the helper functions responsibly for
  carrying out the actions of each message received.
  
 \emph on
-changeNick
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt changeNick}
+\end_layout
+
+\end_inset
+
+
 \emph default
  is a function which is called when the 
-\begin_inset Quotes eld
-\end_inset
-
+\noun on
 nick
-\begin_inset Quotes erd
-\end_inset
-
+\noun default
  message is received.
  The 
 \emph on
-changeNick 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt changeNick}
+\end_layout
+
+\end_inset
+
+ 
 \emph default
 function uses a feature of the GGS called localstorage (see section 
 \begin_inset CommandInset ref
@@ -6884,12 +7053,19 @@ reference "sub:The-database-module"
 \end_layout
 
 \begin_layout Standard
-Access to the localStorage is provided through the 
+Access to the 
+\noun on
+localStorage
+\noun default
+ is provided through the 
 \emph on
-GGS object
+\noun on
+GGS
+\noun default
+ 
 \emph default
-, which also can be used to communicate with the rest of the system from
- the GDL.
+object, which also can be used to communicate with the rest of the system
+ from the GDL.
  Implementation specifics of the GGS object are provided in 
 \begin_inset CommandInset ref
 LatexCommand ref
