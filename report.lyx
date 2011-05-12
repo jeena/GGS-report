@@ -5193,7 +5193,7 @@ name "sec:Communication-with-the-GDL-VM"
 
 \begin_layout Standard
 A game launched on the GGS is run within a virtual machine.
- For each programming language supported, there is a virtual machine that
+ For each programming language supported, there is a virtual machine which
  interprets the game.
  Furthermore an interface for communication between the GGS, the game and
  the players playing the game is present.
@@ -5217,40 +5217,45 @@ localStorage
  by a call for the world object.
  Interaction with the players is done by using the 
 \emph on
-GGS.sendCommand(player_id, command, args)
-\emph default
- and 
-\emph on
-GGS.
-\emph default
-sendCommandToAll(command, args).
- The localstorage is a convenient way to store global data and other variables
- separated from the game state.
- Unique ids called gametokens are generated for hosted games so that they
- are not mixed up.
-\end_layout
 
-\begin_layout Standard
-A game launched on the GGS is run within a virtual machine.
- For each programming language supported, there is a virtual machine that
- interprets the game.
- Furthermore an interface for communication between the GGS, the game and
- the players playing the game must be present.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
- Unique id:s called gametokens are generated for hosted games so that they
- are not mixed up.
- -- good text, integrate more.
+
+{
+\backslash
+tt GGS.sendCommand(player_id, command, args)
+\emph on
+}
 \end_layout
 
 \end_inset
 
 
+\emph default
+ and 
+\emph on
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.sendCommandToAll(command, args)}
+\end_layout
+
+\end_inset
+
+
+\emph default
+.
+ The localStorage is a convenient way to store global data and other variables
+ separated from the game state.
+ Unique ids called game tokens are generated for hosted games so that they
+ are not mixed up.
 \begin_inset ERT
 status open
 
