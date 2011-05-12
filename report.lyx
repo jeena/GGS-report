@@ -7491,9 +7491,10 @@ key "Slee2007"
 \end_layout
 
 \begin_layout Standard
-The use of Thrift, Google protocol buffers - which is a different approach
- to that implemented by Google - or other protocols can be supported quite
- easily by developing protocol modules for each the protocols.
+The use of Google protocol buffers - which is a different approach to a
+ standard protocol framework, implemented by Google - or other protocols
+ can be supported quite easily by developing protocol modules for each the
+ protocols.
  No protocol modules for these protocols have however been developed during
  the writing of this thesis.
 \end_layout
