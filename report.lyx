@@ -5206,12 +5206,20 @@ Callbacks written in Erlang are registered to the VM for the interface to
  the game state and send messages to the clients.
  The interface provides access to three objects called 
 \emph on
-world, players
+\noun on
+world
+\noun default
+, 
+\noun on
+players
 \emph default
+\noun default
  and 
 \emph on
+\noun on
 localStorage
 \emph default
+\noun default
 .
  The game state is safely stored in a database and retrieved for manipulation
  by a call for the world object.
@@ -5286,7 +5294,14 @@ name "sub:Exposing-Erlang-functionality"
 \end_layout
 
 \begin_layout Standard
-This section contains a concrete example of how the localstorage and world
+This section contains a concrete example of how the 
+\noun on
+localStorage
+\noun default
+ and 
+\noun on
+world
+\noun default
  objects are exposed to a GDL VM.
  The example comes from the GGS prototype, which uses JavaScript powered
  by Google V8 as its GDL VM.
@@ -5358,16 +5373,33 @@ tt GGS.localStorage }
 
 \end_inset
 
- from within the GDL, access to the localstorage is provided, thus the localstor
-age must be connected to the GGS object, this can be seen in line 5.
+ from within the GDL, access to the 
+\noun on
+localStorage
+\noun default
+ is provided, thus the 
+\noun on
+localStorage
+\noun default
+ must be connected to the GGS object, this can be seen in line 5.
 \end_layout
 
 \begin_layout Standard
-Both the GGS and localstorage objects are dummy objects, which provide no
- functionality, these two objects are simply placed in the GDL for the purpose
- clearing up the code.
- In order to perform an action using the GGS and localstorage objects, the
- 
+Both the 
+\noun on
+GGS
+\noun default
+ and 
+\noun on
+localStorage
+\noun default
+ objects are dummy objects, which provide no functionality, these two objects
+ are simply placed in the GDL for the purpose clearing up the code.
+ In order to perform an action using the GGS and 
+\noun on
+localStorage
+\noun default
+ objects, the 
 \begin_inset ERT
 status open
 
@@ -5441,20 +5473,6 @@ tt setTimeout}
 
  function introduces timeouts to the V8 engine, which are not available
  per default.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Prior to this section, the Erlang syntax has to be briefly explained.
- I think the 'usage of erlang' section is a good place to do this in.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
