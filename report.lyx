@@ -7280,16 +7280,57 @@ name "sec:Operating-system-limitations"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+The operating systems on the computers which were used to run the bots when
+ testing the GGS prototype had some limitations.
+ The operating systems used were Linux and Mac OS X, since these systems
+ are quite similar on a lower level they exhibited the same limitations..
+\end_layout
+
+\begin_layout Standard
+The most notable limitation was a limit set on the number of simultaneously
+ open files.
+ Due to the implementation of sockets in UNIX-like systems such as Mac OS
+ X and Linux, a limit on the number of open files is a limit on the number
+ of open sockets.
+ In order to simulate many connections to the GGS, many sockets needed to
+ be opened.
+ Each socket had a bot connected on one end and the GGS on the other end.
+ On each test machine several thousand sockets needed to be open while testing
+ the GGS, therefore the limit on open files had to be removed.
+\end_layout
+
+\begin_layout Standard
+On the Linux machines the limit of open files is configured in 
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-Describe file and socket limitations
+
+{
+\backslash
+tt /etc/security/security.conf}
 \end_layout
 
 \end_inset
 
+.
+\end_layout
 
+\begin_layout Standard
+On the Mac OS X machine the limit of open files is configured in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt /etc/launchd.conf }
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter
