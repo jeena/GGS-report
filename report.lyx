@@ -6267,11 +6267,11 @@ Testing
 \end_layout
 
 \begin_layout Standard
-In order to make sure the GGS prototype adheres to the specification set,
- two different approaches to software testing are used.
+To make sure the GGS prototype adheres to the specification set, two different
+ approaches to software testing are used.
  For simpler testing the GGS prototype uses unit tests.
  Modules are tested on a high level, making sure each function in the module
- tested functions according to specification.
+ tested functions has been tested according to specification.
 \end_layout
 
 \begin_layout Standard
@@ -6298,14 +6298,14 @@ Unit testing
 \begin_layout Standard
 Unit testing is a way to check if the functionality adheres to the specification
  of the system by manually creating test cases for sections of code.
- In most cases whole functions.
+ Usually whole functions.
  Unit testing is good, not only for revealing software bugs, but also to
  state that a feature is working according to the specification.
  
 \end_layout
 
 \begin_layout Standard
-Unit testing is a useful way to create regression tests.
+Unit testing is an useful way to create regression tests.
  Regression tests are used to make sure changes made to the GGS do not introduce
  new bugs or break the specification.
  The regression tests are optimally run very often, such as after each change
@@ -6315,7 +6315,7 @@ Unit testing is a useful way to create regression tests.
 \begin_layout Standard
 Erlang provides a module for unit testing called eunit.
  Eunit, being a part of OTP, is rich in functionality and well documented,
- it doesn't however allow any means of testing asynchronous behaviours as
+ it does not however allow any means of testing asynchronous behaviors as
  opposed to other means of software testing.
 \end_layout
 
@@ -6326,8 +6326,8 @@ Automated test case generation
 \begin_layout Standard
 The problem of writing software tests manually is that it takes a lot of
  time.
- There exists other ways to test software that address this problem by generatin
-g test cases with certain properties.
+ There exists other ways to test software that addresses this problem by
+ generating test cases with certain properties.
  This allows for testing functions with a lot of different input parameters
  without having to implement each specific test itself.
  
@@ -6340,8 +6340,8 @@ By having each test automatically generated, each test can be very complex
  By using QuickCheck the GGS can be tested with input which would be extremely
  difficult to construct using manual testing methods.
  Regression tests, such as the unit tests used by the GGS are more useful
- for ensuring the system does not diverge from a working scenario than for
- finding new cases where the specification does not hold 
+ for ensuring that the system does not diverge from a working scenario than
+ for finding new cases where the specification does not hold 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Arts:2006:TTS:1159789.1159792"
@@ -6365,7 +6365,7 @@ QuickCheck has features to generate very large and complex tests, the results
 \emph on
 minimal failing test case
 \emph default
- which contains the smalles failing test sequence.
+ which contains the smallest failing test sequence.
  By applying a very large test and gradually simplifying the test to find
  the smallest failing sequence, many bugs which would other wise have been
  hard to catch can be caught 
@@ -6380,7 +6380,7 @@ key "Arts:2006:TTS:1159789.1159792"
 
 \begin_layout Standard
 QuickCheck was originally made for the programming language Haskell.
- There are a lot of reimplementations of QuickCheck in various programming
+ There is a lot of reimplementations of QuickCheck in various programming
  languages.
  Erlang QuickCheck (EQC) and Triq are two variants of QuickCheck for Erlang.
  EQC was chosen for testing the GGS.
