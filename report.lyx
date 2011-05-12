@@ -2538,11 +2538,11 @@ Each instance of the GGS contains several so called tables.
  start to decrease, or worse, the server may even crash.
  To avoid this the GGS will start new tables on another server, using this
  technique the players will be close to evenly distributed among the servers.
- It is important to investigate and find out how many players are optimal
- for each server.
- This approach makes it possible to use all resources with moderate load,
- instead of having some resources with heavy load and some with almost no
- load.
+ It is important to investigate the amount of players which is optimal for
+ each server.
+ This approach makes it possible to use all resources with a moderate load,
+ instead of having some resources with heavy load and others with almost
+ no load.
 \end_layout
 
 \begin_layout Standard
@@ -2555,12 +2555,12 @@ reference "sec:Background"
 
  there are two different types of scalability, structural scalability and
  load scalability.
- To make the GGS scalable both types of scalability are needed.
- Structural scalability means in our case that it should be possible to
+ To make the GGS scalable both types of scalability have to be considered.
+ Structural scalability means in this case that it should be possible to
  add more servers to an existing cluster of servers.
- By adding more servers the limits of how many users a system can have is
- increased.
- Load scalability in contrast to structural scalability is not about how
+ By adding more servers the limits of with how many users a system can be
+ burdened with is increased.
+ Load scalability, in contrast to structural scalability, is not about how
  to increase the actual limits of the system, rather it means how good the
  system handles increased load.
  The GGS should be able to scale well in both categories.
