@@ -6415,8 +6415,8 @@ Typical communication
 This case study describes the flow through the GGS when a typical command
  is encountered.
  Below is a case study where a chat client sends a message to change the
- nick of a user.
- The actual code performing the change of a nick in JavaScript is discussed
+ nick name of a user.
+ The actual code performing the change of a nick name in JavaScript is discussed
  in section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6463,7 +6463,8 @@ The protocol parser sends this Erlang touple back to the player process.
 \end_layout
 
 \begin_layout Enumerate
-The player process checks if it is a Server-Command or a Game-Command.
+The player process checks if the command is is a Server-Command or a Game-Comman
+d.
  In our example it is a Game-Command and it sends the message to the table
  process.
 \end_layout
@@ -6475,31 +6476,23 @@ The table process sends it to its own Game VM process.
 \begin_layout Enumerate
 The game VM process calls the function 
 \emph on
-playerCommand(
-\begin_inset Quotes eld
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt playerCommand(278d5 ..
+ 49, nick, Peter)
+\emph on
+}
+\end_layout
+
 \end_inset
 
-278d5002-77d6-11e0-b772-af884def5349
-\begin_inset Quotes erd
-\end_inset
 
-, 
-\begin_inset Quotes eld
-\end_inset
-
-nick
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Peter
-\begin_inset Quotes erd
-\end_inset
-
-)
 \emph default
  within the JavaScript VM.
 \end_layout
@@ -6520,25 +6513,70 @@ reference "sec:Example-of-a-GGS-app"
 
  we see that the GGS-functions 
 \emph on
-GGS.localStorage.setItem(key, value)
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.localStorage.setItem(key, value)
+\emph on
+}
+\end_layout
+
+\end_inset
+
+
 \emph default
  and 
 \emph on
-GGS.localStorage(key)
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.localStorage(key)
+\emph on
+}
+\end_layout
+
+\end_inset
+
+
 \emph default
  are used.
  Both are callbacks coupled to the database module functions.
 \end_layout
 
 \begin_layout Enumerate
-Data is being read from and written to the database and handed over to the
- JSVM via the database process.
+Data is read from and written to the database and handed over to the JSVM
+ via the database process.
 \end_layout
 
 \begin_layout Enumerate
 In the example the 
 \emph on
-GGS.sendCommandToAll()
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.sendCommandToAll()
+\emph on
+}
+\end_layout
+
+\end_inset
+
+
 \emph default
  is being called then which is a callback to a function of the table module
  which iterates through its player list and sends the command to every player.
