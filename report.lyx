@@ -3655,8 +3655,8 @@ The cost of swapping operating system processes becomes a problem when many
  If the GGS system had been developed using regular operating system processes,
  it would have had to be designed in a way to minimize the number of processes.
  Using Erlang, which is capable of running very many processes, several
- times more than an operating system, the relation between the real
- world and the GGS (described in 
+ times more than an operating system, the relation between the real world
+ and the GGS (described in 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sec:Design-of-the"
@@ -4375,7 +4375,20 @@ target "http://www.objectmentor.com/resources/articles/srp.pdf"
  are widely respected as good practices in the world of software engineering
  and development.
  By dividing the GGS up into modules each part of the GGS can be modified
- without damaging the rest of the system.
+ without damaging, or requiring changes in the rest of the system.
+ Due to the hot code updates featured in Erlang, it is theoretically possible
+ to update parts of the GGS while the system is running, this has however
+ not been implemented in the prototype.
+ The modular composition of the GGS prototype should make a transition to
+ a folly hot code swappable system relatively easy.
+ Hot code replacements are discussed in more detail in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Hot-code-replacement"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -4393,7 +4406,8 @@ reference "cha:Theory"
 \end_layout
 
 \begin_layout Standard
-In the text below the word module refers to the actual code of the discussed
+In the text below the different modules of the GGS are presented.
+ In the text the word module refers to the actual code of the discussed
  feature, while the word process is used when referring to a running instance
  of the code.
 \begin_inset ERT
@@ -6196,6 +6210,13 @@ To the left normal execution is pictured; the server state is backed up.
 
 \begin_layout Subsection
 Hot code replacement
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Hot-code-replacement"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
