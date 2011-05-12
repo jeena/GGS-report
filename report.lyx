@@ -3154,10 +3154,9 @@ name "sec:Game-Development-Language"
 \end_layout
 
 \begin_layout Standard
-There is only a very limited number of game developers who would like to
- write their games in Erlang, therefore we had to come up with something
- to resolve this problem.
- The main idea was to offer a replaceable module which would introduce an
+Erlang is not a very popular language for game development, therefore the
+ GGS needs to be able to run games written in different languages.
+ The main idea is to offer a replaceable module which would introduce an
  interface to different virtual machines which would run the game code.
  This way a game developer can write the game in his favorite language while
  the server part still is written in Erlang and can benefit from all its
@@ -8117,6 +8116,18 @@ To get the server as generic as possible one should not implement any game
  for each game which leads to the fact that each game runs in its own sandbox.
  To be able to use different game development languages one should use virtual
  boxes which would evaluate the game source code safely.
+\end_layout
+
+\begin_layout Standard
+This thesis concludes that it is reasonable to use the same tools as those
+ used by the telecom industry for creating reliable systems when developing
+ games for computers.
+ A typical game can be split up in to several parts, and using the GGS,
+ the parts not directly related to the actual gameplay can be implemented
+ in Erlang, while keeping the actual game software in a virtual machine.
+ It has been demonstrated in this thesis that games can be developed for
+ the GGS in JavaScript, while still benefiting from the features offered
+ by Erlang and the OTP.
 \end_layout
 
 \begin_layout Standard
