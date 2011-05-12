@@ -7327,15 +7327,15 @@ name "cha:Problems-of-implementation"
 \end_layout
 
 \begin_layout Standard
-This chapter contains specific problems encountered when implementing the
- GGS prototype.
+This chapter contains descriptions of specific problems encountered when
+ implementing the GGS prototype.
  Some of the problems described have solutions attached, however some problems
  were not solved, therefore only ideas for solutions have been attached.
 \end_layout
 
 \begin_layout Standard
 The integration of JavaScript as a GDL in the GGS prototype was particularly
- difficult, and is handled in this section and so is the protocol design.
+ difficult, and is handled in this section, so is the protocol design.
 \end_layout
 
 \begin_layout Section
