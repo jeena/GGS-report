@@ -2391,14 +2391,14 @@ Fault tolerance is an important factor in servers, a server that is fault
 \begin_layout Standard
 In order to make the GGS prototype fault tolerant the programming language
  Erlang has been used.
- Erlang will not guarantee a fault tolerant system however it has features
+ Erlang will not guarantee a fault tolerant system, however it has features
  that support and encourage the development of fault tolerant systems.
- In the GGS it is important that the system overall is fault tolerant and
- not small parts only.
+ In the GGS it is important that the complete system is fault tolerant,
+ not only small parts.
  Crashes of the whole system should be avoided as this would make the system
  unusable for a time.
  By using supervisor structures it is possible to crash and restart small
- parts of the system, this is convenient as fault can be handled within
+ parts of the system, this is convenient as faults can be handled within
  small modules thus never forcing a crash of the system.
 \end_layout
 
