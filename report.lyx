@@ -2544,8 +2544,16 @@ key "armstrong2011"
 \end_layout
 
 \begin_layout Standard
-There are several good papers on how to migrate whole virtual machines among
- nodes to replicate them but for the GGS a different approach has been chosen.
+There are several good papers (e.g.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "VM:Jin2010,VM:Polze"
+
+\end_inset
+
+) on how to migrate whole virtual machines among nodes to replicate them
+ but for the GGS a different approach has been chosen.
  Instead of duplicating a virtual machine, an attempt to lift the state
  of the VM to a storage external to the VM is made.
  The state is stored in a fast, fault tolerant data store instead of inside
