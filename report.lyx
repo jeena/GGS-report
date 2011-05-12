@@ -3241,10 +3241,18 @@ Erlang is not a very popular language for game development, therefore the
  This way a game developer can write the game in his favorite language while
  the server part still is written in Erlang and can benefit from all the
  advantages of the Erlang language.
+ In this section, a few potential languages are given.
 \end_layout
 
 \begin_layout Subsection
 JavaScript
+\end_layout
+
+\begin_layout Standard
+JavaScript is a prime GDL candidate for the GGS.
+ The language is very flexible, a general knowledge of the language is present
+ in the computer science community, furthermore there are virtual machines
+ readily available for JavaScript.
 \end_layout
 
 \begin_layout Standard
@@ -3324,7 +3332,21 @@ https://github.com/languages/
 \end_inset
 
  of all code is written in JavaScript.
- The popularity of JavaScript in the programming community, in combination
+ 
+\end_layout
+
+\begin_layout Standard
+Since the GGS is intended to be connected to several different GDL VMs the
+ choice for the first language implemented for the GGS prototype seems not
+ only to depend on the technical features of the GDL chosen, in this case
+ JavaScript.
+ A different, albeit still important non technical feature of JavaScript
+ is the familiarity with the language of the members of the GGS development
+ team.
+\end_layout
+
+\begin_layout Standard
+The popularity of JavaScript in the programming community, in combination
  with the availability of several different JavaScript virtual machines
  was an important influence in choosing JavaScript as the main control language
  for our GGS prototype.
