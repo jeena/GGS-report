@@ -2414,8 +2414,10 @@ One important factor of any server is the availability.
 \begin_layout Standard
 There are several good papers on how to migrate whole virtual machines among
  nodes to replicate them but for the GGS a different approach has been chosen.
- Instead of just duplicating a virtual machine, the programming language
- Erlang has been used which offers several features to increase the availability.
+ Instead of duplicating a virtual machine, an attempt to lift the state
+ of the VM to a storage external to the VM is made.
+ The state is stored in a fast, fault tolerant data store instead of inside
+ the VM.
  Some of them are 
 \emph on
 hot code replacement
