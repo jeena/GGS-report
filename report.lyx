@@ -4959,12 +4959,12 @@ The information about which players are seated by each table is used when
  Consider a game of chess, each player notifies the table of its actions,
  the table then notifies the rest of the participants of these actions after
  having had the actions processed by the game VM, where an action could
- be moving a piece in the game.
+ be moving a playing piece in the game.
 \end_layout
 
 \begin_layout Standard
 Each table is associated with a game VM.
- The actions sent to a table is processed by the game VM, this is where
+ The actions sent to a table are processed by the game VM, this is where
  the game logic is implemented.
 \end_layout
 
@@ -5033,7 +5033,7 @@ reference "sec:Communication-with-the-GDL-VM"
 \end_layout
 
 \begin_layout Standard
-The code which is run in the VM is uploaded to the GGS before each game.
+The code which is run in the VM is uploaded to the GGS prior to each game.
  Allowing the clients to upload code allows clients to run any game.
 \end_layout
 
@@ -5151,7 +5151,7 @@ Localstorage
 \noun default
 .
  To store a value within the database, not only is the table token and the
- name of the namespace required, but an unique key so that the value can
+ name of the namespace required, but a unique key so that the value can
  be successfully retrieved or modified later.
  The key is decidable by the game developer.
  
@@ -5218,7 +5218,7 @@ localStorage
 .
  The game state is safely stored in a database and retrieved for manipulation
  by a call for the world object.
- Interaction with the players are done by using the 
+ Interaction with the players is done by using the 
 \emph on
 
 \begin_inset ERT
@@ -6135,7 +6135,7 @@ To prevent any data loss, the good state of the worker processes are stored
  previous state, if there is any, that state is loaded in to the worker
  and it proceeds where it left off.
  If on the other hand no state is available, a special message is delivered
- instead, making the worker creates a new state, this is what happens when
+ instead, making the worker create a new state, this is what happens when
  the workers are first created.
 \end_layout
 
