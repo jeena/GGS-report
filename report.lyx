@@ -6163,6 +6163,12 @@ reference "fig:redundancy"
 \end_layout
 
 \begin_layout Standard
+This type of redundancy is only implemented in the coordinator process,
+ similar configurations should however be possible for all modules of the
+ GGS.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
