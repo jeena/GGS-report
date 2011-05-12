@@ -427,7 +427,7 @@ Since these early games, the gaming industry have become much more influential
  the computer game industry.
  More powerful games require more powerful, and more easily available hardware
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Drop a reference to the gaming industry pressuring more advanced hardware
@@ -455,8 +455,8 @@ Due to the increasing importance of computer gaming, more focus should be
  spent on improving the quality of the gaming service.
  As more and more computer games are gaining multiplayer capabilities, the
  demands for multiplayer networking software rises.
- This thesis is about techniques for improving the quality of this networking
- software.
+ The topic of this thesis is techniques for improving the quality of this
+ networking software.
 \end_layout
 
 \begin_layout Standard
@@ -612,7 +612,7 @@ generic
  The framework is generic in the sense that it is not bound to a specific
  game.
  There are many different types of games, some are inherently more time
- sensitive than others, strategy games are examples of games which are not
+ sensitive than others Strategy games are examples of games which are not
  very sensitive to time delays, first-person shooters however, can be very
  sensitive.
 \end_layout
@@ -675,8 +675,8 @@ name "sec:Background"
 \begin_layout Standard
 The game industry is a quickly growing industry with high revenues and many
  clever computer scientists.
- Strangely enough their customers often experience long downtimes due to
- maintaining or because of problems with the servers 
+ Strangely enough gamers often experience long downtimes due to maintaining
+ or because of problems with the servers 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "news/cnet/com/WoWProblems"
@@ -752,17 +752,17 @@ key "Armstrong03"
  An unavailable phone system could potentially have life threatening consequence
 s, leaving the public unable to contact emergency services.
  The same cannot be said about an unavailable game server.
- The statement that game servers are less important than phone systems are
+ The statement that game servers are less important than phone systems is
  not a reason not to draw wisdom from what the telecoms have already learned.
 \end_layout
 
 \begin_layout Standard
 Moving back to the gaming industry.
- The main reason to develop reliable servers is a higher revenue, do archive
+ The main reason to develop reliable servers is a higher revenue, to achive
  this it is important for game companies to expand their customer base.
  Reliable game servers will create a good image of the company.
  In general the downtime of game servers is much higher than the downtime
- of telecom systems evenso the overall structure of the systems is similar
+ of telecom systems even so the overall structure of the systems is similar
  in many ways.
  It should be possible to learn and reuse solutions from the telecom systems
  to improve game servers.
@@ -771,13 +771,13 @@ Moving back to the gaming industry.
 
 \begin_layout Standard
 In the current state game servers are developed on a per-game basis, often
- this seems like a bad solution.
+ this seems like bad practice.
  Developers of multiplayer games need to understand network programming,
- which above all be a problem for small companies and indipendent game developer
-s who often lack expertise in that field.
- A way to help them in the competition would be to offer a generic game
- server which gives them a environment in which they can implement their
- game in.
+ which can be a problem for small companies and independent game developers
+ who often lack expertise in that field.
+ A way to help game developers in developign servers would be to offer a
+ generic game server which gives developers an environment in which they
+ can implement their game.
  This approach would not only make it easier to develop network games, it
  would also allow games in different programming languages to be implemented
  using the same server.
@@ -785,7 +785,7 @@ s who often lack expertise in that field.
 
 \begin_layout Standard
 Some key factors to the development of the GGS have been isolated.
- Many of these are found in the telecom sector too.
+ Many of these are also found in the telecom sector.
  The factors are 
 \emph on
 scalability, fault tolerance 
@@ -849,7 +849,7 @@ dependability
  even in the presence of errors.
  The specification could define error handling procedures which activate
  when an error occurs.
- This means that a fault tolerant, dependable system, will have a very high
+ This means that a fault tolerant, dependable system will have a very high
  probability of functioning at a given point in time, and is exactly what
  is desired.
  
@@ -878,10 +878,13 @@ reference "sec:Generic"
 
 \begin_layout Standard
 The server behaves in a way similar to an application server, but is designed
- to help running games.
+ to help running games instead pf typical applications.
  An application server provides processing ability and time, therefore it
  is different from a file- or print-server, which only serves resources
  to the clients.
+ In order to more easily understand the purpose of the GGS, it can be of
+ use to briefly think of application servers, thereafter viewing the differences
+ between the GGS and application servers.
 \end_layout
 
 \begin_layout Standard
@@ -990,14 +993,33 @@ textbf{Erlang}}{A concurrent programming language, often used for telecom
 A database server can also be seen as an application server.
  Scripts, for example SQL queries or JavaScript, are sent to the server,
  which runs them and returns the evaluated data to the clients.
- 
 \end_layout
 
 \begin_layout Standard
-One purpose of this thesis is to investigate how one could make a game server
- as generic as possible.
- Some important helpers are discussed, such as abstraction of the network
- layer, data store and game specific features.
+The difference between the application servers and database servers described
+ and the GGS is the purpose of the servers.
+ Application servers were developed to run applications, often web applications.
+ The application servers offer appealing features for application developers,
+ which aid these developers in writing applications.
+ Database servers were developed in order to provide access to and allow
+ programming of databases, thus having features specifically tailored for
+ database development.
+\end_layout
+
+\begin_layout Standard
+The GGS on the other hand offers features appealing to game developers.
+ While it would be technically possible to write both regular applications
+ and database software using the GGS, this is not the intended usage of
+ the server, and this is how the GGS differs from other kinds of application
+ servers.
+\end_layout
+
+\begin_layout Standard
+To allow the development of different games, the game server developed need
+ to be generic, therefore one purpose of this thesis is to investigate how
+ one could make a game server as generic as possible.
+ Some important helpers for game developers are discussed, such as abstraction
+ of the network layer, data store and game specific features.
  
 \end_layout
 
@@ -1139,14 +1161,14 @@ How easy it is to send messages from the GDL VM to the GGS?
 \end_layout
 
 \begin_layout Itemize
-Is it possible to sandbox every game with a context or something comperable?
+Is it possible to sandbox every game with a context or something comparable?
 \end_layout
 
 \begin_layout Standard
 Internally the GDL VM needs to interface with the GGS to make use of the
  helpers and tools that the GGS provides.
- Thus an internal API has to be designed to make the GDL VM to be able to
- interacti with the GGS.
+ Thus an internal API has to be designed to make the GDL VM be able to interact
+ with the GGS.
  This API is ideally completely independent of the GDL, and reusable for
  any GDL.
 \end_layout
@@ -1172,6 +1194,9 @@ reliable
  is fault tolerant.
  In order to facilitate scalability the GGS needs a storage platform which
  is accessible and consistent.
+ The sclability aspects of the GGS are discussed from a theoretical point
+ of view, however no practical implementation of the scalability aspects
+ are found in the prototype.
 \end_layout
 
 \begin_layout Section
@@ -1182,7 +1207,7 @@ Limitations of the prototype
 The implementation of the GGS protocol together with storage possibilities,
  server capacity, and game language support imposes some limitations on
  the project.
- To get a functional prototype some limits must be set on the types games
+ To get a functional prototype, some limits must be set on the types games
  that can be played on the prototype.
 \begin_inset ERT
 status open
@@ -1293,8 +1318,9 @@ Jeopardy
 \emph default
 .
  Both game types have varying difficulties and needs when it comes to implementi
-ng them, a Generic Game Server should address all of them and help the developer
- to accomplish his goal.
+ng them, a Generic Game Server should address all of these difficulties
+ in order to provide the tools neccessary for the implementation of both
+ game types.
 \end_layout
 
 \begin_layout Standard
@@ -1384,7 +1410,7 @@ In this chapter, the theory behind the techniques used in the GGS are discussed.
  Benchmarking techniques are discussed.
  The options when choosing network protocols are given, along with a discussion
  of each alternative.
- Finally, an overview of scalability, fault tolerance and availability are
+ Finally, an overview of scalability, fault tolerance and availability is
  presented.
 \end_layout
 
@@ -1419,7 +1445,7 @@ key "armstrong2011"
 \end_layout
 
 \begin_layout Standard
-The real world system chosen for the GGS is a 
+The real world system chosen to represent the GGS is a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1428,6 +1454,10 @@ Chess club
 \end_inset
 
  - a building where chess players can meet and play chess.
+ In the following text the choice of using a chess club for modelling the
+ GGS is discussed.
+ The chess club is described in greater detail, furthermore the corresponding
+ parts of the chess club in the GGS are described.
  Since a real-world scenario is readily available, and to such a large extent
  resembles the computer software required for the GGS, the next step in
  developing the GGS system is to duplicate this real world scenario in a
@@ -1621,9 +1651,9 @@ reference "alg:game-lifecycle"
 .
  To make this life cycle as efficient and useful as possible the scalability,
  fault tolerance and generic traits are being added to the GGS.
- These are not shown in the algorithm because these traits are tools in
- making the algorithm behaves as efficient as possible and are not the main
- focus when studying the life cycle of a game.
+ These are not shown in the algorithm since these traits are tools in making
+ the algorithm behave as efficient as possible and are not the main focus
+ when studying the life cycle of a game.
 \end_layout
 
 \begin_layout Standard
@@ -2068,7 +2098,7 @@ on about the current positions of all players is essential.
 For someone operating a GGS, it is perhaps more interesting to measure the
  system load, memory consumption, energy consumption and network saturation.
  These topics are discussed in theory in this section.
- The practical results for the prototype is discussed in chapter 
+ The implementation for the prototype is discussed in chapter 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "cha:Implementation-of-a"
@@ -2076,6 +2106,15 @@ reference "cha:Implementation-of-a"
 \end_inset
 
 .
+ For test results, refer to chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Results-and-discussion"
+
+\end_inset
+
+, which contains graphs and a discussion concerning the performance of the
+ GGS prototype.
 \end_layout
 
 \begin_layout Standard
@@ -2200,12 +2239,22 @@ There are two main types of protocols with help of which computer communication
  network layer protocols and HTTP which is the most prominent application
  layer protocol.
  The transport layer protocols are commonly used to transport application
- layer protocols such as HTTP.
+ layer protocols such as HTTP, FTP and IRC.
  TCP and UDP cannot be used on their own without an application layer protocol
  on top of them.
  Application layer protocols such as HTTP on the other hand need a transport
  layer protocol in order to work.
- 
+\end_layout
+
+\begin_layout Standard
+In order for the GGS to communicate with clients over a network, both an
+ application layer protocol and a network layer protocol must be chosen.
+ This section outlines some candidates for application and network layer
+ protocols for the GGS, along with a motivation as to why the described
+ protocol was or was not chosen.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -2217,6 +2266,24 @@ nomenclature{
 \backslash
 textbf{HTTP}}{Hyper Text Transport Protocol, a network protocol commonly
  used to deliver web pages}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{FTP}}{File Transfer Protocol}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{IRC}}{Internet Relay Chat}
 \end_layout
 
 \end_inset
@@ -2240,6 +2307,14 @@ Many online games use UDP as the carrier for their application layer protocol.
  thus very suitable for media streaming for example.
 \end_layout
 
+\begin_layout Standard
+The need to implement custom error checking, and possibly correction makes
+ UDP a bad candidate for the GGS.
+ If error checking and correction were to be implemented in the GGS project,
+ UDP would be a good candidate, however the time neccessary to implement
+ these features makes this option unfeasable.
+\end_layout
+
 \begin_layout Subsection
 TCP
 \end_layout
@@ -2250,7 +2325,12 @@ For reliable transfers TCP is often used on the Internet.
  missing in UDP.
  This ensures the consistency of data, but also makes the transfer slower
  than if UDP had been used.
- 
+ TCP was chosen for the GGS as the network layer protocol even though TCP
+ can be considerably slower than UDP.
+ The error checking mechanisms in TCP are reason enough to use TCP instead
+ of UDP in the GGS prototype.
+ The implementation of UDP is still possible, it will however not appear
+ in the prototype.
 \end_layout
 
 \begin_layout Subsection
@@ -2311,9 +2391,7 @@ name "sec:Generic"
 
 \begin_layout Standard
 The GGS is a game server.
- It was made with a desire to be suitable for any kind of game.
- Any game with a client-server behavior should be perfectly suited for the
- GGS.
+ It was made with a desire to be suitable for many kinds of games.
  A game should not only be able to vary in terms of genre, graphics, gameplay
  etc, but also in the way the game is implemented for example in different
  programming languages.
@@ -2326,9 +2404,8 @@ The GGS is a game server.
 \end_layout
 
 \begin_layout Standard
-Another aspect is the desire to let a client upload the source code of the
- game it would like to play on the GGS.
- This way every client could connect to the server and install the game
+Clients upload the source code of the game it would like to play on the
+ GGS, this way any client can connect to the server and install the game
  through a API without the need of installation through the server provider
  or maintainer.
 \end_layout
@@ -2467,8 +2544,16 @@ key "armstrong2011"
 \end_layout
 
 \begin_layout Standard
-There are several good papers on how to migrate whole virtual machines among
- nodes to replicate them but for the GGS a different approach has been chosen.
+There are several good papers (e.g.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "VM:Jin2010,VM:Polze"
+
+\end_inset
+
+) on how to migrate whole virtual machines among nodes to replicate them
+ but for the GGS a different approach has been chosen.
  Instead of duplicating a virtual machine, an attempt to lift the state
  of the VM to a storage external to the VM is made.
  The state is stored in a fast, fault tolerant data store instead of inside
@@ -2525,8 +2610,8 @@ name "sec:Scalability"
 Each instance of the GGS contains several so called tables.
  Each table is an isolated instance of a game, for instance a chess game
  or a poker game.
- The way that the GGS scales is to distribute these tables on different
- servers.
+ A possible way for the GGS to scale up is to distribute these tables on
+ different servers.
  In many games it is not necessary for a player to move among tables during
  games.
  This is for example not a common occurrence in chess, where it would be
@@ -2538,11 +2623,11 @@ Each instance of the GGS contains several so called tables.
  start to decrease, or worse, the server may even crash.
  To avoid this the GGS will start new tables on another server, using this
  technique the players will be close to evenly distributed among the servers.
- It is important to investigate and find out how many players are optimal
- for each server.
- This approach makes it possible to use all resources with moderate load,
- instead of having some resources with heavy load and some with almost no
- load.
+ It is important to investigate the amount of players which is optimal for
+ each server.
+ This approach makes it possible to use all resources with a moderate load,
+ instead of having some resources with heavy load and others with almost
+ no load.
 \end_layout
 
 \begin_layout Standard
@@ -2555,12 +2640,12 @@ reference "sec:Background"
 
  there are two different types of scalability, structural scalability and
  load scalability.
- To make the GGS scalable both types of scalability are needed.
- Structural scalability means in our case that it should be possible to
+ To make the GGS scalable both types of scalability have to be considered.
+ Structural scalability means in this case that it should be possible to
  add more servers to an existing cluster of servers.
- By adding more servers the limits of how many users a system can have is
- increased.
- Load scalability in contrast to structural scalability is not about how
+ By adding more servers the limits of with how many users a system can be
+ burdened with is increased.
+ Load scalability, in contrast to structural scalability, is not about how
  to increase the actual limits of the system, rather it means how good the
  system handles increased load.
  The GGS should be able to scale well in both categories.
@@ -2573,11 +2658,11 @@ Load balancing
 \begin_layout Standard
 The need for load balancing varies among different kind of systems.
  Small systems that only use one or a couple of servers can cope with a
- simple implementation of load balancing, while in large systems it is useful
- to have extensive and well working load balancing.
- The need also depends on what kind of server structure the system works
- on, a static structure where the number of servers are predefined or a
- dynamic structure where the number varies.
+ simple implementation of a load balancer, while in large systems it is
+ useful to have extensive and well working load balancing implementations.
+ The need also depends on what kind of server structure the system is working
+ on, a static structure where the number of servers is predefined or a dynamic
+ structure where this number varies.
 \begin_inset ERT
 status open
 
@@ -2597,11 +2682,12 @@ textbf{Amazon EC2}}{A cloud computation service}
 
 \begin_layout Standard
 Load balancing and scaling are difficult in different scenarios.
- When running in a separate server park, there are a set number of servers
- available, this means that an even distribution on all servers is preferable.
+ When running in a server park, there is a set number of servers available,
+ this means that an even distribution on all servers is preferable.
  When running the GGS in a cloud, such as Amazon EC2, it is possible to
- add an almost infinite number of servers as execution goes on.
- In this cloud setting, it may be more important to evenly distribute load
+ add an almost infinite number of servers as execution goes on and the load
+ increases.
+ In this cloud setting it may be more important to evenly distribute load
  on newly added servers.
 \end_layout
 
@@ -2615,16 +2701,11 @@ Fill up the capacity of one server completely, and then move over to the
 \end_layout
 
 \begin_layout Itemize
-Evenly distribute all clients to all servers from the beginning, when load
- becomes too high on all of them, then comes a new problem: 
+Evenly distribute all clients to all servers from the beginning.
+ When the load becomes too high on all of them a new problem arises: how
+ do we distribute load on these new servers?
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-How do we distribute load on these new servers?
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 Load balancing is a key component to achieve scalability in network systems.
  The GGS is a good example of a system that needs to be scalable, to attain
@@ -2633,18 +2714,18 @@ Load balancing is a key component to achieve scalability in network systems.
  provide a stable and fast load balancer.
  There are certain persistence problems that can occur with load balancing,
  if a player moves from a server to another data loss may occur.
- This is an important aspect to consider when the load balancer is designed
+ This is an important aspect to consider when a load balancer is designed
  and implemented.
 \end_layout
 
 \begin_layout Standard
 Load balancing can often be implemented using dedicated software, this means
  that in many applications load balancing may not be implemented because
- it already exist functional solutions.
- This depends on what specific needs the system have and a minor goal of
- the project is to analyze whether the GGS project can use existing load
- balancing tools or if it is necessary to implement load balancing in the
- project.
+ there already exist functional or even better external solutions.
+ This depends on what specific needs the system has.
+ A minor goal of this thesis is to analyze whether the GGS can use existing
+ load balancing tools or if it is necessary how to implement load balancing
+ in the project.
 \end_layout
 
 \begin_layout Standard
@@ -2862,14 +2943,14 @@ textbf{UUID}}{Universally Unique Identifier}
 \end_layout
 
 \begin_layout Standard
-Inside the GGS everything has a unique identifier.
+Inside the GGS everything needs a unique identifier.
  There are identifiers for players, tables and other resources.
- When players communicate amongst each other or communicate with tables,
- they need to be able to uniquely identify all of these resources.
+ When players communicate amongst each other or with tables, they need to
+ be able to uniquely identify all of these resources.
  Within one machine, this is mostly not a problem.
  A simple system with a counter can be imagined, where each request for
  a new ID increments the previous identifier and returns the new identifier
- based off the old one, see algorithm 
+ based on the old one; see algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:A-simple-generator"
@@ -2891,14 +2972,25 @@ reference "alg:A-simple-generator"
 
 \begin_layout Standard
 The obvious solution to this problem is to ensure mutual exclusion by using
- some sort of lock, which may work well in many concurrent systems.
- In a distributed system, this lock, along with the state, would have to
- be distributed.
- If the lock is not distributed, no guarantee can be made that two nodes
- in the distributed system do not generate the same number.
- A different approach is to give each node the ability to generate Universally
+ some sort of a lock, which may work well in many concurrent systems.
+ In a distributed system, like the GGS, this lock, along with the state,
+ would have to be distributed.
+ If the lock is not distributed, no guaranties can be made that two nodes
+ in the distributed system do not generate the same identifier.
+\end_layout
+
+\begin_layout Standard
+A different approach is to give each node the ability to generate Universally
  Unique Identifiers (UUID), where the state of one machine does not interfere
  with the state of another.
+ According to 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Leach98uuidsand"
+
+\end_inset
+
+: 
 \begin_inset ERT
 status open
 
@@ -2927,27 +3019,15 @@ textbf{SHA-1}}{Cryptigraphic hash function, designed by the National Security
 
 \end_layout
 
-\begin_layout Standard
-According to 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Leach98uuidsand"
-
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
+\begin_layout Quote
 A UUID is 128 bits long, and if generated according to the one of the mechanisms
  in this document, is either guaranteed to be different from all other UUIDs/GUI
 Ds generated until 3400 A.D.
- or extremely likely to be different
-\begin_inset Quotes erd
-\end_inset
+ or extremely likely to be different.
+\end_layout
 
-.
- The generation of a UUID is accomplished by gathering several different
+\begin_layout Standard
+The generation of a UUID is accomplished by gathering several different
  sources of information, such as: time, MAC addresses of network cards,
  and operating system data, such as percentage of memory in use, mouse cursor
  position and process IDs.
@@ -2971,7 +3051,7 @@ reference "alg:A-simple-generator"
 
 \end_inset
 
- with mutual exclusion, it is not possible to have identifier collisions
+ with mutual exclusion, it is extremly unlikely to have identifier collisions
  when recovering from network splits between the GGS clusters.
  Consider figure 
 \begin_inset CommandInset ref
@@ -3159,12 +3239,20 @@ Erlang is not a very popular language for game development, therefore the
  The main idea is to offer a replaceable module which would introduce an
  interface to different virtual machines which would run the game code.
  This way a game developer can write the game in his favorite language while
- the server part still is written in Erlang and can benefit from all its
- advantages.
+ the server part still is written in Erlang and can benefit from all the
+ advantages of the Erlang language.
+ In this section, a few potential languages are given.
 \end_layout
 
 \begin_layout Subsection
 JavaScript
+\end_layout
+
+\begin_layout Standard
+JavaScript is a prime GDL candidate for the GGS.
+ The language is very flexible, a general knowledge of the language is present
+ in the computer science community, furthermore there are virtual machines
+ readily available for JavaScript.
 \end_layout
 
 \begin_layout Standard
@@ -3244,7 +3332,21 @@ https://github.com/languages/
 \end_inset
 
  of all code is written in JavaScript.
- The popularity of JavaScript in the programming community, in combination
+ 
+\end_layout
+
+\begin_layout Standard
+Since the GGS is intended to be connected to several different GDL VMs the
+ choice for the first language implemented for the GGS prototype seems not
+ only to depend on the technical features of the GDL chosen, in this case
+ JavaScript.
+ A different, albeit still important non technical feature of JavaScript
+ is the familiarity with the language of the members of the GGS development
+ team.
+\end_layout
+
+\begin_layout Standard
+The popularity of JavaScript in the programming community, in combination
  with the availability of several different JavaScript virtual machines
  was an important influence in choosing JavaScript as the main control language
  for our GGS prototype.
@@ -3317,13 +3419,13 @@ Other languages
 \begin_layout Standard
 Other languages like 
 \emph on
-lua
+Lua
 \emph default
-, 
+ or 
 \emph on
 ActionScript
 \emph default
- are suitable as well because there is a virtual machine for each of them
+ are suitable as well since there is a virtual machine for each of them
  which can be 
 \begin_inset Quotes eld
 \end_inset
@@ -3332,7 +3434,7 @@ plugged in
 \begin_inset Quotes erd
 \end_inset
 
- into our GDL VM interface.
+ into the GDL VM interface.
  With help of the 
 \emph on
 Java Virtual Machine
@@ -3342,206 +3444,8 @@ Java Virtual Machine
 .NET 
 \emph default
 environment it is even possible to run nearly every available programming
- language in a sandbox as a GDL.
-\end_layout
-
-\begin_layout Standard
-Due lack of time we have decided to use just the Erlang <-> JavaScrThere
- is only a very limited number of game developers who would like to write
- their games in Erlang, therefore we had to come up with something to resolve
- this problem.
- The main idea was to offer a replacable module which would introduce an
- interface to different virtual machines which would run the game code.
- This way a game developer can write the game in his favorite language while
- the server part still is written in Erlang and can benefit from all of
- its advantages.
-\end_layout
-
-\begin_layout Subsection
-JavaScript
-\end_layout
-
-\begin_layout Standard
-JavaScript has gained a lot of popularity lately, it is used in large projects
- such as 
-\emph on
-Riak
-\emph default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.basho.com/An-Introduction-to-Riak.html
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-, 
-\emph on
-CouchDB
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://couchdb.apache.org
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
- On the popular social coding site 
-\emph on
-GitHub.com
-\emph default
-, 18%
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-during the writing of the thesis the percentage went up to 19% 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://github.com/languages/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- of all code is written in JavaScript.
- The popularity of JavaScript in the programming community, in combination
- with the availability of several different JavaScript virtual machines
- was an important influence in choosing JavaScript as the main control language
- for our GGS prototype.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{CouchDB}}{Database server}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{Riak}}{Database server}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{GitHub.com}}{Social coding website}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{ActionScript}}{Programming language}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{Lua}}{Programming language}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{.NET}}{Software platform}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Other languages
-\end_layout
-
-\begin_layout Standard
-Other languages like 
-\emph on
-lua
-\emph default
-, 
-\emph on
-ActionScript
-\emph default
- are suitable as well because there is a virtual machine for each of them
- which can be 
-\begin_inset Quotes eld
-\end_inset
-
-plugged in
-\begin_inset Quotes erd
-\end_inset
-
- into our GDL VM interface.
- With help of the 
-\emph on
-Java Virtual Machine
-\emph default
- or the 
-\emph on
-.NET 
-\emph default
-environment it is even possible to run nearly every available programming
- language in a sandbox as a GDL.
-\end_layout
-
-\begin_layout Standard
-Due lack of time we have decided to use just the Erlang <-> JavaScript bridge
- with our interface.
+ language in a sandbox as a GDL, however only a VM for JavaScript will be
+ implemented in the GGS prototype.
 \end_layout
 
 \begin_layout Section
@@ -3552,214 +3456,21 @@ Testing
 There are several ways in which the GGS can be tested.
  The most important aspect has been deemed to be the experience players
  have when using the GGS.
- In order to test the user experience of the GGS, a realistic usage scenario
- has to be set up.
+ To test the user experience of the GGS, a realistic usage scenario has
+ to be set up.
 \end_layout
 
 \begin_layout Standard
 The GGS is intended to be used for powering games which have many concurrent
  players.
- The players need not participate in the same instance of the game, games
- such as chess are prime candidates for the GGS.
+ The players does not need to participate in the same instance of the game,
+ games such as chess are prime candidates for the GGS.
 \end_layout
 
 \begin_layout Standard
-When developing the GGS, two main categories of games exhibit in.
- There is only a very limited number of game developers who would like to
- write their games in Erlang, therefore we had to come up with something
- to resolve this problem.
- The main idea was to offer a replacable module which would introduce an
- interface to different virtual machines which would run the game code.
- This way a game developer can write the game in his favourite language
- while the server part still is written in Erlang and can benefit from all
- of its advantages.
-\end_layout
-
-\begin_layout Subsection
-JavaScript
-\end_layout
-
-\begin_layout Standard
-JavaScript has gained a lot of popularity lately, it is used in large projects
- such as 
-\emph on
-Riak
-\emph default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.basho.com/An-Introduction-to-Riak.html
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-, 
-\emph on
-CouchDB
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://couchdb.apache.org
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
- On the popular social coding site 
-\emph on
-GitHub.com
-\emph default
-, 18%
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-during the writing of the thesis the percentage went up to 19% 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://github.com/languages/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- of all code is written in JavaScript.
- The popularity of JavaScript in the programming community, in combination
- with the availability of several different JavaScript virtual machines
- was an important influence in choosing JavaScript as the main control language
- for our GGS prototype.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{CouchDB}}{Database server}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{Riak}}{Database server}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{GitHub.com}}{Social coding website}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{ActionScript}}{Programming language}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{Lua}}{Programming language}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{.NET}}{Software platform}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Other languages
-\end_layout
-
-\begin_layout Standard
-Other languages like 
-\emph on
-lua
-\emph default
-, 
-\emph on
-ActionScript
-\emph default
- are suitable as well because there is a virtual machine for each of them
- which can be 
-\begin_inset Quotes eld
-\end_inset
-
-plugged in
-\begin_inset Quotes erd
-\end_inset
-
- into our GDL VM interface.
- With help of the 
-\emph on
-Java Virtual Machine
-\emph default
- or the 
-\emph on
-.NET 
-\emph default
-environment it is even possible to run nearly every available programming
- language in a sandbox as a GDL.
-\end_layout
-
-\begin_layout Standard
-Due lack of time we have decided to use just the Erlang <-> JavaScrg different
- performance demands were identified; real-time games and turn-based games.
+When developing the GGS, two main categories of games exhibiting different
+ performance requirements were identified; real-time games and turn-based
+ games.
  The real-time games were deemed more demanding than the turn based games.
  Tests were carried out using a real time game, since this is the more demanding
  type of games.
@@ -3770,11 +3481,11 @@ The real time game chosen for testing the GGS is
 \emph on
 Pong
 \emph default
-, a game in which two players play a game involving a all and two paddles.
+, a game in which two players play a game involving a ball and two paddles.
  The goal for each player is to shoot beside the other players paddle while
  not allowing the ball to pass by her own paddle.
- The game requires real time updates and is quite demanding when played
- in several instances concurrently.
+ The game requires real time updates and is demanding when played in several
+ instances concurrently.
 \end_layout
 
 \begin_layout Standard
@@ -3791,7 +3502,7 @@ bots
 \emph default
  for testing his generic hazard-gaming server.
  Lidholt describes how his server, capable of running several different
- casino games is tested using artificial players, so called bots.
+ casino games are tested using artificial players, so called bots.
  Performance is measured in 
 \begin_inset Quotes eld
 \end_inset
@@ -3817,8 +3528,8 @@ reference "chap:Results-and-discussion"
  for each player.
  Due to lack of hardware, not enough player processes could be started in
  this way.
- The bots were re-written in Erlang, and due to Erlang's light weigh threads,
- enough processes could be created to successfully test the server.
+ The bots were rewritten in Erlang, and due to Erlang's light weigh threads,
+ enough processes could be created to test successfully the server.
 \end_layout
 
 \begin_layout Chapter
@@ -3833,6 +3544,11 @@ name "cha:Implementation-of-a"
 \end_layout
 
 \begin_layout Standard
+As mentioned earlier in the thesis, a prototype of the GGS has been developed
+ in order to test hypotheses and provide concrete examples.
+\end_layout
+
+\begin_layout Standard
 This chapter contains the realization of much of the principles and techniques
  described in chapter 
 \begin_inset CommandInset ref
@@ -3843,12 +3559,12 @@ reference "cha:Theory"
 
 .
  Here the problems and their solutions are discussed in greater detail,
- and at times the text becomes more specific to GGS.
+ and at times the text becomes more specific to the GGS.
 \end_layout
 
 \begin_layout Standard
-Much of what is discussed in this chapter has been implemented in the Erlang
- GGS prototype.
+Much of what is discussed in this chapter has been implemented in the GGS
+ prototype.
  Specific solutions such as 
 \emph on
 supervisor structures 
@@ -3871,15 +3587,6 @@ Overview of the prototype
 
 \begin_layout Standard
 The prototype of the GGS was developed using the Erlang language.
- The functional and concurrent style of Erlang facilitates development of
- software based on a real-world model 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "armstrong2011"
-
-\end_inset
-
-.
  In Erlang, most things are processes.
  The software running the Erlang code is known as the Erlang machine, or
  a Erlang node.
@@ -3896,6 +3603,8 @@ Light Weight Processes; LWP
 , 
 \emph default
 much like the threads in an operating system.
+ There are however differences between operating system threads and the
+ LWPs of erlang.
  Threads in a Linux system, for example, are treated much like operating
  system processes in different systems.
  Due to the size of data structures related to each process, swapping one
@@ -3941,13 +3650,18 @@ textbf{Context switch}}{The act of switching from one context, commonly
 \end_layout
 
 \begin_layout Standard
-The cost of swapping operating system processes becomes a problem when many
+The cost of swapping operating system processes become a problem when many
  processes are involved.
  If the GGS system had been developed using regular operating system processes,
  it would have had to be designed in a way to minimize the number of processes.
  Using Erlang, which is capable of running very many processes, several
- times more than an operating system can, the mapping between the real world
+<<<<<<< HEAD
+ times more than an operating system, the relation between the real world
  system (described in 
+=======
+ times more than an operating system can, the relation between the real
+ world and the GGS (described in 
+>>>>>>> 3584c8fd8cc02e0ed858ea7b5b5ce8fd31ccd3e3
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sec:Design-of-the"
@@ -3958,7 +3672,7 @@ reference "sec:Design-of-the"
 \end_layout
 
 \begin_layout Standard
-Erlang allows the GGS to create several process for each player connecting,
+Erlang allows the GGS to create several processes for each player connecting,
  these processes can handle a multitude of different tasks, parsing data
  for example.
  Since each task is handled by a different process, the tasks are clearly
@@ -3967,7 +3681,7 @@ Erlang allows the GGS to create several process for each player connecting,
 \end_layout
 
 \begin_layout Standard
-In addition to creating (or 
+Besides creating (or 
 \emph on
 spawning
 \emph default
@@ -4050,7 +3764,7 @@ The layout of the GGS.
  network, for example the Internet.
  The barell figure marked 'backup' is a process being fed backup data from
  the coordinator.
- The barell marked 'State' contains the state of a table, and this is fed
+ The barrel marked 'State' contains the state of a table, and this is fed
  into the box marked 'Mnesia' which is database.
  Finally the figure shaped as a shield marked 'GameVM' contains the actual
  game process.
@@ -4075,11 +3789,16 @@ reference "fig:The-layout-of"
 \end_inset
 
  the entire GGS system is represented graphically.
- The circles marked with 'C' topmost in the picture represent game clients.
+ The circles marked with 'C' topmost in the picture represents game clients.
  These circles represent processes running on gamers computers, and not
  on the GGS machine.
+<<<<<<< HEAD
+ If a game of chess is to be played on the server, the clients on the machines
+ of the gamers will be chess game clients.
+=======
  If a game of chess is to be played on the server, the clients on the gamers
- machines will be chess game clients.
+ machine will be chess game clients.
+>>>>>>> 3584c8fd8cc02e0ed858ea7b5b5ce8fd31ccd3e3
  Clients connect through a network, pictured as a cloud, to the dispatcher
  process in the GGS.
  The dispatcher process and all other modules are discussed in
@@ -4106,8 +3825,20 @@ name "sec:The-usage-of-erlang"
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD
+As mentioned earlier, the GGS prototype is implemented in Erlang.
+ The current section and the subsequent section function as a short introduction
+ to Erlang, focusing on the parts of the language neccessary to understand
+ the material regarding Erlang presented in this thesis.
+\end_layout
+
+\begin_layout Standard
 Erlang was designed by Ericsson, beginning in 1986, for the purpose of creating
  concurrent applications and improving telecom software.
+=======
+Erlang was designed by Ericsson, beginning in 1986, for creating concurrent
+ applications and improving telecom software.
+>>>>>>> 3584c8fd8cc02e0ed858ea7b5b5ce8fd31ccd3e3
  Features essential for the telecom industry to achieve high availability
  in telecom switches were added to the language.
 \begin_inset ERT
@@ -4119,7 +3850,7 @@ status open
 \backslash
 nomenclature{
 \backslash
-textbf{Mutex}}{A construct for achieving mutial exclusion, used to avoid
+textbf{Mutex}}{A construct for achieving mutual exclusion, used to avoid
  simultaneous access to shared resources in computer systems}
 \end_layout
 
@@ -4147,8 +3878,11 @@ key "Armstrong:2010:ERL:1810891.1810910"
 \begin_layout Standard
 In using message passing in favor of the methods commonly used at the time,
  the issues commonly associated with shared memory and locking were avoided.
- In Erlang, everything is a process, and everything operates in its own
- memory space.
+\end_layout
+
+\begin_layout Standard
+In Erlang, everything is a process, and everything operates in its own memory
+ space.
  Memory cannot be shared among processes, which prohibits a process from
  corrupting the memory of a different process.
 \end_layout
@@ -4164,11 +3898,17 @@ Processes in Erlang are also called
 Light Weight Processes.
  
 \emph default
-The Erlang processes are very cheaply created.
+The Erlang processes are inexpensive to create.
  Processes exist within an Erlang machine, or Erlang node.
+<<<<<<< HEAD
+ The Erlang machine has its own scheduler and does not rely on the scheduler
+ of the operating system, this is a main reason of Erlang's capability of
+ running many concurrent processes 
+=======
  The Erlang machine has its own scheduler and does not rely on the operating
- system's scheduler, this is a main reason of Erlang's capability of running
+ system's scheduler, this is one main reason of Erlang's capability of running
  many concurrent processes 
+>>>>>>> 3584c8fd8cc02e0ed858ea7b5b5ce8fd31ccd3e3
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Armstrong03"
@@ -4187,14 +3927,25 @@ The strong isolation of Erlang processes make them ideal for multi-core
  which computer the process runs on, is not important when communicating
  with the process.
  Processes can communicate regardless of whether they run on the same system
- of not, transparently.
+ or not, transparently.
 \end_layout
 
 \begin_layout Standard
-The distributed nature of Erlang is something the GGS makes use of when
+<<<<<<< HEAD
+The distributed nature of Erlang is something the GGS can make use of when
  scaling across several computers in order to achieve higher performance.
+=======
+The distributed nature of Erlang is something the GGS makes use of, when
+ scaling across several computers to achieve higher performance.
+>>>>>>> 3584c8fd8cc02e0ed858ea7b5b5ce8fd31ccd3e3
  The distribution is also important in creating redundancy.
- Erlang promotes a non-defensive programming style in which processes are
+ The GGS prototype does not make use of the distributed nature of Erlang,
+ however the GGS prototype is constructed in such a way that making use
+ of the distributed nature should now pose a big ptoblem.
+\end_layout
+
+\begin_layout Standard
+Erlang promotes a non-defensive programming style in which processes are
  allowed to crash and be restarted in favor of having the processes recover
  from errors.
  The distributed nature of Erlang means supervisor processes (discussed
@@ -4225,10 +3976,22 @@ s (Native implemented functions)
 .
 
 \emph default
- Through ports communication can take place much in the same way communication
+ Through ports communication can take place in a similar way communication
  is performed over sockets.
  NIFs are called like any other functions without any difference to the
- caller but are implemented in C.
+<<<<<<< HEAD
+ caller but are implemented in C, this implementation makes NIFs a very
+ efficient way to interface with the outside world 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "NIF:website"
+
+\end_inset
+
+.
+=======
+ caller but they are implemented in C.
+>>>>>>> 3584c8fd8cc02e0ed858ea7b5b5ce8fd31ccd3e3
 \end_layout
 
 \begin_layout Standard
@@ -4311,7 +4074,7 @@ behaviors
 \begin_layout Standard
 The GGS makes heavy use of the behaviors supplied in the OTP.
  The behaviors impose a programming style suitable for distributed and concurren
-t applications, perfectly suitable for the GGS.
+t applications.
  In particular, the GGS uses the following behaviors:
 \end_layout
 
@@ -4324,7 +4087,7 @@ supervisor
  Supervisors are used when monitoring processes in the Erlang system.
  When a process exits wrongfully, the supervisor monitoring the process
  in question decides which action to take.
- In the GGS, the most common action is simply to restart the faulting process.
+ In the GGS, the most common action is to restart the faulting process.
  A more thorough discussion on supervisors can be found in section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4356,8 +4119,8 @@ gen_server
  increasing the usefulness of the server process.
  There are many gen_servers in the GGS, it is the most widely used behavior
  in the project.
- In addition to introducing a state to the server, the gen_server behavior
- also imposes patterns for synchronous and asynchronous communication between
+ Besides introducing a state to the server, the gen_server behavior also
+ imposes patterns for synchronous and asynchronous communication between
  other gen_servers and other OTP behaviors.
 \end_layout
 
@@ -4373,8 +4136,8 @@ gen_fsm
 \end_layout
 
 \begin_layout Standard
-In addition to supplying behaviors, the OTP also has a style for packaging
- and running Erlang applications.
+Besides supplying behaviors, the OTP also has a style for packaging and
+ running Erlang applications.
  By packaging the GGS as an 
 \emph on
 application 
@@ -4391,7 +4154,7 @@ status open
 \backslash
 nomenclature{
 \backslash
-textbf{Application}}{A way of packaging Erlang software in a uniform way}
+textbf{Application}}{A way of packaging Erlang software in an uniform way}
 \end_layout
 
 \end_inset
@@ -6470,7 +6233,7 @@ Hot code replacement is a technique used to update systems while they are
  running.
  The main use of hot code replacement are in critical systems that require
  low downtime, such as telecom systems.
- By using hot code replacement system can be able to achieve as high uptime
+ By using hot code replacement, systems can be able to achieve as high uptime
  as possible and thus improving the reliability of the system.
  Code replacement is a feature that exist in Erlang which means that with
  some work it could be implemented into the GGS.
@@ -8108,16 +7871,20 @@ This thesis describes a method to create a reliable and generic game server
 \end_layout
 
 \begin_layout Standard
-<<<<<<< HEAD
-To get the server as generic as possible one should not implement any game
- logic into the server and rather design good API:s for game developers
- to interact with the server.
- Furthermore should every game be separated from each other so they do not
- interfare with each other, this can be done by introducing a own context
- for each game which leads to the fact that each game runs in its own sandbox.
- To be able to use different game development languages one should use virtual
- boxes which would evaluate the game source code safely.
-=======
+To make the GGS as generic as possible seperation of game and server logic
+ is necessary.
+ Designing a good API is vital in order to allow game developers to interact
+ with the server in a easy manner and with minimal overhead.
+ Furthermore every game should be isalated so that games can not interfare
+ with each other.
+ Isolation can be achived by introducing a context for each game which leads
+ to the fact that each game runs in its own sandbox.
+ To be able to use different game development languages virtual machines
+ should be used.
+ Each virtual machine instance evaluates game source code safely.
+\end_layout
+
+\begin_layout Standard
 This thesis concludes that it is reasonable to use the same tools as those
  used by the telecom industry for creating reliable systems when developing
  games for computers.
@@ -8127,7 +7894,15 @@ This thesis concludes that it is reasonable to use the same tools as those
  It has been demonstrated in this thesis that games can be developed for
  the GGS in JavaScript, while still benefiting from the features offered
  by Erlang and the OTP.
->>>>>>> 74199c5f1beb498ba3f42ca810eec14756e3da71
+ 
+\end_layout
+
+\begin_layout Standard
+In the current state, the GGS prototype is not scalable.
+ The GGS is however prepared for scaling due to its overall structure.
+ The implementation of scalability could be performed in two different ways,
+ either to scale one instance of the GGS or to scale by creating new instances
+ and support communication among them.
 \end_layout
 
 \begin_layout Standard
@@ -8150,10 +7925,6 @@ printnomenclature
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
