@@ -5727,7 +5727,7 @@ name "alg:exposing-erlang"
 
 \end_inset
 
-An example of how Erlang functionality is exposed to a JavaScript GDL
+An example of how Erlang functionality is exposed to a JavaScript GDL VM.
 \end_layout
 
 \end_inset
@@ -5870,19 +5870,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-We should really do this graphic in EPS instead of PNG
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -5934,7 +5921,7 @@ name "fig:The-supervisor-structure"
 
 \end_inset
 
-The supervisor structure of GGS
+The supervisor structure of the GGS
 \end_layout
 
 \end_inset
@@ -5967,8 +5954,8 @@ key "Savor:1997:HSA:851010.856089"
 \end_layout
 
 \begin_layout Standard
-There are several approaches to supervisor design in general (when not just
- considering how they work in Erlang).
+There are several approaches to a supervisor design in general (when not
+ just considering how they work in Erlang).
  One common approach is to have the supervisor look in to the state of the
  process(es) it supervises, and let the supervisor makes decisions based
  on this state.
@@ -6032,26 +6019,34 @@ reference "fig:The-supervisor-structure"
 
 \end_inset
 
- shows our two subsystems, the coordinator subsystem and the dispatcher
+ shows the two subsystems, the coordinator subsystem and the dispatcher
  subsystem.
  Since these two systems perform very different tasks they have been separated.
  Each subsystem has one worker process, the coordinator or the dispatcher.
- The worker process keeps a state which should not be lost on a crash.
+ The worker process keeps a state which should not be lost in the event
+ of a crash.
 \end_layout
 
 \begin_layout Standard
-A choice has been made to let faulty processes crash very easily when they
- receive bad data, or something unexpected happens.
+The choice has been made to let faulty processes crash very easily when
+ they receive bad data, or something unexpected happens.
  The alternative to crashing would have been to try to fix this faulty data,
  or to foresee the unexpected events.
  This was not chosen since it is so simple to monitor and restart processes,
- and so difficult to try to mend broken states.
+ and difficult to try to mend broken states.
  This approach is something widely deployed in the Erlang world, and developers
- are often encouraged to “Let it crash”.
+ are often encouraged to “Let it crash” 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Armstrong03"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-To prevent any data loss, the good state of the worker processes are stored
+To prevent any data loss, the good state of the worker processes is stored
  in their respective backup processes.
  When a worker process (re)starts, the backup process is queried for any
  previous state, if there is any, that state is loaded in to the worker
@@ -6070,8 +6065,8 @@ The modules in the GGS are built to be capable of redundant operations.
  By adding a backup process to sensitive processes, the state can be kept
  in the event of a crash.
  The coordinator of the GGS prototype has this backup feature built in.
- The coordinator passes state along to the backup process which keeps the
- data safe.
+ The coordinator passes the state along to the backup process which keeps
+ the data safe.
  If a crash occurs, the coordinator recovers the state from the backup process.
  Figure 
 \begin_inset CommandInset ref
@@ -6178,8 +6173,8 @@ Hot code replacement is a technique used to update systems while they are
  running.
  The main use of hot code replacement is in critical systems that require
  low downtime, such as telecom systems.
- By using hot code replacement, systems can be able to achieve as high uptime
- as possible and thus improving the reliability of the system.
+ By using hot code replacement, systems are able to achieve much longer
+ uptimes and thus improving the reliability of the system.
  Code replacement is a feature that exists in Erlang which means that with
  some work it could be implemented into the GGS.
 \end_layout
@@ -6189,7 +6184,7 @@ Testing
 \end_layout
 
 \begin_layout Standard
-To make sure the GGS prototype adheres to the specification set, two different
+To make sure the GGS prototype adheres to the specification set, three different
  approaches to software testing are used.
  For simpler testing the GGS prototype uses unit tests.
  Modules are tested on a high level, making sure each function in the module
@@ -6211,6 +6206,12 @@ citation needed
 , as users do not always act rationally.
  In order to introduce random data, the client side of the GGS is simulated
  by QuickCheck tests.
+\end_layout
+
+\begin_layout Standard
+Finally to test the robustness of the prototype virtuall users, so called
+ bots are being used to simulate large amounts of players playing different
+ games simultanously.
 \end_layout
 
 \begin_layout Subsection
@@ -6308,6 +6309,35 @@ QuickCheck was originally made for the programming language Haskell.
  EQC was chosen for testing the GGS.
  Besides the standard functionality that QuickCheck provides, EQC is capable
  of testing concurrency within a program.
+\end_layout
+
+\begin_layout Subsection
+Bots
+\end_layout
+
+\begin_layout Standard
+In order to test the robustness of the GGS several different artificial
+ users, so called bots, have been implemented.
+ Each of this bots is programmed to play a game on the GGS as similar to
+ a real user as possible.
+ In the game Pong for example, the bot is watching the ball and moves its
+ pad up or down according what the position of the ball suggests.
+ For the GGS there is no difference in serving a real user or a bot.
+\end_layout
+
+\begin_layout Standard
+With help of this method large amounts of players can be simulated playing
+ games on the GGS simultanously which is a good stress and concurrency test
+ for the overall system.
+ In section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Statistics"
+
+\end_inset
+
+ some of the statistical data retrieved with help of a whole network of
+ bots playing games is being presented.
 \end_layout
 
 \begin_layout Section
@@ -7505,6 +7535,13 @@ In this chapter the results of the GGS prototype are presented and discussed.
 
 \begin_layout Section
 Statistics
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Statistics"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
