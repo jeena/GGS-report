@@ -2602,8 +2602,8 @@ name "sec:Scalability"
 Each instance of the GGS contains several so called tables.
  Each table is an isolated instance of a game, for instance a chess game
  or a poker game.
- The way that the GGS scales is to distribute these tables on different
- servers.
+ A possible way for the GGS to scale up is to distribute these tables on
+ different servers.
  In many games it is not necessary for a player to move among tables during
  games.
  This is for example not a common occurrence in chess, where it would be
