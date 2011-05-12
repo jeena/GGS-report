@@ -8135,13 +8135,11 @@ This thesis concludes that it is reasonable to use the same tools as those
 \end_layout
 
 \begin_layout Standard
-In the current state the GGS prototype is not scalable, however it seems
- possible to implement scalability with more time available.
+In the current state, the GGS prototype is not scalable.
+ The GGS is however prepared for scaling due to its overall structure.
  The implementation of scalability could be performed in two different ways,
  either to scale one instance of the GGS or to scale by creating new instances
  and support communication among them.
- There are one case where problems may occur, modules in the GGS can not
- be divided; therefore the scaling of one instance will be limited.
 \end_layout
 
 \begin_layout Standard
