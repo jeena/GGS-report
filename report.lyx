@@ -5206,12 +5206,20 @@ Callbacks written in Erlang are registered to the VM for the interface to
  the game state and send messages to the clients.
  The interface provides access to three objects called 
 \emph on
-world, players
+\noun on
+world
+\noun default
+, 
+\noun on
+players
 \emph default
+\noun default
  and 
 \emph on
+\noun on
 localStorage
 \emph default
+\noun default
 .
  The game state is safely stored in a database and retrieved for manipulation
  by a call for the world object.
@@ -5286,7 +5294,14 @@ name "sub:Exposing-Erlang-functionality"
 \end_layout
 
 \begin_layout Standard
-This section contains a concrete example of how the localstorage and world
+This section contains a concrete example of how the 
+\noun on
+localStorage
+\noun default
+ and 
+\noun on
+world
+\noun default
  objects are exposed to a GDL VM.
  The example comes from the GGS prototype, which uses JavaScript powered
  by Google V8 as its GDL VM.
@@ -5358,16 +5373,33 @@ tt GGS.localStorage }
 
 \end_inset
 
- from within the GDL, access to the localstorage is provided, thus the localstor
-age must be connected to the GGS object, this can be seen in line 5.
+ from within the GDL, access to the 
+\noun on
+localStorage
+\noun default
+ is provided, thus the 
+\noun on
+localStorage
+\noun default
+ must be connected to the GGS object, this can be seen in line 5.
 \end_layout
 
 \begin_layout Standard
-Both the GGS and localstorage objects are dummy objects, which provide no
- functionality, these two objects are simply placed in the GDL for the purpose
- clearing up the code.
- In order to perform an action using the GGS and localstorage objects, the
- 
+Both the 
+\noun on
+GGS
+\noun default
+ and 
+\noun on
+localStorage
+\noun default
+ objects are dummy objects, which provide no functionality, these two objects
+ are simply placed in the GDL for the purpose clearing up the code.
+ In order to perform an action using the GGS and 
+\noun on
+localStorage
+\noun default
+ objects, the 
 \begin_inset ERT
 status open
 
@@ -5441,20 +5473,6 @@ tt setTimeout}
 
  function introduces timeouts to the V8 engine, which are not available
  per default.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Prior to this section, the Erlang syntax has to be briefly explained.
- I think the 'usage of erlang' section is a good place to do this in.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5828,24 +5846,12 @@ Techniques for ensuring reliability
 
 \begin_layout Standard
 One of the main goals of the project is to achieve high reliability.
- The term 
-\begin_inset Quotes eld
-\end_inset
+ The term 'reliable system' is defined by the IEEE as 
+\end_layout
 
-reliable system
-\begin_inset Quotes erd
-\end_inset
-
- is defined by the IEEE as a system with 
-\begin_inset Quotes eld
-\end_inset
-
-the ability of a system or component to perform its required functions under
- stated conditions for a specified period of time
-\begin_inset Quotes erd
-\end_inset
-
- 
+\begin_layout Quotation
+A system with the ability of a system or component to perform its required
+ functions under stated conditions for a specified period of time 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "ieee_90"
@@ -5853,10 +5859,13 @@ key "ieee_90"
 \end_inset
 
 .
- There are some tools for creating reliable applications built in to Erlang.
+\end_layout
+
+\begin_layout Standard
+There are some tools for creating reliable applications built in to Erlang:
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5884,14 +5893,22 @@ E"}
 \end_layout
 
 \begin_layout Itemize
-Links between processes.
+
+\series bold
+Links between processes
+\series default
+.
  When a process spawns a new child process, and the child process later
  exits, the parent process is notified of the exit.
  
 \end_layout
 
 \begin_layout Itemize
-Transparent distribution over a network of processors.
+
+\series bold
+Transparent distribution over a network of processors
+\series default
+.
  When several nodes participate in a network, it does not matter on which
  of these machines a process is run.
  Communication between processes does not depend on the node in which each
@@ -5900,7 +5917,11 @@ Transparent distribution over a network of processors.
 \end_layout
 
 \begin_layout Itemize
-Hot code replacements.
+
+\series bold
+Hot code replacements
+\series default
+.
  Two versions of the same module can reside in the memory of Erlang at any
  time.
  This means that a simple swap between these versions can take place very
