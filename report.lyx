@@ -2427,6 +2427,13 @@ The need for fault tolerance in game servers is not as obvious as it may
  the system crashes than works with the faulty data.
  There are cases where safety may be critical in game servers, one example
  is in games where in-game money exist.
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Gartner:1999:FFD:311531.311532"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2855,9 +2862,9 @@ textbf{UUID}}{Universally Unique Identifier}
 \end_layout
 
 \begin_layout Standard
-Inside the GGS, everything has a unique identifier.
+Inside the GGS everything has a unique identifier.
  There are identifiers for players, tables and other resources.
- When players communicate amongst each other, or communicate with tables,
+ When players communicate amongst each other or communicate with tables,
  they need to be able to uniquely identify all of these resources.
  Within one machine, this is mostly not a problem.
  A simple system with a counter can be imagined, where each request for
@@ -2940,10 +2947,10 @@ Ds generated until 3400 A.D.
 \end_inset
 
 .
- This is accomplished by gathering several different sources of information,
- such as: time, MAC addresses of network cards, and operating system data,
- such as percentage of memory in use, mouse cursor position and process
- IDs.
+ The generation of a UUID is accomplished by gathering several different
+ sources of information, such as: time, MAC addresses of network cards,
+ and operating system data, such as percentage of memory in use, mouse cursor
+ position and process IDs.
  The gathered data is then 
 \emph on
 hashed
@@ -2973,15 +2980,7 @@ reference "fig:network-split"
 
 \end_inset
 
-, where 
-\emph on
-Site A
-\emph default
- is separated from 
-\emph on
-Site B
-\emph default
- by a faulty network (illustrated by the cloud and lightening bolt).
+, where an example of a network split is presented.
  When
 \emph on
  
@@ -3112,18 +3111,19 @@ Security
 \end_layout
 
 \begin_layout Standard
-We only support languages running in a sandboxed environment.
+The GGS only supports languages running in a sandboxed environment.
  Each game session is started in its own sandbox.
  The sandboxing isolates the games in such a way that they cannot interfere
  with each other.
  If sandboxing was not in place, one game could potentially modify the contents
  of a different game.
- A similar approach is taken with the persistent storage we provide.
+ A similar approach is taken with the persistent storage provided by the
+ GGS.
  In the storage each game has its own namespace, much like a table in a
  relational database.
  A game is not allowed to venture outside this namespace, and can because
  this not modify the persistent data of other games.
- of this not modify the persistent data of other games.
+ 
 \begin_inset ERT
 status open
 
