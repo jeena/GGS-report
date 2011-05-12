@@ -7583,31 +7583,11 @@ In this chapter the results of the GGS prototype are presented and discussed.
 
 \begin_layout Section
 Statistics
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Mention the hardware which the GGS was run on; A Thinkpad T410 with a core
- i5 and 4GB of ram.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The testing of the GGS prototype occurred in two sessions
-\end_layout
-
-\end_inset
-
 Testing of the GGS took place in two separate sessions.
- The first session simulates a highly demanding application, the second
+ The first session simulated a highly demanding application, the second
  session simulated a less demanding application.
  The highly demanding application is a real time game which does several
  asynchronous database writes each second.
@@ -7720,6 +7700,11 @@ In the second testing session the delay between the server and clients was
  When the load on the server increases heavily the delay does the same,
  this is because the server cannot process all incoming messages and therefore
  messages are put in a queue within the system.
+\end_layout
+
+\begin_layout Standard
+It should be noted that with distribution in place, having the GGS deployed
+ on several machines, test results could reveal much higher numbers.
 \end_layout
 
 \begin_layout Standard
@@ -7996,7 +7981,7 @@ The GGS was originally intended to be a distributed application, running
 \begin_layout Standard
 Distribution was however not implemented in the GGS.
  Other parts of the GGS were prioritized.
- A futute improvement is therefore to implement distribution in the GGS.
+ A future improvement is therefore to implement distribution in the GGS.
  A simple way to achieve this is to keep one GGS instance as a coordinating
  instance, and to keep clients on other instances of the GGS, which can
  be dynamically added as new clients connect.
@@ -8095,21 +8080,6 @@ textbf{ETS}}{Erlang Term Storage}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Documentation
-\end_layout
-
-\begin_layout Standard
-To start the GGS is not self explanatory.
- This together with overall usage of GGS should be documented.
- The interface for usage of game developers are also in need of documentation.
- Features and requirements with respect to the GGS would assist users to
- know what they need to use the GGS and how they would benefit of it.
- The GGS does not support many programming languages nor does it have a
- complete documentation.
- This needs to be taken care of in future versions.
 \end_layout
 
 \begin_layout Chapter
