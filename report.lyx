@@ -3523,7 +3523,7 @@ As mentioned earlier in the thesis, a prototype of the GGS has been developed
 \end_layout
 
 \begin_layout Standard
-This chapter contains the realization of much of the principles and techniques
+This chapter contains the realization of many of the principles and techniques
  described in chapter 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -3539,11 +3539,6 @@ reference "cha:Theory"
 \begin_layout Standard
 Much of what is discussed in this chapter has been implemented in the GGS
  prototype.
- Specific solutions such as 
-\emph on
-supervisor structures 
-\emph default
-and distribution of erlang nodes on physical nodes.
  The different means of communications within the GGS and outside the GGS
  with third parties are also discussed here.
 \end_layout
@@ -3578,11 +3573,11 @@ Light Weight Processes; LWP
 \emph default
 much like the threads in an operating system.
  There are however differences between operating system threads and the
- LWPs of erlang.
+ LWPs in Erlang.
  Threads in a Linux system, for example, are treated much like operating
  system processes in different systems.
- Due to the size of data structures related to each process, swapping one
- process for another (known as 
+ Due to the size of the data structures related to each process swapping
+ one process for another (known as 
 \emph on
 context switching
 \emph default
@@ -3626,8 +3621,9 @@ textbf{Context switch}}{The act of switching from one context, commonly
 \begin_layout Standard
 The cost of swapping operating system processes becomes a problem when many
  processes are involved.
- If the GGS system had been developed using regular operating system processes,
- it would have had to be designed in a way to minimize the number of processes.
+ If the GGS prototype had been developed using regular operating system
+ processes, it would have had to be designed in a way to minimize the number
+ of processes.
  Using Erlang, which is capable of running very many processes, several
  times more than an operating system, the relation between the real world
  and the GGS (described in 
@@ -3654,9 +3650,9 @@ In addition to creating (or
 \emph on
 spawning
 \emph default
-) processes specifically to handle new players connecting, the GGS has more
- permanent processes running at all times.
- The constantly running processes in the GGS system are called 
+) processes specifically to handle new players connecting, the GGS has permanent
+ processes running at all times.
+ The constantly running processes in the GGS prototype are called 
 \emph on
 modules
 \emph default
@@ -3758,7 +3754,7 @@ reference "fig:The-layout-of"
 \end_inset
 
  the entire GGS system is represented graphically.
- The circles marked with 'C' topmost in the picture represents game clients.
+ The circles marked with 'C' topmost in the picture represent game clients.
  These circles represent processes running on gamers computers, and not
  on the GGS machine.
  If a game of chess is to be played on the server, the clients on the machines
@@ -3848,16 +3844,15 @@ In Erlang, everything is a process, and everything operates in its own memory
 
 \begin_layout Standard
 Messages are sent between the processes in an asynchronous manner, and each
- process has a mailbox in which these messages can be retrieved.
+ process has a mailbox from which these messages can be retrieved.
 \end_layout
 
 \begin_layout Standard
 Processes in Erlang are also called 
 \emph on
-Light Weight Processes.
- 
+Light Weight Processes
 \emph default
-The Erlang processes are inexpensive to create.
+ because they are inexpensive to create.
  Processes exist within an Erlang machine, or Erlang node.
  The Erlang machine has its own scheduler and does not rely on the scheduler
  of the operating system, this is a main reason of Erlang's capability of
@@ -3872,7 +3867,7 @@ key "Armstrong03"
 \end_layout
 
 \begin_layout Standard
-The strong isolation of Erlang processes make them ideal for multi-core
+The strong isolation of Erlang processes makes them ideal for multi-core
  and distributed systems.
  Distribution of software is included as a fundamental part in the Erlang
  language.
@@ -3884,12 +3879,12 @@ The strong isolation of Erlang processes make them ideal for multi-core
 \end_layout
 
 \begin_layout Standard
-The distributed nature of Erlang is something the GGS can make use of, when
+The distributed nature of Erlang is something the GGS can make use of when
  scaling across several computers in order to achieve higher performance.
  The distribution is also important in creating redundancy.
  The GGS prototype does not make use of the distributed nature of Erlang,
  however the GGS prototype is constructed in such a way that making use
- of the distributed nature should now pose a big ptoblem.
+ of the distributed nature should not pose a big problem.
 \end_layout
 
 \begin_layout Standard
@@ -3956,7 +3951,7 @@ reference "sub:UUID"
 
 \end_inset
 
- and NIFs for interfacing with the virtual machines of games
+ and NIFs for interfacing with the GDL VMs
 \begin_inset Foot
 status collapsed
 
@@ -4047,7 +4042,7 @@ The
 \emph on
 gen_tcp 
 \emph default
-behavior, which is used to work with TCP sockets for network communication.
+behavior, which is used to interact with TCP sockets for network communication.
  Using the gen_tcp behavior, network messages are converted to internal
  Erlang messages and passed to a protocol parser, where the messages are
  processed further.
@@ -4061,8 +4056,7 @@ gen_server
  behavior, which is used when constructing OTP servers in Erlang.
  Using this behavior, a state can easily be kept in a server process, greatly
  increasing the usefulness of the server process.
- There are many gen_servers in the GGS, it is the most widely used behavior
- in the project.
+ This behaviour is the most widely used one in the GGS prototype.
  In addition to introducing a state to the server, the gen_server behavior
  also imposes patterns for synchronous and asynchronous communication between
  other gen_servers and other OTP behaviors.
@@ -4086,7 +4080,7 @@ In addition to supplying behaviors, the OTP also has a style for packaging
 \emph on
 application 
 \emph default
-the GGS can be started in a way uniform to most erlang software, providing
+the GGS can be started in a way uniform to most Erlang software, providing
  familiarity for other Erlang users, and eases the incorporation of the
  GGS in other applications.
 \begin_inset ERT
@@ -4297,7 +4291,7 @@ tt "Hello world"}
 \series bold
 Records
 \series default
- are erlang tuples coupled with a tag for each tuple element.
+ are Erlang tuples coupled with a tag for each tuple element.
  This allows referring to elements by name instead of by position.
  An example of a record looks like this: 
 \begin_inset ERT
@@ -5809,7 +5803,7 @@ TODO: Go in to more detail about how the world, player and localstorage
 status open
 
 \begin_layout Plain Layout
-My idea here is that we describe the erlang-js (which failed, but nontheless),
+My idea here is that we describe the Erlang-js (which failed, but nontheless),
  v8, UUID and other external communication.
  We shouldn't describe sockets here though..
  or..
@@ -7183,7 +7177,7 @@ There are two JavaScript virtual machines, or
 \emph on
 engines,
 \emph default
- with suitable bindings to erlang available at the time of the writing of
+ with suitable bindings to Erlang available at the time of the writing of
  this thesis.
  There is a group of machines developed by Mozilla called 
 \emph on
