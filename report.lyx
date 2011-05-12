@@ -5190,7 +5190,7 @@ name "sec:Communication-with-the-GDL-VM"
 A game launched on the GGS is run within a virtual machine.
  For each programming language supported, there is a virtual machine which
  interprets the game.
- Furthermore an interface for communication between the GGS, the game and
+ Furthermore an interface for communication among the GGS, the game and
  the players playing the game is present.
 \end_layout
 
@@ -5218,7 +5218,7 @@ localStorage
 .
  The game state is safely stored in a database and retrieved for manipulation
  by a call for the world object.
- Interaction with the players is done by using the 
+ Interaction with the players are done by using the 
 \emph on
 
 \begin_inset ERT
@@ -5315,7 +5315,7 @@ reference "alg:exposing-erlang"
 \end_layout
 
 \begin_layout Standard
-In JavaScript is is common to use a top level object, called a global object,
+In JavaScript it is common to use a top level object, called a global object,
  to establish a global scope.
  This allows the declaration of global variables and functions.
  To gain access to the global object in the GGS, the 
@@ -5390,7 +5390,7 @@ localStorage
 \noun default
  objects are dummy objects, which provide no functionality, these two objects
  are simply placed in the GDL for the purpose clearing up the code.
- In order to perform an action using the GGS and 
+ To perform an action using the GGS and 
 \noun on
 localStorage
 \noun default
@@ -5840,7 +5840,7 @@ Techniques for ensuring reliability
 \end_layout
 
 \begin_layout Standard
-One of the main goals of the project is to achieve high reliability.
+One main goal of the project is to achieve high reliability.
  The term 'reliable system' is defined by the IEEE as 
 \end_layout
 
@@ -6048,7 +6048,7 @@ key "Savor:1997:HSA:851010.856089"
 There are several approaches to supervisor design in general (when not just
  considering how they work in Erlang).
  One common approach is to have the supervisor look in to the state of the
- process(es) it supervises, and let the supervisor make decisions based
+ process(es) it supervises, and let the supervisor makes decisions based
  on this state.
  The supervisor has a specification of how the process it supervises should
  function, this is how it makes decisions.
@@ -6060,18 +6060,17 @@ In Erlang, there is a simple version of supervisors.
  No state of the processes being supervised is inspected.
  There is, however a specification of how the supervised processes should
  behave, but on a higher level.
- The specification describes things such as how many times in a given time
- interval a child process may crash, which processes need restarting when
+ The specification describes things such as how many times in a given interval a child process may crash, which processes need restarting when
  crashes occur, etc.
  
 \end_layout
 
 \begin_layout Standard
-When the linking of processes in order to monitor exit behavior is coupled
- with the transparent distribution of Erlang, a very powerful supervision
- system is created.
- For instance, we can restart a failing process on a different, new node,
- with minimal impact on the system as a whole.
+When the linking of processes to monitor exit behavior is coupled with the
+ transparent distribution of Erlang, a very powerful supervision system
+ is created.
+ For instance, it is possible to restart a failing process on a different,
+ new node, with minimal impact on the system as a whole.
  
 \end_layout
 
@@ -6114,28 +6113,28 @@ reference "fig:The-supervisor-structure"
  subsystem.
  Since these two systems perform very different tasks they have been separated.
  Each subsystem has one worker process, the coordinator or the dispatcher.
- The worker process keeps a state which should not be lost upon a crash.
+ The worker process keeps a state which should not be lost on a crash.
 \end_layout
 
 \begin_layout Standard
 A choice has been made to let faulty processes crash very easily when they
  receive bad data, or something unexpected happens.
- The alternative to crashing would have been to try and fix this faulty
+ The alternative to crashing would have been to try to fix this faulty
  data, or to foresee the unexpected events.
  This was not chosen since it is so simple to monitor and restart processes,
- and so difficult to try and mend broken states.
+ and so difficult to try to mend broken states.
  This approach is something widely deployed in the Erlang world, and developers
  are often encouraged to “Let it crash”.
 \end_layout
 
 \begin_layout Standard
-To prevent any data loss, the good state of the worker processes is stored
+To prevent any data loss, the good state of the worker processes are stored
  in their respective backup processes.
  When a worker process (re)starts, the backup process is queried for any
  previous state, if there is any, that state is loaded in to the worker
  and it proceeds where it left off.
  If on the other hand no state is available, a special message is delivered
- instead, making the worker create a new state, this is what happens when
+ instead, making the worker creates a new state, this is what happens when
  the workers are first created.
 \end_layout
 
