@@ -4375,7 +4375,20 @@ target "http://www.objectmentor.com/resources/articles/srp.pdf"
  are widely respected as good practices in the world of software engineering
  and development.
  By dividing the GGS up into modules each part of the GGS can be modified
- without damaging the rest of the system.
+ without damaging, or requiring changes in the rest of the system.
+ Due to the hot code updates featured in Erlang, it is theoretically possible
+ to update parts of the GGS while the system is running, this has however
+ not been implemented in the prototype.
+ The modular composition of the GGS prototype should make a transition to
+ a folly hot code swappable system relatively easy.
+ Hot code replacements are discussed in more detail in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Hot-code-replacement"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -4393,7 +4406,8 @@ reference "cha:Theory"
 \end_layout
 
 \begin_layout Standard
-In the text below the word module refers to the actual code of the discussed
+In the text below the different modules of the GGS are presented.
+ In the text the word module refers to the actual code of the discussed
  feature, while the word process is used when referring to a running instance
  of the code.
 \begin_inset ERT
@@ -4428,44 +4442,9 @@ The dispatcher module
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The discussion of the modules is divided into the following parts:
-\end_layout
-
-\begin_layout Itemize
-What does the module do?
-\end_layout
-
-\begin_layout Itemize
-What happens when the module fails?
-\end_layout
-
-\begin_layout Itemize
-How does the module correspond to the real-world scenario of the chess club?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The dispatcher module is the first module to have contact with a player.
- When a player connects to the GGS, it is first greeted by the dispatcher
- module, which sets up an accepting socket for each player.
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Is this the proper way to day the dispatcher greets connecting players?
-\end_layout
-
-\end_inset
-
+ When a player connects to the GGS, the player is first greeted by the dispatche
+r module, which sets up an accepting socket for each player.
  The dispatcher is the module which handles the interfacing to the operating
  system when working with sockets.
  Operating system limits concerning the number of open files, or number
@@ -4474,7 +4453,7 @@ Is this the proper way to day the dispatcher greets connecting players?
  more in detail in chapter 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "cha:Problems-of-implementation"
+reference "sec:Operating-system-limitations"
 
 \end_inset
 
@@ -4491,9 +4470,9 @@ Should the dispatcher module fail to function, no new connections to the
  this window is the GGS unable to process new connection requests.
  Due to the modular structure of the GGS, the rest of the system is not
  harmed by the dispatcher process not functioning.
- The process does not contain a state, therefore a simple restart of the
- process is sufficient in restoring the GGS to a pristine state after a
- dispatcher crash
+ The dispatcher process does not contain a state, therefore a simple restart
+ of the process is sufficient in restoring the GGS to a pristine state after
+ a dispatcher crash
 \begin_inset Note Note
 status open
 
@@ -4513,7 +4492,7 @@ Returning to scenario of the chess club, the dispatcher module is the doorman
  When a player enters the chess club, the player is greeted by the doorman,
  letting the player in to the club.
  The actual letting in to the club is in the GGS represented by the creation
- of a player process discussed in 
+ of a player process discussed in section 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sub:The-player-module"
@@ -6196,6 +6175,13 @@ To the left normal execution is pictured; the server state is backed up.
 
 \begin_layout Subsection
 Hot code replacement
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Hot-code-replacement"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7280,6 +7266,30 @@ The use of Thrift, Google protocol buffers - which is a different approach
  easily by developing protocol modules for each the protocols.
  No protocol modules for these protocols have however been developed during
  the writing of this thesis.
+\end_layout
+
+\begin_layout Section
+Operating system limitations
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Operating-system-limitations"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Describe file and socket limitations
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
