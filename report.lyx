@@ -4939,30 +4939,29 @@ The game virtual machine module
 \end_layout
 
 \begin_layout Standard
-This module holds the game logic of a game and is responsible for the VM
- associated with each game.
+This module is responsible for the VM associated with each game.
  
 \end_layout
 
 \begin_layout Standard
-The game VM contains the state of the VM and a table token associated with
- a running game.
- The game VM is started by the table module.
+The game VM contains a connection to the GDL VM and a table token associated
+ with a running game.
+ The game VM is started by the table module during its initialisation.
  The table module hands over a token used for identification to the game
- VM during initialization.
- During initialization a new VM instance and various objects associated
- to the VM instance are created.
- Callbacks to Erlang are registered into the VM and the source code of a
- game is loaded into the VM, finally the game is ready for startup.
- The only means for a game to communicate with the VM is through usage of
- a provided interface.
+ VM during the initialization.
+ During the initialization a new GDL VM instance and various objects associated
+ to the GDL VM instance are created.
+ Callbacks to Erlang are registered into the GDL VM and the source code
+ of a game is loaded into the GDL VM, finally the game is ready for startup.
+ The only means for a game to communicate with the GGS is through usage
+ of a provided interface.
  
 \end_layout
 
 \begin_layout Standard
-The VM itself makes it possible for the game developer to program in the
- programming language covered by the VM.
- In future releases, more game VMs will be added to support more programming
+The GDL VM itself makes it possible for the game developer to program in
+ the programming language covered by the GDL VM.
+ In future releases, more GDL VMs will be added to support more programming
  languages.
  Since the game VM keeps track of the correct table, the game developer
  does not need to take this into consideration when programming a game.
@@ -4986,7 +4985,8 @@ reference "sec:Communication-with-the-GDL-VM"
 \end_layout
 
 \begin_layout Standard
-The code which is run in the VM is uploaded to the GGS prior to each game.
+The code which is run in the GDL VM is uploaded to the GGS prior to each
+ game.
  Allowing the clients to upload code allows clients to run any game.
 \end_layout
 
@@ -5008,12 +5008,18 @@ Game data from all games on the GGS is stored in the database backend of
 
 \begin_layout Standard
 In the GGS prototype the database module is using a database management
- system called Mnesia.
+ system called Mnesia .
  Mnesia ships with the standard Erlang distribution and is a key-value store
  type of database.
- Mnesia is designed to handle the stress of telecoms systems, therefore
- it has some features specifically tailored for telecoms which are not commonly
- found in other databases.
+ Mnesia is designed to handle the stress of telecoms systems
+\begin_inset CommandInset citation
+LatexCommand citet
+key "667766"
+
+\end_inset
+
+, therefore it has some features specifically tailored for telecoms which
+ are not commonly found in other databases.
  Key features of the Mnesia database are:
 \end_layout
 
@@ -5030,16 +5036,6 @@ Fault tolerance
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand citet
-key "667766"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The features of Mnesia originally intended for telecoms prove very useful
  for the GGS as well.
  The fault tolerance and speed of Mnesia are valuable tools, the fast key/value
@@ -5049,8 +5045,8 @@ The features of Mnesia originally intended for telecoms prove very useful
 \begin_layout Standard
 Game data will not be lost when a game is stopped or has gone down for any
  reason.
- This makes it possible to continue a game just before the failure without
- having to start the game from the beginning.
+ This makes it possible to continue a game from the point just before the
+ failure without having to restart the complete game.
  
 \begin_inset ERT
 status open
@@ -5070,7 +5066,7 @@ textbf{Mnesia}}{Database server used in the GGS}
 \end_layout
 
 \begin_layout Standard
-The GGS stores the game state in the distributed Mnesia database, from which
+The GGS stores the game state in the distributed database Mnesia, from which
  the state can be restored in the event of a crash.
 \end_layout
 
@@ -5083,7 +5079,7 @@ world
 \noun default
  and 
 \noun on
-Localstorage
+localStorage
 \noun default
 .
  The 
@@ -5094,13 +5090,13 @@ World
  This sort of game data may change during the runtime of the game.
  The 
 \noun on
-Localstorage
+localStorage
 \noun default
  contains data independent of the game state.
  Game resources, constants and global variables are all examples of data
  that reside within the 
 \noun on
-Localstorage
+localStorage
 \noun default
 .
  To store a value within the database, not only is the table token and the
@@ -5208,8 +5204,12 @@ tt GGS.sendCommandToAll(command, args)}
 
 \emph default
 .
- The localStorage is a convenient way to store global data and other variables
- separated from the game state.
+ The 
+\noun on
+localStorage
+\noun default
+ is a convenient way to store global data and other variables separated
+ from the game state.
  Unique ids called game tokens are generated for hosted games so that they
  are not mixed up.
 \begin_inset ERT
@@ -5750,37 +5750,6 @@ TODO: Go in to more detail about how the world, player and localstorage
  Also discuss localstorage and how it derives from the webstorage standard
  in detail.
  This is a great point on how we try to follow standards.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-My idea here is that we describe the Erlang-js (which failed, but nontheless),
- v8, UUID and other external communication.
- We shouldn't describe sockets here though..
- or..
- maybe?
-\end_layout
-
-\begin_layout Plain Layout
-Also discuss how we allow GDLs to communicate with Erlang, this is 
-\begin_inset Quotes eld
-\end_inset
-
-external
-\begin_inset Quotes erd
-\end_inset
-
- to thre GDL.
- Discuss the GGS world object (there is a reference to this secxtion for
- that purpose)
 \end_layout
 
 \end_inset
