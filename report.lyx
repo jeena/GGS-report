@@ -8109,6 +8109,17 @@ This thesis describes a method to create a reliable and generic game server
 \end_layout
 
 \begin_layout Standard
+To get the server as generic as possible one should not implement any game
+ logic into the server and rather design good API:s for game developers
+ to interact with the server.
+ Furthermore should every game be separated from each other so they do not
+ interfare with each other, this can be done by introducing a own context
+ for each game which leads to the fact that each game runs in its own sandbox.
+ To be able to use different game development languages one should use virtual
+ boxes which would evaluate the game source code safely.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
