@@ -2618,7 +2618,8 @@ Each instance of the GGS contains several so called tables.
  represented as a player standing up from her current table and sitting
  down at a new table, all within the same game session.
  Therefore the main focus of the GGS is not to move players among tables,
- but to keep a player by one table, and to start new tables if needed instead.
+ but to keep a player seated by a table and to start new tables if needed
+ instead.
  When a server reaches a certain number of players the performance will
  start to decrease, or worse, the server may even crash.
  To avoid this the GGS will start new tables on another server, using this
