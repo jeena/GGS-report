@@ -3170,14 +3170,14 @@ The GGS only supports languages running in a sandboxed environment.
  Each game session is started in its own sandbox.
  The sandboxing isolates the games in such a way that they cannot interfere
  with each other.
- If sandboxing was not in place, one game could potentially modify the contents
- of a different game.
+ If sandboxing would not have been in place, one game could potentially
+ modify the contents of a different game.
  A similar approach is taken with the persistent storage provided by the
  GGS.
  In the storage each game has its own namespace, much like a table in a
  relational database.
- A game is not allowed to venture outside this namespace, and can because
- this not modify the persistent data of other games.
+ A game is not allowed to venture outside this namespace and can, because
+ of that, not modify the persistent data of other games.
  
 \begin_inset ERT
 status open
