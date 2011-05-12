@@ -4115,8 +4115,8 @@ Short introduction to the Erlang syntax
 \end_layout
 
 \begin_layout Standard
-In order to understand examples in this thesis, a small subset of Erlang
- must be understood.
+To understand the examples in this thesis, a small subset of Erlang must
+ be understood.
  In this section, the very syntactic basics of Erlang are given.
 \end_layout
 
@@ -4333,7 +4333,7 @@ name "sec:The-modular-structure"
 \end_layout
 
 \begin_layout Standard
-The separation of concerns, and principle of single responsibility 
+The separation of concerns and principle of single responsibility 
 \begin_inset Foot
 status open
 
@@ -4352,8 +4352,8 @@ target "http://www.objectmentor.com/resources/articles/srp.pdf"
 
  are widely respected as good practices in the world of software engineering
  and development.
- By dividing the GGS up into modules each part of the GGS can be modified
- without damaging the rest of the system.
+ By dividing the GGS into modules each part of the GGS can be modified without
+ damaging the rest of the system.
 \end_layout
 
 \begin_layout Standard
@@ -4407,7 +4407,7 @@ The dispatcher module
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The discussion of the modules is divided into the following parts:
@@ -4448,7 +4448,7 @@ Is this the proper way to day the dispatcher greets connecting players?
  system when working with sockets.
  Operating system limits concerning the number of open files, or number
  of open sockets are handled here.
- The operating system limits can impose problems on the GGS, this is discussed
+ The operating system limits can impose problems in the GGS, this is discussed
  more in detail in chapter 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -4460,7 +4460,7 @@ reference "cha:Problems-of-implementation"
 \end_layout
 
 \begin_layout Standard
-Should the dispatcher module fail to function, no new connections to the
+Should the dispatcher module fails to function, no new connections to the
  GGS can be made.
  In the event of a crash in the dispatcher module, a supervisor process
  immediately restarts the dispatcher.
@@ -4486,8 +4486,8 @@ Well..
 \end_layout
 
 \begin_layout Standard
-Returning to scenario of the chess club, the dispatcher module is the doorman
- of the club.
+Returning to the scenario of the chess club, the dispatcher module is the
+ doorman of the club.
  When a player enters the chess club, the player is greeted by the doorman,
  letting the player in to the club.
  The actual letting in to the club is in the GGS represented by the creation
@@ -4499,8 +4499,8 @@ reference "sub:The-player-module"
 \end_inset
 
 .
- The newly created player process is handed, and granted rights to, the
- socket of the newly connected player.
+ The newly created player process is handed and granted rights to, the socket
+ of the newly connected player.
 \end_layout
 
 \begin_layout Subsection
@@ -4519,8 +4519,8 @@ The player module is responsible for representing a player in the system.
  Each connected player has its own player process.
  The player process has access to the connection of the player it represents,
  and can communicate with this player.
- In order to communicate with a player, the data to and from the player
- object must pass through a protocol parser module, discussed in 
+ To communicate with a player, the data to and from the player object must
+ pass through a protocol parser module, discussed in 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sub:The-protocol-parser"
@@ -4529,7 +4529,7 @@ reference "sub:The-protocol-parser"
 
 .
  Raw communication, without passing the data through a protocol parser is
- in theory possible, but is not useful.
+ in theory possible but it is not useful.
 \end_layout
 
 \begin_layout Standard
@@ -4572,9 +4572,9 @@ The player process resumes operation, immediately starting a new protocol
 \begin_layout Standard
 The window of time between the crash of the player process and the starting
  of a new player process is, as with the dispatcher, very short.
- Since the connection changes owners for a short period of time, but is
- never dropped, the implications of a crash are only noticed, at worst,
- as choppy gameplay for the client.
+ Since the connection changes owners for a short period of time but is never
+ dropped, the implications of a crash is only noticed, at worst, as choppy
+ gameplay for the client.
  Note however that this crash recovery scheme is not implemented in the
  GGS prototype.
  
@@ -4591,8 +4591,8 @@ Can we do this..? Seems a bit sneaky.
 \end_layout
 
 \begin_layout Standard
-Moving back to the real world example, the player process represent an actual
- person in the chess club.
+Moving back to the real world example, the player process represents an
+ actual person in the chess club.
  When a person sits down at a table in the chess club, the person does so
  by requesting a seat from some coordinating person, and is then seated
  by the same coordinator.
@@ -4615,16 +4615,15 @@ name "sub:The-protocol-parser"
 \begin_layout Standard
 The protocol parser is an easily interchangeable module in the GGS, handling
  the client-to-server, and server-to-client protocol parsing.
- In the GGS prototype, there is only one protocol supported, namely the
- 
+ In the GGS prototype, there is only one protocol supported, the 
 \emph on
 GGS Protocol
 \emph default
 .
  The role of the protocol parser is to translate the meaning of packets
- sent using the protocol in use to internal messages of the GGS system.
- The GGS protocol, discussed below is used as a sample protocol in order
- to explain how protocol parsers can be built for the GGS.
+ sent, using the protocol in use, to internal messages of the GGS system.
+ The GGS protocol, discussed below is used as a sample protocol to explain
+ how protocol parsers can be built for the GGS.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4642,16 +4641,16 @@ name "sub:The-structure-of"
 The GGS protocol is modeled after the HTTP protocol.
  The main reason for this is the familiarity many developers already have
  with HTTP due to its presence in internet software.
- Each GGS protocol packet contains a headers section.
- The headers section is followed by a data section.
- In the headers section, parameters concerning the packet is placed.
+ Each GGS protocol packet contains a header section.
+ The header section is followed by a data section.
+ In the header section, parameters concerning the packet is placed.
  In the data section, the actual data payload of the packet is placed.
 \end_layout
 
 \begin_layout Standard
-There is no requirement of any specific order of the parameters in the headers
+There is no requirement of any specific order of the parameters in the header
  section, however the data section must always follow directly after the
- headers section.
+ header section.
 \end_layout
 
 \begin_layout Standard
@@ -4665,10 +4664,10 @@ In the example below, line 1 contains a Game-Command parameter.
 Line 2 specifies a game token.
  This is a UUID which is generated for each client upon authentication with
  the GGS.
- The GGS uses this token in case a client is disconnected and the new connection
+ The GGS uses this token if a client is disconnected and the new connection
  created when the client reconnects must be re-paired with the player object
  inside the GGS.
- The UUID is also used as a unique ID within GDL VMs.
+ The UUID is also used as an unique ID within GDL VMs.
 \end_layout
 
 \begin_layout Standard
@@ -4683,14 +4682,14 @@ Line 3 specifies the content type of the payload of this particular packet.
 
 \begin_layout Standard
 Line 4 specifies the content length of the payload following immediately
- after the headers section.
+ after the header section.
 \end_layout
 
 \begin_layout Standard
 The parser of the GGS protocol implemented in the GGS prototype is designed
  as a finite state machine using the gen_fsm behavior.
  When a full message has been parsed by the parser, the message is converted
- into the internal structure of the GGS messages, and sent in to the system
+ into the internal structure of the GGS messages and sent in to the system
  from the protocol parser using message passing.
 \end_layout
 
