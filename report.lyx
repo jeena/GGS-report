@@ -3749,8 +3749,8 @@ name "sec:The-usage-of-erlang"
 \end_layout
 
 \begin_layout Standard
-Erlang was designed by Ericsson, beginning in 1986, for the purpose of creating
- concurrent applications and improving telecom software.
+Erlang was designed by Ericsson, beginning in 1986, for creating concurrent
+ applications and improving telecom software.
  Features essential for the telecom industry to achieve high availability
  in telecom switches were added to the language.
 \begin_inset ERT
@@ -3762,7 +3762,7 @@ status open
 \backslash
 nomenclature{
 \backslash
-textbf{Mutex}}{A construct for achieving mutial exclusion, used to avoid
+textbf{Mutex}}{A construct for achieving mutual exclusion, used to avoid
  simultaneous access to shared resources in computer systems}
 \end_layout
 
@@ -3807,10 +3807,10 @@ Processes in Erlang are also called
 Light Weight Processes.
  
 \emph default
-The Erlang processes are very cheaply created.
+The Erlang processes are inexpensive to create.
  Processes exist within an Erlang machine, or Erlang node.
  The Erlang machine has its own scheduler and does not rely on the operating
- system's scheduler, this is a main reason of Erlang's capability of running
+ system's scheduler, this is one main reason of Erlang's capability of running
  many concurrent processes 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -3830,12 +3830,12 @@ The strong isolation of Erlang processes make them ideal for multi-core
  which computer the process runs on, is not important when communicating
  with the process.
  Processes can communicate regardless of whether they run on the same system
- of not, transparently.
+ or not, transparently.
 \end_layout
 
 \begin_layout Standard
-The distributed nature of Erlang is something the GGS makes use of when
- scaling across several computers in order to achieve higher performance.
+The distributed nature of Erlang is something the GGS makes use of, when
+ scaling across several computers to achieve higher performance.
  The distribution is also important in creating redundancy.
  Erlang promotes a non-defensive programming style in which processes are
  allowed to crash and be restarted in favor of having the processes recover
@@ -3868,10 +3868,10 @@ s (Native implemented functions)
 .
 
 \emph default
- Through ports communication can take place much in the same way communication
+ Through ports communication can take place in a similar way communication
  is performed over sockets.
  NIFs are called like any other functions without any difference to the
- caller but are implemented in C.
+ caller but they are implemented in C.
 \end_layout
 
 \begin_layout Standard
@@ -3954,7 +3954,7 @@ behaviors
 \begin_layout Standard
 The GGS makes heavy use of the behaviors supplied in the OTP.
  The behaviors impose a programming style suitable for distributed and concurren
-t applications, perfectly suitable for the GGS.
+t applications.
  In particular, the GGS uses the following behaviors:
 \end_layout
 
@@ -3967,7 +3967,7 @@ supervisor
  Supervisors are used when monitoring processes in the Erlang system.
  When a process exits wrongfully, the supervisor monitoring the process
  in question decides which action to take.
- In the GGS, the most common action is simply to restart the faulting process.
+ In the GGS, the most common action is to restart the faulting process.
  A more thorough discussion on supervisors can be found in section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3999,8 +3999,8 @@ gen_server
  increasing the usefulness of the server process.
  There are many gen_servers in the GGS, it is the most widely used behavior
  in the project.
- In addition to introducing a state to the server, the gen_server behavior
- also imposes patterns for synchronous and asynchronous communication between
+ Besides introducing a state to the server, the gen_server behavior also
+ imposes patterns for synchronous and asynchronous communication between
  other gen_servers and other OTP behaviors.
 \end_layout
 
@@ -4016,8 +4016,8 @@ gen_fsm
 \end_layout
 
 \begin_layout Standard
-In addition to supplying behaviors, the OTP also has a style for packaging
- and running Erlang applications.
+Besides supplying behaviors, the OTP also has a style for packaging and
+ running Erlang applications.
  By packaging the GGS as an 
 \emph on
 application 
@@ -4034,7 +4034,7 @@ status open
 \backslash
 nomenclature{
 \backslash
-textbf{Application}}{A way of packaging Erlang software in a uniform way}
+textbf{Application}}{A way of packaging Erlang software in an uniform way}
 \end_layout
 
 \end_inset
