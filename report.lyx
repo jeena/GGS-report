@@ -662,7 +662,14 @@ textbf{Software failiure}}{A failiure in software (the GGS, the operating
 \end_layout
 
 \begin_layout Section
-Background 
+Background
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Background"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2071,13 +2078,17 @@ reference "cha:Implementation-of-a"
 .
 \end_layout
 
-\begin_layout Subsection
-Performance measurements
-\end_layout
-
 \begin_layout Standard
 \begin_inset Note Note
 status open
+
+\begin_layout Plain Layout
+Performance measurements
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \begin_layout Plain Layout
 Tue apr 26, 9:15.
@@ -2407,8 +2418,8 @@ The need for fault tolerance in game servers is not as obvious as it may
  be for other type of servers.
  In general all servers strive to be fault tolerant as fault tolerance means
  more uptime and a safer system.
- This applies to game servers as well, briefly good fault tolerance is a
- way of satisfying customers.
+ This applies to game servers as well, good fault tolerance is a way of
+ satisfying customers.
  In general, game servers differ from many other fault tolerant systems
  in that high-availability is more important than the safety of the system.
  For example a simple calculation error will not be critical for a game
@@ -2416,10 +2427,6 @@ The need for fault tolerance in game servers is not as obvious as it may
  the system crashes than works with the faulty data.
  There are cases where safety may be critical in game servers, one example
  is in games where in-game money exist.
-\end_layout
-
-\begin_layout Subsubsection
-Performance penalties
 \end_layout
 
 \begin_layout Section
@@ -2435,18 +2442,32 @@ name "sec:Availability"
 
 \begin_layout Standard
 One important factor of any server is the availability.
- A server to which you are unable to connect to is an useless server.
- Other then within telecommunication, their uptime is of about 99,9999999%,
- the game developer community has not approached this problem very genuinely
- yet so there is much room for improvement.
+ A server which is unreachable is an useless server.
+ 
+\end_layout
+
+\begin_layout Standard
+Within the telecom sector high availability has been achieved 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "armstrong2011"
+
+\end_inset
+
+.
+ In the game development sector however the lack of high availability problem
+ has not yet been solved.
 \end_layout
 
 \begin_layout Standard
 There are several good papers on how to migrate whole virtual machines among
  nodes to replicate them but for the GGS a different approach has been chosen.
- Instead of just duplicating a virtual machine, the programming language
- Erlang has been used which offers several features to increase the availability.
- Some of them are 
+ Instead of duplicating a virtual machine, an attempt to lift the state
+ of the VM to a storage external to the VM is made.
+ The state is stored in a fast, fault tolerant data store instead of inside
+ the VM.
+ In addition to migrating the state of the game VM, the GGS uses tools from
+ the OTP, some of them are 
 \emph on
 hot code replacement
 \emph default
@@ -2495,7 +2516,7 @@ name "sec:Scalability"
 
 \begin_layout Standard
 Each instance of the GGS contains several tables.
- Each table is an isolated instance of a game, for example a chess game
+ Each table is an isolated instance of a game, for instance a chess game
  or a poker game.
  The way that the GGS scales is to distribute these tables on different
  servers.
@@ -2506,11 +2527,11 @@ Each instance of the GGS contains several tables.
  down at a new table, all within the same game session.
  Therefore, the main focus of the GGS is not to move players among tables,
  but to keep a player in a table, and to start new tables instead.
- When a server has reached a certain number of players the performance will
- start to decrease.
+ When a server reaches a certain number of players the performance will
+ start to decrease, or worse, the server may even crash.
  To avoid this the GGS will start new tables on another server, using this
  technique the players will be close to evenly distributed among the servers.
- It is important to investigate and find out how many players that are optimal
+ It is important to investigate and find out how many players are optimal
  for each server.
  This approach makes it possible to use all resources with moderate load,
  instead of having some resources with heavy load and some with almost no
@@ -2518,16 +2539,23 @@ Each instance of the GGS contains several tables.
 \end_layout
 
 \begin_layout Standard
-As mentioned in the purpose section there are two different types of scalability
-, structural scalability and load scalability.
+As mentioned in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Background"
+
+\end_inset
+
+ there are two different types of scalability, structural scalability and
+ load scalability.
  To make the GGS scalable both types of scalability are needed.
  Structural scalability means in our case that it should be possible to
  add more servers to an existing cluster of servers.
  By adding more servers the limits of how many users a system can have is
  increased.
  Load scalability in contrast to structural scalability is not about how
- to increase the actual limits of the system.
- Instead it means how good the system handles increased load.
+ to increase the actual limits of the system, rather it means how good the
+ system handles increased load.
  The GGS should be able to scale well in both categories.
 \end_layout
 
@@ -2538,12 +2566,11 @@ Load balancing
 \begin_layout Standard
 The need for load balancing varies among different kind of systems.
  Small systems that only use one or a couple of servers can cope with a
- simple implementation of it, while in large systems it is critical to have
- extensive and well working load balancing.
- The need also depends on what kind of server structure that the system
- works on.
- A static structure where the number of servers are predefined or a dynamic
- structure where the number varies.
+ simple implementation of load balancing, while in large systems it is useful
+ to have extensive and well working load balancing.
+ The need also depends on what kind of server structure the system works
+ on, a static structure where the number of servers are predefined or a
+ dynamic structure where the number varies.
 \begin_inset ERT
 status open
 
@@ -2562,7 +2589,7 @@ textbf{Amazon EC2}}{A cloud computation service}
 \end_layout
 
 \begin_layout Standard
-Load balancing and scaling is difficult in different scenarios.
+Load balancing and scaling are difficult in different scenarios.
  When running in a separate server park, there are a set number of servers
  available, this means that an even distribution on all servers is preferable.
  When running the GGS in a cloud, such as Amazon EC2, it is possible to
@@ -2594,7 +2621,7 @@ How do we distribute load on these new servers?
 \begin_layout Standard
 Load balancing is a key component to achieve scalability in network systems.
  The GGS is a good example of a system that needs to be scalable, to attain
- this load balancing is necessary.
+ this, load balancing is necessary.
  Optimization of the load balancing for a system is an important task to
  provide a stable and fast load balancer.
  There are certain persistence problems that can occur with load balancing,
@@ -3115,10 +3142,6 @@ textbf{Sandbox}}{A protected environment in which computer software can
 
 \end_layout
 
-\begin_layout Subsection
-Encryption
-\end_layout
-
 \begin_layout Section
 Game Development Language in a Virtual Machine
 \begin_inset CommandInset label
@@ -3542,11 +3565,11 @@ The GGS is intended to be used for powering games which have many concurrent
 \end_layout
 
 \begin_layout Standard
-When developing the GGS, two main categories of games exhibitinThere is
- only a very limited number of game developers who would like to write their
- games in Erlang, therefore we had to come up with something to resolve
- this problem.
- The main idea was to offer a replacable module which would introduce a
+When developing the GGS, two main categories of games exhibit in.
+ There is only a very limited number of game developers who would like to
+ write their games in Erlang, therefore we had to come up with something
+ to resolve this problem.
+ The main idea was to offer a replacable module which would introduce an
  interface to different virtual machines which would run the game code.
  This way a game developer can write the game in his favourite language
  while the server part still is written in Erlang and can benefit from all
@@ -6159,11 +6182,79 @@ name "sub:Supervisor-structure"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-This entire section is bad.
+We should really do this graphic in EPS instead of PNG
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename graphics/Supervisor_tree_GGS.eps
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The supervisor structure of GGS
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6243,81 +6334,6 @@ too many
  times, we restart the nearest supervisor of this child.
  This ensures separation of the subsystems so that a crash is as isolated
  as possible.
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-We should really do this graphic in EPS instead of PNG
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename graphics/Supervisor_tree_GGS.eps
-	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-The supervisor structure of GGS
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -6459,6 +6475,144 @@ Hot code replacement is a technique used to update systems while they are
  as possible and thus improving the reliability of the system.
  Code replacement is a feature that exist in Erlang which means that with
  some work it could be implemented into the GGS.
+\end_layout
+
+\begin_layout Section
+Software testing
+\end_layout
+
+\begin_layout Standard
+In order to make sure the GGS prototype adheres to the specification set
+ two different approaches to software testing are used.
+ For simpler testing the GGS prototype uses unit tests.
+ Modules are tested on a high level, making sure each function in the module
+ tested functiions according to specification.
+\end_layout
+
+\begin_layout Standard
+Unit testing is not employed to test the system from the client side.
+ In order to more accurately simulate real users some randomization is needed
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+citation needed
+\end_layout
+
+\end_inset
+
+, as users do not always act rationally.
+ In order to introduce random data, the client side of the GGS is simulated
+ by QuickCheck tests.
+\end_layout
+
+\begin_layout Subsection
+Unit testing
+\end_layout
+
+\begin_layout Standard
+Unit testing is a way to check if the functionality adheres to the specification
+ of the system by manually creating test cases for sections of code.
+ In most cases whole functions.
+ Unit testing is good, not only for revealing software bugs, but also to
+ state that a feature is working according to the specification.
+ Unit testing is a common way to test software and has proven useful within
+ the GGS when functions take complicated arguments.
+ In these cases it is easy to set up a scenario that should work.
+ 
+\end_layout
+
+\begin_layout Standard
+Unit testing is a useful way to create regression tests.
+ Regression tests are used to make sure changes made to the GGS do not introduce
+ new bugs or break the specification.
+ The regression tests are optimally run very often, such as after each change
+ to the code.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Erlang provides a module for unit testing called eunit.
+ Eunit, being a part of OTP, is rich in functionality and well documented
+ yet it doesn't allow any means of testing asynchronous behaviours as opposed
+ to other means of software testing.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Automated test case generation
+\end_layout
+
+\begin_layout Standard
+The problem of writing software tests manually, is that it takes a lot of
+ time.
+ There exists other ways to test software that address this problem by generatin
+g test cases with certain properties.
+ This allows for testing functions with a lot of different input parameters
+ without having to implement each specific test itself.
+ 
+\end_layout
+
+\begin_layout Standard
+By having each test automatically generated, each test can be very complex
+ and long.
+ In order to generate random, complex tests the GGS uses QuickCheck.
+ By using QuickCheck the GGS can be tested with input which would be extremely
+ difficult to construct using manual testing methods.
+ Regression tests, such as the unit tests used by the GGS are more useful
+ for ensuring the system does not diverge from a working scenario than for
+ finding new cases where the specification does not hold 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Arts:2006:TTS:1159789.1159792"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The entire GGS was not tested using QuickCheck, nor was the entire client
+ protocol for a game tested using QuickCheck, however the tests performed
+ using QuickCheck show that an automated testing system such as QuickCheck
+ is a very viable testing method for the GGS.
+\end_layout
+
+\begin_layout Standard
+QuickCheck has features to generate very large and complex tests, the results
+ of which can be hard to analyze.
+ The solution to reading these complex test is to extract a 
+\emph on
+minimal failing test case
+\emph default
+ which contains the smalles failing test sequence.
+ By applying a very large test and gradually simplifying the test to find
+ the smallest failing sequence, many bugs which would other wise have been
+ hard to catch can be caught 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Arts:2006:TTS:1159789.1159792"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+QuickCheck was originally made for the programming language Haskell.
+ There are a lot of reimplementations of QuickCheck in various programming
+ languages.
+ Erlang QuickCheck (EQC) and Triq are two variants of QuickCheck for Erlang.
+ EQC was chosen for testing the GGS.
+ Besides the standard functionality that QuickCheck provides, EQC is capable
+ of testing concurrency within a program.
 \end_layout
 
 \begin_layout Section
@@ -7409,8 +7563,7 @@ name "chap:Results-and-discussion"
 
 \begin_layout Standard
 In this chapter the results of the GGS prototype are presented and discussed.
- The results of the testing are presented with both graphical and textual
- content.
+ The results of the ing are presented with both graphical and textual content.
  Finally thoughts about how future improvements to the prototype could look
  like are given.
 \end_layout
@@ -7838,6 +7991,15 @@ Distribution was however not implemented in the GGS.
 
 \begin_layout Subsection
 Performance
+\end_layout
+
+\begin_layout Standard
+The GGS prototype was not developed for maximum performance.
+ Performance optimizations were considered, many were however not implemented
+ in the prorotype.
+ There are several performance optimizations which can be included in future
+ versions of the GGS, below are some of the most important performance optimizat
+ions identified.
 \end_layout
 
 \begin_layout Subsubsection
