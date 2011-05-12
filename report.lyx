@@ -7386,9 +7386,9 @@ erlang_js
 \end_layout
 
 \begin_layout Standard
-erlang_js provides direct communication with the JavaScript VM.
- Which is exactly what is desired, however also required is the possibility
- to communicate from JavaScript to Erlang.
+erlang_js provides direct communication with the JavaScript VM, which is
+ exactly what is desired, however also required is the possibility to communicat
+e from JavaScript to Erlang.
  The ability to communicate from JavaScript to Erlang is not yet implemented
  in erlang_js, due to lack of time of the erlang_js developers.
 \end_layout
