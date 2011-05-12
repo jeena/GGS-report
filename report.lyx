@@ -6405,8 +6405,8 @@ The player process, which is coupled to the TCP-process which reacts on
 
 \begin_layout Enumerate
 The protocol parser process parses the message and brings it into the format
- of the internal GGS presentation of such a message, which is just a specialized
- Erlang tuple.
+ of the internal GGS representation of such a message, which is just a specializ
+ed Erlang tuple.
 \end_layout
 
 \begin_layout Enumerate
@@ -6421,7 +6421,7 @@ d.
 \end_layout
 
 \begin_layout Enumerate
-The table process sends it to its own Game VM process.
+The table process sends it to its own game VM process.
 \end_layout
 
 \begin_layout Enumerate
@@ -6435,21 +6435,20 @@ status open
 
 {
 \backslash
-tt playerCommand(278d5 ..
- 49, nick, Peter)}
+tt playerCommand("278d5", "nick", "Peter")}
 \end_layout
 
 \end_inset
 
 
 \emph default
- within the JavaScript VM.
+ within the JavaScript VM (JSVM).
 \end_layout
 
 \begin_layout Enumerate
-The JavaScript VM (JSVM) - at this stage Googles V8 JavaScript Engine -
- evaluates the function within the sandboxed game context which has been
- established earlier during the setup of the game.
+The JSVM - at this stage Googles V8 JavaScript Engine - evaluates the function
+ within the sandboxed game context which has been established earlier during
+ the setup of the game.
 \end_layout
 
 \begin_layout Enumerate
@@ -6599,7 +6598,7 @@ or to att the player process to this table.
 
 \begin_layout Enumerate
 During the creation of a new table the table process creates a new game
- VM process which creates its own game context within the JavaScript VM.
+ VM process which creates its own game context within the JSVM.
 \end_layout
 
 \begin_layout Enumerate
@@ -6619,9 +6618,9 @@ Defining a game
 \begin_layout Standard
 The generic nature of the GGS leaves it up to the client to define which
  game should be run.
- The definition is done in the GDL, in this example, the GDL is JavaScript.
+ The definition is done in the GDL, in this example the GDL is JavaScript.
  It is possible to alter the GGS prototype so that only the server maintainer
- is able to install new games on the server however the current implementation
+ is able to install new games on the server, however the current implementation
  of the GGS is much more generic.
 \end_layout
 
@@ -6645,7 +6644,7 @@ hello
 \noun on
 define
 \noun default
- Server-Command message with the source code as its parameter.
+ Server-Command message with the source code as its payload.
  Only the first client will get the information about the need of defining
  a game during the handshake.
 \end_layout
@@ -6763,8 +6762,8 @@ name "sec:Example-of-a-GGS-app"
 \end_layout
 
 \begin_layout Standard
-Below is a concrete example of a simple chat server application written
- using the GGS.
+Below is a concrete example of part of a game, a simple in-game-chat server
+ application written using the GGS.
  The language chosen for this chat server is JavaScript.
  The GGS processes all incoming data through a protocol parser, which interprets
  the data and parses it into an internal format for the GGS.
@@ -6889,12 +6888,12 @@ tt playerCommand}
 \emph default
  function accepts two different commands.
  The first command is a command which allows chat clients connected to the
- chat server to change nicknames, which are used when chatting.
+ chat server to change the nicknames, which are used when chatting.
  In order to change the nickname, a client must send a Game-Command 
 \noun on
 nick
 \noun default
- with the actual new nick name as a argument.
+ with the actual new nick name as its payload.
  When a message arrives to the GGS which has the form corresponding to the
  nick name change, the 
 \emph on
@@ -6942,7 +6941,7 @@ tt playerCommand}
 
 
 \emph default
- function is responsible for calling the helper functions responsibly for
+ function is responsible for calling the helper functions responsible for
  carrying out the actions of each message received.
  
 \emph on
@@ -6983,7 +6982,11 @@ tt changeNick}
 
  
 \emph default
-function uses a feature of the GGS called localstorage (see section 
+function uses a feature of the GGS called 
+\noun on
+localStorage
+\noun default
+ (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Communication-with-the-GDL-VM"
@@ -7253,7 +7256,7 @@ name "alg:A-concrete-example"
 \end_inset
 
 A concrete example of a simple chat server written in JavaScript, running
- on the GGS
+ on the GGS.
 \end_layout
 
 \end_inset
