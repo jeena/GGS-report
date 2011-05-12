@@ -427,7 +427,7 @@ Since these early games, the gaming industry have become much more influential
  the computer game industry.
  More powerful games require more powerful, and more easily available hardware
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Drop a reference to the gaming industry pressuring more advanced hardware
@@ -455,8 +455,8 @@ Due to the increasing importance of computer gaming, more focus should be
  spent on improving the quality of the gaming service.
  As more and more computer games are gaining multiplayer capabilities, the
  demands for multiplayer networking software rises.
- This thesis is about techniques for improving the quality of this networking
- software.
+ The topic of this thesis is techniques for improving the quality of this
+ networking software.
 \end_layout
 
 \begin_layout Standard
@@ -612,7 +612,7 @@ generic
  The framework is generic in the sense that it is not bound to a specific
  game.
  There are many different types of games, some are inherently more time
- sensitive than others, strategy games are examples of games which are not
+ sensitive than others Strategy games are examples of games which are not
  very sensitive to time delays, first-person shooters however, can be very
  sensitive.
 \end_layout
@@ -675,8 +675,8 @@ name "sec:Background"
 \begin_layout Standard
 The game industry is a quickly growing industry with high revenues and many
  clever computer scientists.
- Strangely enough their customers often experience long downtimes due to
- maintaining or because of problems with the servers 
+ Strangely enough gamers often experience long downtimes due to maintaining
+ or because of problems with the servers 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "news/cnet/com/WoWProblems"
@@ -752,17 +752,17 @@ key "Armstrong03"
  An unavailable phone system could potentially have life threatening consequence
 s, leaving the public unable to contact emergency services.
  The same cannot be said about an unavailable game server.
- The statement that game servers are less important than phone systems are
+ The statement that game servers are less important than phone systems is
  not a reason not to draw wisdom from what the telecoms have already learned.
 \end_layout
 
 \begin_layout Standard
 Moving back to the gaming industry.
- The main reason to develop reliable servers is a higher revenue, do archive
+ The main reason to develop reliable servers is a higher revenue, to achive
  this it is important for game companies to expand their customer base.
  Reliable game servers will create a good image of the company.
  In general the downtime of game servers is much higher than the downtime
- of telecom systems evenso the overall structure of the systems is similar
+ of telecom systems even so the overall structure of the systems is similar
  in many ways.
  It should be possible to learn and reuse solutions from the telecom systems
  to improve game servers.
@@ -771,13 +771,13 @@ Moving back to the gaming industry.
 
 \begin_layout Standard
 In the current state game servers are developed on a per-game basis, often
- this seems like a bad solution.
+ this seems like bad practice.
  Developers of multiplayer games need to understand network programming,
- which above all be a problem for small companies and indipendent game developer
-s who often lack expertise in that field.
- A way to help them in the competition would be to offer a generic game
- server which gives them a environment in which they can implement their
- game in.
+ which can be a problem for small companies and independent game developers
+ who often lack expertise in that field.
+ A way to help game developers in developign servers would be to offer a
+ generic game server which gives developers an environment in which they
+ can implement their game.
  This approach would not only make it easier to develop network games, it
  would also allow games in different programming languages to be implemented
  using the same server.
@@ -785,7 +785,7 @@ s who often lack expertise in that field.
 
 \begin_layout Standard
 Some key factors to the development of the GGS have been isolated.
- Many of these are found in the telecom sector too.
+ Many of these are also found in the telecom sector.
  The factors are 
 \emph on
 scalability, fault tolerance 
@@ -849,7 +849,7 @@ dependability
  even in the presence of errors.
  The specification could define error handling procedures which activate
  when an error occurs.
- This means that a fault tolerant, dependable system, will have a very high
+ This means that a fault tolerant, dependable system will have a very high
  probability of functioning at a given point in time, and is exactly what
  is desired.
  
@@ -878,10 +878,13 @@ reference "sec:Generic"
 
 \begin_layout Standard
 The server behaves in a way similar to an application server, but is designed
- to help running games.
+ to help running games instead pf typical applications.
  An application server provides processing ability and time, therefore it
  is different from a file- or print-server, which only serves resources
  to the clients.
+ In order to more easily understand the purpose of the GGS, it can be of
+ use to briefly think of application servers, thereafter viewing the differences
+ between the GGS and application servers.
 \end_layout
 
 \begin_layout Standard
@@ -990,14 +993,33 @@ textbf{Erlang}}{A concurrent programming language, often used for telecom
 A database server can also be seen as an application server.
  Scripts, for example SQL queries or JavaScript, are sent to the server,
  which runs them and returns the evaluated data to the clients.
- 
 \end_layout
 
 \begin_layout Standard
-One purpose of this thesis is to investigate how one could make a game server
- as generic as possible.
- Some important helpers are discussed, such as abstraction of the network
- layer, data store and game specific features.
+The difference between the application servers and database servers described
+ and the GGS is the purpose of the servers.
+ Application servers were developed to run applications, often web applications.
+ The application servers offer appealing features for application developers,
+ which aid these developers in writing applications.
+ Database servers were developed in order to provide access to and allow
+ programming of databases, thus having features specifically tailored for
+ database development.
+\end_layout
+
+\begin_layout Standard
+The GGS on the other hand offers features appealing to game developers.
+ While it would be technically possible to write both regular applications
+ and database software using the GGS, this is not the intended usage of
+ the server, and this is how the GGS differs from other kinds of application
+ servers.
+\end_layout
+
+\begin_layout Standard
+To allow the development of different games, the game server developed need
+ to be generic, therefore one purpose of this thesis is to investigate how
+ one could make a game server as generic as possible.
+ Some important helpers for game developers are discussed, such as abstraction
+ of the network layer, data store and game specific features.
  
 \end_layout
 
@@ -1139,14 +1161,14 @@ How easy it is to send messages from the GDL VM to the GGS?
 \end_layout
 
 \begin_layout Itemize
-Is it possible to sandbox every game with a context or something comperable?
+Is it possible to sandbox every game with a context or something comparable?
 \end_layout
 
 \begin_layout Standard
 Internally the GDL VM needs to interface with the GGS to make use of the
  helpers and tools that the GGS provides.
- Thus an internal API has to be designed to make the GDL VM to be able to
- interacti with the GGS.
+ Thus an internal API has to be designed to make the GDL VM be able to interact
+ with the GGS.
  This API is ideally completely independent of the GDL, and reusable for
  any GDL.
 \end_layout
@@ -1172,6 +1194,9 @@ reliable
  is fault tolerant.
  In order to facilitate scalability the GGS needs a storage platform which
  is accessible and consistent.
+ The sclability aspects of the GGS are discussed from a theoretical point
+ of view, however no practical implementation of the scalability aspects
+ are found in the prototype.
 \end_layout
 
 \begin_layout Section
@@ -1182,7 +1207,7 @@ Limitations of the prototype
 The implementation of the GGS protocol together with storage possibilities,
  server capacity, and game language support imposes some limitations on
  the project.
- To get a functional prototype some limits must be set on the types games
+ To get a functional prototype, some limits must be set on the types games
  that can be played on the prototype.
 \begin_inset ERT
 status open
@@ -1293,8 +1318,9 @@ Jeopardy
 \emph default
 .
  Both game types have varying difficulties and needs when it comes to implementi
-ng them, a Generic Game Server should address all of them and help the developer
- to accomplish his goal.
+ng them, a Generic Game Server should address all of these difficulties
+ in order to provide the tools neccessary for the implementation of both
+ game types.
 \end_layout
 
 \begin_layout Standard
@@ -1384,7 +1410,7 @@ In this chapter, the theory behind the techniques used in the GGS are discussed.
  Benchmarking techniques are discussed.
  The options when choosing network protocols are given, along with a discussion
  of each alternative.
- Finally, an overview of scalability, fault tolerance and availability are
+ Finally, an overview of scalability, fault tolerance and availability is
  presented.
 \end_layout
 
@@ -3346,200 +3372,6 @@ environment it is even possible to run nearly every available programming
 \end_layout
 
 \begin_layout Standard
-Due lack of time we have decided to use just the Erlang <-> JavaScrThere
- is only a very limited number of game developers who would like to write
- their games in Erlang, therefore we had to come up with something to resolve
- this problem.
- The main idea was to offer a replacable module which would introduce an
- interface to different virtual machines which would run the game code.
- This way a game developer can write the game in his favorite language while
- the server part still is written in Erlang and can benefit from all of
- its advantages.
-\end_layout
-
-\begin_layout Subsection
-JavaScript
-\end_layout
-
-\begin_layout Standard
-JavaScript has gained a lot of popularity lately, it is used in large projects
- such as 
-\emph on
-Riak
-\emph default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.basho.com/An-Introduction-to-Riak.html
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-, 
-\emph on
-CouchDB
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://couchdb.apache.org
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
- On the popular social coding site 
-\emph on
-GitHub.com
-\emph default
-, 18%
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-during the writing of the thesis the percentage went up to 19% 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://github.com/languages/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- of all code is written in JavaScript.
- The popularity of JavaScript in the programming community, in combination
- with the availability of several different JavaScript virtual machines
- was an important influence in choosing JavaScript as the main control language
- for our GGS prototype.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{CouchDB}}{Database server}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{Riak}}{Database server}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{GitHub.com}}{Social coding website}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{ActionScript}}{Programming language}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{Lua}}{Programming language}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{.NET}}{Software platform}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Other languages
-\end_layout
-
-\begin_layout Standard
-Other languages like 
-\emph on
-lua
-\emph default
-, 
-\emph on
-ActionScript
-\emph default
- are suitable as well because there is a virtual machine for each of them
- which can be 
-\begin_inset Quotes eld
-\end_inset
-
-plugged in
-\begin_inset Quotes erd
-\end_inset
-
- into our GDL VM interface.
- With help of the 
-\emph on
-Java Virtual Machine
-\emph default
- or the 
-\emph on
-.NET 
-\emph default
-environment it is even possible to run nearly every available programming
- language in a sandbox as a GDL.
-\end_layout
-
-\begin_layout Standard
 Due lack of time we have decided to use just the Erlang <-> JavaScript bridge
  with our interface.
 \end_layout
@@ -3564,201 +3396,7 @@ The GGS is intended to be used for powering games which have many concurrent
 \end_layout
 
 \begin_layout Standard
-When developing the GGS, two main categories of games exhibit in.
- There is only a very limited number of game developers who would like to
- write their games in Erlang, therefore we had to come up with something
- to resolve this problem.
- The main idea was to offer a replacable module which would introduce an
- interface to different virtual machines which would run the game code.
- This way a game developer can write the game in his favourite language
- while the server part still is written in Erlang and can benefit from all
- of its advantages.
-\end_layout
-
-\begin_layout Subsection
-JavaScript
-\end_layout
-
-\begin_layout Standard
-JavaScript has gained a lot of popularity lately, it is used in large projects
- such as 
-\emph on
-Riak
-\emph default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.basho.com/An-Introduction-to-Riak.html
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-, 
-\emph on
-CouchDB
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://couchdb.apache.org
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
- On the popular social coding site 
-\emph on
-GitHub.com
-\emph default
-, 18%
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-during the writing of the thesis the percentage went up to 19% 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://github.com/languages/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- of all code is written in JavaScript.
- The popularity of JavaScript in the programming community, in combination
- with the availability of several different JavaScript virtual machines
- was an important influence in choosing JavaScript as the main control language
- for our GGS prototype.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{CouchDB}}{Database server}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{Riak}}{Database server}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{GitHub.com}}{Social coding website}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{ActionScript}}{Programming language}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{Lua}}{Programming language}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-nomenclature{
-\backslash
-textbf{.NET}}{Software platform}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Other languages
-\end_layout
-
-\begin_layout Standard
-Other languages like 
-\emph on
-lua
-\emph default
-, 
-\emph on
-ActionScript
-\emph default
- are suitable as well because there is a virtual machine for each of them
- which can be 
-\begin_inset Quotes eld
-\end_inset
-
-plugged in
-\begin_inset Quotes erd
-\end_inset
-
- into our GDL VM interface.
- With help of the 
-\emph on
-Java Virtual Machine
-\emph default
- or the 
-\emph on
-.NET 
-\emph default
-environment it is even possible to run nearly every available programming
- language in a sandbox as a GDL.
-\end_layout
-
-\begin_layout Standard
-Due lack of time we have decided to use just the Erlang <-> JavaScrg different
+When developing the GGS, two main categories of games exhibiting different
  performance demands were identified; real-time games and turn-based games.
  The real-time games were deemed more demanding than the turn based games.
  Tests were carried out using a real time game, since this is the more demanding
