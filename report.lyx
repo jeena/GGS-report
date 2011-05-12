@@ -5019,7 +5019,7 @@ The VM itself makes it possible for the game developer to program in the
  Since the game VM keeps track of the correct table, the game developer
  does not need to take this into consideration when programming a game.
  If a method within the game sends data to a player, the data is delivered
- to the player in the correct running game.
+ to the player in the correct game.
  The same game token is used to store the game state in the database.
  Therefore, no game states can be mixed up.
 \end_layout
@@ -5038,7 +5038,7 @@ reference "sec:Communication-with-the-GDL-VM"
 \end_layout
 
 \begin_layout Standard
-The code which is run in the VM is uploaded to the GGS prior to each game.
+The code which is run in the VM is uploaded to the GGS before each game.
  Allowing the clients to upload code allows clients to run any game.
 \end_layout
 
@@ -5062,7 +5062,7 @@ Game data from all games on the GGS is stored in the database backend of
 In the GGS prototype the database module is using a database management
  system called Mnesia.
  Mnesia ships with the standard Erlang distribution and is a key-value store
- type database.
+ type of database.
  Mnesia is designed to handle the stress of telecoms systems, therefore
  it has some features specifically tailored for telecoms which are not commonly
  found in other databases.
@@ -5093,9 +5093,9 @@ key "667766"
 
 \begin_layout Standard
 The features of Mnesia originally intended for telecoms prove very useful
- for the purposes of the GGS as well.
- The fault tolerance and speed of Mnesia are very valuable tools, the fast
- key/value lookups permit many lookups per second from the database.
+ for the GGS as well.
+ The fault tolerance and speed of Mnesia are valuable tools, the fast key/value
+ lookups permit many lookups per second from the database.
 \end_layout
 
 \begin_layout Standard
@@ -5156,9 +5156,9 @@ Localstorage
 \noun default
 .
  To store a value within the database, not only is the table token and the
- name of the namespace required, but a unique key so that the value can
+ name of the namespace required, but an unique key so that the value can
  be successfully retrieved or modified later.
- The key is fully decidable by the game developer.
+ The key is decidable by the game developer.
  
 \end_layout
 
@@ -5167,8 +5167,8 @@ The interface of the database module is an implementation of the upcoming
  W3C Web Storage specification.
  Web Storage is intended for use in web browsers, providing a persistent
  storage on the local machine for web applications.
- The storage can be used to communicate in between browser windows (which
- is difficult when using cookies), and to store larger chunks of data 
+ The storage can be used to communicate among browser windows (which is
+ difficult when using cookies), and to store larger chunks of data 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "webstorage:website"
