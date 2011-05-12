@@ -3486,12 +3486,12 @@ reference "cha:Theory"
 
 .
  Here the problems and their solutions are discussed in greater detail,
- and at times the text becomes more specific to GGS.
+ and at times the text becomes more specific to the GGS.
 \end_layout
 
 \begin_layout Standard
-Much of what is discussed in this chapter has been implemented in the Erlang
- GGS prototype.
+Much of what is discussed in this chapter has been implemented in the GGS
+ prototype.
  Specific solutions such as 
 \emph on
 supervisor structures 
@@ -3584,13 +3584,13 @@ textbf{Context switch}}{The act of switching from one context, commonly
 \end_layout
 
 \begin_layout Standard
-The cost of swapping operating system processes becomes a problem when many
+The cost of swapping operating system processes become a problem when many
  processes are involved.
  If the GGS system had been developed using regular operating system processes,
  it would have had to be designed in a way to minimize the number of processes.
  Using Erlang, which is capable of running very many processes, several
- times more than an operating system can, the mapping between the real world
- system (described in 
+ times more than an operating system can, the relation between the real
+ world and the GGS (described in 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sec:Design-of-the"
@@ -3601,7 +3601,7 @@ reference "sec:Design-of-the"
 \end_layout
 
 \begin_layout Standard
-Erlang allows the GGS to create several process for each player connecting,
+Erlang allows the GGS to create several processes for each player connecting,
  these processes can handle a multitude of different tasks, parsing data
  for example.
  Since each task is handled by a different process, the tasks are clearly
@@ -3610,7 +3610,7 @@ Erlang allows the GGS to create several process for each player connecting,
 \end_layout
 
 \begin_layout Standard
-In addition to creating (or 
+Besides creating (or 
 \emph on
 spawning
 \emph default
@@ -3718,11 +3718,11 @@ reference "fig:The-layout-of"
 \end_inset
 
  the entire GGS system is represented graphically.
- The circles marked with 'C' topmost in the picture represent game clients.
+ The circles marked with 'C' topmost in the picture represents game clients.
  These circles represent processes running on gamers computers, and not
  on the GGS machine.
  If a game of chess is to be played on the server, the clients on the gamers
- machines will be chess game clients.
+ machine will be chess game clients.
  Clients connect through a network, pictured as a cloud, to the dispatcher
  process in the GGS.
  The dispatcher process and all other modules are discussed in
