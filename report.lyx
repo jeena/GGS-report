@@ -4349,8 +4349,8 @@ target "http://www.objectmentor.com/resources/articles/srp.pdf"
 
  are widely respected as good practices in the world of software engineering
  and development.
- By dividing the GGS into modules each part of the GGS can be modified
- without damaging, or requiring changes in the rest of the system.
+ By dividing the GGS into modules each part of the GGS can be modified without
+ damaging, or requiring changes in the rest of the system.
  Due to the hot code updates featured in Erlang, it is theoretically possible
  to update parts of the GGS while the system is running, this has however
  not been implemented in the prototype.
@@ -4897,38 +4897,38 @@ name "sub:The-coordinator-module"
 The coordinator module is responsible for keeping track of all players,
  their seats and tables.
  Players register with the coordinator process when first connecting to
- the server, and the coordinator places each player by their respective
+ the server and, the coordinator places each player by their respective
  table.
 \end_layout
 
 \begin_layout Standard
-The coordinator keeps mappings between each player and table, therefore
- it is used to perform lookups on tables and players to find out which are
- connected.
+The coordinator keeps relations between each player and table, therefore
+ it is used to perform lookups on tables and players to find out which ones
+ that are connected.
  The connectivity of players and tables is important when sending messages
  to all participants in a game.
- A lookup in the coordinator process is performed prior to notifying all
- players in a game to ensure the message reaches all players.
+ A lookup in the coordinator process is performed before notifying all players
+ in a game to ensure the message reaches all players.
  The lookup can be performed either using internal identification codes
  or using the UUID associated with each client and table.
 \end_layout
 
 \begin_layout Standard
-The coordinator process contains important state, therefore a backup process
- is kept at all times.
+The coordinator process contains an important state, therefore a backup
+ process is kept at all times.
  All good data processed by the coordinator is stored for safekeeping in
  the backup process as well.
- Data which is potentially harmful is not stored in the backup process.
+ Data which are potentially harmful is not stored in the backup process.
 \end_layout
 
 \begin_layout Standard
-Upon a crash, the coordinator process recovers the prior good state from
- the backup process and continues where it left off.
+On a crash, the coordinator process recovers the prior good state from the
+ backup process and continues where it left off.
  A supervisor process monitors the coordinator process and restarts the
  process when it malfunctions.
  There is a window of time between the crash of the coordinator and the
  restarting of the coordinator, during this time, players cannot be seated
- by new tables, and cannot disconnect from the server.
+ by new tables and cannot disconnect from the server.
  This window of time is very small, and the unavailability of the coordinator
  process should not be noticed by more than a short time lag for the clients.
 \end_layout
