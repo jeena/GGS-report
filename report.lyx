@@ -662,7 +662,14 @@ textbf{Software failiure}}{A failiure in software (the GGS, the operating
 \end_layout
 
 \begin_layout Section
-Background 
+Background
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Background"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2310,7 +2317,7 @@ The GGS is a game server.
  A game should not only be able to vary in terms of genre, graphics, gameplay
  etc, but also in the way the game is implemented for example in different
  programming languages.
- The GGS should be OS independent and run on Windows, OSX and Linux.
+ The GGS should be OS independent and run on Windows, OS X and Linux.
  The GGS can be run as a listen server on the players computer and host
  games locally.
  It could also be a dedicated server running on dedicated independent hardware.
@@ -2319,18 +2326,29 @@ The GGS is a game server.
 \end_layout
 
 \begin_layout Standard
-Another aspect was the desire to let a client upload the source code of
- the game it would like to play on the GGS.
+Another aspect is the desire to let a client upload the source code of the
+ game it would like to play on the GGS.
  This way every client could connect to the server and install the game
- through a 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "API"
-description "Application programming interface"
+ through a API without the need of installation through the server provider
+ or maintainer.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{API}}{Application programming interface}
+\end_layout
 
 \end_inset
 
- without the need of installation through the server provider or maintainer.
+
 \end_layout
 
 \begin_layout Section
@@ -2345,17 +2363,36 @@ name "sec:Fault-Tolerance"
 \end_layout
 
 \begin_layout Standard
-Fault tolerance is an important factor in all servers, a server that is
- fault tolerant should be able to follow a given specification when parts
- of the system fails.
+Merriam-Webster’s dictionary 
+\begin_inset CommandInset citation
+LatexCommand citeyearpar
+key "Dictionary.com2011"
+
+\end_inset
+
+ defines fault tolerance as:
+\end_layout
+
+\begin_layout Quotation
+1.
+ The ability of a system or component to continue normal operation despite
+ the presence of hardware or software faults.
+ This often involves some degree of redundancy.
+\end_layout
+
+\begin_layout Quotation
+2.
+ The number of faults a system or component can withstand before normal
+ operation is impaired.
+ 
+\end_layout
+
+\begin_layout Standard
+Fault tolerance is an important factor in servers, a server that is fault
+ tolerant should be able to follow a given specification when parts of the
+ system fail.
  This means that fault tolerance is different in each system depending on
- what specification they have.
- A system could be fault tolerant in different aspects, one is where the
- system is guaranteed to be available but not safe and it could also be
- reversed, that the system is safe but not guaranteed to be available.
- Depending on the system one property may be more important.
- A system could also have non existent fault tolerance or it could be both
- safe and guaranteed to be available.
+ what specification it has.
  It should be noted that it is not possible to achieve complete fault tolerance,
  a system will always have a certain risk of failure.
  With this in mind the goal is to make the GGS prototype as fault tolerant
@@ -2365,14 +2402,14 @@ Fault tolerance is an important factor in all servers, a server that is
 \begin_layout Standard
 In order to make the GGS prototype fault tolerant the programming language
  Erlang has been used.
- Erlang will not guarantee a fault tolerant system but it has features that
- support and encourage the development of fault tolerant systems.
- In the GGS it is important that the system overall is fault tolerant and
- not small parts only.
+ Erlang will not guarantee a fault tolerant system, however it has features
+ that support and encourage the development of fault tolerant systems.
+ In the GGS it is important that the complete system is fault tolerant,
+ not only small parts.
  Crashes of the whole system should be avoided as this would make the system
  unusable for a time.
  By using supervisor structures it is possible to crash and restart small
- parts of the system, this is convenient as fault can be handled within
+ parts of the system, this is convenient as faults can be handled within
  small modules thus never forcing a crash of the system.
 \end_layout
 
@@ -2479,7 +2516,7 @@ name "sec:Scalability"
 
 \begin_layout Standard
 Each instance of the GGS contains several tables.
- Each table is an isolated instance of a game, for example a chess game
+ Each table is an isolated instance of a game, for instance a chess game
  or a poker game.
  The way that the GGS scales is to distribute these tables on different
  servers.
@@ -2490,11 +2527,11 @@ Each instance of the GGS contains several tables.
  down at a new table, all within the same game session.
  Therefore, the main focus of the GGS is not to move players among tables,
  but to keep a player in a table, and to start new tables instead.
- When a server has reached a certain number of players the performance will
- start to decrease.
+ When a server reaches a certain number of players the performance will
+ start to decrease, or worse, the server may even crash.
  To avoid this the GGS will start new tables on another server, using this
  technique the players will be close to evenly distributed among the servers.
- It is important to investigate and find out how many players that are optimal
+ It is important to investigate and find out how many players are optimal
  for each server.
  This approach makes it possible to use all resources with moderate load,
  instead of having some resources with heavy load and some with almost no
@@ -2502,16 +2539,23 @@ Each instance of the GGS contains several tables.
 \end_layout
 
 \begin_layout Standard
-As mentioned in the purpose section there are two different types of scalability
-, structural scalability and load scalability.
+As mentioned in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Background"
+
+\end_inset
+
+ there are two different types of scalability, structural scalability and
+ load scalability.
  To make the GGS scalable both types of scalability are needed.
  Structural scalability means in our case that it should be possible to
  add more servers to an existing cluster of servers.
  By adding more servers the limits of how many users a system can have is
  increased.
  Load scalability in contrast to structural scalability is not about how
- to increase the actual limits of the system.
- Instead it means how good the system handles increased load.
+ to increase the actual limits of the system, rather it means how good the
+ system handles increased load.
  The GGS should be able to scale well in both categories.
 \end_layout
 
@@ -2522,12 +2566,11 @@ Load balancing
 \begin_layout Standard
 The need for load balancing varies among different kind of systems.
  Small systems that only use one or a couple of servers can cope with a
- simple implementation of it, while in large systems it is critical to have
- extensive and well working load balancing.
- The need also depends on what kind of server structure that the system
- works on.
- A static structure where the number of servers are predefined or a dynamic
- structure where the number varies.
+ simple implementation of load balancing, while in large systems it is useful
+ to have extensive and well working load balancing.
+ The need also depends on what kind of server structure the system works
+ on, a static structure where the number of servers are predefined or a
+ dynamic structure where the number varies.
 \begin_inset ERT
 status open
 
@@ -2546,7 +2589,7 @@ textbf{Amazon EC2}}{A cloud computation service}
 \end_layout
 
 \begin_layout Standard
-Load balancing and scaling is difficult in different scenarios.
+Load balancing and scaling are difficult in different scenarios.
  When running in a separate server park, there are a set number of servers
  available, this means that an even distribution on all servers is preferable.
  When running the GGS in a cloud, such as Amazon EC2, it is possible to
@@ -2578,7 +2621,7 @@ How do we distribute load on these new servers?
 \begin_layout Standard
 Load balancing is a key component to achieve scalability in network systems.
  The GGS is a good example of a system that needs to be scalable, to attain
- this load balancing is necessary.
+ this, load balancing is necessary.
  Optimization of the load balancing for a system is an important task to
  provide a stable and fast load balancer.
  There are certain persistence problems that can occur with load balancing,
@@ -3061,18 +3104,19 @@ Security
 \end_layout
 
 \begin_layout Standard
-We only support languages running in a sandboxed environment.
+The GGS only supports languages running in a sandboxed environment.
  Each game session is started in its own sandbox.
  The sandboxing isolates the games in such a way that they cannot interfere
  with each other.
  If sandboxing was not in place, one game could potentially modify the contents
  of a different game.
- A similar approach is taken with the persistent storage we provide.
+ A similar approach is taken with the persistent storage provided by the
+ GGS.
  In the storage each game has its own namespace, much like a table in a
  relational database.
  A game is not allowed to venture outside this namespace, and can because
  this not modify the persistent data of other games.
- of this not modify the persistent data of other games.
+ 
 \begin_inset ERT
 status open
 
