@@ -4323,7 +4323,7 @@ name "sec:The-modular-structure"
 \end_layout
 
 \begin_layout Standard
-The separation of concerns, and principle of single responsibility 
+The separation of concerns and the principle of single responsibility 
 \begin_inset Foot
 status open
 
@@ -4343,12 +4343,12 @@ target "http://www.objectmentor.com/resources/articles/srp.pdf"
  are widely respected as good practices in the world of software engineering
  and development.
  By dividing the GGS into modules each part of the GGS can be modified without
- damaging, or requiring changes in the rest of the system.
- Due to the hot code updates featured in Erlang, it is theoretically possible
+ damaging or requiring changes in the rest of the system.
+ Due to the hot code update feature in Erlang, it is theoretically possible
  to update parts of the GGS while the system is running, this has however
  not been implemented in the prototype.
  The modular composition of the GGS prototype should make a transition to
- a folly hot code swappable system relatively easy.
+ a fully hot code swappable system relatively easy.
  Hot code replacements are discussed in more detail in section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4375,8 +4375,8 @@ reference "cha:Theory"
 
 \begin_layout Standard
 In the text below the different modules of the GGS are presented.
- In the text the word module refers to the actual code of the discussed
- feature, while the word process is used when referring to a running instance
+ In the text the word 'module' refers to the actual code of the discussed
+ feature, while the word 'process' is used when referring to a running instance
  of the code.
 \begin_inset ERT
 status open
@@ -4410,36 +4410,11 @@ The dispatcher module
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-The discussion of the modules is divided into the following parts:
-\end_layout
-
-\begin_layout Itemize
-What does the module do?
-\end_layout
-
-\begin_layout Itemize
-What happens when the module fails?
-\end_layout
-
-\begin_layout Itemize
-How does the module correspond to the real-world scenario of the chess club?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The dispatcher module is the first module to have contact with a player.
  When a player connects to the GGS, the player is first greeted by the dispatche
 r module, which sets up an accepting socket for each player.
  The dispatcher is the module which handles the interfacing to the operating
- system when working with sockets.
+ system when obtaining new sockets.
  Operating system limits concerning the number of open files, or number
  of open sockets are handled here.
  The operating system limits can impose problems in the GGS, this is discussed
@@ -4463,9 +4438,9 @@ Should the dispatcher module fail to function, no new connections to the
  this window is the GGS unable to process new connection requests.
  Due to the modular structure of the GGS, the rest of the system is not
  harmed by the dispatcher process not functioning.
- The dispatcher process does not contain a state, therefore a simple restart
- of the process is sufficient in restoring the GGS to a pristine state after
- a dispatcher crash
+ The dispatcher process does not contain any kind of a state, therefore
+ a simple restart of the process is sufficient in restoring the GGS to a
+ pristine state after a dispatcher crash
 \begin_inset Note Note
 status open
 
@@ -4493,8 +4468,8 @@ reference "sub:The-player-module"
 \end_inset
 
 .
- The newly created player process is handed and granted rights to, the socket
- of the newly connected player.
+ The newly created player process is handed the control over its own socket
+ connection.
 \end_layout
 
 \begin_layout Subsection
@@ -4511,9 +4486,9 @@ name "sub:The-player-module"
 \begin_layout Standard
 The player module is responsible for representing a player in the system.
  Each connected player has its own player process.
- The player process has access to the connection of the player it represents,
- and can communicate with this player.
- In order to communicate with a player, the data to and from the player
+ The player process has access to the connection of the client it represents,
+ and can communicate with this client.
+ In order to communicate with a client, the data to and from the player
  object must pass through a protocol parser module, discussed in 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -4527,7 +4502,7 @@ reference "sub:The-protocol-parser"
 \end_layout
 
 \begin_layout Standard
-In the creation of a player process, the coordinator process, discussed
+During the creation of a player process, the coordinator process, discussed
  in 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -4535,7 +4510,8 @@ reference "sub:The-coordinator-module"
 
 \end_inset
 
-, is notified by the newly connected process.
+, is notified by the newly created process in order to get access to the
+ lobby.
 \end_layout
 
 \begin_layout Standard
@@ -4554,7 +4530,7 @@ The player process exits.
 \end_layout
 
 \begin_layout Enumerate
-The coordinator spawns a new player process, with the same socket reference
+The coordinator spawns a new player process with the same socket reference
  as the old player process had.
 \end_layout
 
@@ -4571,17 +4547,6 @@ The window of time between the crash of the player process and the starting
  as choppy gameplay for the client.
  Note however that this crash recovery scheme is only partly implemented
  in the GGS prototype.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Can we do this..? Seems a bit sneaky.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4645,7 +4610,7 @@ The GGS protocol is modeled after the HTTP protocol.
 \begin_layout Standard
 There is no requirement of any specific order of the parameters in the headers
  section, however the data section must always follow directly after the
- headers section.
+ headers section separated by a empty new line.
 \end_layout
 
 \begin_layout Standard
@@ -4656,17 +4621,7 @@ In the example below, line 1 contains a Game-Command parameter.
 \end_layout
 
 \begin_layout Standard
-Line 2 specifies a game token.
- This is a UUID which is generated for each client upon authentication with
- the GGS.
- The GGS uses this token in case a client is disconnected and the new connection
- created when the client reconnects must be re-paired with the player object
- inside the GGS.
- The UUID is also used as a unique ID within GDL VMs.
-\end_layout
-
-\begin_layout Standard
-Line 3 specifies the content type of the payload of this particular packet.
+Line 2 specifies the content type of the payload of this particular packet.
  This parameter allows the GGS to invoke special parsers, should the data
  be encoded or encrypted.
  When encryption is employed, only the payload is encrypted, not the header
@@ -4676,7 +4631,7 @@ Line 3 specifies the content type of the payload of this particular packet.
 \end_layout
 
 \begin_layout Standard
-Line 4 specifies the content length of the payload following immediately
+Line 3 specifies the content length of the payload following immediately
  after the headers section.
 \end_layout
 
@@ -4686,6 +4641,16 @@ The parser of the GGS protocol implemented in the GGS prototype is designed
  When a full message has been parsed by the parser, the message is converted
  into the internal structure of the GGS messages, and sent in to the system
  from the protocol parser using message passing.
+\end_layout
+
+\begin_layout Standard
+Line 4 is a empty line which is, like in the HTTP protocol, the separator
+ between the head and body or payload section.
+\end_layout
+
+\begin_layout Standard
+Line 5 is the actuall payload which is transported to the game as a parameter
+ of the playerCommand() function call.
 \end_layout
 
 \begin_layout Standard
@@ -4805,11 +4770,6 @@ Game-Command: chat
 
 \begin_layout Plain Layout
 
-Token: e30174d4-185e-493b-a21a-832e2d9d7a1a
-\end_layout
-
-\begin_layout Plain Layout
-
 Content-Type: text
 \end_layout
 
@@ -4891,8 +4851,8 @@ name "sub:The-coordinator-module"
 The coordinator module is responsible for keeping track of all players,
  their seats and tables.
  Players register with the coordinator process when first connecting to
- the server and, the coordinator places each player by their respective
- table.
+ the server.
+ The coordinator places each player by their respective table.
 \end_layout
 
 \begin_layout Standard
@@ -4912,27 +4872,26 @@ The coordinator process contains an important state, therefore a backup
  process is kept at all times.
  All good data processed by the coordinator is stored for safekeeping in
  the backup process as well.
- Data which are potentially harmful is not stored in the backup process.
+ Data which is potentially harmful is not stored in the backup process.
 \end_layout
 
 \begin_layout Standard
-On a crash, the coordinator process recovers the prior good state from the
- backup process and continues where it left off.
+In the event of a crash, the coordinator process recovers the prior good
+ state from the backup process and continues where it left off.
  A supervisor process monitors the coordinator process and restarts the
  process when it malfunctions.
  There is a window of time between the crash of the coordinator and the
- restarting of the coordinator, during this time, players cannot be seated
- by new tables and cannot disconnect from the server.
+ restart of a new coordinator process.
+ During this time, players cannot be seated by new tables and cannot disconnect
+ from the server.
  This window of time is very small, and the unavailability of the coordinator
  process should not be noticed by more than a short time lag for the clients.
 \end_layout
 
 \begin_layout Standard
 Moving back to the example of the chess club, the coordinator process can
- be seen as a judge, monitoring all moves of the players.
- At the same time as acting as a judge, the coordinator process is also
- a host in the chess club, seating players by their tables and offering
- services to the players.
+ be seen as a host in the chess club, seating players by their tables and
+ offering services to the players.
 \end_layout
 
 \begin_layout Subsection
@@ -4958,7 +4917,7 @@ The information about which players are seated by each table is used when
 
 \begin_layout Standard
 Each table is associated with a game VM.
- The actions sent to a table is processed by the game VM, this is where
+ The actions sent to a table are processed by the game VM, this is where
  the game logic is implemented.
 \end_layout
 
