@@ -3559,12 +3559,17 @@ reference "cha:Theory"
 
 .
  Here the problems and their solutions are discussed in greater detail,
- and at times the text becomes more specific to GGS.
+ and at times the text becomes more specific to the GGS.
 \end_layout
 
 \begin_layout Standard
-Much of what is discussed in this chapter has been implemented in the Erlang
- GGS prototype.
+Much of what is discussed in this chapter has been implemented in the GGS
+ prototype.
+ Specific solutions such as 
+\emph on
+supervisor structures 
+\emph default
+and distribution of erlang nodes on physical nodes.
  The different means of communications within the GGS and outside the GGS
  with third parties are also discussed here.
 \end_layout
@@ -3650,8 +3655,8 @@ The cost of swapping operating system processes becomes a problem when many
  If the GGS system had been developed using regular operating system processes,
  it would have had to be designed in a way to minimize the number of processes.
  Using Erlang, which is capable of running very many processes, several
- times more than an operating system, the relation between the real world
- system (described in 
+ times more than an operating system, the relation between the real
+ world and the GGS (described in 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sec:Design-of-the"
@@ -3662,7 +3667,7 @@ reference "sec:Design-of-the"
 \end_layout
 
 \begin_layout Standard
-Erlang allows the GGS to create several process for each player connecting,
+Erlang allows the GGS to create several processes for each player connecting,
  these processes can handle a multitude of different tasks, parsing data
  for example.
  Since each task is handled by a different process, the tasks are clearly
@@ -3779,7 +3784,7 @@ reference "fig:The-layout-of"
 \end_inset
 
  the entire GGS system is represented graphically.
- The circles marked with 'C' topmost in the picture represent game clients.
+ The circles marked with 'C' topmost in the picture represents game clients.
  These circles represent processes running on gamers computers, and not
  on the GGS machine.
  If a game of chess is to be played on the server, the clients on the machines
@@ -3830,7 +3835,7 @@ status open
 \backslash
 nomenclature{
 \backslash
-textbf{Mutex}}{A construct for achieving mutial exclusion, used to avoid
+textbf{Mutex}}{A construct for achieving mutual exclusion, used to avoid
  simultaneous access to shared resources in computer systems}
 \end_layout
 
@@ -3878,7 +3883,7 @@ Processes in Erlang are also called
 Light Weight Processes.
  
 \emph default
-The Erlang processes are very cheaply created.
+The Erlang processes are inexpensive to create.
  Processes exist within an Erlang machine, or Erlang node.
  The Erlang machine has its own scheduler and does not rely on the scheduler
  of the operating system, this is a main reason of Erlang's capability of
@@ -3901,11 +3906,11 @@ The strong isolation of Erlang processes make them ideal for multi-core
  which computer the process runs on, is not important when communicating
  with the process.
  Processes can communicate regardless of whether they run on the same system
- of not, transparently.
+ or not, transparently.
 \end_layout
 
 \begin_layout Standard
-The distributed nature of Erlang is something the GGS can make use of when
+The distributed nature of Erlang is something the GGS can make use of, when
  scaling across several computers in order to achieve higher performance.
  The distribution is also important in creating redundancy.
  The GGS prototype does not make use of the distributed nature of Erlang,
@@ -3945,7 +3950,7 @@ s (Native implemented functions)
 .
 
 \emph default
- Through ports communication can take place much in the same way communication
+ Through ports communication can take place in a similar way communication
  is performed over sockets.
  NIFs are called like any other functions without any difference to the
  caller but are implemented in C, this implementation makes NIFs a very
@@ -4039,7 +4044,7 @@ behaviors
 \begin_layout Standard
 The GGS makes heavy use of the behaviors supplied in the OTP.
  The behaviors impose a programming style suitable for distributed and concurren
-t applications, perfectly suitable for the GGS.
+t applications.
  In particular, the GGS uses the following behaviors:
 \end_layout
 
@@ -4052,7 +4057,7 @@ supervisor
  Supervisors are used when monitoring processes in the Erlang system.
  When a process exits wrongfully, the supervisor monitoring the process
  in question decides which action to take.
- In the GGS, the most common action is simply to restart the faulting process.
+ In the GGS, the most common action is to restart the faulting process.
  A more thorough discussion on supervisors can be found in section 
 \begin_inset CommandInset ref
 LatexCommand ref
