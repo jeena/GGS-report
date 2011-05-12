@@ -3215,8 +3215,7 @@ Erlang is not a very popular language for game development, therefore the
  interface to different virtual machines which would run the game code.
  This way a game developer can write the game in his favorite language while
  the server part still is written in Erlang and can benefit from all the
- advantages of the Erlang language.
- In this section, a few potential languages are given.
+ advantages the Erlang language provides.
 \end_layout
 
 \begin_layout Subsection
@@ -3225,20 +3224,21 @@ JavaScript
 
 \begin_layout Standard
 JavaScript is a prime GDL candidate for the GGS.
- The language is very flexible, a general knowledge of the language is present
- in the computer science community, furthermore there are virtual machines
- readily available for JavaScript.
+ The language is very flexible, and a large base of developers within the
+ web community is using this language on the client side within the browser
+ and therefore are used to it.
 \end_layout
 
 \begin_layout Standard
-JavaScript has gained a lot of popularity lately, it is used in large projects
- such as 
+JavaScript, as a interpreted script language, has gained a lot of popularity
+ in other fields of computer science lately.
+ It is used as a server side language in large projects such as 
 \emph on
 Riak
 \emph default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Flex URL
@@ -3256,7 +3256,7 @@ http://wiki.basho.com/An-Introduction-to-Riak.html
 
 \end_inset
 
-, 
+ or 
 \emph on
 CouchDB
 \emph default
@@ -3311,22 +3311,17 @@ https://github.com/languages/
 \end_layout
 
 \begin_layout Standard
-Since the GGS is intended to be connected to several different GDL VMs the
- choice for the first language implemented for the GGS prototype seems not
- only to depend on the technical features of the GDL chosen, in this case
- JavaScript.
- A different, albeit still important non technical feature of JavaScript
- is the familiarity with the language of the members of the GGS development
- team.
+Apart from that there are virtual machines with bindings to Erlang readily
+ available for JavaScript which are provided by organisations like Mozilla
+ and companies like Google.
+ In the end this choice was more or less arbitrary since the GGS is intended
+ to be able to run several different GDL VMs, and one had to be the first.
+ 
 \end_layout
 
 \begin_layout Standard
-The popularity of JavaScript in the programming community, in combination
- with the availability of several different JavaScript virtual machines
- was an important influence in choosing JavaScript as the main control language
- for our GGS prototype.
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
