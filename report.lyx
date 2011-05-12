@@ -8108,6 +8108,18 @@ This thesis describes a method to create a reliable and generic game server
 \end_layout
 
 \begin_layout Standard
+This thesis concludes that it is reasonable to use the same tools as those
+ used by the telecom industry for creating reliable systems when developing
+ games for computers.
+ A typical game can be split up in to several parts, and using the GGS,
+ the parts not directly related to the actual gameplay can be implemented
+ in Erlang, while keeping the actual game software in a virtual machine.
+ It has been demonstrated in this thesis that games can be developed for
+ the GGS in JavaScript, while still benefiting from the features offered
+ by Erlang and the OTP.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
