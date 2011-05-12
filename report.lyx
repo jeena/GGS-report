@@ -2564,11 +2564,11 @@ Each instance of the GGS contains several so called tables.
  start to decrease, or worse, the server may even crash.
  To avoid this the GGS will start new tables on another server, using this
  technique the players will be close to evenly distributed among the servers.
- It is important to investigate and find out how many players are optimal
- for each server.
- This approach makes it possible to use all resources with moderate load,
- instead of having some resources with heavy load and some with almost no
- load.
+ It is important to investigate the amount of players which is optimal for
+ each server.
+ This approach makes it possible to use all resources with a moderate load,
+ instead of having some resources with heavy load and others with almost
+ no load.
 \end_layout
 
 \begin_layout Standard
@@ -2581,12 +2581,12 @@ reference "sec:Background"
 
  there are two different types of scalability, structural scalability and
  load scalability.
- To make the GGS scalable both types of scalability are needed.
- Structural scalability means in our case that it should be possible to
+ To make the GGS scalable both types of scalability have to be considered.
+ Structural scalability means in this case that it should be possible to
  add more servers to an existing cluster of servers.
- By adding more servers the limits of how many users a system can have is
- increased.
- Load scalability in contrast to structural scalability is not about how
+ By adding more servers the limits of with how many users a system can be
+ burdened with is increased.
+ Load scalability, in contrast to structural scalability, is not about how
  to increase the actual limits of the system, rather it means how good the
  system handles increased load.
  The GGS should be able to scale well in both categories.
@@ -2599,11 +2599,11 @@ Load balancing
 \begin_layout Standard
 The need for load balancing varies among different kind of systems.
  Small systems that only use one or a couple of servers can cope with a
- simple implementation of load balancing, while in large systems it is useful
- to have extensive and well working load balancing.
- The need also depends on what kind of server structure the system works
- on, a static structure where the number of servers are predefined or a
- dynamic structure where the number varies.
+ simple implementation of a load balancer, while in large systems it is
+ useful to have extensive and well working load balancing implementations.
+ The need also depends on what kind of server structure the system is working
+ on, a static structure where the number of servers is predefined or a dynamic
+ structure where this number varies.
 \begin_inset ERT
 status open
 
@@ -2623,11 +2623,12 @@ textbf{Amazon EC2}}{A cloud computation service}
 
 \begin_layout Standard
 Load balancing and scaling are difficult in different scenarios.
- When running in a separate server park, there are a set number of servers
+ When running in a separate server park, there is a set number of servers
  available, this means that an even distribution on all servers is preferable.
  When running the GGS in a cloud, such as Amazon EC2, it is possible to
- add an almost infinite number of servers as execution goes on.
- In this cloud setting, it may be more important to evenly distribute load
+ add an almost infinite number of servers as execution goes on and the load
+ increases.
+ In this cloud setting it may be more important to evenly distribute load
  on newly added servers.
 \end_layout
 
@@ -2641,16 +2642,11 @@ Fill up the capacity of one server completely, and then move over to the
 \end_layout
 
 \begin_layout Itemize
-Evenly distribute all clients to all servers from the beginning, when load
- becomes too high on all of them, then comes a new problem: 
+Evenly distribute all clients to all servers from the beginning.
+ When the load becomes too high on all of them a new problem arises: how
+ do we distribute load on these new servers?
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-How do we distribute load on these new servers?
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 Load balancing is a key component to achieve scalability in network systems.
  The GGS is a good example of a system that needs to be scalable, to attain
@@ -2659,18 +2655,18 @@ Load balancing is a key component to achieve scalability in network systems.
  provide a stable and fast load balancer.
  There are certain persistence problems that can occur with load balancing,
  if a player moves from a server to another data loss may occur.
- This is an important aspect to consider when the load balancer is designed
+ This is an important aspect to consider when a load balancer is designed
  and implemented.
 \end_layout
 
 \begin_layout Standard
 Load balancing can often be implemented using dedicated software, this means
  that in many applications load balancing may not be implemented because
- it already exist functional solutions.
- This depends on what specific needs the system have and a minor goal of
- the project is to analyze whether the GGS project can use existing load
- balancing tools or if it is necessary to implement load balancing in the
- project.
+ there already exist functional or even better external solutions.
+ This depends on what specific needs the system has.
+ A minor goal of this thesis is to analyze whether the GGS can use existing
+ load balancing tools or if it is necessary how to implement load balancing
+ in the project.
 \end_layout
 
 \begin_layout Standard
@@ -2888,14 +2884,14 @@ textbf{UUID}}{Universally Unique Identifier}
 \end_layout
 
 \begin_layout Standard
-Inside the GGS everything has a unique identifier.
+Inside the GGS everything needs a unique identifier.
  There are identifiers for players, tables and other resources.
- When players communicate amongst each other or communicate with tables,
- they need to be able to uniquely identify all of these resources.
+ When players communicate amongst each other or with tables, they need to
+ be able to uniquely identify all of these resources.
  Within one machine, this is mostly not a problem.
  A simple system with a counter can be imagined, where each request for
  a new ID increments the previous identifier and returns the new identifier
- based off the old one, see algorithm 
+ based on the old one; see algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:A-simple-generator"
@@ -2917,14 +2913,25 @@ reference "alg:A-simple-generator"
 
 \begin_layout Standard
 The obvious solution to this problem is to ensure mutual exclusion by using
- some sort of lock, which may work well in many concurrent systems.
- In a distributed system, this lock, along with the state, would have to
- be distributed.
- If the lock is not distributed, no guarantee can be made that two nodes
- in the distributed system do not generate the same number.
- A different approach is to give each node the ability to generate Universally
+ some sort of a lock, which may work well in many concurrent systems.
+ In a distributed system, like the GGS, this lock, along with the state,
+ would have to be distributed.
+ If the lock is not distributed, no guaranties can be made that two nodes
+ in the distributed system do not generate the same identifier.
+\end_layout
+
+\begin_layout Standard
+A different approach is to give each node the ability to generate Universally
  Unique Identifiers (UUID), where the state of one machine does not interfere
  with the state of another.
+ According to 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Leach98uuidsand"
+
+\end_inset
+
+: 
 \begin_inset ERT
 status open
 
@@ -2953,27 +2960,15 @@ textbf{SHA-1}}{Cryptigraphic hash function, designed by the National Security
 
 \end_layout
 
-\begin_layout Standard
-According to 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Leach98uuidsand"
-
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
+\begin_layout Quote
 A UUID is 128 bits long, and if generated according to the one of the mechanisms
  in this document, is either guaranteed to be different from all other UUIDs/GUI
 Ds generated until 3400 A.D.
- or extremely likely to be different
-\begin_inset Quotes erd
-\end_inset
+ or extremely likely to be different.
+\end_layout
 
-.
- The generation of a UUID is accomplished by gathering several different
+\begin_layout Standard
+The generation of a UUID is accomplished by gathering several different
  sources of information, such as: time, MAC addresses of network cards,
  and operating system data, such as percentage of memory in use, mouse cursor
  position and process IDs.
@@ -2997,7 +2992,7 @@ reference "alg:A-simple-generator"
 
 \end_inset
 
- with mutual exclusion, it is not possible to have identifier collisions
+ with mutual exclusion, it is extremly unlikely to have identifier collisions
  when recovering from network splits between the GGS clusters.
  Consider figure 
 \begin_inset CommandInset ref
