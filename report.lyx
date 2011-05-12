@@ -2427,6 +2427,13 @@ The need for fault tolerance in game servers is not as obvious as it may
  the system crashes than works with the faulty data.
  There are cases where safety may be critical in game servers, one example
  is in games where in-game money exist.
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Gartner:1999:FFD:311531.311532"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
