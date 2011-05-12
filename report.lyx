@@ -2617,8 +2617,8 @@ Each instance of the GGS contains several so called tables.
  This is for example not a common occurrence in chess, where it would be
  represented as a player standing up from her current table and sitting
  down at a new table, all within the same game session.
- Therefore, the main focus of the GGS is not to move players among tables,
- but to keep a player in a table, and to start new tables instead.
+ Therefore the main focus of the GGS is not to move players among tables,
+ but to keep a player by one table, and to start new tables if needed instead.
  When a server reaches a certain number of players the performance will
  start to decrease, or worse, the server may even crash.
  To avoid this the GGS will start new tables on another server, using this
@@ -2641,8 +2641,8 @@ reference "sec:Background"
  there are two different types of scalability, structural scalability and
  load scalability.
  To make the GGS scalable both types of scalability have to be considered.
- Structural scalability means in this case that it should be possible to
- add more servers to an existing cluster of servers.
+ Structural scalability means - in this case - that it should be possible
+ to add more servers to an existing cluster of servers.
  By adding more servers the limits of with how many users a system can be
  burdened with is increased.
  Load scalability, in contrast to structural scalability, is not about how
@@ -2661,7 +2661,7 @@ The need for load balancing varies among different kind of systems.
  simple implementation of a load balancer, while in large systems it is
  useful to have extensive and well working load balancing implementations.
  The need also depends on what kind of server structure the system is working
- on, a static structure where the number of servers is predefined or a dynamic
+ on; a static structure where the number of servers is predefined or a dynamic
  structure where this number varies.
 \begin_inset ERT
 status open
@@ -2702,8 +2702,8 @@ Fill up the capacity of one server completely, and then move over to the
 
 \begin_layout Itemize
 Evenly distribute all clients to all servers from the beginning.
- When the load becomes too high on all of them a new problem arises: how
- do we distribute load on these new servers?
+ When the load becomes too high on all of them a new problem arises: How
+ do we distribute the load on these new servers?
 \end_layout
 
 \begin_layout Standard
@@ -2720,11 +2720,11 @@ Load balancing is a key component to achieve scalability in network systems.
 
 \begin_layout Standard
 Load balancing can often be implemented using dedicated software, this means
- that in many applications load balancing may not be implemented because
- there already exist functional or even better external solutions.
+ that in many applications load balancing may not be implemented internally
+ because better external solutions exist already.
  This depends on what specific needs the system has.
  A minor goal of this thesis is to analyze whether the GGS can use existing
- load balancing tools or if it is necessary how to implement load balancing
+ load balancing tools or if it is necessary, how to implement load balancing
  in the project.
 \end_layout
 
@@ -3655,8 +3655,8 @@ The cost of swapping operating system processes becomes a problem when many
  If the GGS system had been developed using regular operating system processes,
  it would have had to be designed in a way to minimize the number of processes.
  Using Erlang, which is capable of running very many processes, several
- times more than an operating system, the relation between the real
- world and the GGS (described in 
+ times more than an operating system, the relation between the real world
+ and the GGS (described in 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sec:Design-of-the"
