@@ -3338,9 +3338,9 @@ Other languages
 \begin_layout Standard
 Other languages like 
 \emph on
-lua
+Lua
 \emph default
-, 
+ or 
 \emph on
 ActionScript
 \emph default
@@ -3353,7 +3353,7 @@ plugged in
 \begin_inset Quotes erd
 \end_inset
 
- into our GDL VM interface.
+ into the GDL VM interface.
  With help of the 
 \emph on
 Java Virtual Machine
@@ -3363,12 +3363,8 @@ Java Virtual Machine
 .NET 
 \emph default
 environment it is even possible to run nearly every available programming
- language in a sandbox as a GDL.
-\end_layout
-
-\begin_layout Standard
-Due lack of time we have decided to use just the Erlang <-> JavaScript bridge
- with our interface.
+ language in a sandbox as a GDL, however only a VM for JavaScript will be
+ implemented in the GGS prototype.
 \end_layout
 
 \begin_layout Section
