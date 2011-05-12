@@ -4576,8 +4576,8 @@ The window of time between the crash of the player process and the starting
  Since the connection changes owners for a short period of time, but is
  never dropped, the implications of a crash are only noticed, at worst,
  as choppy gameplay for the client.
- Note however that this crash recovery scheme is not implemented in the
- GGS prototype.
+ Note however that this crash recovery scheme is only partly implemented
+ in the GGS prototype.
  
 \begin_inset Note Note
 status open
@@ -4592,8 +4592,8 @@ Can we do this..? Seems a bit sneaky.
 \end_layout
 
 \begin_layout Standard
-Moving back to the real world example, the player process represent an actual
- person in the chess club.
+Moving back to the real world example, the player process represents an
+ actual person in the chess club.
  When a person sits down at a table in the chess club, the person does so
  by requesting a seat from some coordinating person, and is then seated
  by the same coordinator.
