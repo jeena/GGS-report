@@ -3375,20 +3375,21 @@ Testing
 There are several ways in which the GGS can be tested.
  The most important aspect has been deemed to be the experience players
  have when using the GGS.
- In order to test the user experience of the GGS, a realistic usage scenario
- has to be set up.
+ To test the user experience of the GGS, a realistic usage scenario has
+ to be set up.
 \end_layout
 
 \begin_layout Standard
 The GGS is intended to be used for powering games which have many concurrent
  players.
- The players need not participate in the same instance of the game, games
- such as chess are prime candidates for the GGS.
+ The players does not need to participate in the same instance of the game,
+ games such as chess are prime candidates for the GGS.
 \end_layout
 
 \begin_layout Standard
 When developing the GGS, two main categories of games exhibiting different
- performance demands were identified; real-time games and turn-based games.
+ performance requirements were identified; real-time games and turn-based
+ games.
  The real-time games were deemed more demanding than the turn based games.
  Tests were carried out using a real time game, since this is the more demanding
  type of games.
@@ -3399,11 +3400,11 @@ The real time game chosen for testing the GGS is
 \emph on
 Pong
 \emph default
-, a game in which two players play a game involving a all and two paddles.
+, a game in which two players play a game involving a ball and two paddles.
  The goal for each player is to shoot beside the other players paddle while
  not allowing the ball to pass by her own paddle.
- The game requires real time updates and is quite demanding when played
- in several instances concurrently.
+ The game requires real time updates and is demanding when played in several
+ instances concurrently.
 \end_layout
 
 \begin_layout Standard
@@ -3420,7 +3421,7 @@ bots
 \emph default
  for testing his generic hazard-gaming server.
  Lidholt describes how his server, capable of running several different
- casino games is tested using artificial players, so called bots.
+ casino games are tested using artificial players, so called bots.
  Performance is measured in 
 \begin_inset Quotes eld
 \end_inset
@@ -3446,8 +3447,8 @@ reference "chap:Results-and-discussion"
  for each player.
  Due to lack of hardware, not enough player processes could be started in
  this way.
- The bots were re-written in Erlang, and due to Erlang's light weigh threads,
- enough processes could be created to successfully test the server.
+ The bots were rewritten in Erlang, and due to Erlang's light weigh threads,
+ enough processes could be created to test successfully the server.
 \end_layout
 
 \begin_layout Chapter
