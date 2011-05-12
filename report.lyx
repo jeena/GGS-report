@@ -2674,8 +2674,8 @@ textbf{Amazon EC2}}{A cloud computation service}
 
 \begin_layout Standard
 Load balancing and scaling are difficult in different scenarios.
- When running in a separate server park, there is a set number of servers
- available, this means that an even distribution on all servers is preferable.
+ When running in a server park, there is a set number of servers available,
+ this means that an even distribution on all servers is preferable.
  When running the GGS in a cloud, such as Amazon EC2, it is possible to
  add an almost infinite number of servers as execution goes on and the load
  increases.
@@ -3231,8 +3231,8 @@ Erlang is not a very popular language for game development, therefore the
  The main idea is to offer a replaceable module which would introduce an
  interface to different virtual machines which would run the game code.
  This way a game developer can write the game in his favorite language while
- the server part still is written in Erlang and can benefit from all its
- advantages.
+ the server part still is written in Erlang and can benefit from all the
+ advantages of the Erlang language.
 \end_layout
 
 \begin_layout Subsection
