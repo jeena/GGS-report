@@ -5225,9 +5225,9 @@ status open
 
 {
 \backslash
-tt GGS.sendCommand(player_id, command, args)
-\emph on
-}
+tt GGS.sendCommand(player
+\backslash
+_id, command, args)}
 \end_layout
 
 \end_inset
