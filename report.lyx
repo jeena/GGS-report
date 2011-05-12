@@ -2949,9 +2949,9 @@ Inside the GGS everything needs a unique identifier.
  When players communicate amongst each other or with tables, they need to
  be able to uniquely identify all of these resources.
  Within one machine, this is mostly not a problem.
- A simple systems a counter can be imagined, where each request for a new
- ID increments the previous identifier and returns the new identifier based
- on the old one; see algorithm 
+ A simple system with a counter can be imagined, where each request for
+ a new ID increments the previous identifier and returns the new identifier
+ based on the old one; see algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:A-simple-generator"
@@ -2974,8 +2974,8 @@ reference "alg:A-simple-generator"
 \begin_layout Standard
 The obvious solution to this problem is to ensure mutual exclusion by using
  some sort of a lock, which may work well in many concurrent systems.
- In a distributed system like the GGS however, this lock, along with the
- state, would have to be distributed.
+ In a distributed system such as the GGS however, this lock, along with
+ the state, would have to be distributed.
  If the lock is not distributed, no guaranties can be made that two nodes
  in the distributed system do not generate the same identifier.
 \end_layout
@@ -3036,7 +3036,11 @@ The generation of a UUID is accomplished by gathering several different
 \emph on
 hashed
 \emph default
- using an algorithm such as SHA-1.
+
+\begin_inset space ~
+\end_inset
+
+using an algorithm such as SHA-1.
 \end_layout
 
 \begin_layout Standard
@@ -3070,7 +3074,7 @@ reference "alg:A-simple-generator"
 
 \end_inset
 
-, even when mutual system-wide exclusion was implemented.
+, even when mutual system-wide exclusion is implemented.
  This is exactly the problem UUIDs solve.
 \begin_inset ERT
 status open
@@ -3170,14 +3174,14 @@ The GGS only supports languages running in a sandboxed environment.
  Each game session is started in its own sandbox.
  The sandboxing isolates the games in such a way that they cannot interfere
  with each other.
- If sandboxing would not have been in place, one game could potentially
- modify the contents of a different game.
+ If sandboxing was not in place, one game could potentially modify the contents
+ of a different game.
  A similar approach is taken with the persistent storage provided by the
  GGS.
  In the storage each game has its own namespace, much like a table in a
  relational database.
- A game is not allowed to venture outside this namespace and can, because
- of that, not modify the persistent data of other games.
+ A game is not allowed to venture outside this namespace, and can because
+ this not modify the persistent data of other games.
  
 \begin_inset ERT
 status open
@@ -4344,8 +4348,8 @@ target "http://www.objectmentor.com/resources/articles/srp.pdf"
 
  are widely respected as good practices in the world of software engineering
  and development.
- By dividing the GGS up into modules each part of the GGS can be modified
- without damaging, or requiring changes in the rest of the system.
+ By dividing the GGS into modules each part of the GGS can be modified without
+ damaging, or requiring changes in the rest of the system.
  Due to the hot code updates featured in Erlang, it is theoretically possible
  to update parts of the GGS while the system is running, this has however
  not been implemented in the prototype.
@@ -4412,6 +4416,31 @@ The dispatcher module
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The discussion of the modules is divided into the following parts:
+\end_layout
+
+\begin_layout Itemize
+What does the module do?
+\end_layout
+
+\begin_layout Itemize
+What happens when the module fails?
+\end_layout
+
+\begin_layout Itemize
+How does the module correspond to the real-world scenario of the chess club?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 The dispatcher module is the first module to have contact with a player.
  When a player connects to the GGS, the player is first greeted by the dispatche
 r module, which sets up an accepting socket for each player.
@@ -4419,7 +4448,7 @@ r module, which sets up an accepting socket for each player.
  system when working with sockets.
  Operating system limits concerning the number of open files, or number
  of open sockets are handled here.
- The operating system limits can impose problems on the GGS, this is discussed
+ The operating system limits can impose problems in the GGS, this is discussed
  more in detail in chapter 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -4457,8 +4486,8 @@ Well..
 \end_layout
 
 \begin_layout Standard
-Returning to scenario of the chess club, the dispatcher module is the doorman
- of the club.
+Returning to the scenario of the chess club, the dispatcher module is the
+ doorman of the club.
  When a player enters the chess club, the player is greeted by the doorman,
  letting the player in to the club.
  The actual letting in to the club is in the GGS represented by the creation
@@ -4470,8 +4499,8 @@ reference "sub:The-player-module"
 \end_inset
 
 .
- The newly created player process is handed, and granted rights to, the
- socket of the newly connected player.
+ The newly created player process is handed and granted rights to, the socket
+ of the newly connected player.
 \end_layout
 
 \begin_layout Subsection
@@ -4500,7 +4529,7 @@ reference "sub:The-protocol-parser"
 
 .
  Raw communication, without passing the data through a protocol parser is
- in theory possible, but is not useful.
+ in theory possible, however it is not useful.
 \end_layout
 
 \begin_layout Standard
@@ -4546,8 +4575,8 @@ The window of time between the crash of the player process and the starting
  Since the connection changes owners for a short period of time, but is
  never dropped, the implications of a crash are only noticed, at worst,
  as choppy gameplay for the client.
- Note however that this crash recovery scheme is not implemented in the
- GGS prototype.
+ Note however that this crash recovery scheme is only partly implemented
+ in the GGS prototype.
  
 \begin_inset Note Note
 status open
@@ -4562,8 +4591,8 @@ Can we do this..? Seems a bit sneaky.
 \end_layout
 
 \begin_layout Standard
-Moving back to the real world example, the player process represent an actual
- person in the chess club.
+Moving back to the real world example, the player process represents an
+ actual person in the chess club.
  When a person sits down at a table in the chess club, the person does so
  by requesting a seat from some coordinating person, and is then seated
  by the same coordinator.
@@ -4868,38 +4897,38 @@ name "sub:The-coordinator-module"
 The coordinator module is responsible for keeping track of all players,
  their seats and tables.
  Players register with the coordinator process when first connecting to
- the server, and the coordinator places each player by their respective
+ the server and, the coordinator places each player by their respective
  table.
 \end_layout
 
 \begin_layout Standard
-The coordinator keeps mappings between each player and table, therefore
- it is used to perform lookups on tables and players to find out which are
- connected.
+The coordinator keeps relations between each player and table, therefore
+ it is used to perform lookups on tables and players to find out which ones
+ that are connected.
  The connectivity of players and tables is important when sending messages
  to all participants in a game.
- A lookup in the coordinator process is performed prior to notifying all
- players in a game to ensure the message reaches all players.
+ A lookup in the coordinator process is performed before notifying all players
+ in a game to ensure the message reaches all players.
  The lookup can be performed either using internal identification codes
  or using the UUID associated with each client and table.
 \end_layout
 
 \begin_layout Standard
-The coordinator process contains important state, therefore a backup process
- is kept at all times.
+The coordinator process contains an important state, therefore a backup
+ process is kept at all times.
  All good data processed by the coordinator is stored for safekeeping in
  the backup process as well.
- Data which is potentially harmful is not stored in the backup process.
+ Data which are potentially harmful is not stored in the backup process.
 \end_layout
 
 \begin_layout Standard
-Upon a crash, the coordinator process recovers the prior good state from
- the backup process and continues where it left off.
+On a crash, the coordinator process recovers the prior good state from the
+ backup process and continues where it left off.
  A supervisor process monitors the coordinator process and restarts the
  process when it malfunctions.
  There is a window of time between the crash of the coordinator and the
  restarting of the coordinator, during this time, players cannot be seated
- by new tables, and cannot disconnect from the server.
+ by new tables and cannot disconnect from the server.
  This window of time is very small, and the unavailability of the coordinator
  process should not be noticed by more than a short time lag for the clients.
 \end_layout
@@ -4930,23 +4959,23 @@ The information about which players are seated by each table is used when
  Consider a game of chess, each player notifies the table of its actions,
  the table then notifies the rest of the participants of these actions after
  having had the actions processed by the game VM, where an action could
- be moving a playing piece.
+ be moving a piece in the game.
 \end_layout
 
 \begin_layout Standard
 Each table is associated with a game VM.
- The actions sent to a table are processed by the game VM, this is where
+ The actions sent to a table is processed by the game VM, this is where
  the game logic is implemented.
 \end_layout
 
 \begin_layout Standard
 After a crash in a table process, the entire table must be rebuilt and the
  players must be re-associated with the table.
- Data concerning players is kept in the coordinator process, and is restored
+ Data concerning players is kept in the coordinator process and is restored
  from there.
  Data kept in the actual game is not automatically corrupted by the crash
- in a table, however the table must be re-associated with the game VM is
- was associated with prior to the crash of the table.
+ in a table, however the table must be re-associated with the game VM it
+ was associated with before the crash of the table.
  The table process maps well into the setting of the real-world chess club
  scenario previously discussed.
  A table works in the same way in a real world setting as in the GGS setting.
@@ -4965,12 +4994,13 @@ This module holds the game logic of a game and is responsible for the VM
 \begin_layout Standard
 The game VM contains the state of the VM and a table token associated with
  a running game.
- GameVM is started by the table module.
- The table module hands over a token to the game VM during initialization.
+ The game VM is started by the table module.
+ The table module hands over a token used for identification to the game
+ VM during initialization.
  During initialization a new VM instance and various objects associated
- to the VM instance will be created.
- Callbacks to Erlang are registered into the VM and then the source code
- of a game is loaded into the VM and the game is ready for startup.
+ to the VM instance are created.
+ Callbacks to Erlang are registered into the VM and the source code of a
+ game is loaded into the VM, finally the game is ready for startup.
  The only means for a game to communicate with the VM is through usage of
  a provided interface.
  
@@ -4981,12 +5011,12 @@ The VM itself makes it possible for the game developer to program in the
  programming language covered by the VM.
  In future releases, more game VMs will be added to support more programming
  languages.
- Because the game VM keeps track of the correct table, the game developer
+ Since the game VM keeps track of the correct table, the game developer
  does not need to take this into consideration when programming a game.
- If a method within the game sends data to a player, it will be delivered
- to the player in the correct running game.
+ If a method within the game sends data to a player, the data is delivered
+ to the player in the correct game.
  The same game token is used to store the game state in the database.
- Therefore, no game states will be mixed up either.
+ Therefore, no game states can be mixed up.
 \end_layout
 
 \begin_layout Standard
@@ -5003,7 +5033,7 @@ reference "sec:Communication-with-the-GDL-VM"
 \end_layout
 
 \begin_layout Standard
-The code which is run in the VM is uploaded to the GGS prior to each game.
+The code which is run in the VM is uploaded to the GGS before each game.
  Allowing the clients to upload code allows clients to run any game.
 \end_layout
 
@@ -5019,7 +5049,7 @@ name "sub:The-database-module"
 \end_layout
 
 \begin_layout Standard
-Game data from all games on the GGS are stored in the database backend of
+Game data from all games on the GGS is stored in the database backend of
  the database module.
 \end_layout
 
@@ -5027,10 +5057,10 @@ Game data from all games on the GGS are stored in the database backend of
 In the GGS prototype the database module is using a database management
  system called Mnesia.
  Mnesia ships with the standard Erlang distribution and is a key-value store
- type database.
- Mnesia is designed to handle the stress of telecoms systems, and has some
- features specifically tailored for telecoms which are not commonly found
- in other databases.
+ type of database.
+ Mnesia is designed to handle the stress of telecoms systems, therefore
+ it has some features specifically tailored for telecoms which are not commonly
+ found in other databases.
  Key features of the Mnesia database are:
 \end_layout
 
@@ -5058,14 +5088,14 @@ key "667766"
 
 \begin_layout Standard
 The features of Mnesia originally intended for telecoms prove very useful
- for the purposes of the GGS as well.
- The fault tolerance and speed of Mnesia are very valuable tools, the fast
- key/value lookups permit many lookups per second to the database.
+ for the GGS as well.
+ The fault tolerance and speed of Mnesia are valuable tools, the fast key/value
+ lookups permit many lookups per second from the database.
 \end_layout
 
 \begin_layout Standard
-Game data will not be lost when a game is stopped or has gone down for unknown
- reasons.
+Game data will not be lost when a game is stopped or has gone down for any
+ reason.
  This makes it possible to continue a game just before the failure without
  having to start the game from the beginning.
  
@@ -5094,16 +5124,36 @@ The GGS stores the game state in the distributed Mnesia database, from which
 \begin_layout Standard
 Each game is uniquely identified by a table token and the data of each game
  is stored within two different namespaces.
- The namespaces are named World and Localstorage.
- The World is used contain all game data related to the game state.
+ The namespaces are named 
+\noun on
+world
+\noun default
+ and 
+\noun on
+Localstorage
+\noun default
+.
+ The 
+\noun on
+World
+\noun default
+ is used contain all game data related to the game state.
  This sort of game data may change during the runtime of the game.
- The Localstorage should contain data independent of the game state.
+ The 
+\noun on
+Localstorage
+\noun default
+ contains data independent of the game state.
  Game resources, constants and global variables are all examples of data
- that could reside within the Localstorage.
+ that reside within the 
+\noun on
+Localstorage
+\noun default
+.
  To store a value within the database, not only is the table token and the
- name of the namespace required, but a unique key so that the value can
+ name of the namespace required, but an unique key so that the value can
  be successfully retrieved or modified later.
- The key is fully decidable by the game developer.
+ The key is decidable by the game developer.
  
 \end_layout
 
@@ -5112,8 +5162,8 @@ The interface of the database module is an implementation of the upcoming
  W3C Web Storage specification.
  Web Storage is intended for use in web browsers, providing a persistent
  storage on the local machine for web applications.
- The storage can be used to communicate in between browser windows (which
- is difficult when using cookies), and to store larger chunks of data 
+ The storage can be used to communicate among browser windows (which is
+ difficult when using cookies), and to store larger chunks of data 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "webstorage:website"
@@ -5138,7 +5188,7 @@ name "sec:Communication-with-the-GDL-VM"
 
 \begin_layout Standard
 A game launched on the GGS is run within a virtual machine.
- For each programming language supported, there is a virtual machine that
+ For each programming language supported, there is a virtual machine which
  interprets the game.
  Furthermore an interface for communication between the GGS, the game and
  the players playing the game is present.
@@ -5151,51 +5201,64 @@ Callbacks written in Erlang are registered to the VM for the interface to
  the game state and send messages to the clients.
  The interface provides access to three objects called 
 \emph on
-world, players
+\noun on
+world
+\noun default
+, 
+\noun on
+players
 \emph default
+\noun default
  and 
 \emph on
+\noun on
 localStorage
 \emph default
+\noun default
 .
  The game state is safely stored in a database and retrieved for manipulation
  by a call for the world object.
  Interaction with the players is done by using the 
 \emph on
-GGS.sendCommand(player_id, command, args)
-\emph default
- and 
-\emph on
-GGS.
-\emph default
-sendCommandToAll(command, args).
- The localstorage is a convenient way to store global data and other variables
- separated from the game state.
- Unique ids called gametokens are generated for hosted games so that they
- are not mixed up.
-\end_layout
 
-\begin_layout Standard
-A game launched on the GGS is run within a virtual machine.
- For each programming language supported, there is a virtual machine that
- interprets the game.
- Furthermore an interface for communication between the GGS, the game and
- the players playing the game must be present.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
- Unique id:s called gametokens are generated for hosted games so that they
- are not mixed up.
- -- good text, integrate more.
+
+{
+\backslash
+tt GGS.sendCommand(player
+\backslash
+_id, command, args)}
 \end_layout
 
 \end_inset
 
 
+\emph default
+ and 
+\emph on
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt GGS.sendCommandToAll(command, args)}
+\end_layout
+
+\end_inset
+
+
+\emph default
+.
+ The localStorage is a convenient way to store global data and other variables
+ separated from the game state.
+ Unique ids called game tokens are generated for hosted games so that they
+ are not mixed up.
 \begin_inset ERT
 status open
 
@@ -5226,7 +5289,14 @@ name "sub:Exposing-Erlang-functionality"
 \end_layout
 
 \begin_layout Standard
-This section contains a concrete example of how the localstorage and world
+This section contains a concrete example of how the 
+\noun on
+localStorage
+\noun default
+ and 
+\noun on
+world
+\noun default
  objects are exposed to a GDL VM.
  The example comes from the GGS prototype, which uses JavaScript powered
  by Google V8 as its GDL VM.
@@ -5298,16 +5368,33 @@ tt GGS.localStorage }
 
 \end_inset
 
- from within the GDL, access to the localstorage is provided, thus the localstor
-age must be connected to the GGS object, this can be seen in line 5.
+ from within the GDL, access to the 
+\noun on
+localStorage
+\noun default
+ is provided, thus the 
+\noun on
+localStorage
+\noun default
+ must be connected to the GGS object, this can be seen in line 5.
 \end_layout
 
 \begin_layout Standard
-Both the GGS and localstorage objects are dummy objects, which provide no
- functionality, these two objects are simply placed in the GDL for the purpose
- clearing up the code.
- In order to perform an action using the GGS and localstorage objects, the
- 
+Both the 
+\noun on
+GGS
+\noun default
+ and 
+\noun on
+localStorage
+\noun default
+ objects are dummy objects, which provide no functionality, these two objects
+ are simply placed in the GDL for the purpose clearing up the code.
+ In order to perform an action using the GGS and 
+\noun on
+localStorage
+\noun default
+ objects, the 
 \begin_inset ERT
 status open
 
@@ -5381,20 +5468,6 @@ tt setTimeout}
 
  function introduces timeouts to the V8 engine, which are not available
  per default.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Prior to this section, the Erlang syntax has to be briefly explained.
- I think the 'usage of erlang' section is a good place to do this in.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5768,24 +5841,12 @@ Techniques for ensuring reliability
 
 \begin_layout Standard
 One of the main goals of the project is to achieve high reliability.
- The term 
-\begin_inset Quotes eld
-\end_inset
+ The term 'reliable system' is defined by the IEEE as 
+\end_layout
 
-reliable system
-\begin_inset Quotes erd
-\end_inset
-
- is defined by the IEEE as a system with 
-\begin_inset Quotes eld
-\end_inset
-
-the ability of a system or component to perform its required functions under
- stated conditions for a specified period of time
-\begin_inset Quotes erd
-\end_inset
-
- 
+\begin_layout Quotation
+A system with the ability of a system or component to perform its required
+ functions under stated conditions for a specified period of time 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "ieee_90"
@@ -5793,10 +5854,13 @@ key "ieee_90"
 \end_inset
 
 .
- There are some tools for creating reliable applications built in to Erlang.
+\end_layout
+
+\begin_layout Standard
+There are some tools for creating reliable applications built in to Erlang:
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5824,14 +5888,22 @@ E"}
 \end_layout
 
 \begin_layout Itemize
-Links between processes.
+
+\series bold
+Links between processes
+\series default
+.
  When a process spawns a new child process, and the child process later
  exits, the parent process is notified of the exit.
  
 \end_layout
 
 \begin_layout Itemize
-Transparent distribution over a network of processors.
+
+\series bold
+Transparent distribution over a network of processors
+\series default
+.
  When several nodes participate in a network, it does not matter on which
  of these machines a process is run.
  Communication between processes does not depend on the node in which each
@@ -5840,7 +5912,11 @@ Transparent distribution over a network of processors.
 \end_layout
 
 \begin_layout Itemize
-Hot code replacements.
+
+\series bold
+Hot code replacements
+\series default
+.
  Two versions of the same module can reside in the memory of Erlang at any
  time.
  This means that a simple swap between these versions can take place very

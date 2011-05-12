@@ -2617,8 +2617,9 @@ Each instance of the GGS contains several so called tables.
  This is for example not a common occurrence in chess, where it would be
  represented as a player standing up from her current table and sitting
  down at a new table, all within the same game session.
- Therefore, the main focus of the GGS is not to move players among tables,
- but to keep a player in a table, and to start new tables instead.
+ Therefore the main focus of the GGS is not to move players among tables,
+ but to keep a player seated by a table and to start new tables if needed
+ instead.
  When a server reaches a certain number of players the performance will
  start to decrease, or worse, the server may even crash.
  To avoid this the GGS will start new tables on another server, using this
@@ -2641,8 +2642,8 @@ reference "sec:Background"
  there are two different types of scalability, structural scalability and
  load scalability.
  To make the GGS scalable both types of scalability have to be considered.
- Structural scalability means in this case that it should be possible to
- add more servers to an existing cluster of servers.
+ Structural scalability means - in this case - that it should be possible
+ to add more servers to an existing cluster of servers.
  By adding more servers the limits of with how many users a system can be
  burdened with is increased.
  Load scalability, in contrast to structural scalability, is not about how
@@ -2661,7 +2662,7 @@ The need for load balancing varies among different kind of systems.
  simple implementation of a load balancer, while in large systems it is
  useful to have extensive and well working load balancing implementations.
  The need also depends on what kind of server structure the system is working
- on, a static structure where the number of servers is predefined or a dynamic
+ on; a static structure where the number of servers is predefined or a dynamic
  structure where this number varies.
 \begin_inset ERT
 status open
@@ -2702,8 +2703,8 @@ Fill up the capacity of one server completely, and then move over to the
 
 \begin_layout Itemize
 Evenly distribute all clients to all servers from the beginning.
- When the load becomes too high on all of them a new problem arises: how
- do we distribute load on these new servers?
+ When the load becomes too high on all of them a new problem arises: How
+ do we distribute the load on these new servers?
 \end_layout
 
 \begin_layout Standard
@@ -2720,11 +2721,11 @@ Load balancing is a key component to achieve scalability in network systems.
 
 \begin_layout Standard
 Load balancing can often be implemented using dedicated software, this means
- that in many applications load balancing may not be implemented because
- there already exist functional or even better external solutions.
+ that in many applications load balancing may not be implemented internally
+ because better external solutions exist already.
  This depends on what specific needs the system has.
  A minor goal of this thesis is to analyze whether the GGS can use existing
- load balancing tools or if it is necessary how to implement load balancing
+ load balancing tools or if it is necessary, how to implement load balancing
  in the project.
 \end_layout
 
@@ -2948,9 +2949,9 @@ Inside the GGS everything needs a unique identifier.
  When players communicate amongst each other or with tables, they need to
  be able to uniquely identify all of these resources.
  Within one machine, this is mostly not a problem.
- A simple system with a counter can be imagined, where each request for
- a new ID increments the previous identifier and returns the new identifier
- based on the old one; see algorithm 
+ A simple systems a counter can be imagined, where each request for a new
+ ID increments the previous identifier and returns the new identifier based
+ on the old one; see algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:A-simple-generator"
@@ -2973,8 +2974,8 @@ reference "alg:A-simple-generator"
 \begin_layout Standard
 The obvious solution to this problem is to ensure mutual exclusion by using
  some sort of a lock, which may work well in many concurrent systems.
- In a distributed system, like the GGS, this lock, along with the state,
- would have to be distributed.
+ In a distributed system like the GGS however, this lock, along with the
+ state, would have to be distributed.
  If the lock is not distributed, no guaranties can be made that two nodes
  in the distributed system do not generate the same identifier.
 \end_layout
@@ -3028,31 +3029,19 @@ Ds generated until 3400 A.D.
 
 \begin_layout Standard
 The generation of a UUID is accomplished by gathering several different
- sources of information, such as: time, MAC addresses of network cards,
- and operating system data, such as percentage of memory in use, mouse cursor
+ sources of information, such as: time, MAC addresses of network cards;
+ and operating system data such as; percentage of memory in use, mouse cursor
  position and process IDs.
  The gathered data is then 
 \emph on
 hashed
 \emph default
-
-\begin_inset space ~
-\end_inset
-
-using an algorithm such as SHA-1.
+ using an algorithm such as SHA-1.
 \end_layout
 
 \begin_layout Standard
-When using system wide unique identifiers, such as the ones generated by
- algorithm 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:A-simple-generator"
-
-\end_inset
-
- with mutual exclusion, it is extremly unlikely to have identifier collisions
- when recovering from network splits between the GGS clusters.
+When using system wide unique identifiers it is extremly unlikely to have
+ identifier collisions when recovering from network splits between GGS clusters.
  Consider figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3081,7 +3070,7 @@ reference "alg:A-simple-generator"
 
 \end_inset
 
-, even when mutual system-wide exclusion is implemented.
+, even when mutual system-wide exclusion was implemented.
  This is exactly the problem UUIDs solve.
 \begin_inset ERT
 status open
@@ -3150,20 +3139,6 @@ end{centering}
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Add clients on each side, and replace the cloud with pole-landlines being
- cut by a pair of scissors
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -3195,14 +3170,14 @@ The GGS only supports languages running in a sandboxed environment.
  Each game session is started in its own sandbox.
  The sandboxing isolates the games in such a way that they cannot interfere
  with each other.
- If sandboxing was not in place, one game could potentially modify the contents
- of a different game.
+ If sandboxing would not have been in place, one game could potentially
+ modify the contents of a different game.
  A similar approach is taken with the persistent storage provided by the
  GGS.
  In the storage each game has its own namespace, much like a table in a
  relational database.
- A game is not allowed to venture outside this namespace, and can because
- this not modify the persistent data of other games.
+ A game is not allowed to venture outside this namespace and can, because
+ of that, not modify the persistent data of other games.
  
 \begin_inset ERT
 status open
@@ -3650,18 +3625,13 @@ textbf{Context switch}}{The act of switching from one context, commonly
 \end_layout
 
 \begin_layout Standard
-The cost of swapping operating system processes become a problem when many
+The cost of swapping operating system processes becomes a problem when many
  processes are involved.
  If the GGS system had been developed using regular operating system processes,
  it would have had to be designed in a way to minimize the number of processes.
  Using Erlang, which is capable of running very many processes, several
-<<<<<<< HEAD
  times more than an operating system, the relation between the real world
- system (described in 
-=======
- times more than an operating system can, the relation between the real
- world and the GGS (described in 
->>>>>>> 3584c8fd8cc02e0ed858ea7b5b5ce8fd31ccd3e3
+ and the GGS (described in 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sec:Design-of-the"
@@ -3681,7 +3651,7 @@ Erlang allows the GGS to create several processes for each player connecting,
 \end_layout
 
 \begin_layout Standard
-Besides creating (or 
+In addition to creating (or 
 \emph on
 spawning
 \emph default
@@ -3792,13 +3762,8 @@ reference "fig:The-layout-of"
  The circles marked with 'C' topmost in the picture represents game clients.
  These circles represent processes running on gamers computers, and not
  on the GGS machine.
-<<<<<<< HEAD
  If a game of chess is to be played on the server, the clients on the machines
  of the gamers will be chess game clients.
-=======
- If a game of chess is to be played on the server, the clients on the gamers
- machine will be chess game clients.
->>>>>>> 3584c8fd8cc02e0ed858ea7b5b5ce8fd31ccd3e3
  Clients connect through a network, pictured as a cloud, to the dispatcher
  process in the GGS.
  The dispatcher process and all other modules are discussed in
@@ -3825,7 +3790,6 @@ name "sec:The-usage-of-erlang"
 \end_layout
 
 \begin_layout Standard
-<<<<<<< HEAD
 As mentioned earlier, the GGS prototype is implemented in Erlang.
  The current section and the subsequent section function as a short introduction
  to Erlang, focusing on the parts of the language neccessary to understand
@@ -3835,10 +3799,6 @@ As mentioned earlier, the GGS prototype is implemented in Erlang.
 \begin_layout Standard
 Erlang was designed by Ericsson, beginning in 1986, for the purpose of creating
  concurrent applications and improving telecom software.
-=======
-Erlang was designed by Ericsson, beginning in 1986, for creating concurrent
- applications and improving telecom software.
->>>>>>> 3584c8fd8cc02e0ed858ea7b5b5ce8fd31ccd3e3
  Features essential for the telecom industry to achieve high availability
  in telecom switches were added to the language.
 \begin_inset ERT
@@ -3900,15 +3860,9 @@ Light Weight Processes.
 \emph default
 The Erlang processes are inexpensive to create.
  Processes exist within an Erlang machine, or Erlang node.
-<<<<<<< HEAD
  The Erlang machine has its own scheduler and does not rely on the scheduler
  of the operating system, this is a main reason of Erlang's capability of
  running many concurrent processes 
-=======
- The Erlang machine has its own scheduler and does not rely on the operating
- system's scheduler, this is one main reason of Erlang's capability of running
- many concurrent processes 
->>>>>>> 3584c8fd8cc02e0ed858ea7b5b5ce8fd31ccd3e3
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Armstrong03"
@@ -3931,13 +3885,8 @@ The strong isolation of Erlang processes make them ideal for multi-core
 \end_layout
 
 \begin_layout Standard
-<<<<<<< HEAD
-The distributed nature of Erlang is something the GGS can make use of when
+The distributed nature of Erlang is something the GGS can make use of, when
  scaling across several computers in order to achieve higher performance.
-=======
-The distributed nature of Erlang is something the GGS makes use of, when
- scaling across several computers to achieve higher performance.
->>>>>>> 3584c8fd8cc02e0ed858ea7b5b5ce8fd31ccd3e3
  The distribution is also important in creating redundancy.
  The GGS prototype does not make use of the distributed nature of Erlang,
  however the GGS prototype is constructed in such a way that making use
@@ -3979,7 +3928,6 @@ s (Native implemented functions)
  Through ports communication can take place in a similar way communication
  is performed over sockets.
  NIFs are called like any other functions without any difference to the
-<<<<<<< HEAD
  caller but are implemented in C, this implementation makes NIFs a very
  efficient way to interface with the outside world 
 \begin_inset CommandInset citation
@@ -3989,9 +3937,6 @@ key "NIF:website"
 \end_inset
 
 .
-=======
- caller but they are implemented in C.
->>>>>>> 3584c8fd8cc02e0ed858ea7b5b5ce8fd31ccd3e3
 \end_layout
 
 \begin_layout Standard
@@ -4119,8 +4064,8 @@ gen_server
  increasing the usefulness of the server process.
  There are many gen_servers in the GGS, it is the most widely used behavior
  in the project.
- Besides introducing a state to the server, the gen_server behavior also
- imposes patterns for synchronous and asynchronous communication between
+ In addition to introducing a state to the server, the gen_server behavior
+ also imposes patterns for synchronous and asynchronous communication between
  other gen_servers and other OTP behaviors.
 \end_layout
 
@@ -4136,8 +4081,8 @@ gen_fsm
 \end_layout
 
 \begin_layout Standard
-Besides supplying behaviors, the OTP also has a style for packaging and
- running Erlang applications.
+In addition to supplying behaviors, the OTP also has a style for packaging
+ and running Erlang applications.
  By packaging the GGS as an 
 \emph on
 application 
@@ -4154,7 +4099,7 @@ status open
 \backslash
 nomenclature{
 \backslash
-textbf{Application}}{A way of packaging Erlang software in an uniform way}
+textbf{Application}}{A way of packaging Erlang software in a uniform way}
 \end_layout
 
 \end_inset
@@ -4167,8 +4112,8 @@ Short introduction to the Erlang syntax
 \end_layout
 
 \begin_layout Standard
-In order to understand examples in this thesis, a small subset of Erlang
- must be understood.
+To understand the examples in this thesis, a small subset of Erlang must
+ be understood.
  In this section, the very syntactic basics of Erlang are given.
 \end_layout
 
@@ -4385,7 +4330,7 @@ name "sec:The-modular-structure"
 \end_layout
 
 \begin_layout Standard
-The separation of concerns, and principle of single responsibility 
+The separation of concerns and principle of single responsibility 
 \begin_inset Foot
 status open
 
@@ -4404,8 +4349,21 @@ target "http://www.objectmentor.com/resources/articles/srp.pdf"
 
  are widely respected as good practices in the world of software engineering
  and development.
- By dividing the GGS up into modules each part of the GGS can be modified
- without damaging the rest of the system.
+ By dividing the GGS into modules each part of the GGS can be modified
+ without damaging, or requiring changes in the rest of the system.
+ Due to the hot code updates featured in Erlang, it is theoretically possible
+ to update parts of the GGS while the system is running, this has however
+ not been implemented in the prototype.
+ The modular composition of the GGS prototype should make a transition to
+ a folly hot code swappable system relatively easy.
+ Hot code replacements are discussed in more detail in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Hot-code-replacement"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -4423,7 +4381,8 @@ reference "cha:Theory"
 \end_layout
 
 \begin_layout Standard
-In the text below the word module refers to the actual code of the discussed
+In the text below the different modules of the GGS are presented.
+ In the text the word module refers to the actual code of the discussed
  feature, while the word process is used when referring to a running instance
  of the code.
 \begin_inset ERT
@@ -4459,7 +4418,7 @@ The dispatcher module
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The discussion of the modules is divided into the following parts:
@@ -4484,27 +4443,17 @@ How does the module correspond to the real-world scenario of the chess club?
 
 \begin_layout Standard
 The dispatcher module is the first module to have contact with a player.
- When a player connects to the GGS, it is first greeted by the dispatcher
- module, which sets up an accepting socket for each player.
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Is this the proper way to day the dispatcher greets connecting players?
-\end_layout
-
-\end_inset
-
+ When a player connects to the GGS, the player is first greeted by the dispatche
+r module, which sets up an accepting socket for each player.
  The dispatcher is the module which handles the interfacing to the operating
  system when working with sockets.
  Operating system limits concerning the number of open files, or number
  of open sockets are handled here.
- The operating system limits can impose problems on the GGS, this is discussed
+ The operating system limits can impose problems in the GGS, this is discussed
  more in detail in chapter 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "cha:Problems-of-implementation"
+reference "sec:Operating-system-limitations"
 
 \end_inset
 
@@ -4512,7 +4461,7 @@ reference "cha:Problems-of-implementation"
 \end_layout
 
 \begin_layout Standard
-Should the dispatcher module fail to function, no new connections to the
+Should the dispatcher module fails to function, no new connections to the
  GGS can be made.
  In the event of a crash in the dispatcher module, a supervisor process
  immediately restarts the dispatcher.
@@ -4521,9 +4470,9 @@ Should the dispatcher module fail to function, no new connections to the
  this window is the GGS unable to process new connection requests.
  Due to the modular structure of the GGS, the rest of the system is not
  harmed by the dispatcher process not functioning.
- The process does not contain a state, therefore a simple restart of the
- process is sufficient in restoring the GGS to a pristine state after a
- dispatcher crash
+ The dispatcher process does not contain a state, therefore a simple restart
+ of the process is sufficient in restoring the GGS to a pristine state after
+ a dispatcher crash
 \begin_inset Note Note
 status open
 
@@ -4538,12 +4487,12 @@ Well..
 \end_layout
 
 \begin_layout Standard
-Returning to scenario of the chess club, the dispatcher module is the doorman
- of the club.
+Returning to the scenario of the chess club, the dispatcher module is the
+ doorman of the club.
  When a player enters the chess club, the player is greeted by the doorman,
  letting the player in to the club.
  The actual letting in to the club is in the GGS represented by the creation
- of a player process discussed in 
+ of a player process discussed in section 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sub:The-player-module"
@@ -4551,8 +4500,8 @@ reference "sub:The-player-module"
 \end_inset
 
 .
- The newly created player process is handed, and granted rights to, the
- socket of the newly connected player.
+ The newly created player process is handed and granted rights to, the socket
+ of the newly connected player.
 \end_layout
 
 \begin_layout Subsection
@@ -4571,8 +4520,8 @@ The player module is responsible for representing a player in the system.
  Each connected player has its own player process.
  The player process has access to the connection of the player it represents,
  and can communicate with this player.
- In order to communicate with a player, the data to and from the player
- object must pass through a protocol parser module, discussed in 
+ To communicate with a player, the data to and from the player object must
+ pass through a protocol parser module, discussed in 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sub:The-protocol-parser"
@@ -4581,7 +4530,7 @@ reference "sub:The-protocol-parser"
 
 .
  Raw communication, without passing the data through a protocol parser is
- in theory possible, but is not useful.
+ in theory possible but it is not useful.
 \end_layout
 
 \begin_layout Standard
@@ -4624,11 +4573,19 @@ The player process resumes operation, immediately starting a new protocol
 \begin_layout Standard
 The window of time between the crash of the player process and the starting
  of a new player process is, as with the dispatcher, very short.
+<<<<<<< HEAD
  Since the connection changes owners for a short period of time, but is
  never dropped, the implications of a crash are only noticed, at worst,
  as choppy gameplay for the client.
+ Note however that this crash recovery scheme is only partly implemented
+ in the GGS prototype.
+=======
+ Since the connection changes owners for a short period of time but is never
+ dropped, the implications of a crash is only noticed, at worst, as choppy
+ gameplay for the client.
  Note however that this crash recovery scheme is not implemented in the
  GGS prototype.
+>>>>>>> 20eb91bc412469b90510d7c33d68d8e67ac338a8
  
 \begin_inset Note Note
 status open
@@ -4643,8 +4600,8 @@ Can we do this..? Seems a bit sneaky.
 \end_layout
 
 \begin_layout Standard
-Moving back to the real world example, the player process represent an actual
- person in the chess club.
+Moving back to the real world example, the player process represents an
+ actual person in the chess club.
  When a person sits down at a table in the chess club, the person does so
  by requesting a seat from some coordinating person, and is then seated
  by the same coordinator.
@@ -4667,16 +4624,15 @@ name "sub:The-protocol-parser"
 \begin_layout Standard
 The protocol parser is an easily interchangeable module in the GGS, handling
  the client-to-server, and server-to-client protocol parsing.
- In the GGS prototype, there is only one protocol supported, namely the
- 
+ In the GGS prototype, there is only one protocol supported, the 
 \emph on
 GGS Protocol
 \emph default
 .
  The role of the protocol parser is to translate the meaning of packets
- sent using the protocol in use to internal messages of the GGS system.
- The GGS protocol, discussed below is used as a sample protocol in order
- to explain how protocol parsers can be built for the GGS.
+ sent, using the protocol in use, to internal messages of the GGS system.
+ The GGS protocol, discussed below is used as a sample protocol to explain
+ how protocol parsers can be built for the GGS.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4694,16 +4650,16 @@ name "sub:The-structure-of"
 The GGS protocol is modeled after the HTTP protocol.
  The main reason for this is the familiarity many developers already have
  with HTTP due to its presence in internet software.
- Each GGS protocol packet contains a headers section.
- The headers section is followed by a data section.
- In the headers section, parameters concerning the packet is placed.
+ Each GGS protocol packet contains a header section.
+ The header section is followed by a data section.
+ In the header section, parameters concerning the packet is placed.
  In the data section, the actual data payload of the packet is placed.
 \end_layout
 
 \begin_layout Standard
-There is no requirement of any specific order of the parameters in the headers
+There is no requirement of any specific order of the parameters in the header
  section, however the data section must always follow directly after the
- headers section.
+ header section.
 \end_layout
 
 \begin_layout Standard
@@ -4717,10 +4673,10 @@ In the example below, line 1 contains a Game-Command parameter.
 Line 2 specifies a game token.
  This is a UUID which is generated for each client upon authentication with
  the GGS.
- The GGS uses this token in case a client is disconnected and the new connection
+ The GGS uses this token if a client is disconnected and the new connection
  created when the client reconnects must be re-paired with the player object
  inside the GGS.
- The UUID is also used as a unique ID within GDL VMs.
+ The UUID is also used as an unique ID within GDL VMs.
 \end_layout
 
 \begin_layout Standard
@@ -4735,14 +4691,14 @@ Line 3 specifies the content type of the payload of this particular packet.
 
 \begin_layout Standard
 Line 4 specifies the content length of the payload following immediately
- after the headers section.
+ after the header section.
 \end_layout
 
 \begin_layout Standard
 The parser of the GGS protocol implemented in the GGS prototype is designed
  as a finite state machine using the gen_fsm behavior.
  When a full message has been parsed by the parser, the message is converted
- into the internal structure of the GGS messages, and sent in to the system
+ into the internal structure of the GGS messages and sent in to the system
  from the protocol parser using message passing.
 \end_layout
 
@@ -6226,6 +6182,13 @@ To the left normal execution is pictured; the server state is backed up.
 
 \begin_layout Subsection
 Hot code replacement
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Hot-code-replacement"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7310,6 +7273,71 @@ The use of Thrift, Google protocol buffers - which is a different approach
  easily by developing protocol modules for each the protocols.
  No protocol modules for these protocols have however been developed during
  the writing of this thesis.
+\end_layout
+
+\begin_layout Section
+Operating system limitations
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Operating-system-limitations"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The operating systems on the computers which were used to run the bots when
+ testing the GGS prototype had some limitations.
+ The operating systems used were Linux and Mac OS X, since these systems
+ are quite similar on a lower level they exhibited the same limitations..
+\end_layout
+
+\begin_layout Standard
+The most notable limitation was a limit set on the number of simultaneously
+ open files.
+ Due to the implementation of sockets in UNIX-like systems such as Mac OS
+ X and Linux, a limit on the number of open files is a limit on the number
+ of open sockets.
+ In order to simulate many connections to the GGS, many sockets needed to
+ be opened.
+ Each socket had a bot connected on one end and the GGS on the other end.
+ On each test machine several thousand sockets needed to be open while testing
+ the GGS, therefore the limit on open files had to be removed.
+\end_layout
+
+\begin_layout Standard
+On the Linux machines the limit of open files is configured in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt /etc/security/security.conf}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+On the Mac OS X machine the limit of open files is configured in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+tt /etc/launchd.conf }
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter
