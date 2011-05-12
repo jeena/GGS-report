@@ -6060,8 +6060,9 @@ In Erlang, there is a simple version of supervisors.
  No state of the processes being supervised is inspected.
  There is, however a specification of how the supervised processes should
  behave, but on a higher level.
- The specification describes things such as how many times in a given interval a child process may crash, which processes need restarting when
- crashes occur, etc.
+ The specification describes things such as how many times in a given interval
+ a child process may crash, which processes need restarting when crashes
+ occur, etc.
  
 \end_layout
 
@@ -6119,8 +6120,8 @@ reference "fig:The-supervisor-structure"
 \begin_layout Standard
 A choice has been made to let faulty processes crash very easily when they
  receive bad data, or something unexpected happens.
- The alternative to crashing would have been to try to fix this faulty
- data, or to foresee the unexpected events.
+ The alternative to crashing would have been to try to fix this faulty data,
+ or to foresee the unexpected events.
  This was not chosen since it is so simple to monitor and restart processes,
  and so difficult to try to mend broken states.
  This approach is something widely deployed in the Erlang world, and developers
@@ -6143,14 +6144,13 @@ Redundancy
 \end_layout
 
 \begin_layout Standard
-The modules in the GGS are built to be capable of redundant operation.
+The modules in the GGS are built to be capable of redundant operations.
  By adding a backup process to sensitive processes, the state can be kept
  in the event of a crash.
  The coordinator of the GGS prototype has this backup feature built in.
  The coordinator passes state along to the backup process which keeps the
  data safe.
- In the event of a crash, the coordinator recovers the state from the backup
- process.
+ If a crash occurs, the coordinator recovers the state from the backup process.
  Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
