@@ -6432,6 +6432,144 @@ Hot code replacement is a technique used to update systems while they are
 \end_layout
 
 \begin_layout Section
+Software testing
+\end_layout
+
+\begin_layout Standard
+In order to make sure the GGS prototype adheres to the specification set
+ two different approaches to software testing are used.
+ For simpler testing the GGS prototype uses unit tests.
+ Modules are tested on a high level, making sure each function in the module
+ tested functiions according to specification.
+\end_layout
+
+\begin_layout Standard
+Unit testing is not employed to test the system from the client side.
+ In order to more accurately simulate real users some randomization is needed
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+citation needed
+\end_layout
+
+\end_inset
+
+, as users do not always act rationally.
+ In order to introduce random data, the client side of the GGS is simulated
+ by QuickCheck tests.
+\end_layout
+
+\begin_layout Subsection
+Unit testing
+\end_layout
+
+\begin_layout Standard
+Unit testing is a way to check if the functionality adheres to the specification
+ of the system by manually creating test cases for sections of code.
+ In most cases whole functions.
+ Unit testing is good, not only for revealing software bugs, but also to
+ state that a feature is working according to the specification.
+ Unit testing is a common way to test software and has proven useful within
+ the GGS when functions take complicated arguments.
+ In these cases it is easy to set up a scenario that should work.
+ 
+\end_layout
+
+\begin_layout Standard
+Unit testing is a useful way to create regression tests.
+ Regression tests are used to make sure changes made to the GGS do not introduce
+ new bugs or break the specification.
+ The regression tests are optimally run very often, such as after each change
+ to the code.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Erlang provides a module for unit testing called eunit.
+ Eunit, being a part of OTP, is rich in functionality and well documented
+ yet it doesn't allow any means of testing asynchronous behaviours as opposed
+ to other means of software testing.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Automated test case generation
+\end_layout
+
+\begin_layout Standard
+The problem of writing software tests manually, is that it takes a lot of
+ time.
+ There exists other ways to test software that address this problem by generatin
+g test cases with certain properties.
+ This allows for testing functions with a lot of different input parameters
+ without having to implement each specific test itself.
+ 
+\end_layout
+
+\begin_layout Standard
+By having each test automatically generated, each test can be very complex
+ and long.
+ In order to generate random, complex tests the GGS uses QuickCheck.
+ By using QuickCheck the GGS can be tested with input which would be extremely
+ difficult to construct using manual testing methods.
+ Regression tests, such as the unit tests used by the GGS are more useful
+ for ensuring the system does not diverge from a working scenario than for
+ finding new cases where the specification does not hold 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Arts:2006:TTS:1159789.1159792"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The entire GGS was not tested using QuickCheck, nor was the entire client
+ protocol for a game tested using QuickCheck, however the tests performed
+ using QuickCheck show that an automated testing system such as QuickCheck
+ is a very viable testing method for the GGS.
+\end_layout
+
+\begin_layout Standard
+QuickCheck has features to generate very large and complex tests, the results
+ of which can be hard to analyze.
+ The solution to reading these complex test is to extract a 
+\emph on
+minimal failing test case
+\emph default
+ which contains the smalles failing test sequence.
+ By applying a very large test and gradually simplifying the test to find
+ the smallest failing sequence, many bugs which would other wise have been
+ hard to catch can be caught 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Arts:2006:TTS:1159789.1159792"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+QuickCheck was originally made for the programming language Haskell.
+ There are a lot of reimplementations of QuickCheck in various programming
+ languages.
+ Erlang QuickCheck (EQC) and Triq are two variants of QuickCheck for Erlang.
+ EQC was chosen for testing the GGS.
+ Besides the standard functionality that QuickCheck provides, EQC is capable
+ of testing concurrency within a program.
+\end_layout
+
+\begin_layout Section
 Case studies
 \end_layout
 
@@ -7364,64 +7502,6 @@ The use of Thrift, Google protocol buffers - which is a different approach
  easily by developing protocol modules for each the protocols.
  No protocol modules for these protocols have however been developed during
  the writing of this thesis.
-\end_layout
-
-\begin_layout Section
-Software testing
-\end_layout
-
-\begin_layout Subsection
-Unit testing
-\end_layout
-
-\begin_layout Standard
-Unit testing is a way to check if functionality works by manually creating
- test cases for sections of code.
- In most cases whole functions.
- Unit testing is good, not only for revealing software bugs, but also to
- state that a feature is working according to the specification.
- Unit testing is a common way to test software and has proven useful within
- the GGS when functions takes complicated arguments.
- In these cases it is easy to set up a scenario that should work.
- 
-\end_layout
-
-\begin_layout Standard
-Erlang provides a module for unit testing called eunit.
- Eunit, being a part of OTP, is rich in functionality and well documented
- yet it doesn't allow any means of testing asynchronous behaviours as opposed
- to other means of software testing.
-\end_layout
-
-\begin_layout Subsection
-Automated test case generation
-\end_layout
-
-\begin_layout Standard
-The problem of writing software tests manually, is that it takes a lot of
- time.
- There exists other ways to test software that address this problem by generatin
-g test cases with certain properties.
- This allows for testing functions with a lot of different input parameters
- without having to implement each specific test itself.
- The drawback of generating test cases instead of manually creating them,
- is when the types or structures of the parameters of a function are complicated.
- This makes it hard to find suitable rules for the tests to generate.
- 
-\end_layout
-
-\begin_layout Standard
-One tool used for automatic test case generation is QuickCheck originally
- made for the programming language Haskell.
- There are a lot of reimplementations of QuickCheck in various programming
- languages.
- Erlang QuickCheck(EQC) and Triq are two variants of QuickCheck for Erlang.
- The one desided to be used within the GGS is EQC.
- Besides the standard functionality that QuickCheck provides, EQC is capable
- of testing concurrency within a program.
- Because of EQC being a commercial product, a lot of features of EQC are
- unused, including the means of testing concurrency.
- 
 \end_layout
 
 \begin_layout Chapter
