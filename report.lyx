@@ -2949,9 +2949,9 @@ Inside the GGS everything needs a unique identifier.
  When players communicate amongst each other or with tables, they need to
  be able to uniquely identify all of these resources.
  Within one machine, this is mostly not a problem.
- A simple systems a counter can be imagined, where each request for a new
- ID increments the previous identifier and returns the new identifier based
- on the old one; see algorithm 
+ A simple system with a counter can be imagined, where each request for
+ a new ID increments the previous identifier and returns the new identifier
+ based on the old one; see algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:A-simple-generator"
@@ -2974,8 +2974,8 @@ reference "alg:A-simple-generator"
 \begin_layout Standard
 The obvious solution to this problem is to ensure mutual exclusion by using
  some sort of a lock, which may work well in many concurrent systems.
- In a distributed system like the GGS however, this lock, along with the
- state, would have to be distributed.
+ In a distributed system such as the GGS however, this lock, along with
+ the state, would have to be distributed.
  If the lock is not distributed, no guaranties can be made that two nodes
  in the distributed system do not generate the same identifier.
 \end_layout
@@ -3036,7 +3036,11 @@ The generation of a UUID is accomplished by gathering several different
 \emph on
 hashed
 \emph default
- using an algorithm such as SHA-1.
+
+\begin_inset space ~
+\end_inset
+
+using an algorithm such as SHA-1.
 \end_layout
 
 \begin_layout Standard
@@ -3070,7 +3074,7 @@ reference "alg:A-simple-generator"
 
 \end_inset
 
-, even when mutual system-wide exclusion was implemented.
+, even when mutual system-wide exclusion is implemented.
  This is exactly the problem UUIDs solve.
 \begin_inset ERT
 status open
@@ -3170,14 +3174,14 @@ The GGS only supports languages running in a sandboxed environment.
  Each game session is started in its own sandbox.
  The sandboxing isolates the games in such a way that they cannot interfere
  with each other.
- If sandboxing would not have been in place, one game could potentially
- modify the contents of a different game.
+ If sandboxing was not in place, one game could potentially modify the contents
+ of a different game.
  A similar approach is taken with the persistent storage provided by the
  GGS.
  In the storage each game has its own namespace, much like a table in a
  relational database.
- A game is not allowed to venture outside this namespace and can, because
- of that, not modify the persistent data of other games.
+ A game is not allowed to venture outside this namespace, and can because
+ this not modify the persistent data of other games.
  
 \begin_inset ERT
 status open
@@ -4112,8 +4116,8 @@ Short introduction to the Erlang syntax
 \end_layout
 
 \begin_layout Standard
-To understand the examples in this thesis, a small subset of Erlang must
- be understood.
+In order to understand examples in this thesis, a small subset of Erlang
+ must be understood.
  In this section, the very syntactic basics of Erlang are given.
 \end_layout
 
@@ -4330,7 +4334,7 @@ name "sec:The-modular-structure"
 \end_layout
 
 \begin_layout Standard
-The separation of concerns and principle of single responsibility 
+The separation of concerns, and principle of single responsibility 
 \begin_inset Foot
 status open
 
@@ -4461,7 +4465,7 @@ reference "sec:Operating-system-limitations"
 \end_layout
 
 \begin_layout Standard
-Should the dispatcher module fails to function, no new connections to the
+Should the dispatcher module fail to function, no new connections to the
  GGS can be made.
  In the event of a crash in the dispatcher module, a supervisor process
  immediately restarts the dispatcher.
@@ -4520,8 +4524,8 @@ The player module is responsible for representing a player in the system.
  Each connected player has its own player process.
  The player process has access to the connection of the player it represents,
  and can communicate with this player.
- To communicate with a player, the data to and from the player object must
- pass through a protocol parser module, discussed in 
+ In order to communicate with a player, the data to and from the player
+ object must pass through a protocol parser module, discussed in 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sub:The-protocol-parser"
@@ -4530,7 +4534,7 @@ reference "sub:The-protocol-parser"
 
 .
  Raw communication, without passing the data through a protocol parser is
- in theory possible but it is not useful.
+ in theory possible, however it is not useful.
 \end_layout
 
 \begin_layout Standard
@@ -4573,11 +4577,11 @@ The player process resumes operation, immediately starting a new protocol
 \begin_layout Standard
 The window of time between the crash of the player process and the starting
  of a new player process is, as with the dispatcher, very short.
- Since the connection changes owners for a short period of time but is never
- dropped, the implications of a crash is only noticed, at worst, as choppy
- gameplay for the client.
- Note however that this crash recovery scheme is not implemented in the
- GGS prototype.
+ Since the connection changes owners for a short period of time, but is
+ never dropped, the implications of a crash are only noticed, at worst,
+ as choppy gameplay for the client.
+ Note however that this crash recovery scheme is only partly implemented
+ in the GGS prototype.
  
 \begin_inset Note Note
 status open
@@ -4616,15 +4620,16 @@ name "sub:The-protocol-parser"
 \begin_layout Standard
 The protocol parser is an easily interchangeable module in the GGS, handling
  the client-to-server, and server-to-client protocol parsing.
- In the GGS prototype, there is only one protocol supported, the 
+ In the GGS prototype, there is only one protocol supported, namely the
+ 
 \emph on
 GGS Protocol
 \emph default
 .
  The role of the protocol parser is to translate the meaning of packets
- sent, using the protocol in use, to internal messages of the GGS system.
- The GGS protocol, discussed below is used as a sample protocol to explain
- how protocol parsers can be built for the GGS.
+ sent using the protocol in use to internal messages of the GGS system.
+ The GGS protocol, discussed below is used as a sample protocol in order
+ to explain how protocol parsers can be built for the GGS.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4642,16 +4647,16 @@ name "sub:The-structure-of"
 The GGS protocol is modeled after the HTTP protocol.
  The main reason for this is the familiarity many developers already have
  with HTTP due to its presence in internet software.
- Each GGS protocol packet contains a header section.
- The header section is followed by a data section.
- In the header section, parameters concerning the packet is placed.
+ Each GGS protocol packet contains a headers section.
+ The headers section is followed by a data section.
+ In the headers section, parameters concerning the packet is placed.
  In the data section, the actual data payload of the packet is placed.
 \end_layout
 
 \begin_layout Standard
-There is no requirement of any specific order of the parameters in the header
+There is no requirement of any specific order of the parameters in the headers
  section, however the data section must always follow directly after the
- header section.
+ headers section.
 \end_layout
 
 \begin_layout Standard
@@ -4665,10 +4670,10 @@ In the example below, line 1 contains a Game-Command parameter.
 Line 2 specifies a game token.
  This is a UUID which is generated for each client upon authentication with
  the GGS.
- The GGS uses this token if a client is disconnected and the new connection
+ The GGS uses this token in case a client is disconnected and the new connection
  created when the client reconnects must be re-paired with the player object
  inside the GGS.
- The UUID is also used as an unique ID within GDL VMs.
+ The UUID is also used as a unique ID within GDL VMs.
 \end_layout
 
 \begin_layout Standard
@@ -4683,14 +4688,14 @@ Line 3 specifies the content type of the payload of this particular packet.
 
 \begin_layout Standard
 Line 4 specifies the content length of the payload following immediately
- after the header section.
+ after the headers section.
 \end_layout
 
 \begin_layout Standard
 The parser of the GGS protocol implemented in the GGS prototype is designed
  as a finite state machine using the gen_fsm behavior.
  When a full message has been parsed by the parser, the message is converted
- into the internal structure of the GGS messages and sent in to the system
+ into the internal structure of the GGS messages, and sent in to the system
  from the protocol parser using message passing.
 \end_layout
 
@@ -4994,12 +4999,13 @@ This module holds the game logic of a game and is responsible for the VM
 \begin_layout Standard
 The game VM contains the state of the VM and a table token associated with
  a running game.
- GameVM is started by the table module.
- The table module hands over a token to the game VM during initialization.
+ The game VM is started by the table module.
+ The table module hands over a token used for identification to the game
+ VM during initialization.
  During initialization a new VM instance and various objects associated
- to the VM instance will be created.
- Callbacks to Erlang are registered into the VM and then the source code
- of a game is loaded into the VM and the game is ready for startup.
+ to the VM instance are created.
+ Callbacks to Erlang are registered into the VM and the source code of a
+ game is loaded into the VM, finally the game is ready for startup.
  The only means for a game to communicate with the VM is through usage of
  a provided interface.
  
@@ -5010,12 +5016,12 @@ The VM itself makes it possible for the game developer to program in the
  programming language covered by the VM.
  In future releases, more game VMs will be added to support more programming
  languages.
- Because the game VM keeps track of the correct table, the game developer
+ Since the game VM keeps track of the correct table, the game developer
  does not need to take this into consideration when programming a game.
- If a method within the game sends data to a player, it will be delivered
+ If a method within the game sends data to a player, the data is delivered
  to the player in the correct running game.
  The same game token is used to store the game state in the database.
- Therefore, no game states will be mixed up either.
+ Therefore, no game states can be mixed up.
 \end_layout
 
 \begin_layout Standard
