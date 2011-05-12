@@ -2239,12 +2239,22 @@ There are two main types of protocols with help of which computer communication
  network layer protocols and HTTP which is the most prominent application
  layer protocol.
  The transport layer protocols are commonly used to transport application
- layer protocols such as HTTP.
+ layer protocols such as HTTP, FTP and IRC.
  TCP and UDP cannot be used on their own without an application layer protocol
  on top of them.
  Application layer protocols such as HTTP on the other hand need a transport
  layer protocol in order to work.
- 
+\end_layout
+
+\begin_layout Standard
+In order for the GGS to communicate with clients over a network, both an
+ application layer protocol and a network layer protocol must be chosen.
+ This section outlines some candidates for application and network layer
+ protocols for the GGS, along with a motivation as to why the described
+ protocol was or was not chosen.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -2256,6 +2266,24 @@ nomenclature{
 \backslash
 textbf{HTTP}}{Hyper Text Transport Protocol, a network protocol commonly
  used to deliver web pages}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{FTP}}{File Transfer Protocol}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+nomenclature{
+\backslash
+textbf{IRC}}{Internet Relay Chat}
 \end_layout
 
 \end_inset
@@ -2279,6 +2307,14 @@ Many online games use UDP as the carrier for their application layer protocol.
  thus very suitable for media streaming for example.
 \end_layout
 
+\begin_layout Standard
+The need to implement custom error checking, and possibly correction makes
+ UDP a bad candidate for the GGS.
+ If error checking and correction were to be implemented in the GGS project,
+ UDP would be a good candidate, however the time neccessary to implement
+ these features makes this option unfeasable.
+\end_layout
+
 \begin_layout Subsection
 TCP
 \end_layout
@@ -2289,7 +2325,12 @@ For reliable transfers TCP is often used on the Internet.
  missing in UDP.
  This ensures the consistency of data, but also makes the transfer slower
  than if UDP had been used.
- 
+ TCP was chosen for the GGS as the network layer protocol even though TCP
+ can be considerably slower than UDP.
+ The error checking mechanisms in TCP are reason enough to use TCP instead
+ of UDP in the GGS prototype.
+ The implementation of UDP is still possible, it will however not appear
+ in the prototype.
 \end_layout
 
 \begin_layout Subsection
@@ -2350,9 +2391,7 @@ name "sec:Generic"
 
 \begin_layout Standard
 The GGS is a game server.
- It was made with a desire to be suitable for any kind of game.
- Any game with a client-server behavior should be perfectly suited for the
- GGS.
+ It was made with a desire to be suitable for many kinds of games.
  A game should not only be able to vary in terms of genre, graphics, gameplay
  etc, but also in the way the game is implemented for example in different
  programming languages.
@@ -2365,9 +2404,8 @@ The GGS is a game server.
 \end_layout
 
 \begin_layout Standard
-Another aspect is the desire to let a client upload the source code of the
- game it would like to play on the GGS.
- This way every client could connect to the server and install the game
+Clients upload the source code of the game it would like to play on the
+ GGS, this way any client can connect to the server and install the game
  through a API without the need of installation through the server provider
  or maintainer.
 \end_layout
@@ -2506,8 +2544,16 @@ key "armstrong2011"
 \end_layout
 
 \begin_layout Standard
-There are several good papers on how to migrate whole virtual machines among
- nodes to replicate them but for the GGS a different approach has been chosen.
+There are several good papers (e.g.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "VM:Jin2010,VM:Polze"
+
+\end_inset
+
+) on how to migrate whole virtual machines among nodes to replicate them
+ but for the GGS a different approach has been chosen.
  Instead of duplicating a virtual machine, an attempt to lift the state
  of the VM to a storage external to the VM is made.
  The state is stored in a fast, fault tolerant data store instead of inside
@@ -2564,8 +2610,8 @@ name "sec:Scalability"
 Each instance of the GGS contains several so called tables.
  Each table is an isolated instance of a game, for instance a chess game
  or a poker game.
- The way that the GGS scales is to distribute these tables on different
- servers.
+ A possible way for the GGS to scale up is to distribute these tables on
+ different servers.
  In many games it is not necessary for a player to move among tables during
  games.
  This is for example not a common occurrence in chess, where it would be
@@ -2636,8 +2682,8 @@ textbf{Amazon EC2}}{A cloud computation service}
 
 \begin_layout Standard
 Load balancing and scaling are difficult in different scenarios.
- When running in a separate server park, there is a set number of servers
- available, this means that an even distribution on all servers is preferable.
+ When running in a server park, there is a set number of servers available,
+ this means that an even distribution on all servers is preferable.
  When running the GGS in a cloud, such as Amazon EC2, it is possible to
  add an almost infinite number of servers as execution goes on and the load
  increases.
@@ -3193,12 +3239,20 @@ Erlang is not a very popular language for game development, therefore the
  The main idea is to offer a replaceable module which would introduce an
  interface to different virtual machines which would run the game code.
  This way a game developer can write the game in his favorite language while
- the server part still is written in Erlang and can benefit from all its
- advantages.
+ the server part still is written in Erlang and can benefit from all the
+ advantages of the Erlang language.
+ In this section, a few potential languages are given.
 \end_layout
 
 \begin_layout Subsection
 JavaScript
+\end_layout
+
+\begin_layout Standard
+JavaScript is a prime GDL candidate for the GGS.
+ The language is very flexible, a general knowledge of the language is present
+ in the computer science community, furthermore there are virtual machines
+ readily available for JavaScript.
 \end_layout
 
 \begin_layout Standard
@@ -3278,7 +3332,21 @@ https://github.com/languages/
 \end_inset
 
  of all code is written in JavaScript.
- The popularity of JavaScript in the programming community, in combination
+ 
+\end_layout
+
+\begin_layout Standard
+Since the GGS is intended to be connected to several different GDL VMs the
+ choice for the first language implemented for the GGS prototype seems not
+ only to depend on the technical features of the GDL chosen, in this case
+ JavaScript.
+ A different, albeit still important non technical feature of JavaScript
+ is the familiarity with the language of the members of the GGS development
+ team.
+\end_layout
+
+\begin_layout Standard
+The popularity of JavaScript in the programming community, in combination
  with the availability of several different JavaScript virtual machines
  was an important influence in choosing JavaScript as the main control language
  for our GGS prototype.
@@ -3357,7 +3425,7 @@ Lua
 \emph on
 ActionScript
 \emph default
- are suitable as well because there is a virtual machine for each of them
+ are suitable as well since there is a virtual machine for each of them
  which can be 
 \begin_inset Quotes eld
 \end_inset
