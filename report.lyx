@@ -369,8 +369,8 @@ Contemporary game servers lack good fault tolerance, furthermore the game
 
 \begin_layout Abstract
 It is investigated if the techniques and tools used in the telecom industry,
- specifically Erlang and OTP, can be used to create a highly reliable game
- server.
+ specifically Erlang and the OTP, can be used to create a highly reliable
+ game server.
  To make the server generic, it is investigated if virtual machines can
  be used to run the actual games, thereby allowing the games to be developed
  in a language different from the actual server software.
@@ -390,10 +390,10 @@ The results from testing the server show that: it is possible to design
 \end_layout
 
 \begin_layout Abstract
-The conclusion of the thesis is that since simple games could be developed
- in a fault tolerant way, while also making use of a generic server, it
- should be worthwhile trying to develop more advanced games using the same
- techniques as those described in this thesis.
+The conclusion of the thesis is that since simple games can be developed
+ in a fault tolerant manner, while also making use of a generic server,
+ it should be worthwhile attempting to develop more advanced games using
+ the same techniques as those described in this thesis.
 \end_layout
 
 \begin_layout Standard
