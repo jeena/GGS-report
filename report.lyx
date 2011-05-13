@@ -4294,7 +4294,7 @@ tt [1,2,3]}
 \series bold
 Strings
 \series default
- doubly quoted lists of characters, for example 
+ are double-quoted lists of characters, for example 
 \begin_inset ERT
 status open
 
@@ -4347,7 +4347,7 @@ name "sec:The-modular-structure"
 \end_layout
 
 \begin_layout Standard
-The separation of concerns, and principle of single responsibility 
+The separation of concerns and the principle of single responsibility 
 \begin_inset Foot
 status open
 
@@ -4367,12 +4367,12 @@ target "http://www.objectmentor.com/resources/articles/srp.pdf"
  are widely respected as good practices in the world of software engineering
  and development.
  By dividing the GGS into modules each part of the GGS can be modified without
- damaging, or requiring changes in the rest of the system.
- Due to the hot code updates featured in Erlang, it is theoretically possible
+ damaging or requiring changes in the rest of the system.
+ Due to the hot code update feature in Erlang, it is theoretically possible
  to update parts of the GGS while the system is running, this has however
  not been implemented in the prototype.
  The modular composition of the GGS prototype should make a transition to
- a folly hot code swappable system relatively easy.
+ a fully hot code swappable system relatively easy.
  Hot code replacements are discussed in more detail in section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4399,8 +4399,8 @@ reference "cha:Theory"
 
 \begin_layout Standard
 In the text below the different modules of the GGS are presented.
- In the text the word module refers to the actual code of the discussed
- feature, while the word process is used when referring to a running instance
+ In the text the word 'module' refers to the actual code of the discussed
+ feature, while the word 'process' is used when referring to a running instance
  of the code.
 \begin_inset ERT
 status open
@@ -4434,36 +4434,11 @@ The dispatcher module
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-The discussion of the modules is divided into the following parts:
-\end_layout
-
-\begin_layout Itemize
-What does the module do?
-\end_layout
-
-\begin_layout Itemize
-What happens when the module fails?
-\end_layout
-
-\begin_layout Itemize
-How does the module correspond to the real-world scenario of the chess club?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The dispatcher module is the first module to have contact with a player.
  When a player connects to the GGS, the player is first greeted by the dispatche
 r module, which sets up an accepting socket for each player.
  The dispatcher is the module which handles the interfacing to the operating
- system when working with sockets.
+ system when obtaining new sockets.
  Operating system limits concerning the number of open files, or number
  of open sockets are handled here.
  The operating system limits can impose problems in the GGS, this is discussed
@@ -4487,9 +4462,9 @@ Should the dispatcher module fail to function, no new connections to the
  this window is the GGS unable to process new connection requests.
  Due to the modular structure of the GGS, the rest of the system is not
  harmed by the dispatcher process not functioning.
- The dispatcher process does not contain a state, therefore a simple restart
- of the process is sufficient in restoring the GGS to a pristine state after
- a dispatcher crash
+ The dispatcher process does not contain any kind of a state, therefore
+ a simple restart of the process is sufficient in restoring the GGS to a
+ pristine state after a dispatcher crash
 \begin_inset Note Note
 status open
 
@@ -4517,8 +4492,8 @@ reference "sub:The-player-module"
 \end_inset
 
 .
- The newly created player process is handed and granted rights to, the socket
- of the newly connected player.
+ The newly created player process is handed the control over its own socket
+ connection.
 \end_layout
 
 \begin_layout Subsection
@@ -4535,9 +4510,9 @@ name "sub:The-player-module"
 \begin_layout Standard
 The player module is responsible for representing a player in the system.
  Each connected player has its own player process.
- The player process has access to the connection of the player it represents,
- and can communicate with this player.
- In order to communicate with a player, the data to and from the player
+ The player process has access to the connection of the client it represents,
+ and can communicate with this client.
+ In order to communicate with a client, the data to and from the player
  object must pass through a protocol parser module, discussed in 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -4551,7 +4526,7 @@ reference "sub:The-protocol-parser"
 \end_layout
 
 \begin_layout Standard
-In the creation of a player process, the coordinator process, discussed
+During the creation of a player process, the coordinator process, discussed
  in 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -4559,7 +4534,8 @@ reference "sub:The-coordinator-module"
 
 \end_inset
 
-, is notified by the newly connected process.
+, is notified by the newly created process in order to get access to the
+ lobby.
 \end_layout
 
 \begin_layout Standard
@@ -4578,7 +4554,7 @@ The player process exits.
 \end_layout
 
 \begin_layout Enumerate
-The coordinator spawns a new player process, with the same socket reference
+The coordinator spawns a new player process with the same socket reference
  as the old player process had.
 \end_layout
 
@@ -4595,17 +4571,6 @@ The window of time between the crash of the player process and the starting
  as choppy gameplay for the client.
  Note however that this crash recovery scheme is only partly implemented
  in the GGS prototype.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Can we do this..? Seems a bit sneaky.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4669,7 +4634,7 @@ The GGS protocol is modeled after the HTTP protocol.
 \begin_layout Standard
 There is no requirement of any specific order of the parameters in the headers
  section, however the data section must always follow directly after the
- headers section.
+ headers section separated by a empty new line.
 \end_layout
 
 \begin_layout Standard
@@ -4680,17 +4645,7 @@ In the example below, line 1 contains a Game-Command parameter.
 \end_layout
 
 \begin_layout Standard
-Line 2 specifies a game token.
- This is a UUID which is generated for each client upon authentication with
- the GGS.
- The GGS uses this token in case a client is disconnected and the new connection
- created when the client reconnects must be re-paired with the player object
- inside the GGS.
- The UUID is also used as a unique ID within GDL VMs.
-\end_layout
-
-\begin_layout Standard
-Line 3 specifies the content type of the payload of this particular packet.
+Line 2 specifies the content type of the payload of this particular packet.
  This parameter allows the GGS to invoke special parsers, should the data
  be encoded or encrypted.
  When encryption is employed, only the payload is encrypted, not the header
@@ -4700,7 +4655,7 @@ Line 3 specifies the content type of the payload of this particular packet.
 \end_layout
 
 \begin_layout Standard
-Line 4 specifies the content length of the payload following immediately
+Line 3 specifies the content length of the payload following immediately
  after the headers section.
 \end_layout
 
@@ -4710,6 +4665,16 @@ The parser of the GGS protocol implemented in the GGS prototype is designed
  When a full message has been parsed by the parser, the message is converted
  into the internal structure of the GGS messages, and sent in to the system
  from the protocol parser using message passing.
+\end_layout
+
+\begin_layout Standard
+Line 4 is a empty line which is, like in the HTTP protocol, the separator
+ between the head and body or payload section.
+\end_layout
+
+\begin_layout Standard
+Line 5 is the actuall payload which is transported to the game as a parameter
+ of the playerCommand() function call.
 \end_layout
 
 \begin_layout Standard
@@ -4829,11 +4794,6 @@ Game-Command: chat
 
 \begin_layout Plain Layout
 
-Token: e30174d4-185e-493b-a21a-832e2d9d7a1a
-\end_layout
-
-\begin_layout Plain Layout
-
 Content-Type: text
 \end_layout
 
@@ -4915,8 +4875,8 @@ name "sub:The-coordinator-module"
 The coordinator module is responsible for keeping track of all players,
  their seats and tables.
  Players register with the coordinator process when first connecting to
- the server and, the coordinator places each player by their respective
- table.
+ the server.
+ The coordinator places each player by their respective table.
 \end_layout
 
 \begin_layout Standard
@@ -4936,27 +4896,26 @@ The coordinator process contains an important state, therefore a backup
  process is kept at all times.
  All good data processed by the coordinator is stored for safekeeping in
  the backup process as well.
- Data which are potentially harmful is not stored in the backup process.
+ Data which is potentially harmful is not stored in the backup process.
 \end_layout
 
 \begin_layout Standard
-On a crash, the coordinator process recovers the prior good state from the
- backup process and continues where it left off.
+In the event of a crash, the coordinator process recovers the prior good
+ state from the backup process and continues where it left off.
  A supervisor process monitors the coordinator process and restarts the
  process when it malfunctions.
  There is a window of time between the crash of the coordinator and the
- restarting of the coordinator, during this time, players cannot be seated
- by new tables and cannot disconnect from the server.
+ restart of a new coordinator process.
+ During this time, players cannot be seated by new tables and cannot disconnect
+ from the server.
  This window of time is very small, and the unavailability of the coordinator
  process should not be noticed by more than a short time lag for the clients.
 \end_layout
 
 \begin_layout Standard
 Moving back to the example of the chess club, the coordinator process can
- be seen as a judge, monitoring all moves of the players.
- At the same time as acting as a judge, the coordinator process is also
- a host in the chess club, seating players by their tables and offering
- services to the players.
+ be seen as a host in the chess club, seating players by their tables and
+ offering services to the players.
 \end_layout
 
 \begin_layout Subsection
@@ -5004,30 +4963,29 @@ The game virtual machine module
 \end_layout
 
 \begin_layout Standard
-This module holds the game logic of a game and is responsible for the VM
- associated with each game.
+This module is responsible for the VM associated with each game.
  
 \end_layout
 
 \begin_layout Standard
-The game VM contains the state of the VM and a table token associated with
- a running game.
- The game VM is started by the table module.
+The game VM contains a connection to the GDL VM and a table token associated
+ with a running game.
+ The game VM is started by the table module during its initialisation.
  The table module hands over a token used for identification to the game
- VM during initialization.
- During initialization a new VM instance and various objects associated
- to the VM instance are created.
- Callbacks to Erlang are registered into the VM and the source code of a
- game is loaded into the VM, finally the game is ready for startup.
- The only means for a game to communicate with the VM is through usage of
- a provided interface.
+ VM during the initialization.
+ During the initialization a new GDL VM instance and various objects associated
+ to the GDL VM instance are created.
+ Callbacks to Erlang are registered into the GDL VM and the source code
+ of a game is loaded into the GDL VM, finally the game is ready for startup.
+ The only means for a game to communicate with the GGS is through usage
+ of a provided interface.
  
 \end_layout
 
 \begin_layout Standard
-The VM itself makes it possible for the game developer to program in the
- programming language covered by the VM.
- In future releases, more game VMs will be added to support more programming
+The GDL VM itself makes it possible for the game developer to program in
+ the programming language covered by the GDL VM.
+ In future releases, more GDL VMs will be added to support more programming
  languages.
  Since the game VM keeps track of the correct table, the game developer
  does not need to take this into consideration when programming a game.
@@ -5051,7 +5009,8 @@ reference "sec:Communication-with-the-GDL-VM"
 \end_layout
 
 \begin_layout Standard
-The code which is run in the VM is uploaded to the GGS prior to each game.
+The code which is run in the GDL VM is uploaded to the GGS prior to each
+ game.
  Allowing the clients to upload code allows clients to run any game.
 \end_layout
 
@@ -5073,12 +5032,18 @@ Game data from all games on the GGS is stored in the database backend of
 
 \begin_layout Standard
 In the GGS prototype the database module is using a database management
- system called Mnesia.
+ system called Mnesia .
  Mnesia ships with the standard Erlang distribution and is a key-value store
  type of database.
- Mnesia is designed to handle the stress of telecoms systems, therefore
- it has some features specifically tailored for telecoms which are not commonly
- found in other databases.
+ Mnesia is designed to handle the stress of telecoms systems
+\begin_inset CommandInset citation
+LatexCommand citet
+key "667766"
+
+\end_inset
+
+, therefore it has some features specifically tailored for telecoms which
+ are not commonly found in other databases.
  Key features of the Mnesia database are:
 \end_layout
 
@@ -5095,16 +5060,6 @@ Fault tolerance
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand citet
-key "667766"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The features of Mnesia originally intended for telecoms prove very useful
  for the GGS as well.
  The fault tolerance and speed of Mnesia are valuable tools, the fast key/value
@@ -5114,8 +5069,8 @@ The features of Mnesia originally intended for telecoms prove very useful
 \begin_layout Standard
 Game data will not be lost when a game is stopped or has gone down for any
  reason.
- This makes it possible to continue a game just before the failure without
- having to start the game from the beginning.
+ This makes it possible to continue a game from the point just before the
+ failure without having to restart the complete game.
  
 \begin_inset ERT
 status open
@@ -5135,7 +5090,7 @@ textbf{Mnesia}}{Database server used in the GGS}
 \end_layout
 
 \begin_layout Standard
-The GGS stores the game state in the distributed Mnesia database, from which
+The GGS stores the game state in the distributed database Mnesia, from which
  the state can be restored in the event of a crash.
 \end_layout
 
@@ -5148,7 +5103,7 @@ world
 \noun default
  and 
 \noun on
-Localstorage
+localStorage
 \noun default
 .
  The 
@@ -5159,13 +5114,13 @@ World
  This sort of game data may change during the runtime of the game.
  The 
 \noun on
-Localstorage
+localStorage
 \noun default
  contains data independent of the game state.
  Game resources, constants and global variables are all examples of data
  that reside within the 
 \noun on
-Localstorage
+localStorage
 \noun default
 .
  To store a value within the database, not only is the table token and the
@@ -5273,8 +5228,12 @@ tt GGS.sendCommandToAll(command, args)}
 
 \emph default
 .
- The localStorage is a convenient way to store global data and other variables
- separated from the game state.
+ The 
+\noun on
+localStorage
+\noun default
+ is a convenient way to store global data and other variables separated
+ from the game state.
  Unique ids called game tokens are generated for hosted games so that they
  are not mixed up.
 \begin_inset ERT
@@ -5792,7 +5751,7 @@ name "alg:exposing-erlang"
 
 \end_inset
 
-An example of how Erlang functionality is exposed to a JavaScript GDL
+An example of how Erlang functionality is exposed to a JavaScript GDL VM.
 \end_layout
 
 \end_inset
@@ -5815,37 +5774,6 @@ TODO: Go in to more detail about how the world, player and localstorage
  Also discuss localstorage and how it derives from the webstorage standard
  in detail.
  This is a great point on how we try to follow standards.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-My idea here is that we describe the Erlang-js (which failed, but nontheless),
- v8, UUID and other external communication.
- We shouldn't describe sockets here though..
- or..
- maybe?
-\end_layout
-
-\begin_layout Plain Layout
-Also discuss how we allow GDLs to communicate with Erlang, this is 
-\begin_inset Quotes eld
-\end_inset
-
-external
-\begin_inset Quotes erd
-\end_inset
-
- to thre GDL.
- Discuss the GGS world object (there is a reference to this secxtion for
- that purpose)
 \end_layout
 
 \end_inset
@@ -5966,19 +5894,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-We should really do this graphic in EPS instead of PNG
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -6030,7 +5945,7 @@ name "fig:The-supervisor-structure"
 
 \end_inset
 
-The supervisor structure of GGS
+The supervisor structure of the GGS
 \end_layout
 
 \end_inset
@@ -6063,8 +5978,8 @@ key "Savor:1997:HSA:851010.856089"
 \end_layout
 
 \begin_layout Standard
-There are several approaches to supervisor design in general (when not just
- considering how they work in Erlang).
+There are several approaches to a supervisor design in general (when not
+ just considering how they work in Erlang).
  One common approach is to have the supervisor look in to the state of the
  process(es) it supervises, and let the supervisor makes decisions based
  on this state.
@@ -6128,26 +6043,34 @@ reference "fig:The-supervisor-structure"
 
 \end_inset
 
- shows our two subsystems, the coordinator subsystem and the dispatcher
+ shows the two subsystems, the coordinator subsystem and the dispatcher
  subsystem.
  Since these two systems perform very different tasks they have been separated.
  Each subsystem has one worker process, the coordinator or the dispatcher.
- The worker process keeps a state which should not be lost on a crash.
+ The worker process keeps a state which should not be lost in the event
+ of a crash.
 \end_layout
 
 \begin_layout Standard
-A choice has been made to let faulty processes crash very easily when they
- receive bad data, or something unexpected happens.
+The choice has been made to let faulty processes crash very easily when
+ they receive bad data, or something unexpected happens.
  The alternative to crashing would have been to try to fix this faulty data,
  or to foresee the unexpected events.
  This was not chosen since it is so simple to monitor and restart processes,
- and so difficult to try to mend broken states.
+ and difficult to try to mend broken states.
  This approach is something widely deployed in the Erlang world, and developers
- are often encouraged to “Let it crash”.
+ are often encouraged to “Let it crash” 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Armstrong03"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-To prevent any data loss, the good state of the worker processes are stored
+To prevent any data loss, the good state of the worker processes is stored
  in their respective backup processes.
  When a worker process (re)starts, the backup process is queried for any
  previous state, if there is any, that state is loaded in to the worker
@@ -6166,8 +6089,8 @@ The modules in the GGS are built to be capable of redundant operations.
  By adding a backup process to sensitive processes, the state can be kept
  in the event of a crash.
  The coordinator of the GGS prototype has this backup feature built in.
- The coordinator passes state along to the backup process which keeps the
- data safe.
+ The coordinator passes the state along to the backup process which keeps
+ the data safe.
  If a crash occurs, the coordinator recovers the state from the backup process.
  Figure 
 \begin_inset CommandInset ref
@@ -6274,8 +6197,8 @@ Hot code replacement is a technique used to update systems while they are
  running.
  The main use of hot code replacement is in critical systems that require
  low downtime, such as telecom systems.
- By using hot code replacement, systems can be able to achieve as high uptime
- as possible and thus improving the reliability of the system.
+ By using hot code replacement, systems are able to achieve much longer
+ uptimes and thus improving the reliability of the system.
  Code replacement is a feature that exists in Erlang which means that with
  some work it could be implemented into the GGS.
 \end_layout
@@ -6285,7 +6208,7 @@ Testing
 \end_layout
 
 \begin_layout Standard
-To make sure the GGS prototype adheres to the specification set, two different
+To make sure the GGS prototype adheres to the specification set, three different
  approaches to software testing are used.
  For simpler testing the GGS prototype uses unit tests.
  Modules are tested on a high level, making sure each function in the module
@@ -6307,6 +6230,12 @@ citation needed
 , as users do not always act rationally.
  In order to introduce random data, the client side of the GGS is simulated
  by QuickCheck tests.
+\end_layout
+
+\begin_layout Standard
+Finally to test the robustness of the prototype virtuall users, so called
+ bots are being used to simulate large amounts of players playing different
+ games simultanously.
 \end_layout
 
 \begin_layout Subsection
@@ -6406,6 +6335,35 @@ QuickCheck was originally made for the programming language Haskell.
  of testing concurrency within a program.
 \end_layout
 
+\begin_layout Subsection
+Bots
+\end_layout
+
+\begin_layout Standard
+In order to test the robustness of the GGS several different artificial
+ users, so called bots, have been implemented.
+ Each of this bots is programmed to play a game on the GGS as similar to
+ a real user as possible.
+ In the game Pong for example, the bot is watching the ball and moves its
+ pad up or down according what the position of the ball suggests.
+ For the GGS there is no difference in serving a real user or a bot.
+\end_layout
+
+\begin_layout Standard
+With help of this method large amounts of players can be simulated playing
+ games on the GGS simultanously which is a good stress and concurrency test
+ for the overall system.
+ In section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Statistics"
+
+\end_inset
+
+ some of the statistical data retrieved with help of a whole network of
+ bots playing games is being presented.
+\end_layout
+
 \begin_layout Section
 Case studies
 \end_layout
@@ -6471,8 +6429,8 @@ The player process, which is coupled to the TCP-process which reacts on
 
 \begin_layout Enumerate
 The protocol parser process parses the message and brings it into the format
- of the internal GGS presentation of such a message, which is just a specialized
- Erlang tuple.
+ of the internal GGS representation of such a message, which is just a specializ
+ed Erlang tuple.
 \end_layout
 
 \begin_layout Enumerate
@@ -6487,7 +6445,7 @@ d.
 \end_layout
 
 \begin_layout Enumerate
-The table process sends it to its own Game VM process.
+The table process sends it to its own game VM process.
 \end_layout
 
 \begin_layout Enumerate
@@ -6501,21 +6459,20 @@ status open
 
 {
 \backslash
-tt playerCommand(278d5 ..
- 49, nick, Peter)}
+tt playerCommand("278d5", "nick", "Peter")}
 \end_layout
 
 \end_inset
 
 
 \emph default
- within the JavaScript VM.
+ within the JavaScript VM (JSVM).
 \end_layout
 
 \begin_layout Enumerate
-The JavaScript VM (JSVM) - at this stage Googles V8 JavaScript Engine -
- evaluates the function within the sandboxed game context which has been
- established earlier during the setup of the game.
+The JSVM - at this stage Googles V8 JavaScript Engine - evaluates the function
+ within the sandboxed game context which has been established earlier during
+ the setup of the game.
 \end_layout
 
 \begin_layout Enumerate
@@ -6665,7 +6622,7 @@ or to att the player process to this table.
 
 \begin_layout Enumerate
 During the creation of a new table the table process creates a new game
- VM process which creates its own game context within the JavaScript VM.
+ VM process which creates its own game context within the JSVM.
 \end_layout
 
 \begin_layout Enumerate
@@ -6685,9 +6642,9 @@ Defining a game
 \begin_layout Standard
 The generic nature of the GGS leaves it up to the client to define which
  game should be run.
- The definition is done in the GDL, in this example, the GDL is JavaScript.
+ The definition is done in the GDL, in this example the GDL is JavaScript.
  It is possible to alter the GGS prototype so that only the server maintainer
- is able to install new games on the server however the current implementation
+ is able to install new games on the server, however the current implementation
  of the GGS is much more generic.
 \end_layout
 
@@ -6711,7 +6668,7 @@ hello
 \noun on
 define
 \noun default
- Server-Command message with the source code as its parameter.
+ Server-Command message with the source code as its payload.
  Only the first client will get the information about the need of defining
  a game during the handshake.
 \end_layout
@@ -6829,8 +6786,8 @@ name "sec:Example-of-a-GGS-app"
 \end_layout
 
 \begin_layout Standard
-Below is a concrete example of a simple chat server application written
- using the GGS.
+Below is a concrete example of part of a game, a simple in-game-chat server
+ application written using the GGS.
  The language chosen for this chat server is JavaScript.
  The GGS processes all incoming data through a protocol parser, which interprets
  the data and parses it into an internal format for the GGS.
@@ -6955,12 +6912,12 @@ tt playerCommand}
 \emph default
  function accepts two different commands.
  The first command is a command which allows chat clients connected to the
- chat server to change nicknames, which are used when chatting.
+ chat server to change the nicknames, which are used when chatting.
  In order to change the nickname, a client must send a Game-Command 
 \noun on
 nick
 \noun default
- with the actual new nick name as a argument.
+ with the actual new nick name as its payload.
  When a message arrives to the GGS which has the form corresponding to the
  nick name change, the 
 \emph on
@@ -7008,7 +6965,7 @@ tt playerCommand}
 
 
 \emph default
- function is responsible for calling the helper functions responsibly for
+ function is responsible for calling the helper functions responsible for
  carrying out the actions of each message received.
  
 \emph on
@@ -7049,7 +7006,11 @@ tt changeNick}
 
  
 \emph default
-function uses a feature of the GGS called localstorage (see section 
+function uses a feature of the GGS called 
+\noun on
+localStorage
+\noun default
+ (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Communication-with-the-GDL-VM"
@@ -7319,7 +7280,7 @@ name "alg:A-concrete-example"
 \end_inset
 
 A concrete example of a simple chat server written in JavaScript, running
- on the GGS
+ on the GGS.
 \end_layout
 
 \end_inset
@@ -7352,7 +7313,9 @@ This chapter contains descriptions of specific problems encountered when
 
 \begin_layout Standard
 The integration of JavaScript as a GDL in the GGS prototype was particularly
- difficult, and is handled in this section, so is the protocol design.
+ difficult, and is handled in this section, so is the protocol design and
+ limitation in the operating systems which have been used during the development
+ and tests.
 \end_layout
 
 \begin_layout Section
@@ -7382,7 +7345,7 @@ and
 \emph on
 IonMonkey
 \emph default
-, and also there is Googles 
+, and also there is Google's 
 \emph on
 V8
 \emph default
@@ -7430,14 +7393,15 @@ erlv8
 \begin_layout Standard
 erlv8 is powered by the V8 engine developed by Google.
  The ability to communicate from JavaScript to Erlang using NIF callbacks
- is available in the erlv8 bindings and can be used within the GGS.
+ is is present in the erlv8 bindings and can be used within the GGS.
 \end_layout
 
 \begin_layout Standard
 Initial releases of the erlv8 bindings had stability issues, these however
  were resolved by the erlv8 developers during the development GGS.
- At this point erlv8 is the JavaScript engine powering JavaScript as a GDL
- in the GGS.
+ While still described to be in 'alpha' stage, the erlv8 bindings have proved
+ to be stable nough and at this point erlv8 is the JavaScript engine powering
+ JavaScript as a GDL in the GGS.
 \end_layout
 
 \begin_layout Standard
@@ -7472,7 +7436,8 @@ Protocol design
 \end_layout
 
 \begin_layout Standard
-Initially the GGS protocol was planed to use the UDP protocol for transport.
+Initially the GGS protocol was planed to use the UDP protocol as a transport
+ layer.
  Due to the lack of error checking in the UDP protocol, the UDP protocol
  is faster than the TCP protocol, this was a main reason in the desire to
  use UDP.
@@ -7502,16 +7467,16 @@ key "Slee2007"
  Using Thrift would mean the GGS would feature a standard protocol for network
  communication.
  Before finding out about Thrift during a lecture of Joe Armstrong (one
- of the inventors of Erlang), an implementation of the GGS protocol had
- already been implemented, moving to Thrift would mean too much efford for
- a prototype during the short amount of time.
+ of the inventors of Erlang), the GGS protocol had already been implemented,
+ moving to Thrift would have meant too much efford for a prototype during
+ the short amount of time.
 \end_layout
 
 \begin_layout Standard
 The use of Google protocol buffers - which is a different approach to a
  standard protocol framework, implemented by Google - or other protocols
- can be supported quite easily by developing protocol modules for each the
- protocols.
+ can be supported quite easily by developing protocol modules for each of
+ the protocols.
  No protocol modules for these protocols have however been developed during
  the writing of this thesis.
 \end_layout
@@ -7528,8 +7493,8 @@ name "sec:Operating-system-limitations"
 \end_layout
 
 \begin_layout Standard
-The operating systems on the computers which were used to run the bots when
- testing the GGS prototype had some limitations.
+The operating systems on the computers which have been used to run the bots
+ while testing the GGS prototype had some limitations.
  The operating systems used were Linux and Mac OS X, since these systems
  are quite similar on a lower level they exhibited the same limitations..
 \end_layout
@@ -7593,14 +7558,22 @@ name "chap:Results-and-discussion"
 \end_layout
 
 \begin_layout Standard
-In this chapter the results of the GGS prototype are presented and discussed.
- The results of the ing are presented with both graphical and textual content.
+In this chapter the results of tests done on the GGS prototype are presented
+ and discussed.
+ The test results are presented with both graphical and textual content.
  Finally thoughts about how future improvements to the prototype could look
  like are given.
 \end_layout
 
 \begin_layout Section
 Statistics
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Statistics"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7688,6 +7661,10 @@ Since we donät include this..
 
 \end_layout
 
+\begin_layout Plain Layout
+Richard: I think we should mention it and conclude that the data was garbage.
+\end_layout
+
 \end_inset
 
 The hardware that the GGS was running on was a Thinkpad T410, with a Intel
@@ -7695,28 +7672,28 @@ The hardware that the GGS was running on was a Thinkpad T410, with a Intel
 \end_layout
 
 \begin_layout Standard
-In the first test, where Mnesia was used, the server had a peak value of
- nearly 6000 messages per second.
+In the first test, in which Mnesia has been heavily used, the server had
+ a peak value of nearly 6,000 messages per second.
  When this number was reached Mnesia warned that it was overloaded and shortly
  after that Mnesia failed to serve requests.
  This result was not unexpected as this test put the database under heavy
  load.
- In the next testing session, the test was conducted with another client
+ In the next testing session, the test has been conducted with another client
  that did not use Mnesia.
- Without mnesia the server peaked at 60000 messages per second, however
+ Without mnesia the server peaked at 60,000 messages per second, however
  this was only for a very short time.
- The average throughput was around 25000 messages per second, five times
+ The average throughput was around 25,000 messages per second, five times
  more than what the server was able to process with Mnesia in place.
  
 \end_layout
 
 \begin_layout Standard
-In the second testing session the delay between the server and clients was
- also measured.
- A connection can be seen between those values, as long as the server is
+In the second testing session the delay between the server and clients has
+ also been measured.
+ A connection can be seen between those values; as long as the server is
  under moderate load the delay is low and stable.
- When the load on the server increases heavily the delay does the same,
- this is because the server cannot process all incoming messages and therefore
+ When the load on the server increases heavily the delay does too, this
+ is because the server cannot process all incoming messages and therefore
  messages are put in a queue within the system.
 \end_layout
 
@@ -7815,8 +7792,8 @@ name "fig:msg-per-sec-MNESIA"
 \end_inset
 
 The graph shows messages per second for intervals of clients connected.
- Each client performs 3 asynchronous writes to the Mnesia database each
- second.
+ Each client performs at least 3 asynchronous writes to the Mnesia database
+ each second.
 \end_layout
 
 \end_inset
@@ -7977,7 +7954,7 @@ Future improvements
 \end_layout
 
 \begin_layout Standard
-There are several things in the GGS that can be improved.
+There are several things in the GGS prototype that can be improved.
  In this section the most important additions to the GGS are described,
  along with a motivation as to why these additions are not found in the
  GGS prototype.
@@ -8037,10 +8014,11 @@ Need references for assertions about UDP being nicer on the CPU.
 Because of TCP being a connection oriented protocol, it is not suited for
  all types of game data transfers.
  Each transmission will consume more network bandwidth than connectionless
- protocols like UDP and cause unnecessary load on the processor.
+ protocols like UDP and cause unnecessary load on the processor while performing
+, in some cases unnecessary, tests to assure the correctness of the data.
  Therefore support for UDP would mean that more games could be run simultaneousl
 y on the GGS.
- Another advantage of UDP is latency being reduced.
+ Another advantage of UDP is that latency is being reduced.
  Without having to setup a connection for each group packets of data being
  sent, they will be sent instantly and therefore arrive earlier.
  Latency is of highest importance in real-time games as it improves realism
@@ -8080,7 +8058,7 @@ The cache was never implemented in the prototype due to other parts of the
 \begin_layout Standard
 A possible future addition to the GGS could be to add this cache in the
  database module.
- The API would not need to change, as this could be implemented internally
+ The API would not need any changes, as this could be implemented internally
  in the database module.
  
 \begin_inset ERT
@@ -8114,7 +8092,7 @@ To make the GGS as generic as possible seperation of game and server logic
  is necessary.
  Designing a good API is vital in order to allow game developers to interact
  with the server in a easy manner and with minimal overhead.
- Furthermore every game should be isalated so that games can not interfare
+ Furthermore every game should be isolated so that games can not interfare
  with each other.
  Isolation can be achived by introducing a context for each game which leads
  to the fact that each game runs in its own sandbox.
