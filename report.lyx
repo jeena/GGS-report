@@ -197,7 +197,7 @@ begin{center}
 \backslash
 includegraphics[width=
 \backslash
-paperwidth/2]{graphics/logo} 
+paperwidth/2]{graphics/logoBW} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -214,29 +214,149 @@ end{center}
 end{textblock*}
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{textblock*}{
+\backslash
+paperwidth}(21mm,230mm)
+\end_layout
+
+\begin_layout Plain Layout
+
+Göteborgs Universitet
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Institutionen för data- och informationsteknik 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Göteborg, Sverige 2011 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Kandidatarbete 2011:44
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{textblock*}
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Title
-A Reliable Generic Game Server
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{
 \end_layout
 
-\begin_layout Author
-Niklas Landin
-\begin_inset Newline newline
-\end_inset
-
-Richard Pannek
-\begin_inset Newline newline
-\end_inset
-
-Mattias Pettersson
-\begin_inset Newline newline
-\end_inset
+\begin_layout Plain Layout
 
 Jonatan Pålsson
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Richard Pannek
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Niklas Landin
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Mattias Petterson
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{
+\backslash
+Huge{A Reliable Generic Game Server}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle{ }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Abstract
