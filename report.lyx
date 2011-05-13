@@ -2271,10 +2271,6 @@ Performance measurements
 \end_layout
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 Tue apr 26, 9:15.
  Continue from here on.
  Discuss which results we may expect in a fully fledged GGS system.
@@ -6465,8 +6461,27 @@ In order to test the robustness of the GGS several different artificial
  users, so called bots, have been implemented.
  Each of these bots is programmed to play a game on the GGS as similar to
  a real user as possible.
- In the game Pong for example, the bot watches the ball and moves its pad
- up or down according to the position of the ball.
+\end_layout
+
+\begin_layout Standard
+Pong is a classic video game released by atari.
+ Using the Pong for robustness testing has a few advantages.
+ Being a real-time based game, the game state will be constantly broadcasted
+ to all the players of a started Pong game in the GGS.
+ Each time a Pong game has been started and two bots has joined to play,
+ there should be clearly observable that the number of messages sent from
+ the server per second has increased and be stable until a later Pong game
+ has been started with two bots playing.
+ If the game would have been turn-based, then the game state would only
+ be broadcasted when a bot has made a turn.
+ The time for a bot to make a turn would depend on the complexity of the
+ current situation of the game.
+ Because of the current situation varies as the game progress, also the
+ time between each broadcasted game state varies throughout the game.
+ This would make the observations during the robustness test say more about
+ the game than the GGS.
+ In the Pong game the bot watches the ball and moves its pad up or down
+ according to the position of the ball.
  For the GGS there is no difference in serving a real user or a bot.
 \end_layout
 
