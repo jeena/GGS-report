@@ -6462,16 +6462,16 @@ Bots
 \begin_layout Standard
 In order to test the robustness of the GGS several different artificial
  users, so called bots, have been implemented.
- Each of this bots is programmed to play a game on the GGS as similar to
+ Each of these bots is programmed to play a game on the GGS as similar to
  a real user as possible.
- In the game Pong for example, the bot is watching the ball and moves its
- pad up or down according what the position of the ball suggests.
+ In the game Pong for example, the bot watches the ball and moves its pad
+ up or down according to the position of the ball.
  For the GGS there is no difference in serving a real user or a bot.
 \end_layout
 
 \begin_layout Standard
-With help of this method large amounts of players can be simulated playing
- games on the GGS simultaneously which is a good stress and concurrency
+With help of this method, large amounts of players can be simulated playing
+ games on the GGS simultaneously, which is a good stress and concurrency
  test for the overall system.
  In section 
 \begin_inset CommandInset ref
