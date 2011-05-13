@@ -391,8 +391,8 @@ The test results show that it is possible to design a server using the tools
 \end_layout
 
 \begin_layout Abstract
-This thesis concludes that simple games can easily be developed work reliably
- by while making use of a generic server.
+This thesis concludes that simple games can easily be developed to work
+ reliably by making use of a generic server.
  It should be worthwhile attempting to develop more advanced games using
  the same techniques as those described in this thesis.
 \end_layout
@@ -7370,7 +7370,7 @@ function message(player_id, message) {
 
 \begin_layout Plain Layout
 
-    GGS.sendCommandToAll('message', nick + "> " + message);
+    GGS.sendCommandToAll("message", nick + "> " + message);
 \end_layout
 
 \begin_layout Plain Layout
