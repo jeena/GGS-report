@@ -785,7 +785,7 @@ s, leaving the public unable to contact emergency services.
 \begin_layout Standard
 Moving back to the gaming industry.
  The main reason to develop reliable servers is a higher revenue for game
- companies, to achive this it is important for game companies to expand
+ companies, to achieve this it is important for game companies to expand
  their customer base.
  Reliable game servers will create a good image of the company.
  In general the downtime of game servers is much higher than the downtime
@@ -1059,7 +1059,7 @@ A prototype has been developed in order to aid the discussion of the theoretical
 \begin_layout Standard
 The choice of the implementation language for the prototype of the GGS was
  made with inspiration from the telecom industry.
- The Erlang language was developed by the swedish telecom company Ericsson
+ The Erlang language was developed by the Swedish telecom company Ericsson
  to develop highly available and dependable telecom switches.
  One of the most reliable systems ever developed by Ericsson, the AXD301
  was developed using Erlang.
@@ -1218,7 +1218,7 @@ reliable
  is fault tolerant.
  In order to facilitate scalability the GGS needs a storage platform which
  is accessible and consistent.
- The sclability aspects of the GGS are discussed from a theoretical point
+ The scalability aspects of the GGS are discussed from a theoretical point
  of view, however no practical implementation of the scalability aspects
  are found in the prototype.
 \end_layout
@@ -1343,7 +1343,7 @@ Jeopardy
 .
  Both game types have varying difficulties and needs when it comes to implementi
 ng them, a Generic Game Server should address all of these difficulties
- in order to provide the tools neccessary for the implementation of both
+ in order to provide the tools necessary for the implementation of both
  game types.
 \end_layout
 
@@ -1478,7 +1478,7 @@ Chess club
 \end_inset
 
  - a building where chess players can meet and play chess.
- In the following text the choice of using a chess club for modelling the
+ In the following text the choice of using a chess club for modeling the
  GGS is discussed.
  The chess club is described in greater detail, furthermore the corresponding
  parts of the chess club in the GGS are described.
@@ -2335,8 +2335,8 @@ Many online games use UDP as the carrier for their application layer protocol.
 The need to implement custom error checking, and possibly correction makes
  UDP a bad candidate for the GGS.
  If error checking and correction were to be implemented in the GGS project,
- UDP would be a good candidate, however the time neccessary to implement
- these features makes this option unfeasable.
+ UDP would be a good candidate, however the time necessary to implement
+ these features makes this option unfeasible.
 \end_layout
 
 \begin_layout Subsection
@@ -3068,7 +3068,7 @@ using an algorithm such as SHA-1.
 \end_layout
 
 \begin_layout Standard
-When using system wide unique identifiers it is extremly unlikely to have
+When using system wide unique identifiers it is extremely unlikely to have
  identifier collisions when recovering from network splits between GGS clusters.
  Consider figure 
 \begin_inset CommandInset ref
@@ -3340,7 +3340,7 @@ https://github.com/languages/
 
 \begin_layout Standard
 Apart from that there are virtual machines with bindings to Erlang readily
- available for JavaScript which are provided by organisations like Mozilla
+ available for JavaScript which are provided by organizations like Mozilla
  and companies like Google.
  In the end this choice was more or less arbitrary since the GGS is intended
  to be able to run several different GDL VMs, and one had to be the first.
@@ -3811,7 +3811,7 @@ name "sec:The-usage-of-erlang"
 \begin_layout Standard
 As mentioned earlier, the GGS prototype is implemented in Erlang.
  The current section and the subsequent section function as a short introduction
- to Erlang, focusing on the parts of the language neccessary to understand
+ to Erlang, focusing on the parts of the language necessary to understand
  the material regarding Erlang presented in this thesis.
 \end_layout
 
@@ -4080,7 +4080,7 @@ gen_server
  behavior, which is used when constructing OTP servers in Erlang.
  Using this behavior, a state can easily be kept in a server process, greatly
  increasing the usefulness of the server process.
- This behaviour is the most widely used one in the GGS prototype.
+ This behavior is the most widely used one in the GGS prototype.
  In addition to introducing a state to the server, the gen_server behavior
  also imposes patterns for synchronous and asynchronous communication between
  other gen_servers and other OTP behaviors.
@@ -4673,7 +4673,7 @@ Line 4 is a empty line which is, like in the HTTP protocol, the separator
 \end_layout
 
 \begin_layout Standard
-Line 5 is the actuall payload which is transported to the game as a parameter
+Line 5 is the actual payload which is transported to the game as a parameter
  of the playerCommand() function call.
 \end_layout
 
@@ -4970,7 +4970,7 @@ This module is responsible for the VM associated with each game.
 \begin_layout Standard
 The game VM contains a connection to the GDL VM and a table token associated
  with a running game.
- The game VM is started by the table module during its initialisation.
+ The game VM is started by the table module during its initialization.
  The table module hands over a token used for identification to the game
  VM during the initialization.
  During the initialization a new GDL VM instance and various objects associated
@@ -6233,9 +6233,9 @@ citation needed
 \end_layout
 
 \begin_layout Standard
-Finally to test the robustness of the prototype virtuall users, so called
+Finally to test the robustness of the prototype virtual users, so called
  bots are being used to simulate large amounts of players playing different
- games simultanously.
+ games simultaneously.
 \end_layout
 
 \begin_layout Subsection
@@ -6351,8 +6351,8 @@ In order to test the robustness of the GGS several different artificial
 
 \begin_layout Standard
 With help of this method large amounts of players can be simulated playing
- games on the GGS simultanously which is a good stress and concurrency test
- for the overall system.
+ games on the GGS simultaneously which is a good stress and concurrency
+ test for the overall system.
  In section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6574,7 +6574,7 @@ Initialization and life cycle of a game
 
 \begin_layout Standard
 This case study describes the initialization and definition of a game and
- in roughly its life cycle untill it is removed from the GGS.
+ in roughly its life cycle until it is removed from the GGS.
 \end_layout
 
 \begin_layout Subsubsection
@@ -6586,8 +6586,8 @@ A client connects via TCP to the GGS.
 \end_layout
 
 \begin_layout Enumerate
-The dispatcher process reacts on the incomming connecction and creates a
- new player process.
+The dispatcher process reacts on the incoming connection and creates a new
+ player process.
 \end_layout
 
 \begin_layout Enumerate
@@ -6617,7 +6617,7 @@ hello
  to create a new table process and add this player process to this newly
  created table.
  If the client did send a table token then the player process asks the coordinat
-or to att the player process to this table.
+or to add the player process to this table.
 \end_layout
 
 \begin_layout Enumerate
@@ -7400,7 +7400,7 @@ erlv8 is powered by the V8 engine developed by Google.
 Initial releases of the erlv8 bindings had stability issues, these however
  were resolved by the erlv8 developers during the development GGS.
  While still described to be in 'alpha' stage, the erlv8 bindings have proved
- to be stable nough and at this point erlv8 is the JavaScript engine powering
+ to be stable enough and at this point erlv8 is the JavaScript engine powering
  JavaScript as a GDL in the GGS.
 \end_layout
 
@@ -7468,7 +7468,7 @@ key "Slee2007"
  communication.
  Before finding out about Thrift during a lecture of Joe Armstrong (one
  of the inventors of Erlang), the GGS protocol had already been implemented,
- moving to Thrift would have meant too much efford for a prototype during
+ moving to Thrift would have meant too much effort for a prototype during
  the short amount of time.
 \end_layout
 
@@ -7625,7 +7625,7 @@ reference "fig:msg-per-sec-NOMNESIA"
 \series bold
 Latency between server and client
 \series default
- is used to measure the round-trip time for a message travelling between
+ is used to measure the round-trip time for a message traveling between
  the client and server.
  This measurement is used to determine how many players the server can handle
  while still providing a playable gaming experience.
@@ -7652,7 +7652,7 @@ There was also a testing session where the number of clients were measured,
 status open
 
 \begin_layout Plain Layout
-Since we donät include this..
+Since we don’t include this..
  should we mention it?
 \end_layout
 
@@ -7989,7 +7989,7 @@ Performance
 \begin_layout Standard
 The GGS prototype was not developed for maximum performance.
  Performance optimizations were considered, many were however not implemented
- in the prorotype.
+ in the prototype.
  There are several performance optimizations which can be included in future
  versions of the GGS, below are some of the most important performance optimizat
 ions identified.
@@ -8088,14 +8088,14 @@ This thesis describes a method to create a reliable and generic game server
 \end_layout
 
 \begin_layout Standard
-To make the GGS as generic as possible seperation of game and server logic
+To make the GGS as generic as possible separation of game and server logic
  is necessary.
  Designing a good API is vital in order to allow game developers to interact
  with the server in a easy manner and with minimal overhead.
- Furthermore every game should be isolated so that games can not interfare
+ Furthermore every game should be isolated so that games can not interfere
  with each other.
- Isolation can be achived by introducing a context for each game which leads
- to the fact that each game runs in its own sandbox.
+ Isolation can be achieved by introducing a context for each game which
+ leads to the fact that each game runs in its own sandbox.
  To be able to use different game development languages virtual machines
  should be used.
  Each virtual machine instance evaluates game source code safely.
