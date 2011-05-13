@@ -387,7 +387,7 @@ Introduction
 
 \begin_layout Standard
 Online gaming, and computer gaming in general has become an important part
- in many peoples day-to day lives.
+ in the day-to-day lives of many people.
  A few years ago, computer games were not at all as popular as they are
  today.
  With the advances in computer graphics and computer hardware today's games
@@ -441,7 +441,7 @@ textbf{NetHack}}{An early computer game developed by the NetHack team, arguably
 \begin_layout Standard
 The early computer games featured simple, or no graphics at all 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "nethack:website"
 
 \end_inset
@@ -475,7 +475,7 @@ Drop a reference to the gaming industry pressuring more advanced hardware
  picture industry.
  
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "esa:website,thenumbers:website"
 
 \end_inset
@@ -644,14 +644,7 @@ generic
  framework for developing network games.
  The framework is generic in the sense that it is not bound to a specific
  game.
- There are many different types of games, some are inherently more time
- sensitive than others Strategy games are examples of games which are not
- very sensitive to time delays, first-person shooters however, can be very
- sensitive.
-\end_layout
-
-\begin_layout Standard
-The generic nature of the GGS allows the creation of many different types
+ The generic nature of the GGS allows the creation of many different types
  of games, the motivation behind this is to remove the necessity of writing
  new game servers when developing new games.
 \end_layout
@@ -791,8 +784,9 @@ s, leaving the public unable to contact emergency services.
 
 \begin_layout Standard
 Moving back to the gaming industry.
- The main reason to develop reliable servers is a higher revenue, to achive
- this it is important for game companies to expand their customer base.
+ The main reason to develop reliable servers is a higher revenue for game
+ companies, to achive this it is important for game companies to expand
+ their customer base.
  Reliable game servers will create a good image of the company.
  In general the downtime of game servers is much higher than the downtime
  of telecom systems even so the overall structure of the systems is similar
@@ -805,12 +799,9 @@ Moving back to the gaming industry.
 \begin_layout Standard
 In the current state game servers are developed on a per-game basis, often
  this seems like bad practice.
- Developers of multiplayer games need to understand network programming,
- which can be a problem for small companies and independent game developers
- who often lack expertise in that field.
- A way to help game developers in developign servers would be to offer a
- generic game server which gives developers an environment in which they
- can implement their game.
+ A way to help game developers in developing servers more efficiently would
+ be to offer a generic game server which gives developers an environment
+ in which developers can implement their game.
  This approach would not only make it easier to develop network games, it
  would also allow games in different programming languages to be implemented
  using the same server.
@@ -917,7 +908,7 @@ The server behaves in a way similar to an application server, but is designed
  to the clients.
  In order to more easily understand the purpose of the GGS, it can be of
  use to briefly think of application servers, thereafter viewing the differences
- between the GGS and application servers.
+ between the GGS and regular application servers.
 \end_layout
 
 \begin_layout Standard
