@@ -360,11 +360,12 @@ maketitle{ }
 \end_layout
 
 \begin_layout Abstract
-Contemporary game servers lack good fault tolerance, furthermore the game
- servers are unable to power several different types of games.
- The purpose of this thesis is to design a fault tolerant, and generic game
- server, which by being generic can power several different sorts of games,
- developed in different languages.
+Today users of network games often experience failures of the servers while
+ playing or downtime due to maintenance.
+ Additionally game developers often perform the difficult task of reinventing
+ a game server to meet their needs.
+ The purpose of this thesis is to to design a reliable game server which
+ can power different types of games simultanously.
 \end_layout
 
 \begin_layout Abstract
@@ -373,7 +374,7 @@ It is investigated if the techniques and tools used in the telecom industry,
  game server.
  To make the server generic, it is investigated if virtual machines can
  be used to run the actual games, thereby allowing the games to be developed
- in a language different from the actual server software.
+ in different programming languages.
 \end_layout
 
 \begin_layout Abstract
@@ -383,16 +384,16 @@ A prototype is developed in Erlang using OTP.
 \end_layout
 
 \begin_layout Abstract
-The results from testing the server show that: it is possible to design
- a server using the tools originally intended for telecom software, it is
- possible to create a generic game server, capable of running different
- games, written in different languages.
+The test results show that it is possible to design a server using the tools
+ originally intended for telecom software and it is indeed possible to create
+ a generic game server, capable of running different games, written in different
+ languages.
 \end_layout
 
 \begin_layout Abstract
-The conclusion of the thesis is that since simple games can be developed
- in a fault tolerant manner, while also making use of a generic server,
- it should be worthwhile attempting to develop more advanced games using
+This thesis concludes that simple games can easily be developed work reliably
+ by while making use of a generic server.
+ It should be worthwhile attempting to develop more advanced games using
  the same techniques as those described in this thesis.
 \end_layout
 
