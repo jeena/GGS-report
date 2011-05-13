@@ -7534,8 +7534,9 @@ name "chap:Results-and-discussion"
 \end_layout
 
 \begin_layout Standard
-In this chapter the results of the GGS prototype are presented and discussed.
- The results of the ing are presented with both graphical and textual content.
+In this chapter the results of tests done on the GGS prototype are presented
+ and discussed.
+ The test results are presented with both graphical and textual content.
  Finally thoughts about how future improvements to the prototype could look
  like are given.
 \end_layout
@@ -7636,6 +7637,10 @@ Since we donät include this..
 
 \end_layout
 
+\begin_layout Plain Layout
+Richard: I think we should mention it and conclude that the data was garbage.
+\end_layout
+
 \end_inset
 
 The hardware that the GGS was running on was a Thinkpad T410, with a Intel
@@ -7643,28 +7648,28 @@ The hardware that the GGS was running on was a Thinkpad T410, with a Intel
 \end_layout
 
 \begin_layout Standard
-In the first test, where Mnesia was used, the server had a peak value of
- nearly 6000 messages per second.
+In the first test, in which Mnesia has been heavily used, the server had
+ a peak value of nearly 6,000 messages per second.
  When this number was reached Mnesia warned that it was overloaded and shortly
  after that Mnesia failed to serve requests.
  This result was not unexpected as this test put the database under heavy
  load.
- In the next testing session, the test was conducted with another client
+ In the next testing session, the test has been conducted with another client
  that did not use Mnesia.
- Without mnesia the server peaked at 60000 messages per second, however
+ Without mnesia the server peaked at 60,000 messages per second, however
  this was only for a very short time.
- The average throughput was around 25000 messages per second, five times
+ The average throughput was around 25,000 messages per second, five times
  more than what the server was able to process with Mnesia in place.
  
 \end_layout
 
 \begin_layout Standard
-In the second testing session the delay between the server and clients was
- also measured.
- A connection can be seen between those values, as long as the server is
+In the second testing session the delay between the server and clients has
+ also been measured.
+ A connection can be seen between those values; as long as the server is
  under moderate load the delay is low and stable.
- When the load on the server increases heavily the delay does the same,
- this is because the server cannot process all incoming messages and therefore
+ When the load on the server increases heavily the delay does too, this
+ is because the server cannot process all incoming messages and therefore
  messages are put in a queue within the system.
 \end_layout
 
@@ -7763,8 +7768,8 @@ name "fig:msg-per-sec-MNESIA"
 \end_inset
 
 The graph shows messages per second for intervals of clients connected.
- Each client performs 3 asynchronous writes to the Mnesia database each
- second.
+ Each client performs at least 3 asynchronous writes to the Mnesia database
+ each second.
 \end_layout
 
 \end_inset
@@ -7925,7 +7930,7 @@ Future improvements
 \end_layout
 
 \begin_layout Standard
-There are several things in the GGS that can be improved.
+There are several things in the GGS prototype that can be improved.
  In this section the most important additions to the GGS are described,
  along with a motivation as to why these additions are not found in the
  GGS prototype.
@@ -7985,10 +7990,11 @@ Need references for assertions about UDP being nicer on the CPU.
 Because of TCP being a connection oriented protocol, it is not suited for
  all types of game data transfers.
  Each transmission will consume more network bandwidth than connectionless
- protocols like UDP and cause unnecessary load on the processor.
+ protocols like UDP and cause unnecessary load on the processor while performing
+, in some cases unnecessary, tests to assure the correctness of the data.
  Therefore support for UDP would mean that more games could be run simultaneousl
 y on the GGS.
- Another advantage of UDP is latency being reduced.
+ Another advantage of UDP is that latency is being reduced.
  Without having to setup a connection for each group packets of data being
  sent, they will be sent instantly and therefore arrive earlier.
  Latency is of highest importance in real-time games as it improves realism
@@ -8028,7 +8034,7 @@ The cache was never implemented in the prototype due to other parts of the
 \begin_layout Standard
 A possible future addition to the GGS could be to add this cache in the
  database module.
- The API would not need to change, as this could be implemented internally
+ The API would not need any changes, as this could be implemented internally
  in the database module.
  
 \begin_inset ERT
@@ -8062,7 +8068,7 @@ To make the GGS as generic as possible seperation of game and server logic
  is necessary.
  Designing a good API is vital in order to allow game developers to interact
  with the server in a easy manner and with minimal overhead.
- Furthermore every game should be isalated so that games can not interfare
+ Furthermore every game should be isolated so that games can not interfare
  with each other.
  Isolation can be achived by introducing a context for each game which leads
  to the fact that each game runs in its own sandbox.
