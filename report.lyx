@@ -6480,8 +6480,25 @@ Pong is a classic video game released by atari.
  time between each broadcasted game state varies throughout the game.
  This would make the observations during the robustness test say more about
  the game than the GGS.
- In the Pong game the bot watches the ball and moves its pad up or down
- according to the position of the ball.
+ 
+\end_layout
+
+\begin_layout Standard
+Pong is a game that consists of two paddles and a ball.
+ Each paddle is controlled by a player and the objective of the game is
+ to keep the ball between the two paddles.
+ If the ball reaches the opposite side of a players paddle then that player
+ loses while the other player scores.
+ The ball is displayed in the game as a dot and each paddle as a short vertical
+ line.
+ The paddles can only go straight up or straight down.
+ The ball moves with constant speed in one direction and never changes its
+ heading before it reaches a paddle or the boundary of the game area.
+ The logic of the bots In the Pong game can be simple and still behave realistic
+ by watching the ball and moving its pad up or down according to the position
+ of the ball.
+ In this way the game logic can be evaluated in constant time so that it
+ doesn't have a bad effect while measuring robustness.
  For the GGS there is no difference in serving a real user or a bot.
 \end_layout
 
