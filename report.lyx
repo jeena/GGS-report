@@ -240,7 +240,40 @@ Jonatan Pålsson
 \end_layout
 
 \begin_layout Abstract
-This is the abstract!
+Contemporary game servers lack good fault tolerance, furthermore the game
+ servers are unable to power several different types of games.
+ The purpose of this thesis is to design a fault tolerant, and generic game
+ server, which by being generic can power several different sorts of games,
+ developed in different languages.
+\end_layout
+
+\begin_layout Abstract
+It is investigated if the techniques and tools used in the telecom industry,
+ specifically Erlang and OTP, can be used to create a highly reliable game
+ server.
+ In order to make the server generic, it is investigated if virtual machines
+ can be used to run the actual games, thereby allowing the games to be developed
+ in a language different from the actual server software.
+\end_layout
+
+\begin_layout Abstract
+A prototype is developed in Erlang and OTP.
+ The prototype features basic fault tolerance and is connected to the Google
+ V8 JavaScript virtual machine in order to run games written in JavaScript.
+\end_layout
+
+\begin_layout Abstract
+The results from testing the server show that: it is possible to design
+ a server using the tools originally intended for telecom software, it is
+ possible to create a generic game server, capable of running different
+ games, written in different languages.
+\end_layout
+
+\begin_layout Abstract
+The conclusion of the thesis is that since simple games could be developed
+ in a fault tolerant and using a generic server, it should be worth while
+ trying to develop more advanced games using the same techniques as those
+ described in this thesis.
 \end_layout
 
 \begin_layout Standard
