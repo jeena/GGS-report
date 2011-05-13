@@ -251,15 +251,15 @@ Contemporary game servers lack good fault tolerance, furthermore the game
 It is investigated if the techniques and tools used in the telecom industry,
  specifically Erlang and OTP, can be used to create a highly reliable game
  server.
- In order to make the server generic, it is investigated if virtual machines
- can be used to run the actual games, thereby allowing the games to be developed
+ To make the server generic, it is investigated if virtual machines can
+ be used to run the actual games, thereby allowing the games to be developed
  in a language different from the actual server software.
 \end_layout
 
 \begin_layout Abstract
-A prototype is developed in Erlang and OTP.
+A prototype is developed in Erlang using OTP.
  The prototype features basic fault tolerance and is connected to the Google
- V8 JavaScript virtual machine in order to run games written in JavaScript.
+ V8 JavaScript virtual machine to run games written in JavaScript.
 \end_layout
 
 \begin_layout Abstract
@@ -271,9 +271,9 @@ The results from testing the server show that: it is possible to design
 
 \begin_layout Abstract
 The conclusion of the thesis is that since simple games could be developed
- in a fault tolerant and using a generic server, it should be worth while
- trying to develop more advanced games using the same techniques as those
- described in this thesis.
+ in a fault tolerant way, while also making use of a generic server, it
+ should be worthwhile trying to develop more advanced games using the same
+ techniques as those described in this thesis.
 \end_layout
 
 \begin_layout Standard
@@ -3500,7 +3500,7 @@ bots
 \emph default
  for testing his generic hazard-gaming server.
  Lidholt describes how his server, capable of running several different
- casino games is tested using artificial players, so called bots.
+ casino games, is tested using artificial players, so called bots.
  Performance is measured in 
 \begin_inset Quotes eld
 \end_inset
