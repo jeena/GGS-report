@@ -8249,6 +8249,26 @@ textbf{ETS}}{Erlang Term Storage}
 
 \end_layout
 
+\begin_layout Subsubsection
+Integration with existing games
+\end_layout
+
+\begin_layout Standard
+It should be possible to integrate the GGS with existing network games.
+ In order to integrate the GGS with an existing game it is neccessary to
+ 1) rewrite the entire server logic in a GDL and deploy this implementation
+ on the GGS, and 2) write a protocol parser for the protocol of the game
+ at hand.
+\end_layout
+
+\begin_layout Standard
+No implementation of a game server for an existing game has been done, however
+ preliminary investigations on running an early version of Quake on he GGS
+ have been made.
+ An interesting future improvement of the GGS would be to develop an implementat
+ion of a game server for an existing game for the GGS.
+\end_layout
+
 \begin_layout Chapter
 Conclusion
 \end_layout
