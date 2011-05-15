@@ -6514,23 +6514,22 @@ Pong is a classic video game released by Atari.
 \end_layout
 
 \begin_layout Standard
-Pong is a game that consists of two pads and a ball.
+Pong is a game that consists of two paddles and a ball.
  Each paddle is controlled by a player and the objective of the game is
- to keep the ball between the two pads.
- If the ball reaches the opposite side of a players pad then that player
+ to keep the ball between the two paddles.
+ If the ball reaches the opposite side of a players paddle then that player
  loses while the other player scores.
  The ball is displayed in the game as a dot and each pad as a short vertical
  line.
- The pad can only go straight up or straight down.
+ The paddle can only go straight up or straight down.
  The ball moves with constant speed in one direction and never changes its
  heading before it reaches a pad or the boundary of the game area.
- 
 \end_layout
 
 \begin_layout Standard
 The logic of the bots in the Pong game can be simple and still behave realistic
- by watching the ball and moving its pad up or down according to the position
- of the ball.
+ by watching the ball and moving its paddle up or down according to the
+ position of the ball.
  In this way the game logic can be evaluated in constant time so that it
  doesn't have a bad effect while measuring robustness.
  
