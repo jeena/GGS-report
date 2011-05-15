@@ -4700,9 +4700,9 @@ Moving back to the real world example, the player process represents an
  When a person sits down at a table in the chess club, the person does so
  by requesting a seat from some coordinating person, and is then seated
  by the same coordinator.
- Once seated, the player may make moves on the table he or she is seated
- by, this corresponds clearly to how the GGS is structured, as can be seen
- in the following sections.
+ Once seated, the player may make moves on the table she is seated by, this
+ corresponds clearly to how the GGS is structured, as can be seen in the
+ following sections.
 \end_layout
 
 \begin_layout Subsection
