@@ -1255,6 +1255,16 @@ Returning to the game industry, emergency services will not be contacted
  casino.
 \end_layout
 
+\begin_layout Standard
+The generic nature of the GGS allows a multitude of different games to be
+ deployed on the GGS.
+ By deploying games on a common server less time has to be spent developing
+ servers for each individual game.
+ By supporting games developed in different languages, the features of the
+ GGS become available to games developed in languages which traditionally
+ do not exhibit these features.
+\end_layout
+
 \begin_layout Section
 Challenges in developing the prototype
 \end_layout
