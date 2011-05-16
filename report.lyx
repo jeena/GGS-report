@@ -1353,7 +1353,7 @@ The communication with the gaming clients has to take place with help a
 \end_layout
 
 \begin_layout Standard
-A great deal of work is devoted to make the GGS 
+Work has been devoted to make the GGS 
 \emph on
 reliable
 \emph default
@@ -1420,7 +1420,7 @@ reference "sec:Choice-of-network"
  In short, the decision of using TCP means that games that require a high
  speed protocol will not be supported by the GGS prototype.
  Another limitation necessary to set on the system is the possibility to
- have huge game worlds due to the implementation of the scaling mechanism
+ have large game worlds due to the implementation of the scaling mechanism
  in the prototype.
 \begin_inset ERT
 status open
@@ -1736,30 +1736,8 @@ reference "fig:theory-layout"
  Several buildings linked together would represent a cluster of GGS instances.
  In order for a player (the P symbol in the graphic) to enter the theoretical
  chess club, the player must pass by the entrance.
- By having each player pass by the entrance, a tally
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Does this mean what I think it does? 
-\begin_inset Quotes eld
-\end_inset
-
-Räkning
-\begin_inset Quotes erd
-\end_inset
-
-?
-\end_layout
-
-\begin_layout Plain Layout
-Richard: it means a list where you count how many people entered or left
- for example
-\end_layout
-
-\end_inset
-
- can be kept, ensuring that there are not too many players within the building.
+ By having each player pass by the entrance, a tally can be kept, ensuring
+ that there are not too many players within the building.
  In the GGS setting, too many players entering would mean too many connections
  have been accepted by the GGS system, and that the structure of the system
  thus must be modified, adding additional servers.
@@ -2285,107 +2263,6 @@ reference "chap:Results-and-discussion"
  GGS prototype.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Performance measurements
-\end_layout
-
-\begin_layout Plain Layout
-Tue apr 26, 9:15.
- Continue from here on.
- Discuss which results we may expect in a fully fledged GGS system.
- What impedes the speeds, what raises the CPU load (and therefore the temperatur
-es & power consumption).
- What factors are there in the network saturation problem?
-\end_layout
-
-\begin_layout Plain Layout
-Which games are affected by what, and what does this mean for the number
- of players a GGS can handle?
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Create a game with several thousand players, see how our server scales,
- how can we improve the performance? Sharding isn’t very nice..
- alternatives? Improve the speed of sharding?
-\end_layout
-
-\begin_layout Itemize
-See how the server scales
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-When adding many clients
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Measure in 
-\begin_inset Formula $ms$
-\end_inset
-
- (ping to clients)
-\end_layout
-
-\begin_layout Itemize
-measure in system load
-\end_layout
-
-\begin_layout Itemize
-Measure in loss of messages
-\end_layout
-
-\begin_layout Itemize
-Measure in # of timeouts? (if any??)
-\end_layout
-
-\begin_layout Itemize
-Measure in time-to-crash
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-When adding new machines to the pool
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-% increase of performance per machine
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Single-core CPU vs multi-core CPU
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-It's very important to scale well on multi-core systems, since this is where
- the industry is going.
- Multicore is the future.
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Plain Layout
-Find reference on how to benchmark distributed, multiprocess systems
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Choosing a network protocol
 \begin_inset CommandInset label
@@ -2562,10 +2439,10 @@ The GGS is a game server.
 g languages.
  The GGS should be OS independent and run on Windows, OS X and Linux.
  The GGS can be run as a listen server on the computers of the players and
- host games locally.
- It could also be a dedicated server running on dedicated independent hardware.
- It is meant to run any game in any environment in any way desired, therefore
- being as generic as possible.
+ host games locally, it could also be a dedicated server running on dedicated
+ independent hardware.
+ The GGS is meant to run any game in any environment in any way desired,
+ therefore being as generic as possible.
 \end_layout
 
 \begin_layout Standard
