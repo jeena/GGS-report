@@ -340,7 +340,7 @@ Mattias Petterson
 \backslash
 title{
 \backslash
-Huge{A Reliable Generic Game Server}}
+Huge{A Generic Game Server}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -364,14 +364,13 @@ Today users of network games often experience failures of the servers while
  playing or downtime due to maintenance.
  Additionally game developers often perform the difficult task of reinventing
  a game server to meet their needs.
- The purpose of this thesis is to design a reliable game server which can
- power different types of games simultaneously.
+ The purpose of this thesis is to design a game server which can power different
+ types of games simultaneously.
 \end_layout
 
 \begin_layout Abstract
 It is investigated if the techniques and tools used in the telecom industry,
- specifically Erlang and the OTP can be used to create a highly reliable
- game server.
+ specifically Erlang and the OTP can be used to create a reliable game server.
  To make the server generic, it is investigated if virtual machines can
  be used to run the actual games, thereby allowing the games to be developed
  in different programming languages.
@@ -614,7 +613,7 @@ Due to the increasing importance of computer gaming, more focus should be
 \end_layout
 
 \begin_layout Standard
-The Reliable Generic Game Server, hereafter known as the GGS
+The Generic Game Server, hereafter known as the GGS
 \begin_inset ERT
 status open
 
@@ -771,7 +770,7 @@ generic
 \end_layout
 
 \begin_layout Standard
-The GGS is in addition to being generic, also 
+The GGS is in addition to being generic, it is also 
 \emph on
 reliable
 \emph default
