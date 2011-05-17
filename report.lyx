@@ -197,7 +197,7 @@ begin{center}
 \backslash
 includegraphics[width=
 \backslash
-paperwidth-200px]{graphics/logoBW} 
+paperwidth-200px]{graphics/logo} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -229,7 +229,7 @@ paperwidth}(21mm,240mm)
 
 \begin_layout Plain Layout
 
-Göteborgs Universitet
+University of Gothenburg
 \end_layout
 
 \begin_layout Plain Layout
@@ -238,7 +238,7 @@ Göteborgs Universitet
 
 \begin_layout Plain Layout
 
-Institutionen för data- och informationsteknik 
+Department of Computer Science and Engineering
 \end_layout
 
 \begin_layout Plain Layout
@@ -247,7 +247,7 @@ Institutionen för data- och informationsteknik
 
 \begin_layout Plain Layout
 
-Göteborg, Sverige 2011 
+Gothenburg, Sweden 2011 
 \end_layout
 
 \begin_layout Plain Layout
@@ -256,7 +256,7 @@ Göteborg, Sverige 2011
 
 \begin_layout Plain Layout
 
-Kandidatarbete 2011:44
+Bachelor's thesis 2011:44
 \end_layout
 
 \begin_layout Plain Layout
