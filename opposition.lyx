@@ -173,6 +173,12 @@ In the thesis there are some unclear points:
  are not shown.
 \end_layout
 
+\begin_layout Itemize
+4.2: This section states a simulation library and support for creating new
+ simulators.
+ Yet these are not explained like for example the convenience scripts.
+\end_layout
+
 \begin_layout Standard
 A future improvement to the project is creating a finite state machine from
  the log files.
@@ -192,6 +198,11 @@ Also, there are some factual errors; processes do share data, and data is
  Memory is however not shared, perhaps this was what was intended to be
  written.
  PIDs can indeed be converted to lists, using the pid_to_list/1 function.
+\end_layout
+
+\begin_layout Standard
+7.5.1 says that ember can automate the process of deploying code.
+ How is this useful? What sort of code?
 \end_layout
 
 \begin_layout Section*
@@ -241,6 +252,21 @@ The accuracy of the simulators was presented in a graph, and it can be seen
  from the graph that the accuracy is not 100%.
  Why is this, and is this not exceptionally alarming for a simulator? Which
  impacts does this have on the simulation?
+\end_layout
+
+\begin_layout Standard
+According to 7.4, API:s and simulators must be created when they don't already
+ exist.
+ Isn't it a huge project within itself, creating an API:s and simulators?
+ Does your application provide any ways to reduce development time of simulators
+? The quality of a simulator may vary.
+ There may take a long time to make it perform well and be flexible to work
+ with.
+ You created three simple device simulators.
+ How long did it take to create them? These times could prove why the developmen
+t of simulators wouldn't be a great deal and to estimate creation time of
+ other simulators.
+ 
 \end_layout
 
 \begin_layout Section*
