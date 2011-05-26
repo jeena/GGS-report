@@ -1,0 +1,312 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Huge{Erlang Embedded Simulation Opposition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Jonatan Pålsson
+\begin_inset Newline newline
+\end_inset
+
+Richard Pannek
+\begin_inset Newline newline
+\end_inset
+
+Mattias Pettersson
+\begin_inset Newline newline
+\end_inset
+
+Niklas Landin
+\end_layout
+
+\begin_layout Standard
+Simulating hardware devices in Erlang is a very interesting topic.
+ The concurrent nature of Erlang should allow interesting hardware composed
+ of several systems, such as industrial robots to be simulated.
+ This thesis is valuable for the industry since it is based on an already
+ existing industrial experiment (Erlang Embedded), and it is interesting
+ to see a tool which can so readily be used in the industry to improve the
+ workflow and product quality in the field of embedded devices.
+\end_layout
+
+\begin_layout Standard
+The abstract is clear and concise, it provides the reader with a good overview
+ of the thesis.
+\end_layout
+
+\begin_layout Section*
+Unclear points
+\end_layout
+
+\begin_layout Standard
+When reading this thesis some questions came to mind:
+\end_layout
+
+\begin_layout Itemize
+Is there any research suggesting superiority of simulators over real hardware
+ or emulators during the development process?
+\end_layout
+
+\begin_layout Itemize
+It is unclear if actual simulators have been developed, or if a re-playing
+ software has been developed.
+ What makes the software a simulator and not a re-player? 
+\end_layout
+
+\begin_layout Itemize
+Is a re-playing software also to be considered a simulator, even though
+ it can only carry out pre-defined sequences of commands? 
+\end_layout
+
+\begin_layout Itemize
+It is stated that “recording has a great value for embedded simulation,
+ but also elsewhere”, why is this exactly?
+\end_layout
+
+\begin_layout Itemize
+Which uses are there of recording, precisely? 
+\end_layout
+
+\begin_layout Itemize
+Why is recording favoured over emulation, for example? How can recorded
+ data be used for simulation and not only for play-back?
+\end_layout
+
+\begin_layout Standard
+Specifically:
+\end_layout
+
+\begin_layout Itemize
+4.1: What are “simple stubs” and are they really simulators? 
+\end_layout
+
+\begin_layout Itemize
+4.1: Is hand waving the best approach to analysing the quality of the supervisors
+? Also, what is the “old work flow” in this context? 
+\end_layout
+
+\begin_layout Itemize
+4.2: This section states a simulation library and support for creating new
+ simulators.
+ Yet these are not explained like for example the convenience scripts.
+\end_layout
+
+\begin_layout Itemize
+5.2: Exactly how is the quality of the simulators measured? Which metrics
+ are used? Some metrics are presented here, but not motivated, also results
+ are not shown.
+\end_layout
+
+\begin_layout Itemize
+7.1: mentions a generic module to support the development of simulators.
+ Furthermore the section describes some simulators developed using the gen_fsm
+ behaviour.
+ Which additional features are provided by the software described in this
+ thesis, which are not already present in the gen_fsm behaviour?
+\end_layout
+
+\begin_layout Itemize
+According to 7.4, API:s and simulators must be created when they don't already
+ exist, why is this not represented in the first flow chart? Does your applicati
+on provide any ways to reduce development time of simulators? The quality
+ of a simulator may vary..
+ You created three simple device simulators.
+ How long did it take to create them? Case studies of developing these could
+ motivate the usage of simulators over hardware.
+\end_layout
+
+\begin_layout Standard
+A future improvement to the project is creating a finite state machine from
+ the log files.
+ It is unclear to us how this improves the system.
+\end_layout
+
+\begin_layout Standard
+Also, there are some factual errors; processes do share data, and data is
+ shared through message passing.
+ Memory is however not shared, perhaps this was what was intended to be
+ written.
+ PIDs can indeed be converted to lists, using the pid_to_list/1 function.
+\end_layout
+
+\begin_layout Section*
+Results
+\end_layout
+
+\begin_layout Standard
+What are the results from using the software discussed compared to the old
+ technique, of developing straight on the bare metal? Are there any results
+ in the terms of speed, reliability, cost effectiveness, usability (hard
+ to quantify)?
+\end_layout
+
+\begin_layout Standard
+It would be interesting to see a case study of some software developed using
+ a simulator versus software developed using the actual hardware.
+ In which scenarios are simulators cost effective compared to actual hardware?
+ In which scenarios do simulators speed up the development of software?
+\end_layout
+
+\begin_layout Standard
+Concerning the actual results, the following points remain unclear: 
+\end_layout
+
+\begin_layout Itemize
+How long does it take to upload the code to the hardware and how often is
+ this done during development, on average? 
+\end_layout
+
+\begin_layout Itemize
+How long does it take to get to know your system, write the simulators and
+ follow the steps you described? Is the workflow more efficient using your
+ system?
+\end_layout
+
+\begin_layout Itemize
+Did you calculate a difference of time between development on the hardware
+ versus in a simulated environment?
+\end_layout
+
+\begin_layout Standard
+The graphs provided are inconclusive and lack good descriptive texts.
+ It is unclear which metrics are used on each axis, and exactly what is
+ being measured; for instance, what is a 
+\begin_inset Quotes eld
+\end_inset
+
+sample
+\begin_inset Quotes erd
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+The accuracy of the simulators was presented in a graph, and it can be seen
+ from the graph that the accuracy is not 100%.
+ Why is this, and is this not exceptionally alarming for a simulator? Which
+ impacts does this have on the simulation?
+\end_layout
+
+\begin_layout Section*
+Language
+\end_layout
+
+\begin_layout Standard
+The language style in the thesis is not formal as it would be expected in
+ an academical paper, such as a bachelor’s thesis.
+ Many subject-verb agreement mistakes have been made which makes it rather
+ hard to follow.
+\end_layout
+
+\begin_layout Standard
+Some terms could be introduced better; OTP, Beagle Board, Gumstix, Ångström/Angs
+trom, distro, NAT, OS, Panda Board, VM, stub, public/subscribe, request-response
+, OS variable and SSH.
+ Erlang is introduced properly, and the same could perhaps be done for these
+ terms as well.
+ The structure of function calls (fun/num of pars) is not obvious to the
+ reader, perhaps it could be explained.
+\end_layout
+
+\begin_layout Standard
+It is hard to refer to the figures since they are not numbered.
+\end_layout
+
+\begin_layout Section*
+What we would like to see ...
+\end_layout
+
+\begin_layout Standard
+It would be interesting to see this system combined with a testing framework,
+ like QuickCheck, in order to create a powerful test suite which generates
+ tests using real data samples.
+ If the data generated by the recorder could be used as input to a testing
+ framework, like QuickCheck, a very powerful and random test suite could
+ be created.
+\end_layout
+
+\begin_layout Standard
+A graphical user interface could be useful to present the simulators in
+ a more efficient way to the users of the simulator.
+ Providing a framework for creating graphical simulators would be a nice
+ improvement.
+ 
+\end_layout
+
+\end_body
+\end_document
